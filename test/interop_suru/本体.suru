@@ -1,0 +1,50 @@
+# 段階2(メッセージの型と QoS)の相互運用の試験に使う する のノード。1つ目の引数で動きを選ぶ
+#   twist          … cmd_vel へ Twist を 0.2 秒ごとに送る
+#   joint          … joint_states の JointState を聞いて表示する
+#   scan           … scan の LaserScan を sensor_data の QoS で聞いて表示する
+#   scan_reliable  … scan を既定の QoS(reliable)で聞く(best effort の送り手からは届かないはず)
+#   latched        … latched の String を transient_local で聞く(前に送られたものも届く)
+#   latch_pub      … latched_suru へ transient_local で1回だけ送る
+「rclsuru」 を 読み込んで 使う
+「rclsuru/型/geometry_msgs」 を 読み込んで 使う
+「rclsuru/型/sensor_msgs」 を 読み込んで 使う
+「rclsuru/型/std_msgs」 を 読み込む
+「環境」 を 読み込む
+
+始めする とは 手順
+  引数 とは 環境内の引数取得した 結果
+  n とは 「interop_suru」 を ノード作成した 結果
+  （引数 の 先頭） を n で 準備する
+  n を スピンする
+
+文字列 を ノード で 準備する は 数 の 動作
+「twist」 を n で 準備する とは 手順
+  p とは Twist型 を 「cmd_vel」 へ n で 発行者作成した 結果
+  t とは linear は （x は 1.5 の Vector3既定） で angular は （z は -0.5 の Vector3既定） の Twist既定
+  （t を p へ 発行する） を 0.2 で n に 周期登録する
+「joint」 を n で 準備する とは JointState型 を 「joint_states」 から n で 関節表示すること に 購読する
+「scan」 を n で 準備する とは LaserScan型 を 「scan」 から n で 走査表示すること に センサーQoS より QoS付き購読する
+「scan_reliable」 を n で 準備する とは LaserScan型 を 「scan」 から n で 走査表示すること に 購読する
+「latched」 を n で 準備する とは std_msgs内のString型 を 「latched」 から n で 文表示すること に 保持QoS より QoS付き購読する
+「latch_pub」 を n で 準備する とは 手順
+  p とは std_msgs内のString型 を 「latched_suru」 へ n で 保持QoS より QoS付き発行者作成した 結果
+  （data は 「する から1回だけ」 の std_msgs内のString既定） を p へ 発行する
+s を n で 準備する とは （「知らない動き: 」 + s） を 失敗する
+
+保持QoS とは 深さ は 1 で 永続性 は 「transient_local」 の 既定QoS
+
+JointState を 関節表示する は 数 の 動作
+j を 関節表示する とは
+  名 とは （j の name） を 「・」 で 結合する
+  位置 とは （j の position） の それぞれ を 文字列化する
+  （「JointState を聞きました: 」 + 名 + 「 = 」 + （位置 を 「 」 で 結合する） + 「 frame=」 + （j の header） の frame_id） を 表示する
+
+LaserScan を 走査表示する は 数 の 動作
+s を 走査表示する とは
+  距離 とは （s の ranges） の それぞれ を 文字列化する
+  （「LaserScan を聞きました: 」 + （距離 を 「 」 で 結合する） + 「 angle_max=」 + （s の angle_max を 文字列化する）） を 表示する
+
+std_msgs内のString を 文表示する は 数 の 動作
+m を 文表示する とは （「String を聞きました: 」 + m の data） を 表示する
+
+始めする

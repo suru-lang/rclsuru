@@ -1,0 +1,468 @@
+# visualization_msgs の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
+「rclsuru/CDR」 を 読み込んで 使う
+「std_msgs」 を 読み込む
+「geometry_msgs」 を 読み込む
+「builtin_interfaces」 を 読み込む
+「sensor_msgs」 を 読み込む
+
+# visualization_msgs/msg/ImageMarker
+ImageMarker とは header と ns と id と type と action と position と scale と outline_color と filled と fill_color と lifetime と points と outline_colors の 組
+ImageMarker既定 とは header は std_msgs内のHeader既定 で ns は 「」 で id は 0 で type は 0 で action は 0 で position は geometry_msgs内のPoint既定 で scale は 0.0 で outline_color は std_msgs内のColorRGBA既定 で filled は 0 で fill_color は std_msgs内のColorRGBA既定 で lifetime は builtin_interfaces内のDuration既定 で points は 空 で outline_colors は 空 の ImageMarker
+ImageMarker型 とは 型名 は 「visualization_msgs/msg/ImageMarker」 で 寸法 は ImageMarker寸法すること で 書込 は ImageMarker書込すること で 読取 は ImageMarker読取すること の メッセージ型
+ImageMarker_CIRCLE とは 0
+ImageMarker_LINE_STRIP とは 1
+ImageMarker_LINE_LIST とは 2
+ImageMarker_POLYGON とは 3
+ImageMarker_POINTS とは 4
+ImageMarker_ADD とは 0
+ImageMarker_REMOVE とは 1
+ImageMarker を 数 で ImageMarker寸法する は 数
+対象 を 位0 で ImageMarker寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の ns） を 位1 で CDR文字列寸法する
+  位3 とは （対象 の id） を 位2 で CDR符号付き32寸法する
+  位4 とは （対象 の type） を 位3 で CDR符号付き32寸法する
+  位5 とは （対象 の action） を 位4 で CDR符号付き32寸法する
+  位6 とは （対象 の position） を 位5 で geometry_msgs内のPoint寸法する
+  位7 とは （対象 の scale） を 位6 で CDR単精度寸法する
+  位8 とは （対象 の outline_color） を 位7 で std_msgs内のColorRGBA寸法する
+  位9 とは （対象 の filled） を 位8 で CDR符号なし8寸法する
+  位10 とは （対象 の fill_color） を 位9 で std_msgs内のColorRGBA寸法する
+  位11 とは （対象 の lifetime） を 位10 で builtin_interfaces内のDuration寸法する
+  位12 とは （対象 の points） を 位11 で （geometry_msgs内のPoint寸法すること） に CDR可変列寸法する
+  （対象 の outline_colors） を 位12 で （std_msgs内のColorRGBA寸法すること） に CDR可変列寸法する
+ImageMarker を 番地 へ 数 で ImageMarker書込する は 数 の 動作
+対象 を 先 へ 位0 で ImageMarker書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の ns） を 先 へ 位1 で CDR文字列書込した 結果
+  位3 とは （対象 の id） を 先 へ 位2 で CDR符号付き32書込した 結果
+  位4 とは （対象 の type） を 先 へ 位3 で CDR符号付き32書込した 結果
+  位5 とは （対象 の action） を 先 へ 位4 で CDR符号付き32書込した 結果
+  位6 とは （対象 の position） を 先 へ 位5 で geometry_msgs内のPoint書込した 結果
+  位7 とは （対象 の scale） を 先 へ 位6 で CDR単精度書込した 結果
+  位8 とは （対象 の outline_color） を 先 へ 位7 で std_msgs内のColorRGBA書込した 結果
+  位9 とは （対象 の filled） を 先 へ 位8 で CDR符号なし8書込した 結果
+  位10 とは （対象 の fill_color） を 先 へ 位9 で std_msgs内のColorRGBA書込した 結果
+  位11 とは （対象 の lifetime） を 先 へ 位10 で builtin_interfaces内のDuration書込した 結果
+  位12 とは （対象 の points） を 先 へ 位11 で （geometry_msgs内のPoint書込すること） に CDR可変列書込した 結果
+  （対象 の outline_colors） を 先 へ 位12 で （std_msgs内のColorRGBA書込すること） に CDR可変列書込する
+番地 から 数 で ImageMarker読取する は （ImageMarker と 数） の 読値 の 動作
+先 から 位0 で ImageMarker読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号付き32読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR符号付き32読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR符号付き32読取した 結果
+  欄6 とは 先 から （欄5 の 次） で geometry_msgs内のPoint読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR単精度読取した 結果
+  欄8 とは 先 から （欄7 の 次） で std_msgs内のColorRGBA読取した 結果
+  欄9 とは 先 から （欄8 の 次） で CDR符号なし8読取した 結果
+  欄10 とは 先 から （欄9 の 次） で std_msgs内のColorRGBA読取した 結果
+  欄11 とは 先 から （欄10 の 次） で builtin_interfaces内のDuration読取した 結果
+  欄12 とは 先 から （欄11 の 次） で （geometry_msgs内のPoint読取すること） に CDR可変列読取した 結果
+  欄13 とは 先 から （欄12 の 次） で （std_msgs内のColorRGBA読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で ns は （欄2 の 値） で id は （欄3 の 値） で type は （欄4 の 値） で action は （欄5 の 値） で position は （欄6 の 値） で scale は （欄7 の 値） で outline_color は （欄8 の 値） で filled は （欄9 の 値） で fill_color は （欄10 の 値） で lifetime は （欄11 の 値） で points は （欄12 の 値） で outline_colors は （欄13 の 値） の ImageMarker） で 次 は （欄13 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/InteractiveMarker
+InteractiveMarker とは header と pose と name と description と scale と menu_entries と controls の 組
+InteractiveMarker既定 とは header は std_msgs内のHeader既定 で pose は geometry_msgs内のPose既定 で name は 「」 で description は 「」 で scale は 0.0 で menu_entries は 空 で controls は 空 の InteractiveMarker
+InteractiveMarker型 とは 型名 は 「visualization_msgs/msg/InteractiveMarker」 で 寸法 は InteractiveMarker寸法すること で 書込 は InteractiveMarker書込すること で 読取 は InteractiveMarker読取すること の メッセージ型
+InteractiveMarker を 数 で InteractiveMarker寸法する は 数
+対象 を 位0 で InteractiveMarker寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の pose） を 位1 で geometry_msgs内のPose寸法する
+  位3 とは （対象 の name） を 位2 で CDR文字列寸法する
+  位4 とは （対象 の description） を 位3 で CDR文字列寸法する
+  位5 とは （対象 の scale） を 位4 で CDR単精度寸法する
+  位6 とは （対象 の menu_entries） を 位5 で （MenuEntry寸法すること） に CDR可変列寸法する
+  （対象 の controls） を 位6 で （InteractiveMarkerControl寸法すること） に CDR可変列寸法する
+InteractiveMarker を 番地 へ 数 で InteractiveMarker書込する は 数 の 動作
+対象 を 先 へ 位0 で InteractiveMarker書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の pose） を 先 へ 位1 で geometry_msgs内のPose書込した 結果
+  位3 とは （対象 の name） を 先 へ 位2 で CDR文字列書込した 結果
+  位4 とは （対象 の description） を 先 へ 位3 で CDR文字列書込した 結果
+  位5 とは （対象 の scale） を 先 へ 位4 で CDR単精度書込した 結果
+  位6 とは （対象 の menu_entries） を 先 へ 位5 で （MenuEntry書込すること） に CDR可変列書込した 結果
+  （対象 の controls） を 先 へ 位6 で （InteractiveMarkerControl書込すること） に CDR可変列書込する
+番地 から 数 で InteractiveMarker読取する は （InteractiveMarker と 数） の 読値 の 動作
+先 から 位0 で InteractiveMarker読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で geometry_msgs内のPose読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR文字列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR単精度読取した 結果
+  欄6 とは 先 から （欄5 の 次） で （MenuEntry読取すること） に CDR可変列読取した 結果
+  欄7 とは 先 から （欄6 の 次） で （InteractiveMarkerControl読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で pose は （欄2 の 値） で name は （欄3 の 値） で description は （欄4 の 値） で scale は （欄5 の 値） で menu_entries は （欄6 の 値） で controls は （欄7 の 値） の InteractiveMarker） で 次 は （欄7 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/InteractiveMarkerControl
+InteractiveMarkerControl とは name と orientation と orientation_mode と interaction_mode と always_visible と markers と independent_marker_orientation と description の 組
+InteractiveMarkerControl既定 とは name は 「」 で orientation は geometry_msgs内のQuaternion既定 で orientation_mode は 0 で interaction_mode は 0 で always_visible は 偽 で markers は 空 で independent_marker_orientation は 偽 で description は 「」 の InteractiveMarkerControl
+InteractiveMarkerControl型 とは 型名 は 「visualization_msgs/msg/InteractiveMarkerControl」 で 寸法 は InteractiveMarkerControl寸法すること で 書込 は InteractiveMarkerControl書込すること で 読取 は InteractiveMarkerControl読取すること の メッセージ型
+InteractiveMarkerControl_INHERIT とは 0
+InteractiveMarkerControl_FIXED とは 1
+InteractiveMarkerControl_VIEW_FACING とは 2
+InteractiveMarkerControl_NONE とは 0
+InteractiveMarkerControl_MENU とは 1
+InteractiveMarkerControl_BUTTON とは 2
+InteractiveMarkerControl_MOVE_AXIS とは 3
+InteractiveMarkerControl_MOVE_PLANE とは 4
+InteractiveMarkerControl_ROTATE_AXIS とは 5
+InteractiveMarkerControl_MOVE_ROTATE とは 6
+InteractiveMarkerControl_MOVE_3D とは 7
+InteractiveMarkerControl_ROTATE_3D とは 8
+InteractiveMarkerControl_MOVE_ROTATE_3D とは 9
+InteractiveMarkerControl を 数 で InteractiveMarkerControl寸法する は 数
+対象 を 位0 で InteractiveMarkerControl寸法する とは
+  位1 とは （対象 の name） を 位0 で CDR文字列寸法する
+  位2 とは （対象 の orientation） を 位1 で geometry_msgs内のQuaternion寸法する
+  位3 とは （対象 の orientation_mode） を 位2 で CDR符号なし8寸法する
+  位4 とは （対象 の interaction_mode） を 位3 で CDR符号なし8寸法する
+  位5 とは （対象 の always_visible） を 位4 で CDR真偽寸法する
+  位6 とは （対象 の markers） を 位5 で （Marker寸法すること） に CDR可変列寸法する
+  位7 とは （対象 の independent_marker_orientation） を 位6 で CDR真偽寸法する
+  （対象 の description） を 位7 で CDR文字列寸法する
+InteractiveMarkerControl を 番地 へ 数 で InteractiveMarkerControl書込する は 数 の 動作
+対象 を 先 へ 位0 で InteractiveMarkerControl書込する とは 手順
+  位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
+  位2 とは （対象 の orientation） を 先 へ 位1 で geometry_msgs内のQuaternion書込した 結果
+  位3 とは （対象 の orientation_mode） を 先 へ 位2 で CDR符号なし8書込した 結果
+  位4 とは （対象 の interaction_mode） を 先 へ 位3 で CDR符号なし8書込した 結果
+  位5 とは （対象 の always_visible） を 先 へ 位4 で CDR真偽書込した 結果
+  位6 とは （対象 の markers） を 先 へ 位5 で （Marker書込すること） に CDR可変列書込した 結果
+  位7 とは （対象 の independent_marker_orientation） を 先 へ 位6 で CDR真偽書込した 結果
+  （対象 の description） を 先 へ 位7 で CDR文字列書込する
+番地 から 数 で InteractiveMarkerControl読取する は （InteractiveMarkerControl と 数） の 読値 の 動作
+先 から 位0 で InteractiveMarkerControl読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で geometry_msgs内のQuaternion読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号なし8読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR符号なし8読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR真偽読取した 結果
+  欄6 とは 先 から （欄5 の 次） で （Marker読取すること） に CDR可変列読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR真偽読取した 結果
+  欄8 とは 先 から （欄7 の 次） で CDR文字列読取した 結果
+  （値 は （name は （欄1 の 値） で orientation は （欄2 の 値） で orientation_mode は （欄3 の 値） で interaction_mode は （欄4 の 値） で always_visible は （欄5 の 値） で markers は （欄6 の 値） で independent_marker_orientation は （欄7 の 値） で description は （欄8 の 値） の InteractiveMarkerControl） で 次 は （欄8 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/InteractiveMarkerFeedback
+InteractiveMarkerFeedback とは header と client_id と marker_name と control_name と event_type と pose と menu_entry_id と mouse_point と mouse_point_valid の 組
+InteractiveMarkerFeedback既定 とは header は std_msgs内のHeader既定 で client_id は 「」 で marker_name は 「」 で control_name は 「」 で event_type は 0 で pose は geometry_msgs内のPose既定 で menu_entry_id は 0 で mouse_point は geometry_msgs内のPoint既定 で mouse_point_valid は 偽 の InteractiveMarkerFeedback
+InteractiveMarkerFeedback型 とは 型名 は 「visualization_msgs/msg/InteractiveMarkerFeedback」 で 寸法 は InteractiveMarkerFeedback寸法すること で 書込 は InteractiveMarkerFeedback書込すること で 読取 は InteractiveMarkerFeedback読取すること の メッセージ型
+InteractiveMarkerFeedback_KEEP_ALIVE とは 0
+InteractiveMarkerFeedback_POSE_UPDATE とは 1
+InteractiveMarkerFeedback_MENU_SELECT とは 2
+InteractiveMarkerFeedback_BUTTON_CLICK とは 3
+InteractiveMarkerFeedback_MOUSE_DOWN とは 4
+InteractiveMarkerFeedback_MOUSE_UP とは 5
+InteractiveMarkerFeedback を 数 で InteractiveMarkerFeedback寸法する は 数
+対象 を 位0 で InteractiveMarkerFeedback寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の client_id） を 位1 で CDR文字列寸法する
+  位3 とは （対象 の marker_name） を 位2 で CDR文字列寸法する
+  位4 とは （対象 の control_name） を 位3 で CDR文字列寸法する
+  位5 とは （対象 の event_type） を 位4 で CDR符号なし8寸法する
+  位6 とは （対象 の pose） を 位5 で geometry_msgs内のPose寸法する
+  位7 とは （対象 の menu_entry_id） を 位6 で CDR符号なし32寸法する
+  位8 とは （対象 の mouse_point） を 位7 で geometry_msgs内のPoint寸法する
+  （対象 の mouse_point_valid） を 位8 で CDR真偽寸法する
+InteractiveMarkerFeedback を 番地 へ 数 で InteractiveMarkerFeedback書込する は 数 の 動作
+対象 を 先 へ 位0 で InteractiveMarkerFeedback書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の client_id） を 先 へ 位1 で CDR文字列書込した 結果
+  位3 とは （対象 の marker_name） を 先 へ 位2 で CDR文字列書込した 結果
+  位4 とは （対象 の control_name） を 先 へ 位3 で CDR文字列書込した 結果
+  位5 とは （対象 の event_type） を 先 へ 位4 で CDR符号なし8書込した 結果
+  位6 とは （対象 の pose） を 先 へ 位5 で geometry_msgs内のPose書込した 結果
+  位7 とは （対象 の menu_entry_id） を 先 へ 位6 で CDR符号なし32書込した 結果
+  位8 とは （対象 の mouse_point） を 先 へ 位7 で geometry_msgs内のPoint書込した 結果
+  （対象 の mouse_point_valid） を 先 へ 位8 で CDR真偽書込する
+番地 から 数 で InteractiveMarkerFeedback読取する は （InteractiveMarkerFeedback と 数） の 読値 の 動作
+先 から 位0 で InteractiveMarkerFeedback読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR文字列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR符号なし8読取した 結果
+  欄6 とは 先 から （欄5 の 次） で geometry_msgs内のPose読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR符号なし32読取した 結果
+  欄8 とは 先 から （欄7 の 次） で geometry_msgs内のPoint読取した 結果
+  欄9 とは 先 から （欄8 の 次） で CDR真偽読取した 結果
+  （値 は （header は （欄1 の 値） で client_id は （欄2 の 値） で marker_name は （欄3 の 値） で control_name は （欄4 の 値） で event_type は （欄5 の 値） で pose は （欄6 の 値） で menu_entry_id は （欄7 の 値） で mouse_point は （欄8 の 値） で mouse_point_valid は （欄9 の 値） の InteractiveMarkerFeedback） で 次 は （欄9 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/InteractiveMarkerInit
+InteractiveMarkerInit とは server_id と seq_num と markers の 組
+InteractiveMarkerInit既定 とは server_id は 「」 で seq_num は 0 で markers は 空 の InteractiveMarkerInit
+InteractiveMarkerInit型 とは 型名 は 「visualization_msgs/msg/InteractiveMarkerInit」 で 寸法 は InteractiveMarkerInit寸法すること で 書込 は InteractiveMarkerInit書込すること で 読取 は InteractiveMarkerInit読取すること の メッセージ型
+InteractiveMarkerInit を 数 で InteractiveMarkerInit寸法する は 数
+対象 を 位0 で InteractiveMarkerInit寸法する とは
+  位1 とは （対象 の server_id） を 位0 で CDR文字列寸法する
+  位2 とは （対象 の seq_num） を 位1 で CDR符号なし64寸法する
+  （対象 の markers） を 位2 で （InteractiveMarker寸法すること） に CDR可変列寸法する
+InteractiveMarkerInit を 番地 へ 数 で InteractiveMarkerInit書込する は 数 の 動作
+対象 を 先 へ 位0 で InteractiveMarkerInit書込する とは 手順
+  位1 とは （対象 の server_id） を 先 へ 位0 で CDR文字列書込した 結果
+  位2 とは （対象 の seq_num） を 先 へ 位1 で CDR符号なし64書込した 結果
+  （対象 の markers） を 先 へ 位2 で （InteractiveMarker書込すること） に CDR可変列書込する
+番地 から 数 で InteractiveMarkerInit読取する は （InteractiveMarkerInit と 数） の 読値 の 動作
+先 から 位0 で InteractiveMarkerInit読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし64読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （InteractiveMarker読取すること） に CDR可変列読取した 結果
+  （値 は （server_id は （欄1 の 値） で seq_num は （欄2 の 値） で markers は （欄3 の 値） の InteractiveMarkerInit） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/InteractiveMarkerPose
+InteractiveMarkerPose とは header と pose と name の 組
+InteractiveMarkerPose既定 とは header は std_msgs内のHeader既定 で pose は geometry_msgs内のPose既定 で name は 「」 の InteractiveMarkerPose
+InteractiveMarkerPose型 とは 型名 は 「visualization_msgs/msg/InteractiveMarkerPose」 で 寸法 は InteractiveMarkerPose寸法すること で 書込 は InteractiveMarkerPose書込すること で 読取 は InteractiveMarkerPose読取すること の メッセージ型
+InteractiveMarkerPose を 数 で InteractiveMarkerPose寸法する は 数
+対象 を 位0 で InteractiveMarkerPose寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の pose） を 位1 で geometry_msgs内のPose寸法する
+  （対象 の name） を 位2 で CDR文字列寸法する
+InteractiveMarkerPose を 番地 へ 数 で InteractiveMarkerPose書込する は 数 の 動作
+対象 を 先 へ 位0 で InteractiveMarkerPose書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の pose） を 先 へ 位1 で geometry_msgs内のPose書込した 結果
+  （対象 の name） を 先 へ 位2 で CDR文字列書込する
+番地 から 数 で InteractiveMarkerPose読取する は （InteractiveMarkerPose と 数） の 読値 の 動作
+先 から 位0 で InteractiveMarkerPose読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で geometry_msgs内のPose読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
+  （値 は （header は （欄1 の 値） で pose は （欄2 の 値） で name は （欄3 の 値） の InteractiveMarkerPose） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/InteractiveMarkerUpdate
+InteractiveMarkerUpdate とは server_id と seq_num と type と markers と poses と erases の 組
+InteractiveMarkerUpdate既定 とは server_id は 「」 で seq_num は 0 で type は 0 で markers は 空 で poses は 空 で erases は 空 の InteractiveMarkerUpdate
+InteractiveMarkerUpdate型 とは 型名 は 「visualization_msgs/msg/InteractiveMarkerUpdate」 で 寸法 は InteractiveMarkerUpdate寸法すること で 書込 は InteractiveMarkerUpdate書込すること で 読取 は InteractiveMarkerUpdate読取すること の メッセージ型
+InteractiveMarkerUpdate_KEEP_ALIVE とは 0
+InteractiveMarkerUpdate_UPDATE とは 1
+InteractiveMarkerUpdate を 数 で InteractiveMarkerUpdate寸法する は 数
+対象 を 位0 で InteractiveMarkerUpdate寸法する とは
+  位1 とは （対象 の server_id） を 位0 で CDR文字列寸法する
+  位2 とは （対象 の seq_num） を 位1 で CDR符号なし64寸法する
+  位3 とは （対象 の type） を 位2 で CDR符号なし8寸法する
+  位4 とは （対象 の markers） を 位3 で （InteractiveMarker寸法すること） に CDR可変列寸法する
+  位5 とは （対象 の poses） を 位4 で （InteractiveMarkerPose寸法すること） に CDR可変列寸法する
+  （対象 の erases） を 位5 で （CDR文字列寸法すること） に CDR可変列寸法する
+InteractiveMarkerUpdate を 番地 へ 数 で InteractiveMarkerUpdate書込する は 数 の 動作
+対象 を 先 へ 位0 で InteractiveMarkerUpdate書込する とは 手順
+  位1 とは （対象 の server_id） を 先 へ 位0 で CDR文字列書込した 結果
+  位2 とは （対象 の seq_num） を 先 へ 位1 で CDR符号なし64書込した 結果
+  位3 とは （対象 の type） を 先 へ 位2 で CDR符号なし8書込した 結果
+  位4 とは （対象 の markers） を 先 へ 位3 で （InteractiveMarker書込すること） に CDR可変列書込した 結果
+  位5 とは （対象 の poses） を 先 へ 位4 で （InteractiveMarkerPose書込すること） に CDR可変列書込した 結果
+  （対象 の erases） を 先 へ 位5 で （CDR文字列書込すること） に CDR可変列書込する
+番地 から 数 で InteractiveMarkerUpdate読取する は （InteractiveMarkerUpdate と 数） の 読値 の 動作
+先 から 位0 で InteractiveMarkerUpdate読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし64読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号なし8読取した 結果
+  欄4 とは 先 から （欄3 の 次） で （InteractiveMarker読取すること） に CDR可変列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で （InteractiveMarkerPose読取すること） に CDR可変列読取した 結果
+  欄6 とは 先 から （欄5 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
+  （値 は （server_id は （欄1 の 値） で seq_num は （欄2 の 値） で type は （欄3 の 値） で markers は （欄4 の 値） で poses は （欄5 の 値） で erases は （欄6 の 値） の InteractiveMarkerUpdate） で 次 は （欄6 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/Marker
+Marker とは header と ns と id と type と action と pose と scale と color と lifetime と frame_locked と points と colors と texture_resource と texture と uv_coordinates と text と mesh_resource と mesh_file と mesh_use_embedded_materials の 組
+Marker既定 とは header は std_msgs内のHeader既定 で ns は 「」 で id は 0 で type は 0 で action は 0 で pose は geometry_msgs内のPose既定 で scale は geometry_msgs内のVector3既定 で color は std_msgs内のColorRGBA既定 で lifetime は builtin_interfaces内のDuration既定 で frame_locked は 偽 で points は 空 で colors は 空 で texture_resource は 「」 で texture は sensor_msgs内のCompressedImage既定 で uv_coordinates は 空 で text は 「」 で mesh_resource は 「」 で mesh_file は MeshFile既定 で mesh_use_embedded_materials は 偽 の Marker
+Marker型 とは 型名 は 「visualization_msgs/msg/Marker」 で 寸法 は Marker寸法すること で 書込 は Marker書込すること で 読取 は Marker読取すること の メッセージ型
+Marker_ARROW とは 0
+Marker_CUBE とは 1
+Marker_SPHERE とは 2
+Marker_CYLINDER とは 3
+Marker_LINE_STRIP とは 4
+Marker_LINE_LIST とは 5
+Marker_CUBE_LIST とは 6
+Marker_SPHERE_LIST とは 7
+Marker_POINTS とは 8
+Marker_TEXT_VIEW_FACING とは 9
+Marker_MESH_RESOURCE とは 10
+Marker_TRIANGLE_LIST とは 11
+Marker_ARROW_STRIP とは 12
+Marker_ADD とは 0
+Marker_MODIFY とは 0
+Marker_DELETE とは 2
+Marker_DELETEALL とは 3
+Marker を 数 で Marker寸法する は 数
+対象 を 位0 で Marker寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の ns） を 位1 で CDR文字列寸法する
+  位3 とは （対象 の id） を 位2 で CDR符号付き32寸法する
+  位4 とは （対象 の type） を 位3 で CDR符号付き32寸法する
+  位5 とは （対象 の action） を 位4 で CDR符号付き32寸法する
+  位6 とは （対象 の pose） を 位5 で geometry_msgs内のPose寸法する
+  位7 とは （対象 の scale） を 位6 で geometry_msgs内のVector3寸法する
+  位8 とは （対象 の color） を 位7 で std_msgs内のColorRGBA寸法する
+  位9 とは （対象 の lifetime） を 位8 で builtin_interfaces内のDuration寸法する
+  位10 とは （対象 の frame_locked） を 位9 で CDR真偽寸法する
+  位11 とは （対象 の points） を 位10 で （geometry_msgs内のPoint寸法すること） に CDR可変列寸法する
+  位12 とは （対象 の colors） を 位11 で （std_msgs内のColorRGBA寸法すること） に CDR可変列寸法する
+  位13 とは （対象 の texture_resource） を 位12 で CDR文字列寸法する
+  位14 とは （対象 の texture） を 位13 で sensor_msgs内のCompressedImage寸法する
+  位15 とは （対象 の uv_coordinates） を 位14 で （UVCoordinate寸法すること） に CDR可変列寸法する
+  位16 とは （対象 の text） を 位15 で CDR文字列寸法する
+  位17 とは （対象 の mesh_resource） を 位16 で CDR文字列寸法する
+  位18 とは （対象 の mesh_file） を 位17 で MeshFile寸法する
+  （対象 の mesh_use_embedded_materials） を 位18 で CDR真偽寸法する
+Marker を 番地 へ 数 で Marker書込する は 数 の 動作
+対象 を 先 へ 位0 で Marker書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の ns） を 先 へ 位1 で CDR文字列書込した 結果
+  位3 とは （対象 の id） を 先 へ 位2 で CDR符号付き32書込した 結果
+  位4 とは （対象 の type） を 先 へ 位3 で CDR符号付き32書込した 結果
+  位5 とは （対象 の action） を 先 へ 位4 で CDR符号付き32書込した 結果
+  位6 とは （対象 の pose） を 先 へ 位5 で geometry_msgs内のPose書込した 結果
+  位7 とは （対象 の scale） を 先 へ 位6 で geometry_msgs内のVector3書込した 結果
+  位8 とは （対象 の color） を 先 へ 位7 で std_msgs内のColorRGBA書込した 結果
+  位9 とは （対象 の lifetime） を 先 へ 位8 で builtin_interfaces内のDuration書込した 結果
+  位10 とは （対象 の frame_locked） を 先 へ 位9 で CDR真偽書込した 結果
+  位11 とは （対象 の points） を 先 へ 位10 で （geometry_msgs内のPoint書込すること） に CDR可変列書込した 結果
+  位12 とは （対象 の colors） を 先 へ 位11 で （std_msgs内のColorRGBA書込すること） に CDR可変列書込した 結果
+  位13 とは （対象 の texture_resource） を 先 へ 位12 で CDR文字列書込した 結果
+  位14 とは （対象 の texture） を 先 へ 位13 で sensor_msgs内のCompressedImage書込した 結果
+  位15 とは （対象 の uv_coordinates） を 先 へ 位14 で （UVCoordinate書込すること） に CDR可変列書込した 結果
+  位16 とは （対象 の text） を 先 へ 位15 で CDR文字列書込した 結果
+  位17 とは （対象 の mesh_resource） を 先 へ 位16 で CDR文字列書込した 結果
+  位18 とは （対象 の mesh_file） を 先 へ 位17 で MeshFile書込した 結果
+  （対象 の mesh_use_embedded_materials） を 先 へ 位18 で CDR真偽書込する
+番地 から 数 で Marker読取する は （Marker と 数） の 読値 の 動作
+先 から 位0 で Marker読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号付き32読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR符号付き32読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR符号付き32読取した 結果
+  欄6 とは 先 から （欄5 の 次） で geometry_msgs内のPose読取した 結果
+  欄7 とは 先 から （欄6 の 次） で geometry_msgs内のVector3読取した 結果
+  欄8 とは 先 から （欄7 の 次） で std_msgs内のColorRGBA読取した 結果
+  欄9 とは 先 から （欄8 の 次） で builtin_interfaces内のDuration読取した 結果
+  欄10 とは 先 から （欄9 の 次） で CDR真偽読取した 結果
+  欄11 とは 先 から （欄10 の 次） で （geometry_msgs内のPoint読取すること） に CDR可変列読取した 結果
+  欄12 とは 先 から （欄11 の 次） で （std_msgs内のColorRGBA読取すること） に CDR可変列読取した 結果
+  欄13 とは 先 から （欄12 の 次） で CDR文字列読取した 結果
+  欄14 とは 先 から （欄13 の 次） で sensor_msgs内のCompressedImage読取した 結果
+  欄15 とは 先 から （欄14 の 次） で （UVCoordinate読取すること） に CDR可変列読取した 結果
+  欄16 とは 先 から （欄15 の 次） で CDR文字列読取した 結果
+  欄17 とは 先 から （欄16 の 次） で CDR文字列読取した 結果
+  欄18 とは 先 から （欄17 の 次） で MeshFile読取した 結果
+  欄19 とは 先 から （欄18 の 次） で CDR真偽読取した 結果
+  （値 は （header は （欄1 の 値） で ns は （欄2 の 値） で id は （欄3 の 値） で type は （欄4 の 値） で action は （欄5 の 値） で pose は （欄6 の 値） で scale は （欄7 の 値） で color は （欄8 の 値） で lifetime は （欄9 の 値） で frame_locked は （欄10 の 値） で points は （欄11 の 値） で colors は （欄12 の 値） で texture_resource は （欄13 の 値） で texture は （欄14 の 値） で uv_coordinates は （欄15 の 値） で text は （欄16 の 値） で mesh_resource は （欄17 の 値） で mesh_file は （欄18 の 値） で mesh_use_embedded_materials は （欄19 の 値） の Marker） で 次 は （欄19 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/MarkerArray
+MarkerArray とは markers の 組
+MarkerArray既定 とは markers は 空 の MarkerArray
+MarkerArray型 とは 型名 は 「visualization_msgs/msg/MarkerArray」 で 寸法 は MarkerArray寸法すること で 書込 は MarkerArray書込すること で 読取 は MarkerArray読取すること の メッセージ型
+MarkerArray を 数 で MarkerArray寸法する は 数
+対象 を 位0 で MarkerArray寸法する とは
+  （対象 の markers） を 位0 で （Marker寸法すること） に CDR可変列寸法する
+MarkerArray を 番地 へ 数 で MarkerArray書込する は 数 の 動作
+対象 を 先 へ 位0 で MarkerArray書込する とは 手順
+  （対象 の markers） を 先 へ 位0 で （Marker書込すること） に CDR可変列書込する
+番地 から 数 で MarkerArray読取する は （MarkerArray と 数） の 読値 の 動作
+先 から 位0 で MarkerArray読取する とは 手順
+  欄1 とは 先 から 位0 で （Marker読取すること） に CDR可変列読取した 結果
+  （値 は （markers は （欄1 の 値） の MarkerArray） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/MenuEntry
+MenuEntry とは id と parent_id と title と command と command_type の 組
+MenuEntry既定 とは id は 0 で parent_id は 0 で title は 「」 で command は 「」 で command_type は 0 の MenuEntry
+MenuEntry型 とは 型名 は 「visualization_msgs/msg/MenuEntry」 で 寸法 は MenuEntry寸法すること で 書込 は MenuEntry書込すること で 読取 は MenuEntry読取すること の メッセージ型
+MenuEntry_FEEDBACK とは 0
+MenuEntry_ROSRUN とは 1
+MenuEntry_ROSLAUNCH とは 2
+MenuEntry を 数 で MenuEntry寸法する は 数
+対象 を 位0 で MenuEntry寸法する とは
+  位1 とは （対象 の id） を 位0 で CDR符号なし32寸法する
+  位2 とは （対象 の parent_id） を 位1 で CDR符号なし32寸法する
+  位3 とは （対象 の title） を 位2 で CDR文字列寸法する
+  位4 とは （対象 の command） を 位3 で CDR文字列寸法する
+  （対象 の command_type） を 位4 で CDR符号なし8寸法する
+MenuEntry を 番地 へ 数 で MenuEntry書込する は 数 の 動作
+対象 を 先 へ 位0 で MenuEntry書込する とは 手順
+  位1 とは （対象 の id） を 先 へ 位0 で CDR符号なし32書込した 結果
+  位2 とは （対象 の parent_id） を 先 へ 位1 で CDR符号なし32書込した 結果
+  位3 とは （対象 の title） を 先 へ 位2 で CDR文字列書込した 結果
+  位4 とは （対象 の command） を 先 へ 位3 で CDR文字列書込した 結果
+  （対象 の command_type） を 先 へ 位4 で CDR符号なし8書込する
+番地 から 数 で MenuEntry読取する は （MenuEntry と 数） の 読値 の 動作
+先 から 位0 で MenuEntry読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし32読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR文字列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR符号なし8読取した 結果
+  （値 は （id は （欄1 の 値） で parent_id は （欄2 の 値） で title は （欄3 の 値） で command は （欄4 の 値） で command_type は （欄5 の 値） の MenuEntry） で 次 は （欄5 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/MeshFile
+MeshFile とは filename と data の 組
+MeshFile既定 とは filename は 「」 で data は （0 を 零バイト列にする） の MeshFile
+MeshFile型 とは 型名 は 「visualization_msgs/msg/MeshFile」 で 寸法 は MeshFile寸法すること で 書込 は MeshFile書込すること で 読取 は MeshFile読取すること の メッセージ型
+MeshFile を 数 で MeshFile寸法する は 数
+対象 を 位0 で MeshFile寸法する とは
+  位1 とは （対象 の filename） を 位0 で CDR文字列寸法する
+  （対象 の data） を 位1 で CDRバイト可変列寸法する
+MeshFile を 番地 へ 数 で MeshFile書込する は 数 の 動作
+対象 を 先 へ 位0 で MeshFile書込する とは 手順
+  位1 とは （対象 の filename） を 先 へ 位0 で CDR文字列書込した 結果
+  （対象 の data） を 先 へ 位1 で CDRバイト可変列書込する
+番地 から 数 で MeshFile読取する は （MeshFile と 数） の 読値 の 動作
+先 から 位0 で MeshFile読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDRバイト可変列読取した 結果
+  （値 は （filename は （欄1 の 値） で data は （欄2 の 値） の MeshFile） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# visualization_msgs/msg/UVCoordinate
+UVCoordinate とは u と v の 組
+UVCoordinate既定 とは u は 0.0 で v は 0.0 の UVCoordinate
+UVCoordinate型 とは 型名 は 「visualization_msgs/msg/UVCoordinate」 で 寸法 は UVCoordinate寸法すること で 書込 は UVCoordinate書込すること で 読取 は UVCoordinate読取すること の メッセージ型
+UVCoordinate を 数 で UVCoordinate寸法する は 数
+対象 を 位0 で UVCoordinate寸法する とは
+  位1 とは （対象 の u） を 位0 で CDR単精度寸法する
+  （対象 の v） を 位1 で CDR単精度寸法する
+UVCoordinate を 番地 へ 数 で UVCoordinate書込する は 数 の 動作
+対象 を 先 へ 位0 で UVCoordinate書込する とは 手順
+  位1 とは （対象 の u） を 先 へ 位0 で CDR単精度書込した 結果
+  （対象 の v） を 先 へ 位1 で CDR単精度書込する
+番地 から 数 で UVCoordinate読取する は （UVCoordinate と 数） の 読値 の 動作
+先 から 位0 で UVCoordinate読取する とは 手順
+  欄1 とは 先 から 位0 で CDR単精度読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
+  （値 は （u は （欄1 の 値） で v は （欄2 の 値） の UVCoordinate） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# visualization_msgs/srv/GetInteractiveMarkers_Request
+GetInteractiveMarkers_Request とは structure_needs_at_least_one_member の 組
+GetInteractiveMarkers_Request既定 とは structure_needs_at_least_one_member は 0 の GetInteractiveMarkers_Request
+GetInteractiveMarkers_Request型 とは 型名 は 「visualization_msgs/srv/GetInteractiveMarkers_Request」 で 寸法 は GetInteractiveMarkers_Request寸法すること で 書込 は GetInteractiveMarkers_Request書込すること で 読取 は GetInteractiveMarkers_Request読取すること の メッセージ型
+GetInteractiveMarkers_Request を 数 で GetInteractiveMarkers_Request寸法する は 数
+対象 を 位0 で GetInteractiveMarkers_Request寸法する とは
+  （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
+GetInteractiveMarkers_Request を 番地 へ 数 で GetInteractiveMarkers_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で GetInteractiveMarkers_Request書込する とは 手順
+  （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
+番地 から 数 で GetInteractiveMarkers_Request読取する は （GetInteractiveMarkers_Request と 数） の 読値 の 動作
+先 から 位0 で GetInteractiveMarkers_Request読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  （値 は （structure_needs_at_least_one_member は （欄1 の 値） の GetInteractiveMarkers_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# visualization_msgs/srv/GetInteractiveMarkers_Response
+GetInteractiveMarkers_Response とは sequence_number と markers の 組
+GetInteractiveMarkers_Response既定 とは sequence_number は 0 で markers は 空 の GetInteractiveMarkers_Response
+GetInteractiveMarkers_Response型 とは 型名 は 「visualization_msgs/srv/GetInteractiveMarkers_Response」 で 寸法 は GetInteractiveMarkers_Response寸法すること で 書込 は GetInteractiveMarkers_Response書込すること で 読取 は GetInteractiveMarkers_Response読取すること の メッセージ型
+GetInteractiveMarkers_Response を 数 で GetInteractiveMarkers_Response寸法する は 数
+対象 を 位0 で GetInteractiveMarkers_Response寸法する とは
+  位1 とは （対象 の sequence_number） を 位0 で CDR符号なし64寸法する
+  （対象 の markers） を 位1 で （InteractiveMarker寸法すること） に CDR可変列寸法する
+GetInteractiveMarkers_Response を 番地 へ 数 で GetInteractiveMarkers_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で GetInteractiveMarkers_Response書込する とは 手順
+  位1 とは （対象 の sequence_number） を 先 へ 位0 で CDR符号なし64書込した 結果
+  （対象 の markers） を 先 へ 位1 で （InteractiveMarker書込すること） に CDR可変列書込する
+番地 から 数 で GetInteractiveMarkers_Response読取する は （GetInteractiveMarkers_Response と 数） の 読値 の 動作
+先 から 位0 で GetInteractiveMarkers_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし64読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （InteractiveMarker読取すること） に CDR可変列読取した 結果
+  （値 は （sequence_number は （欄1 の 値） で markers は （欄2 の 値） の GetInteractiveMarkers_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# visualization_msgs/srv/GetInteractiveMarkers
+GetInteractiveMarkers型 とは 型名 は 「visualization_msgs/srv/GetInteractiveMarkers」 で 要求 は GetInteractiveMarkers_Request型 で 応答 は GetInteractiveMarkers_Response型 の サービス型

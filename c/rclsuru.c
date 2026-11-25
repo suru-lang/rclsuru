@@ -106,20 +106,16 @@ rmw_qos_profile_t *rclsuru_qos_new(const char *name) {
 
 void rclsuru_qos_delete(rmw_qos_profile_t *p) { free(p); }
 
-// 履歴: 1 は KEEP_LAST、2 は KEEP_ALL。深さは KEEP_LAST の数。
-void rclsuru_qos_set_history(rmw_qos_profile_t *p, int64_t history, int64_t depth) {
-  p->history = (enum rmw_qos_history_policy_e)history;
-  p->depth = (size_t)depth;
-}
-
-// 信頼性: 1 は RELIABLE、2 は BEST_EFFORT。
-void rclsuru_qos_set_reliability(rmw_qos_profile_t *p, int64_t v) {
-  p->reliability = (enum rmw_qos_reliability_policy_e)v;
-}
-
-// 永続性: 1 は TRANSIENT_LOCAL、2 は VOLATILE。
-void rclsuru_qos_set_durability(rmw_qos_profile_t *p, int64_t v) {
-  p->durability = (enum rmw_qos_durability_policy_e)v;
+// 決まりを変える。負の数なら変えない。
+//   履歴: 0 は SYSTEM_DEFAULT、1 は KEEP_LAST、2 は KEEP_ALL。深さ は KEEP_LAST のときに残す数
+//   信頼性: 0 は SYSTEM_DEFAULT、1 は RELIABLE、2 は BEST_EFFORT
+//   永続性: 0 は SYSTEM_DEFAULT、1 は TRANSIENT_LOCAL、2 は VOLATILE
+void rclsuru_qos_apply(rmw_qos_profile_t *p, int64_t history, int64_t depth, int64_t reliability,
+                       int64_t durability) {
+  if (history >= 0) p->history = (enum rmw_qos_history_policy_e)history;
+  if (depth >= 0) p->depth = (size_t)depth;
+  if (reliability >= 0) p->reliability = (enum rmw_qos_reliability_policy_e)reliability;
+  if (durability >= 0) p->durability = (enum rmw_qos_durability_policy_e)durability;
 }
 
 // --- 発行者 ---
@@ -195,6 +191,16 @@ int64_t rclsuru_serialized_set(rmw_serialized_message_t *p, const uint8_t *data,
   memcpy(p->buffer, data, (size_t)n);
   p->buffer_length = (size_t)n;
   return 0;
+}
+
+// 中身を n バイトにして(足りなければ広げ、0 で埋める)、先頭の番地を返す。失敗なら NULL。
+uint8_t *rclsuru_serialized_prepare(rmw_serialized_message_t *p, int64_t n) {
+  if ((size_t)n > p->buffer_capacity) {
+    if (rmw_serialized_message_resize(p, (size_t)n) != RMW_RET_OK) return NULL;
+  }
+  memset(p->buffer, 0, (size_t)n);
+  p->buffer_length = (size_t)n;
+  return p->buffer;
 }
 
 uint8_t *rclsuru_serialized_buffer(const rmw_serialized_message_t *p) { return p->buffer; }

@@ -1,0 +1,145 @@
+# diagnostic_msgs の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
+「rclsuru/CDR」 を 読み込んで 使う
+「std_msgs」 を 読み込む
+
+# diagnostic_msgs/msg/DiagnosticArray
+DiagnosticArray とは header と status の 組
+DiagnosticArray既定 とは header は std_msgs内のHeader既定 で status は 空 の DiagnosticArray
+DiagnosticArray型 とは 型名 は 「diagnostic_msgs/msg/DiagnosticArray」 で 寸法 は DiagnosticArray寸法すること で 書込 は DiagnosticArray書込すること で 読取 は DiagnosticArray読取すること の メッセージ型
+DiagnosticArray を 数 で DiagnosticArray寸法する は 数
+対象 を 位0 で DiagnosticArray寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  （対象 の status） を 位1 で （DiagnosticStatus寸法すること） に CDR可変列寸法する
+DiagnosticArray を 番地 へ 数 で DiagnosticArray書込する は 数 の 動作
+対象 を 先 へ 位0 で DiagnosticArray書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  （対象 の status） を 先 へ 位1 で （DiagnosticStatus書込すること） に CDR可変列書込する
+番地 から 数 で DiagnosticArray読取する は （DiagnosticArray と 数） の 読値 の 動作
+先 から 位0 で DiagnosticArray読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （DiagnosticStatus読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で status は （欄2 の 値） の DiagnosticArray） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# diagnostic_msgs/msg/DiagnosticStatus
+DiagnosticStatus とは level と name と message と hardware_id と values の 組
+DiagnosticStatus既定 とは level は 0 で name は 「」 で message は 「」 で hardware_id は 「」 で values は 空 の DiagnosticStatus
+DiagnosticStatus型 とは 型名 は 「diagnostic_msgs/msg/DiagnosticStatus」 で 寸法 は DiagnosticStatus寸法すること で 書込 は DiagnosticStatus書込すること で 読取 は DiagnosticStatus読取すること の メッセージ型
+DiagnosticStatus_OK とは 0
+DiagnosticStatus_WARN とは 1
+DiagnosticStatus_ERROR とは 2
+DiagnosticStatus_STALE とは 3
+DiagnosticStatus を 数 で DiagnosticStatus寸法する は 数
+対象 を 位0 で DiagnosticStatus寸法する とは
+  位1 とは （対象 の level） を 位0 で CDR符号なし8寸法する
+  位2 とは （対象 の name） を 位1 で CDR文字列寸法する
+  位3 とは （対象 の message） を 位2 で CDR文字列寸法する
+  位4 とは （対象 の hardware_id） を 位3 で CDR文字列寸法する
+  （対象 の values） を 位4 で （KeyValue寸法すること） に CDR可変列寸法する
+DiagnosticStatus を 番地 へ 数 で DiagnosticStatus書込する は 数 の 動作
+対象 を 先 へ 位0 で DiagnosticStatus書込する とは 手順
+  位1 とは （対象 の level） を 先 へ 位0 で CDR符号なし8書込した 結果
+  位2 とは （対象 の name） を 先 へ 位1 で CDR文字列書込した 結果
+  位3 とは （対象 の message） を 先 へ 位2 で CDR文字列書込した 結果
+  位4 とは （対象 の hardware_id） を 先 へ 位3 で CDR文字列書込した 結果
+  （対象 の values） を 先 へ 位4 で （KeyValue書込すること） に CDR可変列書込する
+番地 から 数 で DiagnosticStatus読取する は （DiagnosticStatus と 数） の 読値 の 動作
+先 から 位0 で DiagnosticStatus読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR文字列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で （KeyValue読取すること） に CDR可変列読取した 結果
+  （値 は （level は （欄1 の 値） で name は （欄2 の 値） で message は （欄3 の 値） で hardware_id は （欄4 の 値） で values は （欄5 の 値） の DiagnosticStatus） で 次 は （欄5 の 次） の 読値） を 結果にする
+
+# diagnostic_msgs/msg/KeyValue
+KeyValue とは key と value の 組
+KeyValue既定 とは key は 「」 で value は 「」 の KeyValue
+KeyValue型 とは 型名 は 「diagnostic_msgs/msg/KeyValue」 で 寸法 は KeyValue寸法すること で 書込 は KeyValue書込すること で 読取 は KeyValue読取すること の メッセージ型
+KeyValue を 数 で KeyValue寸法する は 数
+対象 を 位0 で KeyValue寸法する とは
+  位1 とは （対象 の key） を 位0 で CDR文字列寸法する
+  （対象 の value） を 位1 で CDR文字列寸法する
+KeyValue を 番地 へ 数 で KeyValue書込する は 数 の 動作
+対象 を 先 へ 位0 で KeyValue書込する とは 手順
+  位1 とは （対象 の key） を 先 へ 位0 で CDR文字列書込した 結果
+  （対象 の value） を 先 へ 位1 で CDR文字列書込する
+番地 から 数 で KeyValue読取する は （KeyValue と 数） の 読値 の 動作
+先 から 位0 で KeyValue読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  （値 は （key は （欄1 の 値） で value は （欄2 の 値） の KeyValue） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# diagnostic_msgs/srv/AddDiagnostics_Request
+AddDiagnostics_Request とは load_namespace の 組
+AddDiagnostics_Request既定 とは load_namespace は 「」 の AddDiagnostics_Request
+AddDiagnostics_Request型 とは 型名 は 「diagnostic_msgs/srv/AddDiagnostics_Request」 で 寸法 は AddDiagnostics_Request寸法すること で 書込 は AddDiagnostics_Request書込すること で 読取 は AddDiagnostics_Request読取すること の メッセージ型
+AddDiagnostics_Request を 数 で AddDiagnostics_Request寸法する は 数
+対象 を 位0 で AddDiagnostics_Request寸法する とは
+  （対象 の load_namespace） を 位0 で CDR文字列寸法する
+AddDiagnostics_Request を 番地 へ 数 で AddDiagnostics_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で AddDiagnostics_Request書込する とは 手順
+  （対象 の load_namespace） を 先 へ 位0 で CDR文字列書込する
+番地 から 数 で AddDiagnostics_Request読取する は （AddDiagnostics_Request と 数） の 読値 の 動作
+先 から 位0 で AddDiagnostics_Request読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  （値 は （load_namespace は （欄1 の 値） の AddDiagnostics_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# diagnostic_msgs/srv/AddDiagnostics_Response
+AddDiagnostics_Response とは success と message の 組
+AddDiagnostics_Response既定 とは success は 偽 で message は 「」 の AddDiagnostics_Response
+AddDiagnostics_Response型 とは 型名 は 「diagnostic_msgs/srv/AddDiagnostics_Response」 で 寸法 は AddDiagnostics_Response寸法すること で 書込 は AddDiagnostics_Response書込すること で 読取 は AddDiagnostics_Response読取すること の メッセージ型
+AddDiagnostics_Response を 数 で AddDiagnostics_Response寸法する は 数
+対象 を 位0 で AddDiagnostics_Response寸法する とは
+  位1 とは （対象 の success） を 位0 で CDR真偽寸法する
+  （対象 の message） を 位1 で CDR文字列寸法する
+AddDiagnostics_Response を 番地 へ 数 で AddDiagnostics_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で AddDiagnostics_Response書込する とは 手順
+  位1 とは （対象 の success） を 先 へ 位0 で CDR真偽書込した 結果
+  （対象 の message） を 先 へ 位1 で CDR文字列書込する
+番地 から 数 で AddDiagnostics_Response読取する は （AddDiagnostics_Response と 数） の 読値 の 動作
+先 から 位0 で AddDiagnostics_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR真偽読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  （値 は （success は （欄1 の 値） で message は （欄2 の 値） の AddDiagnostics_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# diagnostic_msgs/srv/SelfTest_Request
+SelfTest_Request とは structure_needs_at_least_one_member の 組
+SelfTest_Request既定 とは structure_needs_at_least_one_member は 0 の SelfTest_Request
+SelfTest_Request型 とは 型名 は 「diagnostic_msgs/srv/SelfTest_Request」 で 寸法 は SelfTest_Request寸法すること で 書込 は SelfTest_Request書込すること で 読取 は SelfTest_Request読取すること の メッセージ型
+SelfTest_Request を 数 で SelfTest_Request寸法する は 数
+対象 を 位0 で SelfTest_Request寸法する とは
+  （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
+SelfTest_Request を 番地 へ 数 で SelfTest_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で SelfTest_Request書込する とは 手順
+  （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
+番地 から 数 で SelfTest_Request読取する は （SelfTest_Request と 数） の 読値 の 動作
+先 から 位0 で SelfTest_Request読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  （値 は （structure_needs_at_least_one_member は （欄1 の 値） の SelfTest_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# diagnostic_msgs/srv/SelfTest_Response
+SelfTest_Response とは id と passed と status の 組
+SelfTest_Response既定 とは id は 「」 で passed は 0 で status は 空 の SelfTest_Response
+SelfTest_Response型 とは 型名 は 「diagnostic_msgs/srv/SelfTest_Response」 で 寸法 は SelfTest_Response寸法すること で 書込 は SelfTest_Response書込すること で 読取 は SelfTest_Response読取すること の メッセージ型
+SelfTest_Response を 数 で SelfTest_Response寸法する は 数
+対象 を 位0 で SelfTest_Response寸法する とは
+  位1 とは （対象 の id） を 位0 で CDR文字列寸法する
+  位2 とは （対象 の passed） を 位1 で CDR符号なし8寸法する
+  （対象 の status） を 位2 で （DiagnosticStatus寸法すること） に CDR可変列寸法する
+SelfTest_Response を 番地 へ 数 で SelfTest_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で SelfTest_Response書込する とは 手順
+  位1 とは （対象 の id） を 先 へ 位0 で CDR文字列書込した 結果
+  位2 とは （対象 の passed） を 先 へ 位1 で CDR符号なし8書込した 結果
+  （対象 の status） を 先 へ 位2 で （DiagnosticStatus書込すること） に CDR可変列書込する
+番地 から 数 で SelfTest_Response読取する は （SelfTest_Response と 数） の 読値 の 動作
+先 から 位0 で SelfTest_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （DiagnosticStatus読取すること） に CDR可変列読取した 結果
+  （値 は （id は （欄1 の 値） で passed は （欄2 の 値） で status は （欄3 の 値） の SelfTest_Response） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# diagnostic_msgs/srv/AddDiagnostics
+AddDiagnostics型 とは 型名 は 「diagnostic_msgs/srv/AddDiagnostics」 で 要求 は AddDiagnostics_Request型 で 応答 は AddDiagnostics_Response型 の サービス型
+
+# diagnostic_msgs/srv/SelfTest
+SelfTest型 とは 型名 は 「diagnostic_msgs/srv/SelfTest」 で 要求 は SelfTest_Request型 で 応答 は SelfTest_Response型 の サービス型
