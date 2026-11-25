@@ -113,6 +113,28 @@ check "する の transient_local → 後から来た ros2 topic echo" "$log" "d
 pkill -INT -f "interop_suru latch_pub" || true
 sleep 1
 
+# 段階3: サービス(std_srvs/SetBool の set_flag)
+out=$(pair srv_suru_suru "$suru_node client" "stdbuf -o0 $suru_node server")
+check "する のクライアント → する のサーバー(要求)" "$out" "要求を受けました: data=真"
+check "する のクライアント → する のサーバー(待たない書き方)" "$out" "要求を受けました: data=偽"
+out=$(pair srv_suru_suru_res "stdbuf -o0 $suru_node server" "stdbuf -o0 $suru_node client")
+check "する のサーバー → する のクライアント(待つ書き方の応答)" "$out" "応答: success=偽 message=する のサーバーです"
+check "する のサーバー → する のクライアント(待たない書き方の応答)" "$out" "応答: success=真 message=する のサーバーです"
+
+out=$(pair srv_cpp_client "stdbuf -o0 $suru_node server" "ros2 run rclsuru_interop_cpp cpp_set_bool_client")
+check "C++ のクライアント → する のサーバー" "$out" "C++ が応答を受けました: success=0 message=する のサーバーです"
+
+out=$(pair srv_cpp_server "ros2 run rclsuru_interop_cpp cpp_set_bool_server" "stdbuf -o0 $suru_node client")
+check "する のクライアント → C++ のサーバー" "$out" "応答: success=真 message=C++ のサーバーです"
+
+log="$logs/srv_cli.log"
+(timeout -s INT 20 "$suru_node" server > /dev/null 2>&1 &)
+sleep 1
+timeout 15 ros2 service call /set_flag std_srvs/srv/SetBool "{data: true}" > "$log" 2>&1
+check "ros2 service call → する のサーバー" "$log" "success=False, message='する のサーバーです'"
+pkill -INT -f "interop_suru server" || true
+sleep 1
+
 # インタプリタ
 if [ -n "${SURU:-}" ]; then
   out=$(pair interp_listener "ros2 run rclsuru_interop_cpp cpp_talker" "cd $root/examples/listener && stdbuf -o0 $SURU 本体.suru")

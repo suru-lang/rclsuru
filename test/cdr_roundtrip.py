@@ -9,6 +9,7 @@
 ROS 2 の環境(source /opt/ros/$ROS_DISTRO/setup.bash 済み)と kumu が要る。
 """
 import importlib
+import importlib.util
 import os
 import random
 import re
@@ -101,6 +102,10 @@ def main():
     data = os.path.join(work, "data")
     os.makedirs(data)
     cases = []
+    missing = sorted({p for p, _, _ in types if importlib.util.find_spec(p) is None})
+    if missing:
+        print("入っていないので試さないパッケージ: " + "・".join(missing))
+        types = [t for t in types if t[0] not in missing]
     for pkg, kind, name in types:
         cls = python_class(pkg, kind, name)
         for k in range(CASES_PER_TYPE):

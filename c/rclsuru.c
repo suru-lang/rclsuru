@@ -10,6 +10,9 @@
 #include <rcl/rcl.h>
 #include <rcl/event_callback.h>
 #include <rcl/logging.h>
+#include <rcl/client.h>
+#include <rcl/graph.h>
+#include <rcl/service.h>
 #include <rcutils/error_handling.h>
 #include <rmw/serialized_message.h>
 #include <rmw/qos_profiles.h>
@@ -207,6 +210,60 @@ uint8_t *rclsuru_serialized_buffer(const rmw_serialized_message_t *p) { return p
 
 int64_t rclsuru_serialized_length(const rmw_serialized_message_t *p) {
   return (int64_t)p->buffer_length;
+}
+
+// --- サービス ---
+
+rcl_service_t *rclsuru_service_new(void) {
+  rcl_service_t *p = malloc(sizeof(rcl_service_t));
+  if (p) *p = rcl_get_zero_initialized_service();
+  return p;
+}
+
+void rclsuru_service_delete(rcl_service_t *p) { free(p); }
+
+// qos が NULL なら既定(services_default)。
+rcl_service_options_t *rclsuru_service_options_new(const rmw_qos_profile_t *qos) {
+  rcl_service_options_t *p = malloc(sizeof(rcl_service_options_t));
+  if (!p) return NULL;
+  *p = rcl_service_get_default_options();
+  if (qos) p->qos = *qos;
+  return p;
+}
+
+void rclsuru_service_options_delete(rcl_service_options_t *p) { free(p); }
+
+rcl_client_t *rclsuru_client_new(void) {
+  rcl_client_t *p = malloc(sizeof(rcl_client_t));
+  if (p) *p = rcl_get_zero_initialized_client();
+  return p;
+}
+
+void rclsuru_client_delete(rcl_client_t *p) { free(p); }
+
+rcl_client_options_t *rclsuru_client_options_new(const rmw_qos_profile_t *qos) {
+  rcl_client_options_t *p = malloc(sizeof(rcl_client_options_t));
+  if (!p) return NULL;
+  *p = rcl_client_get_default_options();
+  if (qos) p->qos = *qos;
+  return p;
+}
+
+void rclsuru_client_options_delete(rcl_client_options_t *p) { free(p); }
+
+// 要求の見出し(rmw_request_id_t)。続き番号は sequence_number。
+rmw_request_id_t *rclsuru_request_id_new(void) { return calloc(1, sizeof(rmw_request_id_t)); }
+
+void rclsuru_request_id_delete(rmw_request_id_t *p) { free(p); }
+
+int64_t rclsuru_request_id_sequence(const rmw_request_id_t *p) { return p->sequence_number; }
+
+// サーバーが出ていれば 1、いなければ 0、失敗なら負の数(rcl の戻り値の符号を変えたもの)。
+int64_t rclsuru_server_is_available(const rcl_node_t *node, const rcl_client_t *client) {
+  bool ok = false;
+  rcl_ret_t r = rcl_service_server_is_available(node, client, &ok);
+  if (r != RCL_RET_OK) return -(int64_t)r;
+  return ok ? 1 : 0;
 }
 
 // --- 受け取りの付け足しの情報 ---
