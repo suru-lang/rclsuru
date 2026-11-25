@@ -1,6 +1,6 @@
 # rclsuru
 
-する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階3(サービス)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
+する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階4(パラメータ)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
 
 ```
 「rclsuru」 を 読み込んで 使う
@@ -126,6 +126,27 @@ suru <rclsuru のフォルダ>/生成器.suru 型 my_msgs      # 型/my_msgs.sur
 
 rcl はサービスの要求と応答を直列化したまま渡せないので、rclsuru は rosidl_generator_c の `…__create` で C の構造体を作り、`rmw_serialize`・`rmw_deserialize` で CDR と行き来します。そのため、使う型のパッケージの `lib<パッケージ>__rosidl_generator_c.so` も要ります(ふつうは入っています)。
 
+### パラメータ
+
+`--ros-args -p 名前:=値` と `--params-file 〜.yaml` の値は、ノードを作ったときに読みます。パラメータは宣言してから使います。宣言の結果は、起動時に値が渡されていればその値、なければ既定の値です。
+
+```
+rate とは n から 「rate」 を 1.0 で 小数パラメータ宣言した 結果
+名 とは n から 「name」 を 「suru」 で 文字列パラメータ宣言した 結果
+count とは n から 「count」 を 整数パラメータ取得した 結果      # いまの値(ros2 param set で変わる)
+```
+
+| 関数 | 中身 |
+|---|---|
+| `n から 名前 を 既定 で 〜パラメータ宣言する` | 〜は 真偽・整数・小数・文字列・バイト列・真偽列・整数列・小数列・文字列列。2回宣言すると失敗する |
+| `n から 名前 を 〜パラメータ取得する` | いまの値 |
+| `n から 名前 を 値 で 説明 に パラメータ値宣言する` | `rcl_interfaces/msg/ParameterValue` のまま宣言する(説明 は describe に出る) |
+| `n へ 関数 で パラメータ変更検査登録する` | 値が変わる前に `変更のリスト を 関数する` を行う。結果が 「」 なら受け入れ、ほかの文字列ならその理由で断る |
+
+変更は `変更名` と `変更値`(ParameterValue)の組です。小数のパラメータに整数(`rate:=5`)を渡したときは小数にします。それ以外の型の違う値は断ります。
+
+ノードは rclcpp と同じ6つのサービス(`~/list_parameters`・`~/get_parameters`・`~/get_parameter_types`・`~/describe_parameters`・`~/set_parameters`・`~/set_parameters_atomically`)に答え、宣言と変更を `/parameter_events` に知らせます。そのため `ros2 param list・get・set・describe・dump` がそのまま使えます。`set_parameters` は1つずつ、`set_parameters_atomically` は全部まとめて受け入れるか断ります。
+
 ### QoS
 
 `QoS付き発行者作成する`・`QoS付き購読する` に QoS を渡します。決まったプロファイルの `既定QoS`(深さ 10、reliable、volatile)・`センサーQoS`(sensor_data。best effort)・`サービスQoS`・`パラメータQoS`・`パラメータ事象QoS`・`システム既定QoS` から選び、変えたいところだけ変えます。
@@ -174,11 +195,12 @@ SURU=suru test/turtle.sh        # examples/亀 と turtlesim(turtlesim と xvfb-
 SURU=suru test/add_two_ints.sh  # examples/足し算サーバー・足し算クライアント(example_interfaces と demo_nodes_cpp が要る)
 ```
 
-`python3 test/cdr_roundtrip.py` は、同梱した型を全部(195 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
+`python3 test/cdr_roundtrip.py` は、同梱した型を全部(195 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
 
 ## まだできないこと
 
-- パラメータ・アクション・ログの関数はまだありません(.action の型も、まだ作りません)
+- アクション・ログの関数はまだありません(.action の型も、まだ作りません)
+- パラメータの範囲(`integer_range`・`floating_point_range`)は確かめません。`use_sim_time` も宣言しません
 - `wstring` を使う型は作りません
 - `スピンする` は1つのスレッドで回します。1つの発行者に、いくつものスレッドから同時に `発行する` しないでください(直列化の領域を共有しています)
 
