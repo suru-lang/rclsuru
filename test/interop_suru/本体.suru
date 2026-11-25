@@ -7,12 +7,18 @@
 #   latch_pub      … latched_suru へ transient_local で1回だけ送る
 #   server         … set_flag(std_srvs/SetBool)のサーバー。data を反転して success に入れる
 #   client         … set_flag を 真 で呼ぶ(待つ書き方)。続けて 偽 で呼ぶ(待たない書き方)
+#   action_server  … lookup(tf2_msgs/action/LookupTransform)のアクションサーバー。feedback を3回送って
+#                    child_frame_id が 「target_frame + _suru」 の結果を返す。source_frame が slow なら10回(取り消せる)、
+#                    target_frame が reject なら受け付けない、abort なら中止する
+#   action_client  … lookup に目標を送る(待つ書き方)。続けて受け付けられない目標、取り消す目標を送る
 #   param          … パラメータ rate・name・count・tags を宣言して表示する。count に負の数は入れさせない
 「rclsuru」 を 読み込んで 使う
 「rclsuru/型/geometry_msgs」 を 読み込んで 使う
 「rclsuru/型/sensor_msgs」 を 読み込んで 使う
 「rclsuru/型/std_msgs」 を 読み込む
 「rclsuru/型/std_srvs」 を 読み込む
+「rclsuru/型/tf2_msgs」 を 読み込んで 使う
+「時間」 を 読み込む
 「環境」 を 読み込む
 
 始めする とは 手順
@@ -49,6 +55,23 @@
   （「rate=」 + （rate を 文字列化する） + 「 name=」 + 名 + 「 count=」 + （count を 文字列化する） + 「 tags=」 + （tags を 「,」 で 結合する）） を 表示する
   n へ 変更確認すること で パラメータ変更検査登録する
   （n を 現在値表示する） を 1.0 で n に 周期登録する
+「action_server」 を n で 準備する とは 手順
+  判断 とは （g を 受け取って g の target_frame ≠ 「reject」 を 返すこと）
+  LookupTransform型 を 「lookup」 で n に 探索実行すること へ 判断 より 判断付きアクションサーバー作成する
+  0 を 結果にする
+「action_client」 を n で 準備する とは 手順
+  ac とは LookupTransform型 を 「lookup」 で n に アクションクライアント作成した 結果
+  出た とは ac を 10 で アクションサーバー待機した 結果
+  （「アクションサーバー: 」 + （出た を 文字列化する）） を 表示する
+  g とは target_frame は 「map」 で source_frame は 「base」 の LookupTransform_Goal既定
+  r とは g を ac へ 途中表示すること で 10 に 目標呼出した 結果
+  r を アクション結果表示する
+  r2 とは （target_frame は 「reject」 の g） を ac へ 途中表示すること で 10 に 目標呼出した 結果
+  r2 を アクション結果表示する
+  u とは （source_frame は 「slow」 の g） を ac へ 途中表示すること で 結果表示すること に 目標送信した 結果
+  1.0 を 時間内の待機する
+  c とは u を ac で 目標取消した 結果
+  （「取り消しの答え: 」 + （c を 文字列化する）） を 表示する
 s を n で 準備する とは （「知らない動き: 」 + s） を 失敗する
 
 std_srvs内のSetBool_Request を 旗設定する は std_srvs内のSetBool_Response の 動作
@@ -65,6 +88,45 @@ std_srvs内のSetBool_Request を 旗設定する は std_srvs内のSetBool_Resp
 n を 現在値表示する とは 手順
   count とは n から 「count」 を 整数パラメータ取得した 結果
   （「いまの count=」 + （count を 文字列化する）） を 表示する
+
+LookupTransform_Goal を 目標扱い で 探索実行する は LookupTransform_Result の 動作
+g を 扱い で 探索実行する とは 手順
+  （「目標を受けました: 」 + g の target_frame + 「 ← 」 + g の source_frame） を 表示する
+  回数 とは もし g の source_frame が 「slow」 ならば 10 そうでなければ 3
+  扱い を 回数 で 1 に 途中実行する
+  もし g の target_frame が 「abort」 ならば 扱い を 中止にする そうでなければ 0 を 結果にする
+  t とは child_frame_id は （g の target_frame + 「_suru」） で header は （frame_id は （g の source_frame） の std_msgs内のHeader既定） の geometry_msgs内のTransformStamped既定
+  （transform は t の LookupTransform_Result既定） を 結果にする
+
+目標扱い を 数 で 数 に 途中実行する は 数 の 動作
+扱い を 回数 で i に 途中実行する とは 手順
+  取消 とは 扱い を 取消確認した 結果
+  もし 取消 ならば 扱い を 取り消し終了する
+  そうでなければ もし i > 回数 ならば 0 を 結果にする
+  そうでなければ 扱い を 回数 で i に 一歩進行する
+
+目標扱い を 取り消し終了する は 数 の 動作
+扱い を 取り消し終了する とは 手順
+  「取り消しを受けました」 を 表示する
+  扱い を 取消済みにする
+
+目標扱い を 数 で 数 に 一歩進行する は 数 の 動作
+扱い を 回数 で i に 一歩進行する とは 手順
+  0.3 を 時間内の待機する
+  LookupTransform_Feedback既定 を 扱い へ 途中送信する
+  扱い を 回数 で i + 1 に 途中実行する
+
+LookupTransform_Feedback を 途中表示する は 数 の 動作
+f を 途中表示する とは 「feedback を受けました」 を 表示する  # 点検しない: 未使用の引数
+
+アクション結果 を 結果表示する は 数 の 動作
+r を 結果表示する とは （「結果: 状態=」 + （r の 終状態 を 文字列化する） + 「 child_frame_id=」 + （（r の 結果値） の transform） の child_frame_id） を 表示する
+
+アクション結果 の 有無 を アクション結果表示する は 数 の 動作
+r を アクション結果表示する とは
+  もし r が
+    x の 有 ならば x を 結果表示する
+    無 ならば 「受け付けられませんでした」 を 表示する
 
 r を 応答表示する とは
   もし r が

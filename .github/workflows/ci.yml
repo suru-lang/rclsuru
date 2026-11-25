@@ -60,3 +60,8 @@ jobs:
         run: |
           source /opt/ros/jazzy/setup.bash
           SURU=suru test/add_two_ints.sh
+
+      - name: アクションの試験(examples/フィボナッチサーバー・フィボナッチクライアント)
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          SURU=suru test/fibonacci.sh

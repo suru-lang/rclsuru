@@ -41,7 +41,7 @@ def bundled_types():
         if not f.endswith(".suru"):
             continue
         text = open(os.path.join(ROOT, "型", f), encoding="utf-8").read()
-        for m in re.finditer(r"^(\w+)型 とは 型名 は 「(\w+)/(msg|srv)/(\w+)」 で 寸法", text, re.M):
+        for m in re.finditer(r"^(\w+)型 とは 型名 は 「(\w+)/(msg|srv|action)/(\w+)」 で 寸法", text, re.M):
             types.append((m.group(2), m.group(3), m.group(4)))
         for m in re.finditer(r"^# (\w+)/(msg|srv)/(\w+) は .*作りません", text, re.M):
             skipped.add(m.group(3))
@@ -53,6 +53,15 @@ def python_class(pkg, kind, name):
     if kind == "srv":
         srv, part = name.rsplit("_", 1)
         return getattr(getattr(mod, srv), part)
+    if kind == "action":
+        act, rest = name.split("_", 1)
+        a = getattr(mod, act)
+        if rest in ("Goal", "Result", "Feedback"):
+            return getattr(a, rest)
+        if rest == "FeedbackMessage":
+            return a.Impl.FeedbackMessage
+        svc, part = rest.split("_")
+        return getattr(getattr(a.Impl, svc + "Service"), part)
     return getattr(mod, name)
 
 
@@ -78,8 +87,7 @@ def value_of(t):
                 s = s[:-1]
         return s
     if isinstance(t, d.NamespacedType):
-        mod = importlib.import_module(".".join(t.namespaces))
-        return fill(getattr(mod, t.name)())
+        return fill(python_class(t.namespaces[0], t.namespaces[1], t.name)())
     if isinstance(t, d.Array):
         return [value_of(t.value_type) for _ in range(t.size)]
     if isinstance(t, (d.UnboundedSequence, d.BoundedSequence)):

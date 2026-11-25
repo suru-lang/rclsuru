@@ -374,6 +374,16 @@ rmw_request_id_t *rclsuru_request_id_new(void) { return calloc(1, sizeof(rmw_req
 
 void rclsuru_request_id_delete(rmw_request_id_t *p) { free(p); }
 
+// 後で答えるために見出しを写す
+rmw_request_id_t *rclsuru_request_id_copy(const rmw_request_id_t *p)
+{
+  rmw_request_id_t *q = malloc(sizeof(rmw_request_id_t));
+  if (q) {
+    *q = *p;
+  }
+  return q;
+}
+
 int64_t rclsuru_request_id_sequence(const rmw_request_id_t *p) { return p->sequence_number; }
 
 // サーバーが出ていれば 1、いなければ 0、失敗なら負の数(rcl の戻り値の符号を変えたもの)。
