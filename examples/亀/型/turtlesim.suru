@@ -1,5 +1,7 @@
 # turtlesim の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
 「rclsuru/CDR」 を 読み込んで 使う
+「rclsuru/型/unique_identifier_msgs」 を 読み込む
+「rclsuru/型/builtin_interfaces」 を 読み込む
 
 # turtlesim/msg/Color
 Color とは r と g と b の 組
@@ -229,6 +231,138 @@ TeleportRelative_Response を 番地 へ 数 で TeleportRelative_Response書込
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の TeleportRelative_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
 
+# turtlesim/action/RotateAbsolute_Goal
+RotateAbsolute_Goal とは theta の 組
+RotateAbsolute_Goal既定 とは theta は 0.0 の RotateAbsolute_Goal
+RotateAbsolute_Goal型 とは 型名 は 「turtlesim/action/RotateAbsolute_Goal」 で 寸法 は RotateAbsolute_Goal寸法すること で 書込 は RotateAbsolute_Goal書込すること で 読取 は RotateAbsolute_Goal読取すること の メッセージ型
+RotateAbsolute_Goal を 数 で RotateAbsolute_Goal寸法する は 数
+対象 を 位0 で RotateAbsolute_Goal寸法する とは
+  （対象 の theta） を 位0 で CDR単精度寸法する
+RotateAbsolute_Goal を 番地 へ 数 で RotateAbsolute_Goal書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_Goal書込する とは 手順
+  （対象 の theta） を 先 へ 位0 で CDR単精度書込する
+番地 から 数 で RotateAbsolute_Goal読取する は （RotateAbsolute_Goal と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_Goal読取する とは 手順
+  欄1 とは 先 から 位0 で CDR単精度読取した 結果
+  （値 は （theta は （欄1 の 値） の RotateAbsolute_Goal） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# turtlesim/action/RotateAbsolute_Result
+RotateAbsolute_Result とは delta の 組
+RotateAbsolute_Result既定 とは delta は 0.0 の RotateAbsolute_Result
+RotateAbsolute_Result型 とは 型名 は 「turtlesim/action/RotateAbsolute_Result」 で 寸法 は RotateAbsolute_Result寸法すること で 書込 は RotateAbsolute_Result書込すること で 読取 は RotateAbsolute_Result読取すること の メッセージ型
+RotateAbsolute_Result を 数 で RotateAbsolute_Result寸法する は 数
+対象 を 位0 で RotateAbsolute_Result寸法する とは
+  （対象 の delta） を 位0 で CDR単精度寸法する
+RotateAbsolute_Result を 番地 へ 数 で RotateAbsolute_Result書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_Result書込する とは 手順
+  （対象 の delta） を 先 へ 位0 で CDR単精度書込する
+番地 から 数 で RotateAbsolute_Result読取する は （RotateAbsolute_Result と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_Result読取する とは 手順
+  欄1 とは 先 から 位0 で CDR単精度読取した 結果
+  （値 は （delta は （欄1 の 値） の RotateAbsolute_Result） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# turtlesim/action/RotateAbsolute_Feedback
+RotateAbsolute_Feedback とは remaining の 組
+RotateAbsolute_Feedback既定 とは remaining は 0.0 の RotateAbsolute_Feedback
+RotateAbsolute_Feedback型 とは 型名 は 「turtlesim/action/RotateAbsolute_Feedback」 で 寸法 は RotateAbsolute_Feedback寸法すること で 書込 は RotateAbsolute_Feedback書込すること で 読取 は RotateAbsolute_Feedback読取すること の メッセージ型
+RotateAbsolute_Feedback を 数 で RotateAbsolute_Feedback寸法する は 数
+対象 を 位0 で RotateAbsolute_Feedback寸法する とは
+  （対象 の remaining） を 位0 で CDR単精度寸法する
+RotateAbsolute_Feedback を 番地 へ 数 で RotateAbsolute_Feedback書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_Feedback書込する とは 手順
+  （対象 の remaining） を 先 へ 位0 で CDR単精度書込する
+番地 から 数 で RotateAbsolute_Feedback読取する は （RotateAbsolute_Feedback と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_Feedback読取する とは 手順
+  欄1 とは 先 から 位0 で CDR単精度読取した 結果
+  （値 は （remaining は （欄1 の 値） の RotateAbsolute_Feedback） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# turtlesim/action/RotateAbsolute_SendGoal_Request
+RotateAbsolute_SendGoal_Request とは goal_id と goal の 組
+RotateAbsolute_SendGoal_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 で goal は RotateAbsolute_Goal既定 の RotateAbsolute_SendGoal_Request
+RotateAbsolute_SendGoal_Request型 とは 型名 は 「turtlesim/action/RotateAbsolute_SendGoal_Request」 で 寸法 は RotateAbsolute_SendGoal_Request寸法すること で 書込 は RotateAbsolute_SendGoal_Request書込すること で 読取 は RotateAbsolute_SendGoal_Request読取すること の メッセージ型
+RotateAbsolute_SendGoal_Request を 数 で RotateAbsolute_SendGoal_Request寸法する は 数
+対象 を 位0 で RotateAbsolute_SendGoal_Request寸法する とは
+  位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+  （対象 の goal） を 位1 で RotateAbsolute_Goal寸法する
+RotateAbsolute_SendGoal_Request を 番地 へ 数 で RotateAbsolute_SendGoal_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_SendGoal_Request書込する とは 手順
+  位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
+  （対象 の goal） を 先 へ 位1 で RotateAbsolute_Goal書込する
+番地 から 数 で RotateAbsolute_SendGoal_Request読取する は （RotateAbsolute_SendGoal_Request と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_SendGoal_Request読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  欄2 とは 先 から （欄1 の 次） で RotateAbsolute_Goal読取した 結果
+  （値 は （goal_id は （欄1 の 値） で goal は （欄2 の 値） の RotateAbsolute_SendGoal_Request） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# turtlesim/action/RotateAbsolute_SendGoal_Response
+RotateAbsolute_SendGoal_Response とは accepted と stamp の 組
+RotateAbsolute_SendGoal_Response既定 とは accepted は 偽 で stamp は builtin_interfaces内のTime既定 の RotateAbsolute_SendGoal_Response
+RotateAbsolute_SendGoal_Response型 とは 型名 は 「turtlesim/action/RotateAbsolute_SendGoal_Response」 で 寸法 は RotateAbsolute_SendGoal_Response寸法すること で 書込 は RotateAbsolute_SendGoal_Response書込すること で 読取 は RotateAbsolute_SendGoal_Response読取すること の メッセージ型
+RotateAbsolute_SendGoal_Response を 数 で RotateAbsolute_SendGoal_Response寸法する は 数
+対象 を 位0 で RotateAbsolute_SendGoal_Response寸法する とは
+  位1 とは （対象 の accepted） を 位0 で CDR真偽寸法する
+  （対象 の stamp） を 位1 で builtin_interfaces内のTime寸法する
+RotateAbsolute_SendGoal_Response を 番地 へ 数 で RotateAbsolute_SendGoal_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_SendGoal_Response書込する とは 手順
+  位1 とは （対象 の accepted） を 先 へ 位0 で CDR真偽書込した 結果
+  （対象 の stamp） を 先 へ 位1 で builtin_interfaces内のTime書込する
+番地 から 数 で RotateAbsolute_SendGoal_Response読取する は （RotateAbsolute_SendGoal_Response と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_SendGoal_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR真偽読取した 結果
+  欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果
+  （値 は （accepted は （欄1 の 値） で stamp は （欄2 の 値） の RotateAbsolute_SendGoal_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# turtlesim/action/RotateAbsolute_GetResult_Request
+RotateAbsolute_GetResult_Request とは goal_id の 組
+RotateAbsolute_GetResult_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 の RotateAbsolute_GetResult_Request
+RotateAbsolute_GetResult_Request型 とは 型名 は 「turtlesim/action/RotateAbsolute_GetResult_Request」 で 寸法 は RotateAbsolute_GetResult_Request寸法すること で 書込 は RotateAbsolute_GetResult_Request書込すること で 読取 は RotateAbsolute_GetResult_Request読取すること の メッセージ型
+RotateAbsolute_GetResult_Request を 数 で RotateAbsolute_GetResult_Request寸法する は 数
+対象 を 位0 で RotateAbsolute_GetResult_Request寸法する とは
+  （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+RotateAbsolute_GetResult_Request を 番地 へ 数 で RotateAbsolute_GetResult_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_GetResult_Request書込する とは 手順
+  （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込する
+番地 から 数 で RotateAbsolute_GetResult_Request読取する は （RotateAbsolute_GetResult_Request と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_GetResult_Request読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  （値 は （goal_id は （欄1 の 値） の RotateAbsolute_GetResult_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# turtlesim/action/RotateAbsolute_GetResult_Response
+RotateAbsolute_GetResult_Response とは status と result の 組
+RotateAbsolute_GetResult_Response既定 とは status は 0 で result は RotateAbsolute_Result既定 の RotateAbsolute_GetResult_Response
+RotateAbsolute_GetResult_Response型 とは 型名 は 「turtlesim/action/RotateAbsolute_GetResult_Response」 で 寸法 は RotateAbsolute_GetResult_Response寸法すること で 書込 は RotateAbsolute_GetResult_Response書込すること で 読取 は RotateAbsolute_GetResult_Response読取すること の メッセージ型
+RotateAbsolute_GetResult_Response を 数 で RotateAbsolute_GetResult_Response寸法する は 数
+対象 を 位0 で RotateAbsolute_GetResult_Response寸法する とは
+  位1 とは （対象 の status） を 位0 で CDR符号付き8寸法する
+  （対象 の result） を 位1 で RotateAbsolute_Result寸法する
+RotateAbsolute_GetResult_Response を 番地 へ 数 で RotateAbsolute_GetResult_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_GetResult_Response書込する とは 手順
+  位1 とは （対象 の status） を 先 へ 位0 で CDR符号付き8書込した 結果
+  （対象 の result） を 先 へ 位1 で RotateAbsolute_Result書込する
+番地 から 数 で RotateAbsolute_GetResult_Response読取する は （RotateAbsolute_GetResult_Response と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_GetResult_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で RotateAbsolute_Result読取した 結果
+  （値 は （status は （欄1 の 値） で result は （欄2 の 値） の RotateAbsolute_GetResult_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# turtlesim/action/RotateAbsolute_FeedbackMessage
+RotateAbsolute_FeedbackMessage とは goal_id と feedback の 組
+RotateAbsolute_FeedbackMessage既定 とは goal_id は unique_identifier_msgs内のUUID既定 で feedback は RotateAbsolute_Feedback既定 の RotateAbsolute_FeedbackMessage
+RotateAbsolute_FeedbackMessage型 とは 型名 は 「turtlesim/action/RotateAbsolute_FeedbackMessage」 で 寸法 は RotateAbsolute_FeedbackMessage寸法すること で 書込 は RotateAbsolute_FeedbackMessage書込すること で 読取 は RotateAbsolute_FeedbackMessage読取すること の メッセージ型
+RotateAbsolute_FeedbackMessage を 数 で RotateAbsolute_FeedbackMessage寸法する は 数
+対象 を 位0 で RotateAbsolute_FeedbackMessage寸法する とは
+  位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+  （対象 の feedback） を 位1 で RotateAbsolute_Feedback寸法する
+RotateAbsolute_FeedbackMessage を 番地 へ 数 で RotateAbsolute_FeedbackMessage書込する は 数 の 動作
+対象 を 先 へ 位0 で RotateAbsolute_FeedbackMessage書込する とは 手順
+  位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
+  （対象 の feedback） を 先 へ 位1 で RotateAbsolute_Feedback書込する
+番地 から 数 で RotateAbsolute_FeedbackMessage読取する は （RotateAbsolute_FeedbackMessage と 数） の 読値 の 動作
+先 から 位0 で RotateAbsolute_FeedbackMessage読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  欄2 とは 先 から （欄1 の 次） で RotateAbsolute_Feedback読取した 結果
+  （値 は （goal_id は （欄1 の 値） で feedback は （欄2 の 値） の RotateAbsolute_FeedbackMessage） で 次 は （欄2 の 次） の 読値） を 結果にする
+
 # turtlesim/srv/Kill
 Kill型 とは 型名 は 「turtlesim/srv/Kill」 で 要求 は Kill_Request型 で 応答 は Kill_Response型 の サービス型
 
@@ -243,3 +377,38 @@ TeleportAbsolute型 とは 型名 は 「turtlesim/srv/TeleportAbsolute」 で �
 
 # turtlesim/srv/TeleportRelative
 TeleportRelative型 とは 型名 は 「turtlesim/srv/TeleportRelative」 で 要求 は TeleportRelative_Request型 で 応答 は TeleportRelative_Response型 の サービス型
+
+# turtlesim/action/RotateAbsolute
+
+# turtlesim/action/RotateAbsolute_SendGoal
+RotateAbsolute_SendGoal型 とは 型名 は 「turtlesim/action/RotateAbsolute_SendGoal」 で 要求 は RotateAbsolute_SendGoal_Request型 で 応答 は RotateAbsolute_SendGoal_Response型 の サービス型
+
+# turtlesim/action/RotateAbsolute_GetResult
+RotateAbsolute_GetResult型 とは 型名 は 「turtlesim/action/RotateAbsolute_GetResult」 で 要求 は RotateAbsolute_GetResult_Request型 で 応答 は RotateAbsolute_GetResult_Response型 の サービス型
+RotateAbsolute型 とは 型名 は 「turtlesim/action/RotateAbsolute」 で 送信 は RotateAbsolute_SendGoal型 で 結果取得 は RotateAbsolute_GetResult型 で 途中 は RotateAbsolute_FeedbackMessage型 で 目標包装 は RotateAbsolute目標包装すること で 目標開封 は RotateAbsolute目標開封すること で 目標ID は RotateAbsolute目標IDすること で 受付包装 は RotateAbsolute受付包装すること で 受付開封 は RotateAbsolute受付開封すること で 結果要求包装 は RotateAbsolute結果要求包装すること で 結果要求ID は RotateAbsolute結果要求IDすること で 結果包装 は RotateAbsolute結果包装すること で 結果開封 は RotateAbsolute結果開封すること で 結果状態 は RotateAbsolute結果状態すること で 途中包装 は RotateAbsolute途中包装すること で 途中開封 は RotateAbsolute途中開封すること で 途中ID は RotateAbsolute途中IDすること で 結果既定 は RotateAbsolute_Result既定 の アクション型
+unique_identifier_msgs内のUUID を RotateAbsolute_Goal で RotateAbsolute目標包装する は RotateAbsolute_SendGoal_Request
+u を g で RotateAbsolute目標包装する とは goal_id は u で goal は g の RotateAbsolute_SendGoal_Request既定
+RotateAbsolute_SendGoal_Request を RotateAbsolute目標開封する は RotateAbsolute_Goal
+r を RotateAbsolute目標開封する とは r の goal
+RotateAbsolute_SendGoal_Request を RotateAbsolute目標IDする は unique_identifier_msgs内のUUID
+r を RotateAbsolute目標IDする とは r の goal_id
+真偽 を builtin_interfaces内のTime で RotateAbsolute受付包装する は RotateAbsolute_SendGoal_Response
+a を t で RotateAbsolute受付包装する とは accepted は a で stamp は t の RotateAbsolute_SendGoal_Response既定
+RotateAbsolute_SendGoal_Response を RotateAbsolute受付開封する は 真偽
+r を RotateAbsolute受付開封する とは r の accepted
+unique_identifier_msgs内のUUID を RotateAbsolute結果要求包装する は RotateAbsolute_GetResult_Request
+u を RotateAbsolute結果要求包装する とは goal_id は u の RotateAbsolute_GetResult_Request既定
+RotateAbsolute_GetResult_Request を RotateAbsolute結果要求IDする は unique_identifier_msgs内のUUID
+r を RotateAbsolute結果要求IDする とは r の goal_id
+数 を RotateAbsolute_Result で RotateAbsolute結果包装する は RotateAbsolute_GetResult_Response
+s を x で RotateAbsolute結果包装する とは status は s で result は x の RotateAbsolute_GetResult_Response既定
+RotateAbsolute_GetResult_Response を RotateAbsolute結果開封する は RotateAbsolute_Result
+r を RotateAbsolute結果開封する とは r の result
+RotateAbsolute_GetResult_Response を RotateAbsolute結果状態する は 数
+r を RotateAbsolute結果状態する とは r の status
+unique_identifier_msgs内のUUID を RotateAbsolute_Feedback で RotateAbsolute途中包装する は RotateAbsolute_FeedbackMessage
+u を f で RotateAbsolute途中包装する とは goal_id は u で feedback は f の RotateAbsolute_FeedbackMessage既定
+RotateAbsolute_FeedbackMessage を RotateAbsolute途中開封する は RotateAbsolute_Feedback
+m を RotateAbsolute途中開封する とは m の feedback
+RotateAbsolute_FeedbackMessage を RotateAbsolute途中IDする は unique_identifier_msgs内のUUID
+m を RotateAbsolute途中IDする とは m の goal_id

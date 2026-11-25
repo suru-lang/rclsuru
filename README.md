@@ -1,6 +1,6 @@
 # rclsuru
 
-する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階4(パラメータ)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
+する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階5(アクション)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
 
 ```
 「rclsuru」 を 読み込んで 使う
@@ -82,7 +82,7 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 | `Twist型` | `発行者作成する`・`購読する` に渡す メッセージ型 |
 | `GoalStatus_STATUS_ACCEPTED` | .msg の定数(`メッセージ名_定数名`) |
 
-.srv(例: `std_srvs/srv/SetBool`)からは `SetBool_Request`・`SetBool_Response` の2つのメッセージと `SetBool型`(サービス型。`サービス作成する`・`クライアント作成する` に渡す)ができます。ほかのパッケージの型は `std_msgs内のHeader既定` のように「パッケージ内の」を付けて書きます(`読み込んで 使う` にしたパッケージは付けなくてよい)。2つのパッケージに同じ名前の型があるとき(turtlesim と geometry_msgs の `Pose` など)は、片方を `読み込む` にします。
+.srv(例: `std_srvs/srv/SetBool`)からは `SetBool_Request`・`SetBool_Response` の2つのメッセージと `SetBool型`(サービス型。`サービス作成する`・`クライアント作成する` に渡す)ができます。.action(例: `example_interfaces/action/Fibonacci`)からは `Fibonacci_Goal`・`Fibonacci_Result`・`Fibonacci_Feedback` と `Fibonacci型`(アクション型。`アクションサーバー作成する`・`アクションクライアント作成する` に渡す)ができます(ROS 2 が中で使う `Fibonacci_SendGoal` などもできます)。ほかのパッケージの型は `std_msgs内のHeader既定` のように「パッケージ内の」を付けて書きます(`読み込んで 使う` にしたパッケージは付けなくてよい)。2つのパッケージに同じ名前の型があるとき(turtlesim と geometry_msgs の `Pose` など)は、片方を `読み込む` にします。
 
 | ROS の型 | する の値 |
 |---|---|
@@ -125,6 +125,38 @@ suru <rclsuru のフォルダ>/生成器.suru 型 my_msgs      # 型/my_msgs.sur
 クライアントは `examples/足し算クライアント` にあります。`QoS付きサービス作成する`・`QoS付きクライアント作成する` で QoS も決められます(既定は `サービスQoS`)。
 
 rcl はサービスの要求と応答を直列化したまま渡せないので、rclsuru は rosidl_generator_c の `…__create` で C の構造体を作り、`rmw_serialize`・`rmw_deserialize` で CDR と行き来します。そのため、使う型のパッケージの `lib<パッケージ>__rosidl_generator_c.so` も要ります(ふつうは入っています)。
+
+### アクション
+
+```
+Fibonacci型 を 「fibonacci」 で n に 計算すること へ アクションサーバー作成する
+
+Fibonacci_Goal を 目標扱い で 計算する は Fibonacci_Result の 動作
+目標 を 扱い で 計算する とは 手順
+  …
+  （sequence は 途中の列 の Fibonacci_Feedback既定） を 扱い へ 途中送信する
+  …
+  （sequence は 列 の Fibonacci_Result既定） を 結果にする
+```
+
+目標が届くたびに、別のスレッドで `目標 を 扱い で 関数する` を行い、その結果がアクションの結果になります。例は `examples/フィボナッチサーバー` と `examples/フィボナッチクライアント` です。
+
+| 関数 | 中身 |
+|---|---|
+| `型 を 名前 で n に 関数 へ アクションサーバー作成する` | アクションサーバー。目標はみな受け付ける |
+| `型 を 名前 で n に 関数 へ 判断 より 判断付きアクションサーバー作成する` | `目標 を 判断する` が 真 の目標だけ受け付ける |
+| `途中 を 扱い へ 途中送信する` | feedback を送る |
+| `扱い を 取消確認する` | 取り消しを頼まれていれば 真。早めに終えて `扱い を 取消済みにする` |
+| `扱い を 取消済みにする`・`扱い を 中止にする` | 結果の状態を CANCELED・ABORTED にする(しなければ SUCCEEDED) |
+| `型 を 名前 で n に アクションクライアント作成する` | アクションクライアント |
+| `ac を 秒 で アクションサーバー待機する` | サーバーが出るまで 秒 まで待つ。出れば 真 |
+| `目標 を ac へ 途中関数 で 秒 に 目標呼出する` | 目標を送り、結果を 秒 まで待つ。feedback ごとに `途中 を 途中関数する`。結果は `アクション結果 の 有`(受け付けられないか、待ちきれなければ `無`) |
+| `目標 を ac へ 途中関数 で 結果関数 に 目標送信する` | 送るだけ。結果が届いたら(スピンする の中で)`アクション結果 を 結果関数する`。結果は目標の UUID |
+| `u を ac で 目標取消する` | 取り消しを頼む。結果は CancelGoal の return_code(0 なら受け付けた) |
+
+`アクション結果` は `終状態`(action_msgs/GoalStatus の 4 成功・5 取り消し・6 中止。受け付けられなかったときは 0)と `結果値` の組です。
+
+アクションは、`名前/_action/` の下の3つのサービス(send_goal・cancel_goal・get_result)と2つのトピック(feedback・status)でできています。rclsuru は rcl_action を使わず、これを rclsuru のサービスと発行者の上に する で書いています。feedback・状態の発行と結果の返信は、実行のスレッドからスピンする のスレッドに頼んで行います。取り消しの要求は、まだ終わっていない目標ならみな受け付けます。終わった目標の結果は 900 秒(rcl_action の既定)覚えています。
 
 ### パラメータ
 
@@ -193,13 +225,15 @@ python3 test/cdr_roundtrip.py   # 同梱した型の CDR を rclpy と往復さ�
 SURU=suru test/interop.sh       # C++(rclcpp)・ros2 topic・ros2 launch・QoS・インタプリタとの相互運用
 SURU=suru test/turtle.sh        # examples/亀 と turtlesim(turtlesim と xvfb-run が要る)
 SURU=suru test/add_two_ints.sh  # examples/足し算サーバー・足し算クライアント(example_interfaces と demo_nodes_cpp が要る)
+test/fibonacci.sh               # examples/フィボナッチサーバー・フィボナッチクライアント(example_interfaces が要る)
 ```
 
-`python3 test/cdr_roundtrip.py` は、同梱した型を全部(195 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
+`python3 test/cdr_roundtrip.py` は、同梱した型を全部(195 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)、アクション(`ros2 action send_goal`・C++ の rclcpp_action と両方向。型は tf2_msgs/action/LookupTransform)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
 
 ## まだできないこと
 
-- アクション・ログの関数はまだありません(.action の型も、まだ作りません)
+- ログの関数はまだありません
+- アクションの取り消しを断る関数は登録できません(まだ終わっていない目標の取り消しはみな受け付けます)
 - パラメータの範囲(`integer_range`・`floating_point_range`)は確かめません。`use_sim_time` も宣言しません
 - `wstring` を使う型は作りません
 - `スピンする` は1つのスレッドで回します。1つの発行者に、いくつものスレッドから同時に `発行する` しないでください(直列化の領域を共有しています)

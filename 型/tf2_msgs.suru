@@ -1,6 +1,8 @@
 # tf2_msgs の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
 「rclsuru/CDR」 を 読み込んで 使う
-「geometry_msgs」 を 読み込む
+「rclsuru/型/geometry_msgs」 を 読み込む
+「rclsuru/型/builtin_interfaces」 を 読み込む
+「rclsuru/型/unique_identifier_msgs」 を 読み込む
 
 # tf2_msgs/msg/TF2Error
 TF2Error とは error と error_string の 組
@@ -72,5 +74,193 @@ FrameGraph_Response を 番地 へ 数 で FrameGraph_Response書込する は �
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   （値 は （frame_yaml は （欄1 の 値） の FrameGraph_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
 
+# tf2_msgs/action/LookupTransform_Goal
+LookupTransform_Goal とは target_frame と source_frame と source_time と timeout と target_time と fixed_frame と advanced の 組
+LookupTransform_Goal既定 とは target_frame は 「」 で source_frame は 「」 で source_time は builtin_interfaces内のTime既定 で timeout は builtin_interfaces内のDuration既定 で target_time は builtin_interfaces内のTime既定 で fixed_frame は 「」 で advanced は 偽 の LookupTransform_Goal
+LookupTransform_Goal型 とは 型名 は 「tf2_msgs/action/LookupTransform_Goal」 で 寸法 は LookupTransform_Goal寸法すること で 書込 は LookupTransform_Goal書込すること で 読取 は LookupTransform_Goal読取すること の メッセージ型
+LookupTransform_Goal を 数 で LookupTransform_Goal寸法する は 数
+対象 を 位0 で LookupTransform_Goal寸法する とは
+  位1 とは （対象 の target_frame） を 位0 で CDR文字列寸法する
+  位2 とは （対象 の source_frame） を 位1 で CDR文字列寸法する
+  位3 とは （対象 の source_time） を 位2 で builtin_interfaces内のTime寸法する
+  位4 とは （対象 の timeout） を 位3 で builtin_interfaces内のDuration寸法する
+  位5 とは （対象 の target_time） を 位4 で builtin_interfaces内のTime寸法する
+  位6 とは （対象 の fixed_frame） を 位5 で CDR文字列寸法する
+  （対象 の advanced） を 位6 で CDR真偽寸法する
+LookupTransform_Goal を 番地 へ 数 で LookupTransform_Goal書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_Goal書込する とは 手順
+  位1 とは （対象 の target_frame） を 先 へ 位0 で CDR文字列書込した 結果
+  位2 とは （対象 の source_frame） を 先 へ 位1 で CDR文字列書込した 結果
+  位3 とは （対象 の source_time） を 先 へ 位2 で builtin_interfaces内のTime書込した 結果
+  位4 とは （対象 の timeout） を 先 へ 位3 で builtin_interfaces内のDuration書込した 結果
+  位5 とは （対象 の target_time） を 先 へ 位4 で builtin_interfaces内のTime書込した 結果
+  位6 とは （対象 の fixed_frame） を 先 へ 位5 で CDR文字列書込した 結果
+  （対象 の advanced） を 先 へ 位6 で CDR真偽書込する
+番地 から 数 で LookupTransform_Goal読取する は （LookupTransform_Goal と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_Goal読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で builtin_interfaces内のTime読取した 結果
+  欄4 とは 先 から （欄3 の 次） で builtin_interfaces内のDuration読取した 結果
+  欄5 とは 先 から （欄4 の 次） で builtin_interfaces内のTime読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR文字列読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR真偽読取した 結果
+  （値 は （target_frame は （欄1 の 値） で source_frame は （欄2 の 値） で source_time は （欄3 の 値） で timeout は （欄4 の 値） で target_time は （欄5 の 値） で fixed_frame は （欄6 の 値） で advanced は （欄7 の 値） の LookupTransform_Goal） で 次 は （欄7 の 次） の 読値） を 結果にする
+
+# tf2_msgs/action/LookupTransform_Result
+LookupTransform_Result とは transform と error の 組
+LookupTransform_Result既定 とは transform は geometry_msgs内のTransformStamped既定 で error は TF2Error既定 の LookupTransform_Result
+LookupTransform_Result型 とは 型名 は 「tf2_msgs/action/LookupTransform_Result」 で 寸法 は LookupTransform_Result寸法すること で 書込 は LookupTransform_Result書込すること で 読取 は LookupTransform_Result読取すること の メッセージ型
+LookupTransform_Result を 数 で LookupTransform_Result寸法する は 数
+対象 を 位0 で LookupTransform_Result寸法する とは
+  位1 とは （対象 の transform） を 位0 で geometry_msgs内のTransformStamped寸法する
+  （対象 の error） を 位1 で TF2Error寸法する
+LookupTransform_Result を 番地 へ 数 で LookupTransform_Result書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_Result書込する とは 手順
+  位1 とは （対象 の transform） を 先 へ 位0 で geometry_msgs内のTransformStamped書込した 結果
+  （対象 の error） を 先 へ 位1 で TF2Error書込する
+番地 から 数 で LookupTransform_Result読取する は （LookupTransform_Result と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_Result読取する とは 手順
+  欄1 とは 先 から 位0 で geometry_msgs内のTransformStamped読取した 結果
+  欄2 とは 先 から （欄1 の 次） で TF2Error読取した 結果
+  （値 は （transform は （欄1 の 値） で error は （欄2 の 値） の LookupTransform_Result） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# tf2_msgs/action/LookupTransform_Feedback
+LookupTransform_Feedback とは structure_needs_at_least_one_member の 組
+LookupTransform_Feedback既定 とは structure_needs_at_least_one_member は 0 の LookupTransform_Feedback
+LookupTransform_Feedback型 とは 型名 は 「tf2_msgs/action/LookupTransform_Feedback」 で 寸法 は LookupTransform_Feedback寸法すること で 書込 は LookupTransform_Feedback書込すること で 読取 は LookupTransform_Feedback読取すること の メッセージ型
+LookupTransform_Feedback を 数 で LookupTransform_Feedback寸法する は 数
+対象 を 位0 で LookupTransform_Feedback寸法する とは
+  （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
+LookupTransform_Feedback を 番地 へ 数 で LookupTransform_Feedback書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_Feedback書込する とは 手順
+  （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
+番地 から 数 で LookupTransform_Feedback読取する は （LookupTransform_Feedback と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_Feedback読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  （値 は （structure_needs_at_least_one_member は （欄1 の 値） の LookupTransform_Feedback） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# tf2_msgs/action/LookupTransform_SendGoal_Request
+LookupTransform_SendGoal_Request とは goal_id と goal の 組
+LookupTransform_SendGoal_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 で goal は LookupTransform_Goal既定 の LookupTransform_SendGoal_Request
+LookupTransform_SendGoal_Request型 とは 型名 は 「tf2_msgs/action/LookupTransform_SendGoal_Request」 で 寸法 は LookupTransform_SendGoal_Request寸法すること で 書込 は LookupTransform_SendGoal_Request書込すること で 読取 は LookupTransform_SendGoal_Request読取すること の メッセージ型
+LookupTransform_SendGoal_Request を 数 で LookupTransform_SendGoal_Request寸法する は 数
+対象 を 位0 で LookupTransform_SendGoal_Request寸法する とは
+  位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+  （対象 の goal） を 位1 で LookupTransform_Goal寸法する
+LookupTransform_SendGoal_Request を 番地 へ 数 で LookupTransform_SendGoal_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_SendGoal_Request書込する とは 手順
+  位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
+  （対象 の goal） を 先 へ 位1 で LookupTransform_Goal書込する
+番地 から 数 で LookupTransform_SendGoal_Request読取する は （LookupTransform_SendGoal_Request と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_SendGoal_Request読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  欄2 とは 先 から （欄1 の 次） で LookupTransform_Goal読取した 結果
+  （値 は （goal_id は （欄1 の 値） で goal は （欄2 の 値） の LookupTransform_SendGoal_Request） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# tf2_msgs/action/LookupTransform_SendGoal_Response
+LookupTransform_SendGoal_Response とは accepted と stamp の 組
+LookupTransform_SendGoal_Response既定 とは accepted は 偽 で stamp は builtin_interfaces内のTime既定 の LookupTransform_SendGoal_Response
+LookupTransform_SendGoal_Response型 とは 型名 は 「tf2_msgs/action/LookupTransform_SendGoal_Response」 で 寸法 は LookupTransform_SendGoal_Response寸法すること で 書込 は LookupTransform_SendGoal_Response書込すること で 読取 は LookupTransform_SendGoal_Response読取すること の メッセージ型
+LookupTransform_SendGoal_Response を 数 で LookupTransform_SendGoal_Response寸法する は 数
+対象 を 位0 で LookupTransform_SendGoal_Response寸法する とは
+  位1 とは （対象 の accepted） を 位0 で CDR真偽寸法する
+  （対象 の stamp） を 位1 で builtin_interfaces内のTime寸法する
+LookupTransform_SendGoal_Response を 番地 へ 数 で LookupTransform_SendGoal_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_SendGoal_Response書込する とは 手順
+  位1 とは （対象 の accepted） を 先 へ 位0 で CDR真偽書込した 結果
+  （対象 の stamp） を 先 へ 位1 で builtin_interfaces内のTime書込する
+番地 から 数 で LookupTransform_SendGoal_Response読取する は （LookupTransform_SendGoal_Response と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_SendGoal_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR真偽読取した 結果
+  欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果
+  （値 は （accepted は （欄1 の 値） で stamp は （欄2 の 値） の LookupTransform_SendGoal_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# tf2_msgs/action/LookupTransform_GetResult_Request
+LookupTransform_GetResult_Request とは goal_id の 組
+LookupTransform_GetResult_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 の LookupTransform_GetResult_Request
+LookupTransform_GetResult_Request型 とは 型名 は 「tf2_msgs/action/LookupTransform_GetResult_Request」 で 寸法 は LookupTransform_GetResult_Request寸法すること で 書込 は LookupTransform_GetResult_Request書込すること で 読取 は LookupTransform_GetResult_Request読取すること の メッセージ型
+LookupTransform_GetResult_Request を 数 で LookupTransform_GetResult_Request寸法する は 数
+対象 を 位0 で LookupTransform_GetResult_Request寸法する とは
+  （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+LookupTransform_GetResult_Request を 番地 へ 数 で LookupTransform_GetResult_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_GetResult_Request書込する とは 手順
+  （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込する
+番地 から 数 で LookupTransform_GetResult_Request読取する は （LookupTransform_GetResult_Request と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_GetResult_Request読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  （値 は （goal_id は （欄1 の 値） の LookupTransform_GetResult_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# tf2_msgs/action/LookupTransform_GetResult_Response
+LookupTransform_GetResult_Response とは status と result の 組
+LookupTransform_GetResult_Response既定 とは status は 0 で result は LookupTransform_Result既定 の LookupTransform_GetResult_Response
+LookupTransform_GetResult_Response型 とは 型名 は 「tf2_msgs/action/LookupTransform_GetResult_Response」 で 寸法 は LookupTransform_GetResult_Response寸法すること で 書込 は LookupTransform_GetResult_Response書込すること で 読取 は LookupTransform_GetResult_Response読取すること の メッセージ型
+LookupTransform_GetResult_Response を 数 で LookupTransform_GetResult_Response寸法する は 数
+対象 を 位0 で LookupTransform_GetResult_Response寸法する とは
+  位1 とは （対象 の status） を 位0 で CDR符号付き8寸法する
+  （対象 の result） を 位1 で LookupTransform_Result寸法する
+LookupTransform_GetResult_Response を 番地 へ 数 で LookupTransform_GetResult_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_GetResult_Response書込する とは 手順
+  位1 とは （対象 の status） を 先 へ 位0 で CDR符号付き8書込した 結果
+  （対象 の result） を 先 へ 位1 で LookupTransform_Result書込する
+番地 から 数 で LookupTransform_GetResult_Response読取する は （LookupTransform_GetResult_Response と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_GetResult_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で LookupTransform_Result読取した 結果
+  （値 は （status は （欄1 の 値） で result は （欄2 の 値） の LookupTransform_GetResult_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# tf2_msgs/action/LookupTransform_FeedbackMessage
+LookupTransform_FeedbackMessage とは goal_id と feedback の 組
+LookupTransform_FeedbackMessage既定 とは goal_id は unique_identifier_msgs内のUUID既定 で feedback は LookupTransform_Feedback既定 の LookupTransform_FeedbackMessage
+LookupTransform_FeedbackMessage型 とは 型名 は 「tf2_msgs/action/LookupTransform_FeedbackMessage」 で 寸法 は LookupTransform_FeedbackMessage寸法すること で 書込 は LookupTransform_FeedbackMessage書込すること で 読取 は LookupTransform_FeedbackMessage読取すること の メッセージ型
+LookupTransform_FeedbackMessage を 数 で LookupTransform_FeedbackMessage寸法する は 数
+対象 を 位0 で LookupTransform_FeedbackMessage寸法する とは
+  位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+  （対象 の feedback） を 位1 で LookupTransform_Feedback寸法する
+LookupTransform_FeedbackMessage を 番地 へ 数 で LookupTransform_FeedbackMessage書込する は 数 の 動作
+対象 を 先 へ 位0 で LookupTransform_FeedbackMessage書込する とは 手順
+  位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
+  （対象 の feedback） を 先 へ 位1 で LookupTransform_Feedback書込する
+番地 から 数 で LookupTransform_FeedbackMessage読取する は （LookupTransform_FeedbackMessage と 数） の 読値 の 動作
+先 から 位0 で LookupTransform_FeedbackMessage読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  欄2 とは 先 から （欄1 の 次） で LookupTransform_Feedback読取した 結果
+  （値 は （goal_id は （欄1 の 値） で feedback は （欄2 の 値） の LookupTransform_FeedbackMessage） で 次 は （欄2 の 次） の 読値） を 結果にする
+
 # tf2_msgs/srv/FrameGraph
 FrameGraph型 とは 型名 は 「tf2_msgs/srv/FrameGraph」 で 要求 は FrameGraph_Request型 で 応答 は FrameGraph_Response型 の サービス型
+
+# tf2_msgs/action/LookupTransform
+
+# tf2_msgs/action/LookupTransform_SendGoal
+LookupTransform_SendGoal型 とは 型名 は 「tf2_msgs/action/LookupTransform_SendGoal」 で 要求 は LookupTransform_SendGoal_Request型 で 応答 は LookupTransform_SendGoal_Response型 の サービス型
+
+# tf2_msgs/action/LookupTransform_GetResult
+LookupTransform_GetResult型 とは 型名 は 「tf2_msgs/action/LookupTransform_GetResult」 で 要求 は LookupTransform_GetResult_Request型 で 応答 は LookupTransform_GetResult_Response型 の サービス型
+LookupTransform型 とは 型名 は 「tf2_msgs/action/LookupTransform」 で 送信 は LookupTransform_SendGoal型 で 結果取得 は LookupTransform_GetResult型 で 途中 は LookupTransform_FeedbackMessage型 で 目標包装 は LookupTransform目標包装すること で 目標開封 は LookupTransform目標開封すること で 目標ID は LookupTransform目標IDすること で 受付包装 は LookupTransform受付包装すること で 受付開封 は LookupTransform受付開封すること で 結果要求包装 は LookupTransform結果要求包装すること で 結果要求ID は LookupTransform結果要求IDすること で 結果包装 は LookupTransform結果包装すること で 結果開封 は LookupTransform結果開封すること で 結果状態 は LookupTransform結果状態すること で 途中包装 は LookupTransform途中包装すること で 途中開封 は LookupTransform途中開封すること で 途中ID は LookupTransform途中IDすること で 結果既定 は LookupTransform_Result既定 の アクション型
+unique_identifier_msgs内のUUID を LookupTransform_Goal で LookupTransform目標包装する は LookupTransform_SendGoal_Request
+u を g で LookupTransform目標包装する とは goal_id は u で goal は g の LookupTransform_SendGoal_Request既定
+LookupTransform_SendGoal_Request を LookupTransform目標開封する は LookupTransform_Goal
+r を LookupTransform目標開封する とは r の goal
+LookupTransform_SendGoal_Request を LookupTransform目標IDする は unique_identifier_msgs内のUUID
+r を LookupTransform目標IDする とは r の goal_id
+真偽 を builtin_interfaces内のTime で LookupTransform受付包装する は LookupTransform_SendGoal_Response
+a を t で LookupTransform受付包装する とは accepted は a で stamp は t の LookupTransform_SendGoal_Response既定
+LookupTransform_SendGoal_Response を LookupTransform受付開封する は 真偽
+r を LookupTransform受付開封する とは r の accepted
+unique_identifier_msgs内のUUID を LookupTransform結果要求包装する は LookupTransform_GetResult_Request
+u を LookupTransform結果要求包装する とは goal_id は u の LookupTransform_GetResult_Request既定
+LookupTransform_GetResult_Request を LookupTransform結果要求IDする は unique_identifier_msgs内のUUID
+r を LookupTransform結果要求IDする とは r の goal_id
+数 を LookupTransform_Result で LookupTransform結果包装する は LookupTransform_GetResult_Response
+s を x で LookupTransform結果包装する とは status は s で result は x の LookupTransform_GetResult_Response既定
+LookupTransform_GetResult_Response を LookupTransform結果開封する は LookupTransform_Result
+r を LookupTransform結果開封する とは r の result
+LookupTransform_GetResult_Response を LookupTransform結果状態する は 数
+r を LookupTransform結果状態する とは r の status
+unique_identifier_msgs内のUUID を LookupTransform_Feedback で LookupTransform途中包装する は LookupTransform_FeedbackMessage
+u を f で LookupTransform途中包装する とは goal_id は u で feedback は f の LookupTransform_FeedbackMessage既定
+LookupTransform_FeedbackMessage を LookupTransform途中開封する は LookupTransform_Feedback
+m を LookupTransform途中開封する とは m の feedback
+LookupTransform_FeedbackMessage を LookupTransform途中IDする は unique_identifier_msgs内のUUID
+m を LookupTransform途中IDする とは m の goal_id

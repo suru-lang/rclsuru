@@ -1,5 +1,7 @@
 # example_interfaces の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
 「rclsuru/CDR」 を 読み込んで 使う
+「rclsuru/型/unique_identifier_msgs」 を 読み込む
+「rclsuru/型/builtin_interfaces」 を 読み込む
 
 # example_interfaces/msg/Bool
 Bool とは data の 組
@@ -564,6 +566,138 @@ Trigger_Response を 番地 へ 数 で Trigger_Response書込する は 数 の
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
   （値 は （success は （欄1 の 値） で message は （欄2 の 値） の Trigger_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
 
+# example_interfaces/action/Fibonacci_Goal
+Fibonacci_Goal とは order の 組
+Fibonacci_Goal既定 とは order は 0 の Fibonacci_Goal
+Fibonacci_Goal型 とは 型名 は 「example_interfaces/action/Fibonacci_Goal」 で 寸法 は Fibonacci_Goal寸法すること で 書込 は Fibonacci_Goal書込すること で 読取 は Fibonacci_Goal読取すること の メッセージ型
+Fibonacci_Goal を 数 で Fibonacci_Goal寸法する は 数
+対象 を 位0 で Fibonacci_Goal寸法する とは
+  （対象 の order） を 位0 で CDR符号付き32寸法する
+Fibonacci_Goal を 番地 へ 数 で Fibonacci_Goal書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_Goal書込する とは 手順
+  （対象 の order） を 先 へ 位0 で CDR符号付き32書込する
+番地 から 数 で Fibonacci_Goal読取する は （Fibonacci_Goal と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_Goal読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号付き32読取した 結果
+  （値 は （order は （欄1 の 値） の Fibonacci_Goal） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# example_interfaces/action/Fibonacci_Result
+Fibonacci_Result とは sequence の 組
+Fibonacci_Result既定 とは sequence は 空 の Fibonacci_Result
+Fibonacci_Result型 とは 型名 は 「example_interfaces/action/Fibonacci_Result」 で 寸法 は Fibonacci_Result寸法すること で 書込 は Fibonacci_Result書込すること で 読取 は Fibonacci_Result読取すること の メッセージ型
+Fibonacci_Result を 数 で Fibonacci_Result寸法する は 数
+対象 を 位0 で Fibonacci_Result寸法する とは
+  （対象 の sequence） を 位0 で 4 に CDR素可変列寸法する
+Fibonacci_Result を 番地 へ 数 で Fibonacci_Result書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_Result書込する とは 手順
+  （対象 の sequence） を 先 へ 位0 で （CDR符号付き32書込すること） に CDR可変列書込する
+番地 から 数 で Fibonacci_Result読取する は （Fibonacci_Result と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_Result読取する とは 手順
+  欄1 とは 先 から 位0 で （CDR符号付き32読取すること） に CDR可変列読取した 結果
+  （値 は （sequence は （欄1 の 値） の Fibonacci_Result） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# example_interfaces/action/Fibonacci_Feedback
+Fibonacci_Feedback とは sequence の 組
+Fibonacci_Feedback既定 とは sequence は 空 の Fibonacci_Feedback
+Fibonacci_Feedback型 とは 型名 は 「example_interfaces/action/Fibonacci_Feedback」 で 寸法 は Fibonacci_Feedback寸法すること で 書込 は Fibonacci_Feedback書込すること で 読取 は Fibonacci_Feedback読取すること の メッセージ型
+Fibonacci_Feedback を 数 で Fibonacci_Feedback寸法する は 数
+対象 を 位0 で Fibonacci_Feedback寸法する とは
+  （対象 の sequence） を 位0 で 4 に CDR素可変列寸法する
+Fibonacci_Feedback を 番地 へ 数 で Fibonacci_Feedback書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_Feedback書込する とは 手順
+  （対象 の sequence） を 先 へ 位0 で （CDR符号付き32書込すること） に CDR可変列書込する
+番地 から 数 で Fibonacci_Feedback読取する は （Fibonacci_Feedback と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_Feedback読取する とは 手順
+  欄1 とは 先 から 位0 で （CDR符号付き32読取すること） に CDR可変列読取した 結果
+  （値 は （sequence は （欄1 の 値） の Fibonacci_Feedback） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# example_interfaces/action/Fibonacci_SendGoal_Request
+Fibonacci_SendGoal_Request とは goal_id と goal の 組
+Fibonacci_SendGoal_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 で goal は Fibonacci_Goal既定 の Fibonacci_SendGoal_Request
+Fibonacci_SendGoal_Request型 とは 型名 は 「example_interfaces/action/Fibonacci_SendGoal_Request」 で 寸法 は Fibonacci_SendGoal_Request寸法すること で 書込 は Fibonacci_SendGoal_Request書込すること で 読取 は Fibonacci_SendGoal_Request読取すること の メッセージ型
+Fibonacci_SendGoal_Request を 数 で Fibonacci_SendGoal_Request寸法する は 数
+対象 を 位0 で Fibonacci_SendGoal_Request寸法する とは
+  位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+  （対象 の goal） を 位1 で Fibonacci_Goal寸法する
+Fibonacci_SendGoal_Request を 番地 へ 数 で Fibonacci_SendGoal_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_SendGoal_Request書込する とは 手順
+  位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
+  （対象 の goal） を 先 へ 位1 で Fibonacci_Goal書込する
+番地 から 数 で Fibonacci_SendGoal_Request読取する は （Fibonacci_SendGoal_Request と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_SendGoal_Request読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  欄2 とは 先 から （欄1 の 次） で Fibonacci_Goal読取した 結果
+  （値 は （goal_id は （欄1 の 値） で goal は （欄2 の 値） の Fibonacci_SendGoal_Request） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# example_interfaces/action/Fibonacci_SendGoal_Response
+Fibonacci_SendGoal_Response とは accepted と stamp の 組
+Fibonacci_SendGoal_Response既定 とは accepted は 偽 で stamp は builtin_interfaces内のTime既定 の Fibonacci_SendGoal_Response
+Fibonacci_SendGoal_Response型 とは 型名 は 「example_interfaces/action/Fibonacci_SendGoal_Response」 で 寸法 は Fibonacci_SendGoal_Response寸法すること で 書込 は Fibonacci_SendGoal_Response書込すること で 読取 は Fibonacci_SendGoal_Response読取すること の メッセージ型
+Fibonacci_SendGoal_Response を 数 で Fibonacci_SendGoal_Response寸法する は 数
+対象 を 位0 で Fibonacci_SendGoal_Response寸法する とは
+  位1 とは （対象 の accepted） を 位0 で CDR真偽寸法する
+  （対象 の stamp） を 位1 で builtin_interfaces内のTime寸法する
+Fibonacci_SendGoal_Response を 番地 へ 数 で Fibonacci_SendGoal_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_SendGoal_Response書込する とは 手順
+  位1 とは （対象 の accepted） を 先 へ 位0 で CDR真偽書込した 結果
+  （対象 の stamp） を 先 へ 位1 で builtin_interfaces内のTime書込する
+番地 から 数 で Fibonacci_SendGoal_Response読取する は （Fibonacci_SendGoal_Response と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_SendGoal_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR真偽読取した 結果
+  欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果
+  （値 は （accepted は （欄1 の 値） で stamp は （欄2 の 値） の Fibonacci_SendGoal_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# example_interfaces/action/Fibonacci_GetResult_Request
+Fibonacci_GetResult_Request とは goal_id の 組
+Fibonacci_GetResult_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 の Fibonacci_GetResult_Request
+Fibonacci_GetResult_Request型 とは 型名 は 「example_interfaces/action/Fibonacci_GetResult_Request」 で 寸法 は Fibonacci_GetResult_Request寸法すること で 書込 は Fibonacci_GetResult_Request書込すること で 読取 は Fibonacci_GetResult_Request読取すること の メッセージ型
+Fibonacci_GetResult_Request を 数 で Fibonacci_GetResult_Request寸法する は 数
+対象 を 位0 で Fibonacci_GetResult_Request寸法する とは
+  （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+Fibonacci_GetResult_Request を 番地 へ 数 で Fibonacci_GetResult_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_GetResult_Request書込する とは 手順
+  （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込する
+番地 から 数 で Fibonacci_GetResult_Request読取する は （Fibonacci_GetResult_Request と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_GetResult_Request読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  （値 は （goal_id は （欄1 の 値） の Fibonacci_GetResult_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# example_interfaces/action/Fibonacci_GetResult_Response
+Fibonacci_GetResult_Response とは status と result の 組
+Fibonacci_GetResult_Response既定 とは status は 0 で result は Fibonacci_Result既定 の Fibonacci_GetResult_Response
+Fibonacci_GetResult_Response型 とは 型名 は 「example_interfaces/action/Fibonacci_GetResult_Response」 で 寸法 は Fibonacci_GetResult_Response寸法すること で 書込 は Fibonacci_GetResult_Response書込すること で 読取 は Fibonacci_GetResult_Response読取すること の メッセージ型
+Fibonacci_GetResult_Response を 数 で Fibonacci_GetResult_Response寸法する は 数
+対象 を 位0 で Fibonacci_GetResult_Response寸法する とは
+  位1 とは （対象 の status） を 位0 で CDR符号付き8寸法する
+  （対象 の result） を 位1 で Fibonacci_Result寸法する
+Fibonacci_GetResult_Response を 番地 へ 数 で Fibonacci_GetResult_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_GetResult_Response書込する とは 手順
+  位1 とは （対象 の status） を 先 へ 位0 で CDR符号付き8書込した 結果
+  （対象 の result） を 先 へ 位1 で Fibonacci_Result書込する
+番地 から 数 で Fibonacci_GetResult_Response読取する は （Fibonacci_GetResult_Response と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_GetResult_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で Fibonacci_Result読取した 結果
+  （値 は （status は （欄1 の 値） で result は （欄2 の 値） の Fibonacci_GetResult_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# example_interfaces/action/Fibonacci_FeedbackMessage
+Fibonacci_FeedbackMessage とは goal_id と feedback の 組
+Fibonacci_FeedbackMessage既定 とは goal_id は unique_identifier_msgs内のUUID既定 で feedback は Fibonacci_Feedback既定 の Fibonacci_FeedbackMessage
+Fibonacci_FeedbackMessage型 とは 型名 は 「example_interfaces/action/Fibonacci_FeedbackMessage」 で 寸法 は Fibonacci_FeedbackMessage寸法すること で 書込 は Fibonacci_FeedbackMessage書込すること で 読取 は Fibonacci_FeedbackMessage読取すること の メッセージ型
+Fibonacci_FeedbackMessage を 数 で Fibonacci_FeedbackMessage寸法する は 数
+対象 を 位0 で Fibonacci_FeedbackMessage寸法する とは
+  位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
+  （対象 の feedback） を 位1 で Fibonacci_Feedback寸法する
+Fibonacci_FeedbackMessage を 番地 へ 数 で Fibonacci_FeedbackMessage書込する は 数 の 動作
+対象 を 先 へ 位0 で Fibonacci_FeedbackMessage書込する とは 手順
+  位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
+  （対象 の feedback） を 先 へ 位1 で Fibonacci_Feedback書込する
+番地 から 数 で Fibonacci_FeedbackMessage読取する は （Fibonacci_FeedbackMessage と 数） の 読値 の 動作
+先 から 位0 で Fibonacci_FeedbackMessage読取する とは 手順
+  欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
+  欄2 とは 先 から （欄1 の 次） で Fibonacci_Feedback読取した 結果
+  （値 は （goal_id は （欄1 の 値） で feedback は （欄2 の 値） の Fibonacci_FeedbackMessage） で 次 は （欄2 の 次） の 読値） を 結果にする
+
 # example_interfaces/srv/AddTwoInts
 AddTwoInts型 とは 型名 は 「example_interfaces/srv/AddTwoInts」 で 要求 は AddTwoInts_Request型 で 応答 は AddTwoInts_Response型 の サービス型
 
@@ -572,3 +706,38 @@ SetBool型 とは 型名 は 「example_interfaces/srv/SetBool」 で 要求 は
 
 # example_interfaces/srv/Trigger
 Trigger型 とは 型名 は 「example_interfaces/srv/Trigger」 で 要求 は Trigger_Request型 で 応答 は Trigger_Response型 の サービス型
+
+# example_interfaces/action/Fibonacci
+
+# example_interfaces/action/Fibonacci_SendGoal
+Fibonacci_SendGoal型 とは 型名 は 「example_interfaces/action/Fibonacci_SendGoal」 で 要求 は Fibonacci_SendGoal_Request型 で 応答 は Fibonacci_SendGoal_Response型 の サービス型
+
+# example_interfaces/action/Fibonacci_GetResult
+Fibonacci_GetResult型 とは 型名 は 「example_interfaces/action/Fibonacci_GetResult」 で 要求 は Fibonacci_GetResult_Request型 で 応答 は Fibonacci_GetResult_Response型 の サービス型
+Fibonacci型 とは 型名 は 「example_interfaces/action/Fibonacci」 で 送信 は Fibonacci_SendGoal型 で 結果取得 は Fibonacci_GetResult型 で 途中 は Fibonacci_FeedbackMessage型 で 目標包装 は Fibonacci目標包装すること で 目標開封 は Fibonacci目標開封すること で 目標ID は Fibonacci目標IDすること で 受付包装 は Fibonacci受付包装すること で 受付開封 は Fibonacci受付開封すること で 結果要求包装 は Fibonacci結果要求包装すること で 結果要求ID は Fibonacci結果要求IDすること で 結果包装 は Fibonacci結果包装すること で 結果開封 は Fibonacci結果開封すること で 結果状態 は Fibonacci結果状態すること で 途中包装 は Fibonacci途中包装すること で 途中開封 は Fibonacci途中開封すること で 途中ID は Fibonacci途中IDすること で 結果既定 は Fibonacci_Result既定 の アクション型
+unique_identifier_msgs内のUUID を Fibonacci_Goal で Fibonacci目標包装する は Fibonacci_SendGoal_Request
+u を g で Fibonacci目標包装する とは goal_id は u で goal は g の Fibonacci_SendGoal_Request既定
+Fibonacci_SendGoal_Request を Fibonacci目標開封する は Fibonacci_Goal
+r を Fibonacci目標開封する とは r の goal
+Fibonacci_SendGoal_Request を Fibonacci目標IDする は unique_identifier_msgs内のUUID
+r を Fibonacci目標IDする とは r の goal_id
+真偽 を builtin_interfaces内のTime で Fibonacci受付包装する は Fibonacci_SendGoal_Response
+a を t で Fibonacci受付包装する とは accepted は a で stamp は t の Fibonacci_SendGoal_Response既定
+Fibonacci_SendGoal_Response を Fibonacci受付開封する は 真偽
+r を Fibonacci受付開封する とは r の accepted
+unique_identifier_msgs内のUUID を Fibonacci結果要求包装する は Fibonacci_GetResult_Request
+u を Fibonacci結果要求包装する とは goal_id は u の Fibonacci_GetResult_Request既定
+Fibonacci_GetResult_Request を Fibonacci結果要求IDする は unique_identifier_msgs内のUUID
+r を Fibonacci結果要求IDする とは r の goal_id
+数 を Fibonacci_Result で Fibonacci結果包装する は Fibonacci_GetResult_Response
+s を x で Fibonacci結果包装する とは status は s で result は x の Fibonacci_GetResult_Response既定
+Fibonacci_GetResult_Response を Fibonacci結果開封する は Fibonacci_Result
+r を Fibonacci結果開封する とは r の result
+Fibonacci_GetResult_Response を Fibonacci結果状態する は 数
+r を Fibonacci結果状態する とは r の status
+unique_identifier_msgs内のUUID を Fibonacci_Feedback で Fibonacci途中包装する は Fibonacci_FeedbackMessage
+u を f で Fibonacci途中包装する とは goal_id は u で feedback は f の Fibonacci_FeedbackMessage既定
+Fibonacci_FeedbackMessage を Fibonacci途中開封する は Fibonacci_Feedback
+m を Fibonacci途中開封する とは m の feedback
+Fibonacci_FeedbackMessage を Fibonacci途中IDする は unique_identifier_msgs内のUUID
+m を Fibonacci途中IDする とは m の goal_id

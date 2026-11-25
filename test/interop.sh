@@ -173,6 +173,50 @@ check "ros2 param describe" "$p" "Type: double"
 check "ros2 param dump" "$p" "rate: 5.0"
 check "/parameter_events に知らせる" "$logs/param_event.log" "name: count"
 
+# 段階5: アクション(tf2_msgs/action/LookupTransform の lookup)
+start_action_server() {  # start_action_server ログ 命令
+  (timeout -s INT 60 bash -c "$2" > "$1" 2>&1 &)
+  sleep 2
+}
+log="$logs/act_suru_server.log"
+start_action_server "$log" "stdbuf -o0 $suru_node action_server"
+a="$logs/act_cli.log"
+{
+  timeout 20 ros2 action send_goal /lookup tf2_msgs/action/LookupTransform "{target_frame: map, source_frame: base}" --feedback
+  timeout 20 ros2 action send_goal /lookup tf2_msgs/action/LookupTransform "{target_frame: reject}"
+  timeout 20 ros2 action send_goal /lookup tf2_msgs/action/LookupTransform "{target_frame: abort}"
+} > "$a" 2>&1
+c="$logs/act_suru_client.log"
+timeout -s INT 12 stdbuf -o0 "$suru_node" action_client > "$c" 2>&1
+c2="$logs/act_cpp_client.log"
+timeout -s INT 30 ros2 run rclsuru_interop_cpp cpp_lookup_client > "$c2" 2>&1
+pkill -INT -f "interop_suru action_server" || true
+sleep 1
+check "ros2 action send_goal → する のサーバー(feedback)" "$a" "Feedback:"
+check "ros2 action send_goal → する のサーバー(結果)" "$a" "child_frame_id: map_suru"
+check "ros2 action send_goal → する のサーバー(成功)" "$a" "Goal finished with status: SUCCEEDED"
+check "する のサーバーが目標を断る" "$a" "Goal was rejected."
+check "する のサーバーが中止する" "$a" "Goal finished with status: ABORTED"
+check "する のクライアント → する のサーバー(結果)" "$c" "結果: 状態=4 child_frame_id=map_suru"
+check "する のクライアント → する のサーバー(feedback)" "$c" "feedback を受けました"
+check "する のクライアント → する のサーバー(断られる)" "$c" "受け付けられませんでした"
+check "する のクライアント → する のサーバー(取り消し)" "$c" "結果: 状態=5 child_frame_id=map_suru"
+check "する のサーバーが取り消しを受ける" "$log" "取り消しを受けました"
+check "C++ のクライアント → する のサーバー(結果)" "$c2" "C++ が結果を受けました: SUCCEEDED child_frame_id=map_suru"
+check "C++ のクライアント → する のサーバー(feedback)" "$c2" "C++ が feedback を受けました"
+check "C++ のクライアント → する のサーバー(取り消し)" "$c2" "C++ が結果を受けました: CANCELED child_frame_id=map_suru"
+
+log="$logs/act_cpp_server.log"
+start_action_server "$log" "ros2 run rclsuru_interop_cpp cpp_lookup_server"
+c="$logs/act_suru_client_cpp.log"
+timeout -s INT 12 stdbuf -o0 "$suru_node" action_client > "$c" 2>&1
+pkill -INT -f cpp_lookup_server || true
+sleep 1
+check "する のクライアント → C++ のサーバー(結果)" "$c" "結果: 状態=4 child_frame_id=map_cpp"
+check "する のクライアント → C++ のサーバー(feedback)" "$c" "feedback を受けました"
+check "する のクライアント → C++ のサーバー(取り消し)" "$c" "結果: 状態=5 child_frame_id=map_cpp"
+check "C++ のサーバーが取り消しを受ける" "$log" "C++: 取り消しを受けました"
+
 # インタプリタ
 if [ -n "${SURU:-}" ]; then
   out=$(pair interp_listener "ros2 run rclsuru_interop_cpp cpp_talker" "cd $root/examples/listener && stdbuf -o0 $SURU 本体.suru")
