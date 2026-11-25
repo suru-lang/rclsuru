@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-24.04
     container: ros:jazzy-ros-base
     env:
-      # suru#140(局所の関数を名前で呼ぶと点検が未使用と言う)の直しが入った main。次の版が出たらその版にする
-      SURU_VERSION: 1d8d7bb317c802f52776f42e3e4d72c1e207c1c6
+      # 0.6.1 から、局所の関数を名前で呼んでも点検が未使用と言わない(suru#140)
+      SURU_VERSION: v0.6.1
     defaults:
       run:
         shell: bash
