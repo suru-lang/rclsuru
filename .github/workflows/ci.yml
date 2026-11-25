@@ -25,7 +25,8 @@ jobs:
       - name: clang と suru を入れる
         run: |
           apt-get update
-          apt-get install -y --no-install-recommends clang python3-pip git
+          apt-get install -y --no-install-recommends clang python3-pip git \
+            ros-jazzy-example-interfaces ros-jazzy-demo-nodes-cpp ros-jazzy-turtlesim xvfb xauth
           go install github.com/suru-lang/suru/cmd/kumu@${SURU_VERSION}
           pip install --break-system-packages "git+https://github.com/suru-lang/suru@${SURU_VERSION}"
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
@@ -52,6 +53,10 @@ jobs:
 
       - name: turtlesim の試験(examples/亀)
         run: |
-          apt-get install -y --no-install-recommends ros-jazzy-turtlesim xvfb xauth
           source /opt/ros/jazzy/setup.bash
           SURU=suru test/turtle.sh
+
+      - name: サービスの試験(examples/足し算サーバー・足し算クライアント と demo_nodes_cpp)
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          SURU=suru test/add_two_ints.sh

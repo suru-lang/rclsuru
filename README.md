@@ -1,6 +1,6 @@
 # rclsuru
 
-する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階2(メッセージの型と QoS)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
+する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階3(サービス)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
 
 ```
 「rclsuru」 を 読み込んで 使う
@@ -46,6 +46,11 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 | `n を ノード終了する` | 後始末(発行者・購読者・ノード・context を片付ける) |
 | `型 を 話題 へ n で q より QoS付き発行者作成する` | QoS を決めた発行者 |
 | `型 を 話題 から n で 関数 に q より QoS付き購読する` | QoS を決めた購読 |
+| `型 を 名前 で n に 関数 へ サービス作成する` | サービスのサーバー。要求ごとに `要求 を 関数する`(応答の値を返す動作)を行い、その応答を返す |
+| `型 を 名前 で n に クライアント作成する` | サービスのクライアント |
+| `c を 秒 で サービス待機する` | サーバーが出るまで 秒 まで待つ。出れば 真 |
+| `要求 を c へ 秒 で 呼出する` | 要求を送り、応答を 秒 まで待つ。結果は `応答 の 有` か `無`。待つ間もほかの購読・タイマーは動く |
+| `要求 を c へ 関数 で 要求送信する` | 要求を送るだけ。応答が届いたら(スピンする の中で)`応答 を 関数する` を行う |
 | `文字列型` | `std_msgs/msg/String`。する の値は文字列そのもの(`型/std_msgs` の `String型` は `data` の組) |
 
 ### メッセージの型
@@ -66,7 +71,7 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 始めする
 ```
 
-同梱したパッケージ: builtin_interfaces・std_msgs・geometry_msgs・sensor_msgs・nav_msgs・std_srvs・shape_msgs・trajectory_msgs・visualization_msgs・diagnostic_msgs・stereo_msgs・tf2_msgs・rosgraph_msgs・rcl_interfaces・action_msgs・unique_identifier_msgs・service_msgs
+同梱したパッケージ: builtin_interfaces・std_msgs・example_interfaces・geometry_msgs・sensor_msgs・nav_msgs・std_srvs・shape_msgs・trajectory_msgs・visualization_msgs・diagnostic_msgs・stereo_msgs・tf2_msgs・rosgraph_msgs・rcl_interfaces・action_msgs・unique_identifier_msgs・service_msgs
 
 1つのメッセージ(例: `geometry_msgs/msg/Twist`)から、次のものができます。
 
@@ -77,7 +82,7 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 | `Twist型` | `発行者作成する`・`購読する` に渡す メッセージ型 |
 | `GoalStatus_STATUS_ACCEPTED` | .msg の定数(`メッセージ名_定数名`) |
 
-.srv(例: `std_srvs/srv/SetBool`)からは `SetBool_Request`・`SetBool_Response` の2つのメッセージと `SetBool型`(サービス型。段階3 で使います)ができます。ほかのパッケージの型は `std_msgs内のHeader既定` のように「パッケージ内の」を付けて書きます(`読み込んで 使う` にしたパッケージは付けなくてよい)。2つのパッケージに同じ名前の型があるとき(turtlesim と geometry_msgs の `Pose` など)は、片方を `読み込む` にします。
+.srv(例: `std_srvs/srv/SetBool`)からは `SetBool_Request`・`SetBool_Response` の2つのメッセージと `SetBool型`(サービス型。`サービス作成する`・`クライアント作成する` に渡す)ができます。ほかのパッケージの型は `std_msgs内のHeader既定` のように「パッケージ内の」を付けて書きます(`読み込んで 使う` にしたパッケージは付けなくてよい)。2つのパッケージに同じ名前の型があるとき(turtlesim と geometry_msgs の `Pose` など)は、片方を `読み込む` にします。
 
 | ROS の型 | する の値 |
 |---|---|
@@ -100,6 +105,26 @@ suru <rclsuru のフォルダ>/生成器.suru 型 my_msgs      # 型/my_msgs.sur
 と実行し、`「型/my_msgs」 を 読み込む` で使います。`AMENT_PREFIX_PATH` からパッケージを探します。同梱したパッケージの型(std_msgs など)を使う型は、`「rclsuru/型/std_msgs」` を読み込むファイルになります。例は `examples/亀`(turtlesim の `turtlesim/msg/Pose`)です。
 
 メッセージを CDR のバイト列にしたいとき(ファイルに残すなど)は、`「rclsuru/CDR」 を 読み込む` で `x を 型 で CDR内のメッセージ直列化する` と `b を 型 で CDR内のメッセージ復元する` が使えます。
+
+### サービス
+
+```
+「rclsuru」 を 読み込んで 使う
+「rclsuru/型/example_interfaces」 を 読み込んで 使う
+
+始めする とは 手順
+  n とは 「add_two_ints_server」 を ノード作成した 結果
+  AddTwoInts型 を 「add_two_ints」 で n に 足し算すること へ サービス作成する
+  n を スピンする
+
+要求 を 足し算する とは （sum は （要求 の a） + （要求 の b） の AddTwoInts_Response既定） を 結果にする
+
+始めする
+```
+
+クライアントは `examples/足し算クライアント` にあります。`QoS付きサービス作成する`・`QoS付きクライアント作成する` で QoS も決められます(既定は `サービスQoS`)。
+
+rcl はサービスの要求と応答を直列化したまま渡せないので、rclsuru は rosidl_generator_c の `…__create` で C の構造体を作り、`rmw_serialize`・`rmw_deserialize` で CDR と行き来します。そのため、使う型のパッケージの `lib<パッケージ>__rosidl_generator_c.so` も要ります(ふつうは入っています)。
 
 ### QoS
 
@@ -146,13 +171,14 @@ kumu 点検
 python3 test/cdr_roundtrip.py   # 同梱した型の CDR を rclpy と往復させる
 SURU=suru test/interop.sh       # C++(rclcpp)・ros2 topic・ros2 launch・QoS・インタプリタとの相互運用
 SURU=suru test/turtle.sh        # examples/亀 と turtlesim(turtlesim と xvfb-run が要る)
+SURU=suru test/add_two_ints.sh  # examples/足し算サーバー・足し算クライアント(example_interfaces と demo_nodes_cpp が要る)
 ```
 
 `python3 test/cdr_roundtrip.py` は、同梱した型を全部(195 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
 
 ## まだできないこと
 
-- サービス・パラメータ・アクション・ログの関数はまだありません(.action の型も、まだ作りません)
+- パラメータ・アクション・ログの関数はまだありません(.action の型も、まだ作りません)
 - `wstring` を使う型は作りません
 - `スピンする` は1つのスレッドで回します。1つの発行者に、いくつものスレッドから同時に `発行する` しないでください(直列化の領域を共有しています)
 
