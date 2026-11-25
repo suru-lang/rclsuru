@@ -1,6 +1,6 @@
 # rclsuru
 
-する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階6(ログと時刻)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
+する言語(suru)で ROS 2 のノードを書くためのライブラリです。トピック・サービス・アクション・パラメータ・ログ・ROS の時刻が使え、rclcpp・rclpy のノードや `ros2` の道具とそのまま話せます。計画と進み具合は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
 
 ```
 「rclsuru」 を 読み込んで 使う
@@ -15,23 +15,57 @@
 始めする
 ```
 
-## 要るもの
+## 入れ方
 
-- ROS 2 Jazzy(Ubuntu 24.04)。`source /opt/ros/jazzy/setup.bash` してから使います
-- suru 0.5.0 以上(kumu・suruc・インタプリタの `suru`)と clang
-- 試験には colcon と、C++ の試験用ノードを作るための g++
+1. **ROS 2 Jazzy。** Ubuntu 24.04 に [ROS 2 の手順](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)で `ros-jazzy-ros-base`(か `ros-jazzy-desktop`)を入れます。使うときは毎回 `source /opt/ros/jazzy/setup.bash` します。
+2. **suru 0.5.0 以上と clang。** `kumu`・`suruc`・`suru` が要ります。入れ方は [suru の README](https://github.com/suru-lang/suru#入れ方) にあります(Homebrew なら `brew install suru-lang/suru/suru`、バイナリなら GitHub Releases)。clang は `sudo apt install clang` で入ります。
+3. **rclsuru。** 自分のプロジェクトで `kumu 追加 github.com/suru-lang/rclsuru` とします(次の「はじめてのノード」)。
 
-`docker/Dockerfile` に、全部を入れた環境があります。
+`docker/Dockerfile` に、ROS 2 Jazzy・suru・clang を全部入れた環境があります。試験には、ほかに colcon と g++(C++ の試験用ノード)が要ります。
 
-## 使い方
+## はじめてのノード
 
-自分のプロジェクトの依存に足します。
+`chatter` に1秒ごとに「こんにちは」を送るノードを作ります。
 
 ```sh
 source /opt/ros/jazzy/setup.bash
+kumu 新規 hello
+cd hello
 kumu 追加 github.com/suru-lang/rclsuru
-kumu 実行
 ```
+
+`本体.suru` を次のように書きます。
+
+```
+「rclsuru」 を 読み込んで 使う
+
+始めする とは 手順
+  n とは 「hello」 を ノード作成した 結果
+  p とは 文字列型 を 「chatter」 へ n で 発行者作成した 結果
+  （「こんにちは」 を p へ 発行する） を 1.0 で n に 周期登録する
+  「始めました」 を n で 情報記録する
+  n を スピンする
+
+始めする
+```
+
+`kumu 実行` で動きます(`kumu 作る` なら `出力/hello` の実行ファイルができます)。別の端末で聞くと届いています。
+
+```sh
+ros2 topic echo chatter std_msgs/msg/String   # data: こんにちは
+ros2 run demo_nodes_cpp listener              # C++ の listener でも聞ける
+```
+
+ノードの名前は英数字と `_` だけです(ROS の決まり)。Ctrl-C で後始末して終わります。ほかの例は `examples/` にあります。
+
+| 例 | 中身 |
+|---|---|
+| `examples/talker`・`examples/listener` | demo_nodes_cpp の talker・listener と同じ `chatter` |
+| `examples/亀` | turtlesim の亀を Twist で動かし、Pose を聞く |
+| `examples/足し算サーバー`・`examples/足し算クライアント` | example_interfaces/srv/AddTwoInts のサービス |
+| `examples/フィボナッチサーバー`・`examples/フィボナッチクライアント` | example_interfaces/action/Fibonacci のアクション |
+
+## 使い方
 
 C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 のヘッダーとライブラリは `/opt/ros/${ROS_DISTRO}` から探すので、`setup.bash` を読まずに作ると「環境変数「ROS_DISTRO」がありません」のエラーになります。インタプリタ(`suru 本体.suru`)でも同じように動きます。
 
@@ -226,6 +260,45 @@ ros2 run rclsuru_examples talker
 ros2 launch rclsuru_examples talker_listener.launch.py
 ```
 
+自分の ament のパッケージに入れるときは、`ros/rclsuru_examples/CMakeLists.txt` と同じように、CMake から `kumu 作る` を呼んで、できた実行ファイルを `lib/${PROJECT_NAME}` に置きます。
+
+```cmake
+find_program(KUMU kumu REQUIRED)
+add_custom_target(hello ALL
+  COMMAND ${KUMU} 作る
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/hello
+  VERBATIM)
+install(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/hello/出力/hello DESTINATION lib/${PROJECT_NAME})
+```
+
+する のプロジェクトをいくつも作るときは、`add_dependencies` で1つずつ作ります(同じ rclsuru の C の包みを同時に作らないため)。
+
+## rclcpp・rclpy との対応
+
+| rclcpp | rclpy | する(rclsuru) |
+|---|---|---|
+| `rclcpp::Node::make_shared("talker")` | `Node("talker")` | `「talker」 を ノード作成する` |
+| `create_publisher<String>("chatter", 10)` | `create_publisher(String, "chatter", 10)` | `文字列型 を 「chatter」 へ n で 発行者作成する` |
+| `pub->publish(msg)` | `pub.publish(msg)` | `値 を p へ 発行する` |
+| `create_subscription<T>("t", 10, cb)` | `create_subscription(T, "t", cb, 10)` | `T型 を 「t」 から n で 関数 に 購読する` |
+| QoS を渡す(`rclcpp::SensorDataQoS()` など) | `qos_profile_sensor_data` など | `… に センサーQoS より QoS付き購読する` |
+| `create_wall_timer(1s, cb)` | `create_timer(1.0, cb)` | `動作 を 1.0 で n に 周期登録する`(ROS の時刻) |
+| `rclcpp::spin(node)` | `rclpy.spin(node)` | `n を スピンする` |
+| `create_service<T>("s", cb)` | `create_service(T, "s", cb)` | `T型 を 「s」 で n に 関数 へ サービス作成する` |
+| `create_client<T>("s")`・`wait_for_service` | `create_client(T, "s")`・`wait_for_service` | `T型 を 「s」 で n に クライアント作成する`・`c を 秒 で サービス待機する` |
+| `async_send_request` | `call_async` | `要求 を c へ 関数 で 要求送信する`(待つなら `要求 を c へ 秒 で 呼出する`) |
+| `rclcpp_action::create_server<T>` | `ActionServer(node, T, "a", cb)` | `T型 を 「a」 で n に 関数 へ アクションサーバー作成する` |
+| `goal_handle->publish_feedback(f)` | `goal_handle.publish_feedback(f)` | `f を 扱い へ 途中送信する` |
+| `goal_handle->is_canceling()` | `goal_handle.is_cancel_requested` | `扱い を 取消確認する` |
+| `rclcpp_action::create_client<T>` | `ActionClient(node, T, "a")` | `T型 を 「a」 で n に アクションクライアント作成する` |
+| `async_send_goal` | `send_goal_async` | `目標 を ac へ 途中関数 で 結果関数 に 目標送信する`(待つなら `目標呼出する`) |
+| `declare_parameter("rate", 1.0)` | `declare_parameter("rate", 1.0)` | `n から 「rate」 を 1.0 で 小数パラメータ宣言する` |
+| `get_parameter("rate")` | `get_parameter("rate").value` | `n から 「rate」 を 小数パラメータ取得する` |
+| `add_on_set_parameters_callback` | `add_on_set_parameters_callback` | `n へ 関数 で パラメータ変更検査登録する` |
+| `RCLCPP_INFO(get_logger(), "…")` | `get_logger().info("…")` | `「…」 を n で 情報記録する` |
+| `now()` | `get_clock().now()` | `n を 時刻印作成する`(Time)・`n を ROS時刻取得する`(秒) |
+| `msg.data = "…"` / `String()` | `String(data="…")` | `data は 「…」 の String既定`(組の値。一部だけ変えて作る) |
+
 ## 作り
 
 - **C の包みは小さく。** suru の外部の関数は構造体を値で受け渡せないので、値で受け渡す rcl の関数(`rcl_get_zero_initialized_*`・`*_get_default_options` など)だけを `c/rclsuru.c` で包み、番地にして渡します。番地を受け取る rcl の関数(`rcl_init`・`rcl_node_init`・`rcl_publish_serialized_message` など)は する から直接呼びます。
@@ -245,7 +318,7 @@ SURU=suru test/add_two_ints.sh  # examples/足し算サーバー・足し算ク�
 test/fibonacci.sh               # examples/フィボナッチサーバー・フィボナッチクライアント(example_interfaces が要る)
 ```
 
-`python3 test/cdr_roundtrip.py` は、同梱した型を全部(195 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)、アクション(`ros2 action send_goal`・C++ の rclcpp_action と両方向。型は tf2_msgs/action/LookupTransform)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
+`python3 test/cdr_roundtrip.py` は、同梱した型を全部(203 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)、アクション(`ros2 action send_goal`・C++ の rclcpp_action と両方向。型は tf2_msgs/action/LookupTransform)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
 
 ## まだできないこと
 
