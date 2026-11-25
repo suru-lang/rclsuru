@@ -1,0 +1,832 @@
+# sensor_msgs の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
+「rclsuru/CDR」 を 読み込んで 使う
+「std_msgs」 を 読み込む
+「geometry_msgs」 を 読み込む
+「builtin_interfaces」 を 読み込む
+
+# sensor_msgs/msg/BatteryState
+BatteryState とは header と voltage と temperature と current と charge と capacity と design_capacity と percentage と power_supply_status と power_supply_health と power_supply_technology と present と cell_voltage と cell_temperature と location と serial_number の 組
+BatteryState既定 とは header は std_msgs内のHeader既定 で voltage は 0.0 で temperature は 0.0 で current は 0.0 で charge は 0.0 で capacity は 0.0 で design_capacity は 0.0 で percentage は 0.0 で power_supply_status は 0 で power_supply_health は 0 で power_supply_technology は 0 で present は 偽 で cell_voltage は 空 で cell_temperature は 空 で location は 「」 で serial_number は 「」 の BatteryState
+BatteryState型 とは 型名 は 「sensor_msgs/msg/BatteryState」 で 寸法 は BatteryState寸法すること で 書込 は BatteryState書込すること で 読取 は BatteryState読取すること の メッセージ型
+BatteryState_POWER_SUPPLY_STATUS_UNKNOWN とは 0
+BatteryState_POWER_SUPPLY_STATUS_CHARGING とは 1
+BatteryState_POWER_SUPPLY_STATUS_DISCHARGING とは 2
+BatteryState_POWER_SUPPLY_STATUS_NOT_CHARGING とは 3
+BatteryState_POWER_SUPPLY_STATUS_FULL とは 4
+BatteryState_POWER_SUPPLY_HEALTH_UNKNOWN とは 0
+BatteryState_POWER_SUPPLY_HEALTH_GOOD とは 1
+BatteryState_POWER_SUPPLY_HEALTH_OVERHEAT とは 2
+BatteryState_POWER_SUPPLY_HEALTH_DEAD とは 3
+BatteryState_POWER_SUPPLY_HEALTH_OVERVOLTAGE とは 4
+BatteryState_POWER_SUPPLY_HEALTH_UNSPEC_FAILURE とは 5
+BatteryState_POWER_SUPPLY_HEALTH_COLD とは 6
+BatteryState_POWER_SUPPLY_HEALTH_WATCHDOG_TIMER_EXPIRE とは 7
+BatteryState_POWER_SUPPLY_HEALTH_SAFETY_TIMER_EXPIRE とは 8
+BatteryState_POWER_SUPPLY_TECHNOLOGY_UNKNOWN とは 0
+BatteryState_POWER_SUPPLY_TECHNOLOGY_NIMH とは 1
+BatteryState_POWER_SUPPLY_TECHNOLOGY_LION とは 2
+BatteryState_POWER_SUPPLY_TECHNOLOGY_LIPO とは 3
+BatteryState_POWER_SUPPLY_TECHNOLOGY_LIFE とは 4
+BatteryState_POWER_SUPPLY_TECHNOLOGY_NICD とは 5
+BatteryState_POWER_SUPPLY_TECHNOLOGY_LIMN とは 6
+BatteryState_POWER_SUPPLY_TECHNOLOGY_TERNARY とは 7
+BatteryState_POWER_SUPPLY_TECHNOLOGY_VRLA とは 8
+BatteryState を 数 で BatteryState寸法する は 数
+対象 を 位0 で BatteryState寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の voltage） を 位1 で CDR単精度寸法する
+  位3 とは （対象 の temperature） を 位2 で CDR単精度寸法する
+  位4 とは （対象 の current） を 位3 で CDR単精度寸法する
+  位5 とは （対象 の charge） を 位4 で CDR単精度寸法する
+  位6 とは （対象 の capacity） を 位5 で CDR単精度寸法する
+  位7 とは （対象 の design_capacity） を 位6 で CDR単精度寸法する
+  位8 とは （対象 の percentage） を 位7 で CDR単精度寸法する
+  位9 とは （対象 の power_supply_status） を 位8 で CDR符号なし8寸法する
+  位10 とは （対象 の power_supply_health） を 位9 で CDR符号なし8寸法する
+  位11 とは （対象 の power_supply_technology） を 位10 で CDR符号なし8寸法する
+  位12 とは （対象 の present） を 位11 で CDR真偽寸法する
+  位13 とは （対象 の cell_voltage） を 位12 で 4 に CDR素可変列寸法する
+  位14 とは （対象 の cell_temperature） を 位13 で 4 に CDR素可変列寸法する
+  位15 とは （対象 の location） を 位14 で CDR文字列寸法する
+  （対象 の serial_number） を 位15 で CDR文字列寸法する
+BatteryState を 番地 へ 数 で BatteryState書込する は 数 の 動作
+対象 を 先 へ 位0 で BatteryState書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の voltage） を 先 へ 位1 で CDR単精度書込した 結果
+  位3 とは （対象 の temperature） を 先 へ 位2 で CDR単精度書込した 結果
+  位4 とは （対象 の current） を 先 へ 位3 で CDR単精度書込した 結果
+  位5 とは （対象 の charge） を 先 へ 位4 で CDR単精度書込した 結果
+  位6 とは （対象 の capacity） を 先 へ 位5 で CDR単精度書込した 結果
+  位7 とは （対象 の design_capacity） を 先 へ 位6 で CDR単精度書込した 結果
+  位8 とは （対象 の percentage） を 先 へ 位7 で CDR単精度書込した 結果
+  位9 とは （対象 の power_supply_status） を 先 へ 位8 で CDR符号なし8書込した 結果
+  位10 とは （対象 の power_supply_health） を 先 へ 位9 で CDR符号なし8書込した 結果
+  位11 とは （対象 の power_supply_technology） を 先 へ 位10 で CDR符号なし8書込した 結果
+  位12 とは （対象 の present） を 先 へ 位11 で CDR真偽書込した 結果
+  位13 とは （対象 の cell_voltage） を 先 へ 位12 で （CDR単精度書込すること） に CDR可変列書込した 結果
+  位14 とは （対象 の cell_temperature） を 先 へ 位13 で （CDR単精度書込すること） に CDR可変列書込した 結果
+  位15 とは （対象 の location） を 先 へ 位14 で CDR文字列書込した 結果
+  （対象 の serial_number） を 先 へ 位15 で CDR文字列書込する
+番地 から 数 で BatteryState読取する は （BatteryState と 数） の 読値 の 動作
+先 から 位0 で BatteryState読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR単精度読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR単精度読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR単精度読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR単精度読取した 結果
+  欄8 とは 先 から （欄7 の 次） で CDR単精度読取した 結果
+  欄9 とは 先 から （欄8 の 次） で CDR符号なし8読取した 結果
+  欄10 とは 先 から （欄9 の 次） で CDR符号なし8読取した 結果
+  欄11 とは 先 から （欄10 の 次） で CDR符号なし8読取した 結果
+  欄12 とは 先 から （欄11 の 次） で CDR真偽読取した 結果
+  欄13 とは 先 から （欄12 の 次） で （CDR単精度読取すること） に CDR可変列読取した 結果
+  欄14 とは 先 から （欄13 の 次） で （CDR単精度読取すること） に CDR可変列読取した 結果
+  欄15 とは 先 から （欄14 の 次） で CDR文字列読取した 結果
+  欄16 とは 先 から （欄15 の 次） で CDR文字列読取した 結果
+  （値 は （header は （欄1 の 値） で voltage は （欄2 の 値） で temperature は （欄3 の 値） で current は （欄4 の 値） で charge は （欄5 の 値） で capacity は （欄6 の 値） で design_capacity は （欄7 の 値） で percentage は （欄8 の 値） で power_supply_status は （欄9 の 値） で power_supply_health は （欄10 の 値） で power_supply_technology は （欄11 の 値） で present は （欄12 の 値） で cell_voltage は （欄13 の 値） で cell_temperature は （欄14 の 値） で location は （欄15 の 値） で serial_number は （欄16 の 値） の BatteryState） で 次 は （欄16 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/CameraInfo
+CameraInfo とは header と height と width と distortion_model と d と k と r と p と binning_x と binning_y と roi の 組
+CameraInfo既定 とは header は std_msgs内のHeader既定 で height は 0 で width は 0 で distortion_model は 「」 で d は 空 で k は （0.0 を 9 で 既定複製する） で r は （0.0 を 9 で 既定複製する） で p は （0.0 を 12 で 既定複製する） で binning_x は 0 で binning_y は 0 で roi は RegionOfInterest既定 の CameraInfo
+CameraInfo型 とは 型名 は 「sensor_msgs/msg/CameraInfo」 で 寸法 は CameraInfo寸法すること で 書込 は CameraInfo書込すること で 読取 は CameraInfo読取すること の メッセージ型
+CameraInfo を 数 で CameraInfo寸法する は 数
+対象 を 位0 で CameraInfo寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の height） を 位1 で CDR符号なし32寸法する
+  位3 とは （対象 の width） を 位2 で CDR符号なし32寸法する
+  位4 とは （対象 の distortion_model） を 位3 で CDR文字列寸法する
+  位5 とは （対象 の d） を 位4 で 8 に CDR素可変列寸法する
+  位6 とは （対象 の k） を 位5 で 8 に CDR素列寸法する
+  位7 とは （対象 の r） を 位6 で 8 に CDR素列寸法する
+  位8 とは （対象 の p） を 位7 で 8 に CDR素列寸法する
+  位9 とは （対象 の binning_x） を 位8 で CDR符号なし32寸法する
+  位10 とは （対象 の binning_y） を 位9 で CDR符号なし32寸法する
+  （対象 の roi） を 位10 で RegionOfInterest寸法する
+CameraInfo を 番地 へ 数 で CameraInfo書込する は 数 の 動作
+対象 を 先 へ 位0 で CameraInfo書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の height） を 先 へ 位1 で CDR符号なし32書込した 結果
+  位3 とは （対象 の width） を 先 へ 位2 で CDR符号なし32書込した 結果
+  位4 とは （対象 の distortion_model） を 先 へ 位3 で CDR文字列書込した 結果
+  位5 とは （対象 の d） を 先 へ 位4 で （CDR小数書込すること） に CDR可変列書込した 結果
+  位6 とは （対象 の k） を 先 へ 位5 で （CDR小数書込すること） に 9 より CDR固定列書込した 結果
+  位7 とは （対象 の r） を 先 へ 位6 で （CDR小数書込すること） に 9 より CDR固定列書込した 結果
+  位8 とは （対象 の p） を 先 へ 位7 で （CDR小数書込すること） に 12 より CDR固定列書込した 結果
+  位9 とは （対象 の binning_x） を 先 へ 位8 で CDR符号なし32書込した 結果
+  位10 とは （対象 の binning_y） を 先 へ 位9 で CDR符号なし32書込した 結果
+  （対象 の roi） を 先 へ 位10 で RegionOfInterest書込する
+番地 から 数 で CameraInfo読取する は （CameraInfo と 数） の 読値 の 動作
+先 から 位0 で CameraInfo読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号なし32読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR文字列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
+  欄6 とは 先 から （欄5 の 次） で （CDR小数読取すること） に 9 より CDR固定列読取した 結果
+  欄7 とは 先 から （欄6 の 次） で （CDR小数読取すること） に 9 より CDR固定列読取した 結果
+  欄8 とは 先 から （欄7 の 次） で （CDR小数読取すること） に 12 より CDR固定列読取した 結果
+  欄9 とは 先 から （欄8 の 次） で CDR符号なし32読取した 結果
+  欄10 とは 先 から （欄9 の 次） で CDR符号なし32読取した 結果
+  欄11 とは 先 から （欄10 の 次） で RegionOfInterest読取した 結果
+  （値 は （header は （欄1 の 値） で height は （欄2 の 値） で width は （欄3 の 値） で distortion_model は （欄4 の 値） で d は （欄5 の 値） で k は （欄6 の 値） で r は （欄7 の 値） で p は （欄8 の 値） で binning_x は （欄9 の 値） で binning_y は （欄10 の 値） で roi は （欄11 の 値） の CameraInfo） で 次 は （欄11 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/ChannelFloat32
+ChannelFloat32 とは name と values の 組
+ChannelFloat32既定 とは name は 「」 で values は 空 の ChannelFloat32
+ChannelFloat32型 とは 型名 は 「sensor_msgs/msg/ChannelFloat32」 で 寸法 は ChannelFloat32寸法すること で 書込 は ChannelFloat32書込すること で 読取 は ChannelFloat32読取すること の メッセージ型
+ChannelFloat32 を 数 で ChannelFloat32寸法する は 数
+対象 を 位0 で ChannelFloat32寸法する とは
+  位1 とは （対象 の name） を 位0 で CDR文字列寸法する
+  （対象 の values） を 位1 で 4 に CDR素可変列寸法する
+ChannelFloat32 を 番地 へ 数 で ChannelFloat32書込する は 数 の 動作
+対象 を 先 へ 位0 で ChannelFloat32書込する とは 手順
+  位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
+  （対象 の values） を 先 へ 位1 で （CDR単精度書込すること） に CDR可変列書込する
+番地 から 数 で ChannelFloat32読取する は （ChannelFloat32 と 数） の 読値 の 動作
+先 から 位0 で ChannelFloat32読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （CDR単精度読取すること） に CDR可変列読取した 結果
+  （値 は （name は （欄1 の 値） で values は （欄2 の 値） の ChannelFloat32） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/CompressedImage
+CompressedImage とは header と format と data の 組
+CompressedImage既定 とは header は std_msgs内のHeader既定 で format は 「」 で data は （0 を 零バイト列にする） の CompressedImage
+CompressedImage型 とは 型名 は 「sensor_msgs/msg/CompressedImage」 で 寸法 は CompressedImage寸法すること で 書込 は CompressedImage書込すること で 読取 は CompressedImage読取すること の メッセージ型
+CompressedImage を 数 で CompressedImage寸法する は 数
+対象 を 位0 で CompressedImage寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の format） を 位1 で CDR文字列寸法する
+  （対象 の data） を 位2 で CDRバイト可変列寸法する
+CompressedImage を 番地 へ 数 で CompressedImage書込する は 数 の 動作
+対象 を 先 へ 位0 で CompressedImage書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の format） を 先 へ 位1 で CDR文字列書込した 結果
+  （対象 の data） を 先 へ 位2 で CDRバイト可変列書込する
+番地 から 数 で CompressedImage読取する は （CompressedImage と 数） の 読値 の 動作
+先 から 位0 で CompressedImage読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDRバイト可変列読取した 結果
+  （値 は （header は （欄1 の 値） で format は （欄2 の 値） で data は （欄3 の 値） の CompressedImage） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/FluidPressure
+FluidPressure とは header と fluid_pressure と variance の 組
+FluidPressure既定 とは header は std_msgs内のHeader既定 で fluid_pressure は 0.0 で variance は 0.0 の FluidPressure
+FluidPressure型 とは 型名 は 「sensor_msgs/msg/FluidPressure」 で 寸法 は FluidPressure寸法すること で 書込 は FluidPressure書込すること で 読取 は FluidPressure読取すること の メッセージ型
+FluidPressure を 数 で FluidPressure寸法する は 数
+対象 を 位0 で FluidPressure寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の fluid_pressure） を 位1 で CDR小数寸法する
+  （対象 の variance） を 位2 で CDR小数寸法する
+FluidPressure を 番地 へ 数 で FluidPressure書込する は 数 の 動作
+対象 を 先 へ 位0 で FluidPressure書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の fluid_pressure） を 先 へ 位1 で CDR小数書込した 結果
+  （対象 の variance） を 先 へ 位2 で CDR小数書込する
+番地 から 数 で FluidPressure読取する は （FluidPressure と 数） の 読値 の 動作
+先 から 位0 で FluidPressure読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
+  （値 は （header は （欄1 の 値） で fluid_pressure は （欄2 の 値） で variance は （欄3 の 値） の FluidPressure） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/Illuminance
+Illuminance とは header と illuminance と variance の 組
+Illuminance既定 とは header は std_msgs内のHeader既定 で illuminance は 0.0 で variance は 0.0 の Illuminance
+Illuminance型 とは 型名 は 「sensor_msgs/msg/Illuminance」 で 寸法 は Illuminance寸法すること で 書込 は Illuminance書込すること で 読取 は Illuminance読取すること の メッセージ型
+Illuminance を 数 で Illuminance寸法する は 数
+対象 を 位0 で Illuminance寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の illuminance） を 位1 で CDR小数寸法する
+  （対象 の variance） を 位2 で CDR小数寸法する
+Illuminance を 番地 へ 数 で Illuminance書込する は 数 の 動作
+対象 を 先 へ 位0 で Illuminance書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の illuminance） を 先 へ 位1 で CDR小数書込した 結果
+  （対象 の variance） を 先 へ 位2 で CDR小数書込する
+番地 から 数 で Illuminance読取する は （Illuminance と 数） の 読値 の 動作
+先 から 位0 で Illuminance読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
+  （値 は （header は （欄1 の 値） で illuminance は （欄2 の 値） で variance は （欄3 の 値） の Illuminance） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/Image
+Image とは header と height と width と encoding と is_bigendian と step と data の 組
+Image既定 とは header は std_msgs内のHeader既定 で height は 0 で width は 0 で encoding は 「」 で is_bigendian は 0 で step は 0 で data は （0 を 零バイト列にする） の Image
+Image型 とは 型名 は 「sensor_msgs/msg/Image」 で 寸法 は Image寸法すること で 書込 は Image書込すること で 読取 は Image読取すること の メッセージ型
+Image を 数 で Image寸法する は 数
+対象 を 位0 で Image寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の height） を 位1 で CDR符号なし32寸法する
+  位3 とは （対象 の width） を 位2 で CDR符号なし32寸法する
+  位4 とは （対象 の encoding） を 位3 で CDR文字列寸法する
+  位5 とは （対象 の is_bigendian） を 位4 で CDR符号なし8寸法する
+  位6 とは （対象 の step） を 位5 で CDR符号なし32寸法する
+  （対象 の data） を 位6 で CDRバイト可変列寸法する
+Image を 番地 へ 数 で Image書込する は 数 の 動作
+対象 を 先 へ 位0 で Image書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の height） を 先 へ 位1 で CDR符号なし32書込した 結果
+  位3 とは （対象 の width） を 先 へ 位2 で CDR符号なし32書込した 結果
+  位4 とは （対象 の encoding） を 先 へ 位3 で CDR文字列書込した 結果
+  位5 とは （対象 の is_bigendian） を 先 へ 位4 で CDR符号なし8書込した 結果
+  位6 とは （対象 の step） を 先 へ 位5 で CDR符号なし32書込した 結果
+  （対象 の data） を 先 へ 位6 で CDRバイト可変列書込する
+番地 から 数 で Image読取する は （Image と 数） の 読値 の 動作
+先 から 位0 で Image読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号なし32読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR文字列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR符号なし8読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR符号なし32読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDRバイト可変列読取した 結果
+  （値 は （header は （欄1 の 値） で height は （欄2 の 値） で width は （欄3 の 値） で encoding は （欄4 の 値） で is_bigendian は （欄5 の 値） で step は （欄6 の 値） で data は （欄7 の 値） の Image） で 次 は （欄7 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/Imu
+Imu とは header と orientation と orientation_covariance と angular_velocity と angular_velocity_covariance と linear_acceleration と linear_acceleration_covariance の 組
+Imu既定 とは header は std_msgs内のHeader既定 で orientation は geometry_msgs内のQuaternion既定 で orientation_covariance は （0.0 を 9 で 既定複製する） で angular_velocity は geometry_msgs内のVector3既定 で angular_velocity_covariance は （0.0 を 9 で 既定複製する） で linear_acceleration は geometry_msgs内のVector3既定 で linear_acceleration_covariance は （0.0 を 9 で 既定複製する） の Imu
+Imu型 とは 型名 は 「sensor_msgs/msg/Imu」 で 寸法 は Imu寸法すること で 書込 は Imu書込すること で 読取 は Imu読取すること の メッセージ型
+Imu を 数 で Imu寸法する は 数
+対象 を 位0 で Imu寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の orientation） を 位1 で geometry_msgs内のQuaternion寸法する
+  位3 とは （対象 の orientation_covariance） を 位2 で 8 に CDR素列寸法する
+  位4 とは （対象 の angular_velocity） を 位3 で geometry_msgs内のVector3寸法する
+  位5 とは （対象 の angular_velocity_covariance） を 位4 で 8 に CDR素列寸法する
+  位6 とは （対象 の linear_acceleration） を 位5 で geometry_msgs内のVector3寸法する
+  （対象 の linear_acceleration_covariance） を 位6 で 8 に CDR素列寸法する
+Imu を 番地 へ 数 で Imu書込する は 数 の 動作
+対象 を 先 へ 位0 で Imu書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の orientation） を 先 へ 位1 で geometry_msgs内のQuaternion書込した 結果
+  位3 とは （対象 の orientation_covariance） を 先 へ 位2 で （CDR小数書込すること） に 9 より CDR固定列書込した 結果
+  位4 とは （対象 の angular_velocity） を 先 へ 位3 で geometry_msgs内のVector3書込した 結果
+  位5 とは （対象 の angular_velocity_covariance） を 先 へ 位4 で （CDR小数書込すること） に 9 より CDR固定列書込した 結果
+  位6 とは （対象 の linear_acceleration） を 先 へ 位5 で geometry_msgs内のVector3書込した 結果
+  （対象 の linear_acceleration_covariance） を 先 へ 位6 で （CDR小数書込すること） に 9 より CDR固定列書込する
+番地 から 数 で Imu読取する は （Imu と 数） の 読値 の 動作
+先 から 位0 で Imu読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で geometry_msgs内のQuaternion読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （CDR小数読取すること） に 9 より CDR固定列読取した 結果
+  欄4 とは 先 から （欄3 の 次） で geometry_msgs内のVector3読取した 結果
+  欄5 とは 先 から （欄4 の 次） で （CDR小数読取すること） に 9 より CDR固定列読取した 結果
+  欄6 とは 先 から （欄5 の 次） で geometry_msgs内のVector3読取した 結果
+  欄7 とは 先 から （欄6 の 次） で （CDR小数読取すること） に 9 より CDR固定列読取した 結果
+  （値 は （header は （欄1 の 値） で orientation は （欄2 の 値） で orientation_covariance は （欄3 の 値） で angular_velocity は （欄4 の 値） で angular_velocity_covariance は （欄5 の 値） で linear_acceleration は （欄6 の 値） で linear_acceleration_covariance は （欄7 の 値） の Imu） で 次 は （欄7 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/JointState
+JointState とは header と name と position と velocity と effort の 組
+JointState既定 とは header は std_msgs内のHeader既定 で name は 空 で position は 空 で velocity は 空 で effort は 空 の JointState
+JointState型 とは 型名 は 「sensor_msgs/msg/JointState」 で 寸法 は JointState寸法すること で 書込 は JointState書込すること で 読取 は JointState読取すること の メッセージ型
+JointState を 数 で JointState寸法する は 数
+対象 を 位0 で JointState寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の name） を 位1 で （CDR文字列寸法すること） に CDR可変列寸法する
+  位3 とは （対象 の position） を 位2 で 8 に CDR素可変列寸法する
+  位4 とは （対象 の velocity） を 位3 で 8 に CDR素可変列寸法する
+  （対象 の effort） を 位4 で 8 に CDR素可変列寸法する
+JointState を 番地 へ 数 で JointState書込する は 数 の 動作
+対象 を 先 へ 位0 で JointState書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の name） を 先 へ 位1 で （CDR文字列書込すること） に CDR可変列書込した 結果
+  位3 とは （対象 の position） を 先 へ 位2 で （CDR小数書込すること） に CDR可変列書込した 結果
+  位4 とは （対象 の velocity） を 先 へ 位3 で （CDR小数書込すること） に CDR可変列書込した 結果
+  （対象 の effort） を 先 へ 位4 で （CDR小数書込すること） に CDR可変列書込する
+番地 から 数 で JointState読取する は （JointState と 数） の 読値 の 動作
+先 から 位0 で JointState読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
+  欄4 とは 先 から （欄3 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で name は （欄2 の 値） で position は （欄3 の 値） で velocity は （欄4 の 値） で effort は （欄5 の 値） の JointState） で 次 は （欄5 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/Joy
+Joy とは header と axes と buttons の 組
+Joy既定 とは header は std_msgs内のHeader既定 で axes は 空 で buttons は 空 の Joy
+Joy型 とは 型名 は 「sensor_msgs/msg/Joy」 で 寸法 は Joy寸法すること で 書込 は Joy書込すること で 読取 は Joy読取すること の メッセージ型
+Joy を 数 で Joy寸法する は 数
+対象 を 位0 で Joy寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の axes） を 位1 で 4 に CDR素可変列寸法する
+  （対象 の buttons） を 位2 で 4 に CDR素可変列寸法する
+Joy を 番地 へ 数 で Joy書込する は 数 の 動作
+対象 を 先 へ 位0 で Joy書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の axes） を 先 へ 位1 で （CDR単精度書込すること） に CDR可変列書込した 結果
+  （対象 の buttons） を 先 へ 位2 で （CDR符号付き32書込すること） に CDR可変列書込する
+番地 から 数 で Joy読取する は （Joy と 数） の 読値 の 動作
+先 から 位0 で Joy読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （CDR単精度読取すること） に CDR可変列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （CDR符号付き32読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で axes は （欄2 の 値） で buttons は （欄3 の 値） の Joy） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/JoyFeedback
+JoyFeedback とは type と id と intensity の 組
+JoyFeedback既定 とは type は 0 で id は 0 で intensity は 0.0 の JoyFeedback
+JoyFeedback型 とは 型名 は 「sensor_msgs/msg/JoyFeedback」 で 寸法 は JoyFeedback寸法すること で 書込 は JoyFeedback書込すること で 読取 は JoyFeedback読取すること の メッセージ型
+JoyFeedback_TYPE_LED とは 0
+JoyFeedback_TYPE_RUMBLE とは 1
+JoyFeedback_TYPE_BUZZER とは 2
+JoyFeedback を 数 で JoyFeedback寸法する は 数
+対象 を 位0 で JoyFeedback寸法する とは
+  位1 とは （対象 の type） を 位0 で CDR符号なし8寸法する
+  位2 とは （対象 の id） を 位1 で CDR符号なし8寸法する
+  （対象 の intensity） を 位2 で CDR単精度寸法する
+JoyFeedback を 番地 へ 数 で JoyFeedback書込する は 数 の 動作
+対象 を 先 へ 位0 で JoyFeedback書込する とは 手順
+  位1 とは （対象 の type） を 先 へ 位0 で CDR符号なし8書込した 結果
+  位2 とは （対象 の id） を 先 へ 位1 で CDR符号なし8書込した 結果
+  （対象 の intensity） を 先 へ 位2 で CDR単精度書込する
+番地 から 数 で JoyFeedback読取する は （JoyFeedback と 数） の 読値 の 動作
+先 から 位0 で JoyFeedback読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
+  （値 は （type は （欄1 の 値） で id は （欄2 の 値） で intensity は （欄3 の 値） の JoyFeedback） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/JoyFeedbackArray
+JoyFeedbackArray とは array の 組
+JoyFeedbackArray既定 とは array は 空 の JoyFeedbackArray
+JoyFeedbackArray型 とは 型名 は 「sensor_msgs/msg/JoyFeedbackArray」 で 寸法 は JoyFeedbackArray寸法すること で 書込 は JoyFeedbackArray書込すること で 読取 は JoyFeedbackArray読取すること の メッセージ型
+JoyFeedbackArray を 数 で JoyFeedbackArray寸法する は 数
+対象 を 位0 で JoyFeedbackArray寸法する とは
+  （対象 の array） を 位0 で （JoyFeedback寸法すること） に CDR可変列寸法する
+JoyFeedbackArray を 番地 へ 数 で JoyFeedbackArray書込する は 数 の 動作
+対象 を 先 へ 位0 で JoyFeedbackArray書込する とは 手順
+  （対象 の array） を 先 へ 位0 で （JoyFeedback書込すること） に CDR可変列書込する
+番地 から 数 で JoyFeedbackArray読取する は （JoyFeedbackArray と 数） の 読値 の 動作
+先 から 位0 で JoyFeedbackArray読取する とは 手順
+  欄1 とは 先 から 位0 で （JoyFeedback読取すること） に CDR可変列読取した 結果
+  （値 は （array は （欄1 の 値） の JoyFeedbackArray） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/LaserEcho
+LaserEcho とは echoes の 組
+LaserEcho既定 とは echoes は 空 の LaserEcho
+LaserEcho型 とは 型名 は 「sensor_msgs/msg/LaserEcho」 で 寸法 は LaserEcho寸法すること で 書込 は LaserEcho書込すること で 読取 は LaserEcho読取すること の メッセージ型
+LaserEcho を 数 で LaserEcho寸法する は 数
+対象 を 位0 で LaserEcho寸法する とは
+  （対象 の echoes） を 位0 で 4 に CDR素可変列寸法する
+LaserEcho を 番地 へ 数 で LaserEcho書込する は 数 の 動作
+対象 を 先 へ 位0 で LaserEcho書込する とは 手順
+  （対象 の echoes） を 先 へ 位0 で （CDR単精度書込すること） に CDR可変列書込する
+番地 から 数 で LaserEcho読取する は （LaserEcho と 数） の 読値 の 動作
+先 から 位0 で LaserEcho読取する とは 手順
+  欄1 とは 先 から 位0 で （CDR単精度読取すること） に CDR可変列読取した 結果
+  （値 は （echoes は （欄1 の 値） の LaserEcho） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/LaserScan
+LaserScan とは header と angle_min と angle_max と angle_increment と time_increment と scan_time と range_min と range_max と ranges と intensities の 組
+LaserScan既定 とは header は std_msgs内のHeader既定 で angle_min は 0.0 で angle_max は 0.0 で angle_increment は 0.0 で time_increment は 0.0 で scan_time は 0.0 で range_min は 0.0 で range_max は 0.0 で ranges は 空 で intensities は 空 の LaserScan
+LaserScan型 とは 型名 は 「sensor_msgs/msg/LaserScan」 で 寸法 は LaserScan寸法すること で 書込 は LaserScan書込すること で 読取 は LaserScan読取すること の メッセージ型
+LaserScan を 数 で LaserScan寸法する は 数
+対象 を 位0 で LaserScan寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の angle_min） を 位1 で CDR単精度寸法する
+  位3 とは （対象 の angle_max） を 位2 で CDR単精度寸法する
+  位4 とは （対象 の angle_increment） を 位3 で CDR単精度寸法する
+  位5 とは （対象 の time_increment） を 位4 で CDR単精度寸法する
+  位6 とは （対象 の scan_time） を 位5 で CDR単精度寸法する
+  位7 とは （対象 の range_min） を 位6 で CDR単精度寸法する
+  位8 とは （対象 の range_max） を 位7 で CDR単精度寸法する
+  位9 とは （対象 の ranges） を 位8 で 4 に CDR素可変列寸法する
+  （対象 の intensities） を 位9 で 4 に CDR素可変列寸法する
+LaserScan を 番地 へ 数 で LaserScan書込する は 数 の 動作
+対象 を 先 へ 位0 で LaserScan書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の angle_min） を 先 へ 位1 で CDR単精度書込した 結果
+  位3 とは （対象 の angle_max） を 先 へ 位2 で CDR単精度書込した 結果
+  位4 とは （対象 の angle_increment） を 先 へ 位3 で CDR単精度書込した 結果
+  位5 とは （対象 の time_increment） を 先 へ 位4 で CDR単精度書込した 結果
+  位6 とは （対象 の scan_time） を 先 へ 位5 で CDR単精度書込した 結果
+  位7 とは （対象 の range_min） を 先 へ 位6 で CDR単精度書込した 結果
+  位8 とは （対象 の range_max） を 先 へ 位7 で CDR単精度書込した 結果
+  位9 とは （対象 の ranges） を 先 へ 位8 で （CDR単精度書込すること） に CDR可変列書込した 結果
+  （対象 の intensities） を 先 へ 位9 で （CDR単精度書込すること） に CDR可変列書込する
+番地 から 数 で LaserScan読取する は （LaserScan と 数） の 読値 の 動作
+先 から 位0 で LaserScan読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR単精度読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR単精度読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR単精度読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR単精度読取した 結果
+  欄8 とは 先 から （欄7 の 次） で CDR単精度読取した 結果
+  欄9 とは 先 から （欄8 の 次） で （CDR単精度読取すること） に CDR可変列読取した 結果
+  欄10 とは 先 から （欄9 の 次） で （CDR単精度読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で angle_min は （欄2 の 値） で angle_max は （欄3 の 値） で angle_increment は （欄4 の 値） で time_increment は （欄5 の 値） で scan_time は （欄6 の 値） で range_min は （欄7 の 値） で range_max は （欄8 の 値） で ranges は （欄9 の 値） で intensities は （欄10 の 値） の LaserScan） で 次 は （欄10 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/MagneticField
+MagneticField とは header と magnetic_field と magnetic_field_covariance の 組
+MagneticField既定 とは header は std_msgs内のHeader既定 で magnetic_field は geometry_msgs内のVector3既定 で magnetic_field_covariance は （0.0 を 9 で 既定複製する） の MagneticField
+MagneticField型 とは 型名 は 「sensor_msgs/msg/MagneticField」 で 寸法 は MagneticField寸法すること で 書込 は MagneticField書込すること で 読取 は MagneticField読取すること の メッセージ型
+MagneticField を 数 で MagneticField寸法する は 数
+対象 を 位0 で MagneticField寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の magnetic_field） を 位1 で geometry_msgs内のVector3寸法する
+  （対象 の magnetic_field_covariance） を 位2 で 8 に CDR素列寸法する
+MagneticField を 番地 へ 数 で MagneticField書込する は 数 の 動作
+対象 を 先 へ 位0 で MagneticField書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の magnetic_field） を 先 へ 位1 で geometry_msgs内のVector3書込した 結果
+  （対象 の magnetic_field_covariance） を 先 へ 位2 で （CDR小数書込すること） に 9 より CDR固定列書込する
+番地 から 数 で MagneticField読取する は （MagneticField と 数） の 読値 の 動作
+先 から 位0 で MagneticField読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で geometry_msgs内のVector3読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （CDR小数読取すること） に 9 より CDR固定列読取した 結果
+  （値 は （header は （欄1 の 値） で magnetic_field は （欄2 の 値） で magnetic_field_covariance は （欄3 の 値） の MagneticField） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/MultiDOFJointState
+MultiDOFJointState とは header と joint_names と transforms と twist と wrench の 組
+MultiDOFJointState既定 とは header は std_msgs内のHeader既定 で joint_names は 空 で transforms は 空 で twist は 空 で wrench は 空 の MultiDOFJointState
+MultiDOFJointState型 とは 型名 は 「sensor_msgs/msg/MultiDOFJointState」 で 寸法 は MultiDOFJointState寸法すること で 書込 は MultiDOFJointState書込すること で 読取 は MultiDOFJointState読取すること の メッセージ型
+MultiDOFJointState を 数 で MultiDOFJointState寸法する は 数
+対象 を 位0 で MultiDOFJointState寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の joint_names） を 位1 で （CDR文字列寸法すること） に CDR可変列寸法する
+  位3 とは （対象 の transforms） を 位2 で （geometry_msgs内のTransform寸法すること） に CDR可変列寸法する
+  位4 とは （対象 の twist） を 位3 で （geometry_msgs内のTwist寸法すること） に CDR可変列寸法する
+  （対象 の wrench） を 位4 で （geometry_msgs内のWrench寸法すること） に CDR可変列寸法する
+MultiDOFJointState を 番地 へ 数 で MultiDOFJointState書込する は 数 の 動作
+対象 を 先 へ 位0 で MultiDOFJointState書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の joint_names） を 先 へ 位1 で （CDR文字列書込すること） に CDR可変列書込した 結果
+  位3 とは （対象 の transforms） を 先 へ 位2 で （geometry_msgs内のTransform書込すること） に CDR可変列書込した 結果
+  位4 とは （対象 の twist） を 先 へ 位3 で （geometry_msgs内のTwist書込すること） に CDR可変列書込した 結果
+  （対象 の wrench） を 先 へ 位4 で （geometry_msgs内のWrench書込すること） に CDR可変列書込する
+番地 から 数 で MultiDOFJointState読取する は （MultiDOFJointState と 数） の 読値 の 動作
+先 から 位0 で MultiDOFJointState読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （geometry_msgs内のTransform読取すること） に CDR可変列読取した 結果
+  欄4 とは 先 から （欄3 の 次） で （geometry_msgs内のTwist読取すること） に CDR可変列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で （geometry_msgs内のWrench読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で joint_names は （欄2 の 値） で transforms は （欄3 の 値） で twist は （欄4 の 値） で wrench は （欄5 の 値） の MultiDOFJointState） で 次 は （欄5 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/MultiEchoLaserScan
+MultiEchoLaserScan とは header と angle_min と angle_max と angle_increment と time_increment と scan_time と range_min と range_max と ranges と intensities の 組
+MultiEchoLaserScan既定 とは header は std_msgs内のHeader既定 で angle_min は 0.0 で angle_max は 0.0 で angle_increment は 0.0 で time_increment は 0.0 で scan_time は 0.0 で range_min は 0.0 で range_max は 0.0 で ranges は 空 で intensities は 空 の MultiEchoLaserScan
+MultiEchoLaserScan型 とは 型名 は 「sensor_msgs/msg/MultiEchoLaserScan」 で 寸法 は MultiEchoLaserScan寸法すること で 書込 は MultiEchoLaserScan書込すること で 読取 は MultiEchoLaserScan読取すること の メッセージ型
+MultiEchoLaserScan を 数 で MultiEchoLaserScan寸法する は 数
+対象 を 位0 で MultiEchoLaserScan寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の angle_min） を 位1 で CDR単精度寸法する
+  位3 とは （対象 の angle_max） を 位2 で CDR単精度寸法する
+  位4 とは （対象 の angle_increment） を 位3 で CDR単精度寸法する
+  位5 とは （対象 の time_increment） を 位4 で CDR単精度寸法する
+  位6 とは （対象 の scan_time） を 位5 で CDR単精度寸法する
+  位7 とは （対象 の range_min） を 位6 で CDR単精度寸法する
+  位8 とは （対象 の range_max） を 位7 で CDR単精度寸法する
+  位9 とは （対象 の ranges） を 位8 で （LaserEcho寸法すること） に CDR可変列寸法する
+  （対象 の intensities） を 位9 で （LaserEcho寸法すること） に CDR可変列寸法する
+MultiEchoLaserScan を 番地 へ 数 で MultiEchoLaserScan書込する は 数 の 動作
+対象 を 先 へ 位0 で MultiEchoLaserScan書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の angle_min） を 先 へ 位1 で CDR単精度書込した 結果
+  位3 とは （対象 の angle_max） を 先 へ 位2 で CDR単精度書込した 結果
+  位4 とは （対象 の angle_increment） を 先 へ 位3 で CDR単精度書込した 結果
+  位5 とは （対象 の time_increment） を 先 へ 位4 で CDR単精度書込した 結果
+  位6 とは （対象 の scan_time） を 先 へ 位5 で CDR単精度書込した 結果
+  位7 とは （対象 の range_min） を 先 へ 位6 で CDR単精度書込した 結果
+  位8 とは （対象 の range_max） を 先 へ 位7 で CDR単精度書込した 結果
+  位9 とは （対象 の ranges） を 先 へ 位8 で （LaserEcho書込すること） に CDR可変列書込した 結果
+  （対象 の intensities） を 先 へ 位9 で （LaserEcho書込すること） に CDR可変列書込する
+番地 から 数 で MultiEchoLaserScan読取する は （MultiEchoLaserScan と 数） の 読値 の 動作
+先 から 位0 で MultiEchoLaserScan読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR単精度読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR単精度読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR単精度読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR単精度読取した 結果
+  欄8 とは 先 から （欄7 の 次） で CDR単精度読取した 結果
+  欄9 とは 先 から （欄8 の 次） で （LaserEcho読取すること） に CDR可変列読取した 結果
+  欄10 とは 先 から （欄9 の 次） で （LaserEcho読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で angle_min は （欄2 の 値） で angle_max は （欄3 の 値） で angle_increment は （欄4 の 値） で time_increment は （欄5 の 値） で scan_time は （欄6 の 値） で range_min は （欄7 の 値） で range_max は （欄8 の 値） で ranges は （欄9 の 値） で intensities は （欄10 の 値） の MultiEchoLaserScan） で 次 は （欄10 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/NavSatFix
+NavSatFix とは header と status と latitude と longitude と altitude と position_covariance と position_covariance_type の 組
+NavSatFix既定 とは header は std_msgs内のHeader既定 で status は NavSatStatus既定 で latitude は 0.0 で longitude は 0.0 で altitude は 0.0 で position_covariance は （0.0 を 9 で 既定複製する） で position_covariance_type は 0 の NavSatFix
+NavSatFix型 とは 型名 は 「sensor_msgs/msg/NavSatFix」 で 寸法 は NavSatFix寸法すること で 書込 は NavSatFix書込すること で 読取 は NavSatFix読取すること の メッセージ型
+NavSatFix_COVARIANCE_TYPE_UNKNOWN とは 0
+NavSatFix_COVARIANCE_TYPE_APPROXIMATED とは 1
+NavSatFix_COVARIANCE_TYPE_DIAGONAL_KNOWN とは 2
+NavSatFix_COVARIANCE_TYPE_KNOWN とは 3
+NavSatFix を 数 で NavSatFix寸法する は 数
+対象 を 位0 で NavSatFix寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の status） を 位1 で NavSatStatus寸法する
+  位3 とは （対象 の latitude） を 位2 で CDR小数寸法する
+  位4 とは （対象 の longitude） を 位3 で CDR小数寸法する
+  位5 とは （対象 の altitude） を 位4 で CDR小数寸法する
+  位6 とは （対象 の position_covariance） を 位5 で 8 に CDR素列寸法する
+  （対象 の position_covariance_type） を 位6 で CDR符号なし8寸法する
+NavSatFix を 番地 へ 数 で NavSatFix書込する は 数 の 動作
+対象 を 先 へ 位0 で NavSatFix書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の status） を 先 へ 位1 で NavSatStatus書込した 結果
+  位3 とは （対象 の latitude） を 先 へ 位2 で CDR小数書込した 結果
+  位4 とは （対象 の longitude） を 先 へ 位3 で CDR小数書込した 結果
+  位5 とは （対象 の altitude） を 先 へ 位4 で CDR小数書込した 結果
+  位6 とは （対象 の position_covariance） を 先 へ 位5 で （CDR小数書込すること） に 9 より CDR固定列書込した 結果
+  （対象 の position_covariance_type） を 先 へ 位6 で CDR符号なし8書込する
+番地 から 数 で NavSatFix読取する は （NavSatFix と 数） の 読値 の 動作
+先 から 位0 で NavSatFix読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で NavSatStatus読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR小数読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR小数読取した 結果
+  欄6 とは 先 から （欄5 の 次） で （CDR小数読取すること） に 9 より CDR固定列読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR符号なし8読取した 結果
+  （値 は （header は （欄1 の 値） で status は （欄2 の 値） で latitude は （欄3 の 値） で longitude は （欄4 の 値） で altitude は （欄5 の 値） で position_covariance は （欄6 の 値） で position_covariance_type は （欄7 の 値） の NavSatFix） で 次 は （欄7 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/NavSatStatus
+NavSatStatus とは status と service の 組
+NavSatStatus既定 とは status は -2 で service は 0 の NavSatStatus
+NavSatStatus型 とは 型名 は 「sensor_msgs/msg/NavSatStatus」 で 寸法 は NavSatStatus寸法すること で 書込 は NavSatStatus書込すること で 読取 は NavSatStatus読取すること の メッセージ型
+NavSatStatus_STATUS_UNKNOWN とは -2
+NavSatStatus_STATUS_NO_FIX とは -1
+NavSatStatus_STATUS_FIX とは 0
+NavSatStatus_STATUS_SBAS_FIX とは 1
+NavSatStatus_STATUS_GBAS_FIX とは 2
+NavSatStatus_SERVICE_UNKNOWN とは 0
+NavSatStatus_SERVICE_GPS とは 1
+NavSatStatus_SERVICE_GLONASS とは 2
+NavSatStatus_SERVICE_COMPASS とは 4
+NavSatStatus_SERVICE_GALILEO とは 8
+NavSatStatus を 数 で NavSatStatus寸法する は 数
+対象 を 位0 で NavSatStatus寸法する とは
+  位1 とは （対象 の status） を 位0 で CDR符号付き8寸法する
+  （対象 の service） を 位1 で CDR符号なし16寸法する
+NavSatStatus を 番地 へ 数 で NavSatStatus書込する は 数 の 動作
+対象 を 先 へ 位0 で NavSatStatus書込する とは 手順
+  位1 とは （対象 の status） を 先 へ 位0 で CDR符号付き8書込した 結果
+  （対象 の service） を 先 へ 位1 で CDR符号なし16書込する
+番地 から 数 で NavSatStatus読取する は （NavSatStatus と 数） の 読値 の 動作
+先 から 位0 で NavSatStatus読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし16読取した 結果
+  （値 は （status は （欄1 の 値） で service は （欄2 の 値） の NavSatStatus） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/PointCloud
+PointCloud とは header と points と channels の 組
+PointCloud既定 とは header は std_msgs内のHeader既定 で points は 空 で channels は 空 の PointCloud
+PointCloud型 とは 型名 は 「sensor_msgs/msg/PointCloud」 で 寸法 は PointCloud寸法すること で 書込 は PointCloud書込すること で 読取 は PointCloud読取すること の メッセージ型
+PointCloud を 数 で PointCloud寸法する は 数
+対象 を 位0 で PointCloud寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の points） を 位1 で （geometry_msgs内のPoint32寸法すること） に CDR可変列寸法する
+  （対象 の channels） を 位2 で （ChannelFloat32寸法すること） に CDR可変列寸法する
+PointCloud を 番地 へ 数 で PointCloud書込する は 数 の 動作
+対象 を 先 へ 位0 で PointCloud書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の points） を 先 へ 位1 で （geometry_msgs内のPoint32書込すること） に CDR可変列書込した 結果
+  （対象 の channels） を 先 へ 位2 で （ChannelFloat32書込すること） に CDR可変列書込する
+番地 から 数 で PointCloud読取する は （PointCloud と 数） の 読値 の 動作
+先 から 位0 で PointCloud読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （geometry_msgs内のPoint32読取すること） に CDR可変列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で （ChannelFloat32読取すること） に CDR可変列読取した 結果
+  （値 は （header は （欄1 の 値） で points は （欄2 の 値） で channels は （欄3 の 値） の PointCloud） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/PointCloud2
+PointCloud2 とは header と height と width と fields と is_bigendian と point_step と row_step と data と is_dense の 組
+PointCloud2既定 とは header は std_msgs内のHeader既定 で height は 0 で width は 0 で fields は 空 で is_bigendian は 偽 で point_step は 0 で row_step は 0 で data は （0 を 零バイト列にする） で is_dense は 偽 の PointCloud2
+PointCloud2型 とは 型名 は 「sensor_msgs/msg/PointCloud2」 で 寸法 は PointCloud2寸法すること で 書込 は PointCloud2書込すること で 読取 は PointCloud2読取すること の メッセージ型
+PointCloud2 を 数 で PointCloud2寸法する は 数
+対象 を 位0 で PointCloud2寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の height） を 位1 で CDR符号なし32寸法する
+  位3 とは （対象 の width） を 位2 で CDR符号なし32寸法する
+  位4 とは （対象 の fields） を 位3 で （PointField寸法すること） に CDR可変列寸法する
+  位5 とは （対象 の is_bigendian） を 位4 で CDR真偽寸法する
+  位6 とは （対象 の point_step） を 位5 で CDR符号なし32寸法する
+  位7 とは （対象 の row_step） を 位6 で CDR符号なし32寸法する
+  位8 とは （対象 の data） を 位7 で CDRバイト可変列寸法する
+  （対象 の is_dense） を 位8 で CDR真偽寸法する
+PointCloud2 を 番地 へ 数 で PointCloud2書込する は 数 の 動作
+対象 を 先 へ 位0 で PointCloud2書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の height） を 先 へ 位1 で CDR符号なし32書込した 結果
+  位3 とは （対象 の width） を 先 へ 位2 で CDR符号なし32書込した 結果
+  位4 とは （対象 の fields） を 先 へ 位3 で （PointField書込すること） に CDR可変列書込した 結果
+  位5 とは （対象 の is_bigendian） を 先 へ 位4 で CDR真偽書込した 結果
+  位6 とは （対象 の point_step） を 先 へ 位5 で CDR符号なし32書込した 結果
+  位7 とは （対象 の row_step） を 先 へ 位6 で CDR符号なし32書込した 結果
+  位8 とは （対象 の data） を 先 へ 位7 で CDRバイト可変列書込した 結果
+  （対象 の is_dense） を 先 へ 位8 で CDR真偽書込する
+番地 から 数 で PointCloud2読取する は （PointCloud2 と 数） の 読値 の 動作
+先 から 位0 で PointCloud2読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号なし32読取した 結果
+  欄4 とは 先 から （欄3 の 次） で （PointField読取すること） に CDR可変列読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR真偽読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR符号なし32読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR符号なし32読取した 結果
+  欄8 とは 先 から （欄7 の 次） で CDRバイト可変列読取した 結果
+  欄9 とは 先 から （欄8 の 次） で CDR真偽読取した 結果
+  （値 は （header は （欄1 の 値） で height は （欄2 の 値） で width は （欄3 の 値） で fields は （欄4 の 値） で is_bigendian は （欄5 の 値） で point_step は （欄6 の 値） で row_step は （欄7 の 値） で data は （欄8 の 値） で is_dense は （欄9 の 値） の PointCloud2） で 次 は （欄9 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/PointField
+PointField とは name と offset と datatype と count の 組
+PointField既定 とは name は 「」 で offset は 0 で datatype は 0 で count は 0 の PointField
+PointField型 とは 型名 は 「sensor_msgs/msg/PointField」 で 寸法 は PointField寸法すること で 書込 は PointField書込すること で 読取 は PointField読取すること の メッセージ型
+PointField_INT8 とは 1
+PointField_UINT8 とは 2
+PointField_INT16 とは 3
+PointField_UINT16 とは 4
+PointField_INT32 とは 5
+PointField_UINT32 とは 6
+PointField_FLOAT32 とは 7
+PointField_FLOAT64 とは 8
+PointField を 数 で PointField寸法する は 数
+対象 を 位0 で PointField寸法する とは
+  位1 とは （対象 の name） を 位0 で CDR文字列寸法する
+  位2 とは （対象 の offset） を 位1 で CDR符号なし32寸法する
+  位3 とは （対象 の datatype） を 位2 で CDR符号なし8寸法する
+  （対象 の count） を 位3 で CDR符号なし32寸法する
+PointField を 番地 へ 数 で PointField書込する は 数 の 動作
+対象 を 先 へ 位0 で PointField書込する とは 手順
+  位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
+  位2 とは （対象 の offset） を 先 へ 位1 で CDR符号なし32書込した 結果
+  位3 とは （対象 の datatype） を 先 へ 位2 で CDR符号なし8書込した 結果
+  （対象 の count） を 先 へ 位3 で CDR符号なし32書込する
+番地 から 数 で PointField読取する は （PointField と 数） の 読値 の 動作
+先 から 位0 で PointField読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号なし8読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR符号なし32読取した 結果
+  （値 は （name は （欄1 の 値） で offset は （欄2 の 値） で datatype は （欄3 の 値） で count は （欄4 の 値） の PointField） で 次 は （欄4 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/Range
+Range とは header と radiation_type と field_of_view と min_range と max_range と range と variance の 組
+Range既定 とは header は std_msgs内のHeader既定 で radiation_type は 0 で field_of_view は 0.0 で min_range は 0.0 で max_range は 0.0 で range は 0.0 で variance は 0.0 の Range
+Range型 とは 型名 は 「sensor_msgs/msg/Range」 で 寸法 は Range寸法すること で 書込 は Range書込すること で 読取 は Range読取すること の メッセージ型
+Range_ULTRASOUND とは 0
+Range_INFRARED とは 1
+Range を 数 で Range寸法する は 数
+対象 を 位0 で Range寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の radiation_type） を 位1 で CDR符号なし8寸法する
+  位3 とは （対象 の field_of_view） を 位2 で CDR単精度寸法する
+  位4 とは （対象 の min_range） を 位3 で CDR単精度寸法する
+  位5 とは （対象 の max_range） を 位4 で CDR単精度寸法する
+  位6 とは （対象 の range） を 位5 で CDR単精度寸法する
+  （対象 の variance） を 位6 で CDR単精度寸法する
+Range を 番地 へ 数 で Range書込する は 数 の 動作
+対象 を 先 へ 位0 で Range書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の radiation_type） を 先 へ 位1 で CDR符号なし8書込した 結果
+  位3 とは （対象 の field_of_view） を 先 へ 位2 で CDR単精度書込した 結果
+  位4 とは （対象 の min_range） を 先 へ 位3 で CDR単精度書込した 結果
+  位5 とは （対象 の max_range） を 先 へ 位4 で CDR単精度書込した 結果
+  位6 とは （対象 の range） を 先 へ 位5 で CDR単精度書込した 結果
+  （対象 の variance） を 先 へ 位6 で CDR単精度書込する
+番地 から 数 で Range読取する は （Range と 数） の 読値 の 動作
+先 から 位0 で Range読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR単精度読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR単精度読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR単精度読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR単精度読取した 結果
+  （値 は （header は （欄1 の 値） で radiation_type は （欄2 の 値） で field_of_view は （欄3 の 値） で min_range は （欄4 の 値） で max_range は （欄5 の 値） で range は （欄6 の 値） で variance は （欄7 の 値） の Range） で 次 は （欄7 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/RegionOfInterest
+RegionOfInterest とは x_offset と y_offset と height と width と do_rectify の 組
+RegionOfInterest既定 とは x_offset は 0 で y_offset は 0 で height は 0 で width は 0 で do_rectify は 偽 の RegionOfInterest
+RegionOfInterest型 とは 型名 は 「sensor_msgs/msg/RegionOfInterest」 で 寸法 は RegionOfInterest寸法すること で 書込 は RegionOfInterest書込すること で 読取 は RegionOfInterest読取すること の メッセージ型
+RegionOfInterest を 数 で RegionOfInterest寸法する は 数
+対象 を 位0 で RegionOfInterest寸法する とは
+  位1 とは （対象 の x_offset） を 位0 で CDR符号なし32寸法する
+  位2 とは （対象 の y_offset） を 位1 で CDR符号なし32寸法する
+  位3 とは （対象 の height） を 位2 で CDR符号なし32寸法する
+  位4 とは （対象 の width） を 位3 で CDR符号なし32寸法する
+  （対象 の do_rectify） を 位4 で CDR真偽寸法する
+RegionOfInterest を 番地 へ 数 で RegionOfInterest書込する は 数 の 動作
+対象 を 先 へ 位0 で RegionOfInterest書込する とは 手順
+  位1 とは （対象 の x_offset） を 先 へ 位0 で CDR符号なし32書込した 結果
+  位2 とは （対象 の y_offset） を 先 へ 位1 で CDR符号なし32書込した 結果
+  位3 とは （対象 の height） を 先 へ 位2 で CDR符号なし32書込した 結果
+  位4 とは （対象 の width） を 先 へ 位3 で CDR符号なし32書込した 結果
+  （対象 の do_rectify） を 先 へ 位4 で CDR真偽書込する
+番地 から 数 で RegionOfInterest読取する は （RegionOfInterest と 数） の 読値 の 動作
+先 から 位0 で RegionOfInterest読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし32読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR符号なし32読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR符号なし32読取した 結果
+  欄5 とは 先 から （欄4 の 次） で CDR真偽読取した 結果
+  （値 は （x_offset は （欄1 の 値） で y_offset は （欄2 の 値） で height は （欄3 の 値） で width は （欄4 の 値） で do_rectify は （欄5 の 値） の RegionOfInterest） で 次 は （欄5 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/RelativeHumidity
+RelativeHumidity とは header と relative_humidity と variance の 組
+RelativeHumidity既定 とは header は std_msgs内のHeader既定 で relative_humidity は 0.0 で variance は 0.0 の RelativeHumidity
+RelativeHumidity型 とは 型名 は 「sensor_msgs/msg/RelativeHumidity」 で 寸法 は RelativeHumidity寸法すること で 書込 は RelativeHumidity書込すること で 読取 は RelativeHumidity読取すること の メッセージ型
+RelativeHumidity を 数 で RelativeHumidity寸法する は 数
+対象 を 位0 で RelativeHumidity寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の relative_humidity） を 位1 で CDR小数寸法する
+  （対象 の variance） を 位2 で CDR小数寸法する
+RelativeHumidity を 番地 へ 数 で RelativeHumidity書込する は 数 の 動作
+対象 を 先 へ 位0 で RelativeHumidity書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の relative_humidity） を 先 へ 位1 で CDR小数書込した 結果
+  （対象 の variance） を 先 へ 位2 で CDR小数書込する
+番地 から 数 で RelativeHumidity読取する は （RelativeHumidity と 数） の 読値 の 動作
+先 から 位0 で RelativeHumidity読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
+  （値 は （header は （欄1 の 値） で relative_humidity は （欄2 の 値） で variance は （欄3 の 値） の RelativeHumidity） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/Temperature
+Temperature とは header と temperature と variance の 組
+Temperature既定 とは header は std_msgs内のHeader既定 で temperature は 0.0 で variance は 0.0 の Temperature
+Temperature型 とは 型名 は 「sensor_msgs/msg/Temperature」 で 寸法 は Temperature寸法すること で 書込 は Temperature書込すること で 読取 は Temperature読取すること の メッセージ型
+Temperature を 数 で Temperature寸法する は 数
+対象 を 位0 で Temperature寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の temperature） を 位1 で CDR小数寸法する
+  （対象 の variance） を 位2 で CDR小数寸法する
+Temperature を 番地 へ 数 で Temperature書込する は 数 の 動作
+対象 を 先 へ 位0 で Temperature書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の temperature） を 先 へ 位1 で CDR小数書込した 結果
+  （対象 の variance） を 先 へ 位2 で CDR小数書込する
+番地 から 数 で Temperature読取する は （Temperature と 数） の 読値 の 動作
+先 から 位0 で Temperature読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
+  （値 は （header は （欄1 の 値） で temperature は （欄2 の 値） で variance は （欄3 の 値） の Temperature） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/msg/TimeReference
+TimeReference とは header と time_ref と source の 組
+TimeReference既定 とは header は std_msgs内のHeader既定 で time_ref は builtin_interfaces内のTime既定 で source は 「」 の TimeReference
+TimeReference型 とは 型名 は 「sensor_msgs/msg/TimeReference」 で 寸法 は TimeReference寸法すること で 書込 は TimeReference書込すること で 読取 は TimeReference読取すること の メッセージ型
+TimeReference を 数 で TimeReference寸法する は 数
+対象 を 位0 で TimeReference寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の time_ref） を 位1 で builtin_interfaces内のTime寸法する
+  （対象 の source） を 位2 で CDR文字列寸法する
+TimeReference を 番地 へ 数 で TimeReference書込する は 数 の 動作
+対象 を 先 へ 位0 で TimeReference書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の time_ref） を 先 へ 位1 で builtin_interfaces内のTime書込した 結果
+  （対象 の source） を 先 へ 位2 で CDR文字列書込する
+番地 から 数 で TimeReference読取する は （TimeReference と 数） の 読値 の 動作
+先 から 位0 で TimeReference読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
+  （値 は （header は （欄1 の 値） で time_ref は （欄2 の 値） で source は （欄3 の 値） の TimeReference） で 次 は （欄3 の 次） の 読値） を 結果にする
+
+# sensor_msgs/srv/SetCameraInfo_Request
+SetCameraInfo_Request とは camera_info の 組
+SetCameraInfo_Request既定 とは camera_info は CameraInfo既定 の SetCameraInfo_Request
+SetCameraInfo_Request型 とは 型名 は 「sensor_msgs/srv/SetCameraInfo_Request」 で 寸法 は SetCameraInfo_Request寸法すること で 書込 は SetCameraInfo_Request書込すること で 読取 は SetCameraInfo_Request読取すること の メッセージ型
+SetCameraInfo_Request を 数 で SetCameraInfo_Request寸法する は 数
+対象 を 位0 で SetCameraInfo_Request寸法する とは
+  （対象 の camera_info） を 位0 で CameraInfo寸法する
+SetCameraInfo_Request を 番地 へ 数 で SetCameraInfo_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で SetCameraInfo_Request書込する とは 手順
+  （対象 の camera_info） を 先 へ 位0 で CameraInfo書込する
+番地 から 数 で SetCameraInfo_Request読取する は （SetCameraInfo_Request と 数） の 読値 の 動作
+先 から 位0 で SetCameraInfo_Request読取する とは 手順
+  欄1 とは 先 から 位0 で CameraInfo読取した 結果
+  （値 は （camera_info は （欄1 の 値） の SetCameraInfo_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# sensor_msgs/srv/SetCameraInfo_Response
+SetCameraInfo_Response とは success と status_message の 組
+SetCameraInfo_Response既定 とは success は 偽 で status_message は 「」 の SetCameraInfo_Response
+SetCameraInfo_Response型 とは 型名 は 「sensor_msgs/srv/SetCameraInfo_Response」 で 寸法 は SetCameraInfo_Response寸法すること で 書込 は SetCameraInfo_Response書込すること で 読取 は SetCameraInfo_Response読取すること の メッセージ型
+SetCameraInfo_Response を 数 で SetCameraInfo_Response寸法する は 数
+対象 を 位0 で SetCameraInfo_Response寸法する とは
+  位1 とは （対象 の success） を 位0 で CDR真偽寸法する
+  （対象 の status_message） を 位1 で CDR文字列寸法する
+SetCameraInfo_Response を 番地 へ 数 で SetCameraInfo_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で SetCameraInfo_Response書込する とは 手順
+  位1 とは （対象 の success） を 先 へ 位0 で CDR真偽書込した 結果
+  （対象 の status_message） を 先 へ 位1 で CDR文字列書込する
+番地 から 数 で SetCameraInfo_Response読取する は （SetCameraInfo_Response と 数） の 読値 の 動作
+先 から 位0 で SetCameraInfo_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR真偽読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  （値 は （success は （欄1 の 値） で status_message は （欄2 の 値） の SetCameraInfo_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# sensor_msgs/srv/SetCameraInfo
+SetCameraInfo型 とは 型名 は 「sensor_msgs/srv/SetCameraInfo」 で 要求 は SetCameraInfo_Request型 で 応答 は SetCameraInfo_Response型 の サービス型

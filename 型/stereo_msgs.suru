@@ -1,0 +1,40 @@
+# stereo_msgs の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
+「rclsuru/CDR」 を 読み込んで 使う
+「std_msgs」 を 読み込む
+「sensor_msgs」 を 読み込む
+
+# stereo_msgs/msg/DisparityImage
+DisparityImage とは header と image と f と t と valid_window と min_disparity と max_disparity と delta_d の 組
+DisparityImage既定 とは header は std_msgs内のHeader既定 で image は sensor_msgs内のImage既定 で f は 0.0 で t は 0.0 で valid_window は sensor_msgs内のRegionOfInterest既定 で min_disparity は 0.0 で max_disparity は 0.0 で delta_d は 0.0 の DisparityImage
+DisparityImage型 とは 型名 は 「stereo_msgs/msg/DisparityImage」 で 寸法 は DisparityImage寸法すること で 書込 は DisparityImage書込すること で 読取 は DisparityImage読取すること の メッセージ型
+DisparityImage を 数 で DisparityImage寸法する は 数
+対象 を 位0 で DisparityImage寸法する とは
+  位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
+  位2 とは （対象 の image） を 位1 で sensor_msgs内のImage寸法する
+  位3 とは （対象 の f） を 位2 で CDR単精度寸法する
+  位4 とは （対象 の t） を 位3 で CDR単精度寸法する
+  位5 とは （対象 の valid_window） を 位4 で sensor_msgs内のRegionOfInterest寸法する
+  位6 とは （対象 の min_disparity） を 位5 で CDR単精度寸法する
+  位7 とは （対象 の max_disparity） を 位6 で CDR単精度寸法する
+  （対象 の delta_d） を 位7 で CDR単精度寸法する
+DisparityImage を 番地 へ 数 で DisparityImage書込する は 数 の 動作
+対象 を 先 へ 位0 で DisparityImage書込する とは 手順
+  位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
+  位2 とは （対象 の image） を 先 へ 位1 で sensor_msgs内のImage書込した 結果
+  位3 とは （対象 の f） を 先 へ 位2 で CDR単精度書込した 結果
+  位4 とは （対象 の t） を 先 へ 位3 で CDR単精度書込した 結果
+  位5 とは （対象 の valid_window） を 先 へ 位4 で sensor_msgs内のRegionOfInterest書込した 結果
+  位6 とは （対象 の min_disparity） を 先 へ 位5 で CDR単精度書込した 結果
+  位7 とは （対象 の max_disparity） を 先 へ 位6 で CDR単精度書込した 結果
+  （対象 の delta_d） を 先 へ 位7 で CDR単精度書込する
+番地 から 数 で DisparityImage読取する は （DisparityImage と 数） の 読値 の 動作
+先 から 位0 で DisparityImage読取する とは 手順
+  欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
+  欄2 とは 先 から （欄1 の 次） で sensor_msgs内のImage読取した 結果
+  欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
+  欄4 とは 先 から （欄3 の 次） で CDR単精度読取した 結果
+  欄5 とは 先 から （欄4 の 次） で sensor_msgs内のRegionOfInterest読取した 結果
+  欄6 とは 先 から （欄5 の 次） で CDR単精度読取した 結果
+  欄7 とは 先 から （欄6 の 次） で CDR単精度読取した 結果
+  欄8 とは 先 から （欄7 の 次） で CDR単精度読取した 結果
+  （値 は （header は （欄1 の 値） で image は （欄2 の 値） で f は （欄3 の 値） で t は （欄4 の 値） で valid_window は （欄5 の 値） で min_disparity は （欄6 の 値） で max_disparity は （欄7 の 値） で delta_d は （欄8 の 値） の DisparityImage） で 次 は （欄8 の 次） の 読値） を 結果にする

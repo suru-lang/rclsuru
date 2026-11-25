@@ -73,6 +73,46 @@ check "ros2 launch で talker と listener" "$log" "聞きました: こんに�
 check "Ctrl-C できれいに終わる(talker)" "$log" "talker-1\]: process has finished cleanly"
 check "Ctrl-C できれいに終わる(listener)" "$log" "listener-2\]: process has finished cleanly"
 
+# 段階2: メッセージの型と QoS(test/interop_suru と C++ の cpp_msgs)
+(cd "$root/test/interop_suru" && kumu 作る > "$logs/interop_suru.log" 2>&1) || {
+  cat "$logs/interop_suru.log"; echo "test/interop_suru を作るのに失敗しました"; exit 1; }
+suru_node="$root/test/interop_suru/出力/interop_suru"
+
+out=$(pair twist_to_cpp "$suru_node twist" "stdbuf -o0 ros2 run rclsuru_interop_cpp cpp_msgs")
+check "する の Twist → C++" "$out" "C++ が Twist を聞きました: linear.x=1.5 angular.z=-0.5"
+
+out=$(pair twist_to_py "$suru_node twist" "ros2 topic echo cmd_vel geometry_msgs/msg/Twist")
+check "する の Twist → ros2 topic echo" "$out" "x: 1.5"
+
+out=$(pair joint_from_cpp "ros2 run rclsuru_interop_cpp cpp_msgs" "stdbuf -o0 $suru_node joint")
+check "C++ の JointState → する" "$out" "JointState を聞きました: 肩・肘 = 0.5 -1.25 frame=腕"
+
+out=$(pair scan_from_cpp "ros2 run rclsuru_interop_cpp cpp_msgs" "stdbuf -o0 $suru_node scan")
+check "C++ の LaserScan(sensor_data)→ する の sensor_data の購読" "$out" "LaserScan を聞きました: 1 2.5 4 angle_max=1.5"
+
+out=$(pair scan_reliable "ros2 run rclsuru_interop_cpp cpp_msgs" "stdbuf -o0 $suru_node scan_reliable")
+if grep -q "LaserScan を聞きました" "$out"; then
+  echo "不合格: reliable の購読に best effort の送り手から届きました(QoS が効いていません)"; failed=1
+else
+  echo "合格: reliable の購読には best effort の送り手から届かない"
+fi
+
+# transient_local: 送り手が先に1回だけ送り、後から来た購読者にも届く
+log="$logs/latched.log"
+(timeout -s INT 12 ros2 run rclsuru_interop_cpp cpp_msgs > /dev/null 2>&1 &)
+sleep 2
+timeout -s INT 6 stdbuf -o0 "$suru_node" latched > "$log" 2>&1
+check "C++ の transient_local → 後から来た する の購読" "$log" "String を聞きました: 最初の1回だけ"
+pkill -INT -f cpp_msgs || true
+
+log="$logs/latch_pub.log"
+(timeout -s INT 20 "$suru_node" latch_pub > /dev/null 2>&1 &)
+sleep 2
+timeout -s INT 15 ros2 topic echo --once --qos-durability transient_local --qos-reliability reliable --qos-depth 1 /latched_suru std_msgs/msg/String > "$log" 2>&1
+check "する の transient_local → 後から来た ros2 topic echo" "$log" "data: する から1回だけ"
+pkill -INT -f "interop_suru latch_pub" || true
+sleep 1
+
 # インタプリタ
 if [ -n "${SURU:-}" ]; then
   out=$(pair interp_listener "ros2 run rclsuru_interop_cpp cpp_talker" "cd $root/examples/listener && stdbuf -o0 $SURU 本体.suru")

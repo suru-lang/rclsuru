@@ -1,0 +1,30 @@
+# turtlesim の亀を円を描くように動かし、1秒ごとに今の場所を表示する
+#   ros2 run turtlesim turtlesim_node を動かしてから kumu 実行
+# turtlesim の型(型/turtlesim.suru)は rclsuru の生成器で作りました:
+#   suru ../../生成器.suru 型 turtlesim
+「rclsuru」 を 読み込んで 使う
+「rclsuru/型/geometry_msgs」 を 読み込んで 使う
+「型/turtlesim」 を 読み込む
+「スレッド」 を 読み込む
+
+始めする とは 手順
+  n とは 「turtle_driver」 を ノード作成した 結果
+  p とは Twist型 を 「turtle1/cmd_vel」 へ n で 発行者作成した 結果
+  回る とは linear は （x は 2.0 の Vector3既定） で angular は （z は 1.0 の Vector3既定） の Twist既定
+  最後 とは 空 で スレッド内の箱作成した 結果
+  turtlesim内のPose型 を 「turtle1/pose」 から n で （最後 へ 場所記録すること） に 購読する
+  （回る を p へ 発行する） を 0.5 で n に 周期登録する
+  （最後 を 場所表示する） を 1.0 で n に 周期登録する
+  n を スピンする
+
+# 届いた場所を箱に入れておく(多いので毎回は表示しない)
+姿 を 最後 へ 場所記録する とは （姿 を 空 に 追加する） を 最後 へ スレッド内の箱書込する
+
+最後 を 場所表示する とは 手順
+  xs とは 最後 を スレッド内の箱読取した 結果
+  動作群 とは xs の それぞれ を 一つ表示する
+  動作群 を 実行する
+
+姿 を 一つ表示する とは （「亀の場所: x=」 + （姿 の x を 文字列化する） + 「 y=」 + （姿 の y を 文字列化する） + 「 theta=」 + （姿 の theta を 文字列化する）） を 表示する
+
+始めする

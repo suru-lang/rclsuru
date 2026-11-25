@@ -1,0 +1,76 @@
+# tf2_msgs の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
+「rclsuru/CDR」 を 読み込んで 使う
+「geometry_msgs」 を 読み込む
+
+# tf2_msgs/msg/TF2Error
+TF2Error とは error と error_string の 組
+TF2Error既定 とは error は 0 で error_string は 「」 の TF2Error
+TF2Error型 とは 型名 は 「tf2_msgs/msg/TF2Error」 で 寸法 は TF2Error寸法すること で 書込 は TF2Error書込すること で 読取 は TF2Error読取すること の メッセージ型
+TF2Error_NO_ERROR とは 0
+TF2Error_LOOKUP_ERROR とは 1
+TF2Error_CONNECTIVITY_ERROR とは 2
+TF2Error_EXTRAPOLATION_ERROR とは 3
+TF2Error_INVALID_ARGUMENT_ERROR とは 4
+TF2Error_TIMEOUT_ERROR とは 5
+TF2Error_TRANSFORM_ERROR とは 6
+TF2Error を 数 で TF2Error寸法する は 数
+対象 を 位0 で TF2Error寸法する とは
+  位1 とは （対象 の error） を 位0 で CDR符号なし8寸法する
+  （対象 の error_string） を 位1 で CDR文字列寸法する
+TF2Error を 番地 へ 数 で TF2Error書込する は 数 の 動作
+対象 を 先 へ 位0 で TF2Error書込する とは 手順
+  位1 とは （対象 の error） を 先 へ 位0 で CDR符号なし8書込した 結果
+  （対象 の error_string） を 先 へ 位1 で CDR文字列書込する
+番地 から 数 で TF2Error読取する は （TF2Error と 数） の 読値 の 動作
+先 から 位0 で TF2Error読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
+  （値 は （error は （欄1 の 値） で error_string は （欄2 の 値） の TF2Error） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# tf2_msgs/msg/TFMessage
+TFMessage とは transforms の 組
+TFMessage既定 とは transforms は 空 の TFMessage
+TFMessage型 とは 型名 は 「tf2_msgs/msg/TFMessage」 で 寸法 は TFMessage寸法すること で 書込 は TFMessage書込すること で 読取 は TFMessage読取すること の メッセージ型
+TFMessage を 数 で TFMessage寸法する は 数
+対象 を 位0 で TFMessage寸法する とは
+  （対象 の transforms） を 位0 で （geometry_msgs内のTransformStamped寸法すること） に CDR可変列寸法する
+TFMessage を 番地 へ 数 で TFMessage書込する は 数 の 動作
+対象 を 先 へ 位0 で TFMessage書込する とは 手順
+  （対象 の transforms） を 先 へ 位0 で （geometry_msgs内のTransformStamped書込すること） に CDR可変列書込する
+番地 から 数 で TFMessage読取する は （TFMessage と 数） の 読値 の 動作
+先 から 位0 で TFMessage読取する とは 手順
+  欄1 とは 先 から 位0 で （geometry_msgs内のTransformStamped読取すること） に CDR可変列読取した 結果
+  （値 は （transforms は （欄1 の 値） の TFMessage） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# tf2_msgs/srv/FrameGraph_Request
+FrameGraph_Request とは structure_needs_at_least_one_member の 組
+FrameGraph_Request既定 とは structure_needs_at_least_one_member は 0 の FrameGraph_Request
+FrameGraph_Request型 とは 型名 は 「tf2_msgs/srv/FrameGraph_Request」 で 寸法 は FrameGraph_Request寸法すること で 書込 は FrameGraph_Request書込すること で 読取 は FrameGraph_Request読取すること の メッセージ型
+FrameGraph_Request を 数 で FrameGraph_Request寸法する は 数
+対象 を 位0 で FrameGraph_Request寸法する とは
+  （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
+FrameGraph_Request を 番地 へ 数 で FrameGraph_Request書込する は 数 の 動作
+対象 を 先 へ 位0 で FrameGraph_Request書込する とは 手順
+  （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
+番地 から 数 で FrameGraph_Request読取する は （FrameGraph_Request と 数） の 読値 の 動作
+先 から 位0 で FrameGraph_Request読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  （値 は （structure_needs_at_least_one_member は （欄1 の 値） の FrameGraph_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# tf2_msgs/srv/FrameGraph_Response
+FrameGraph_Response とは frame_yaml の 組
+FrameGraph_Response既定 とは frame_yaml は 「」 の FrameGraph_Response
+FrameGraph_Response型 とは 型名 は 「tf2_msgs/srv/FrameGraph_Response」 で 寸法 は FrameGraph_Response寸法すること で 書込 は FrameGraph_Response書込すること で 読取 は FrameGraph_Response読取すること の メッセージ型
+FrameGraph_Response を 数 で FrameGraph_Response寸法する は 数
+対象 を 位0 で FrameGraph_Response寸法する とは
+  （対象 の frame_yaml） を 位0 で CDR文字列寸法する
+FrameGraph_Response を 番地 へ 数 で FrameGraph_Response書込する は 数 の 動作
+対象 を 先 へ 位0 で FrameGraph_Response書込する とは 手順
+  （対象 の frame_yaml） を 先 へ 位0 で CDR文字列書込する
+番地 から 数 で FrameGraph_Response読取する は （FrameGraph_Response と 数） の 読値 の 動作
+先 から 位0 で FrameGraph_Response読取する とは 手順
+  欄1 とは 先 から 位0 で CDR文字列読取した 結果
+  （値 は （frame_yaml は （欄1 の 値） の FrameGraph_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# tf2_msgs/srv/FrameGraph
+FrameGraph型 とは 型名 は 「tf2_msgs/srv/FrameGraph」 で 要求 は FrameGraph_Request型 で 応答 は FrameGraph_Response型 の サービス型

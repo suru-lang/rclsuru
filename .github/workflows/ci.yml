@@ -40,7 +40,18 @@ jobs:
           source /opt/ros/jazzy/setup.bash
           kumu 点検
 
-      - name: 相互運用の試験(C++・ros2 CLI・launch・インタプリタ)
+      - name: CDR の往復の試験(同梱した型を全部 rclpy と往復させる)
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          python3 test/cdr_roundtrip.py
+
+      - name: 相互運用の試験(C++・ros2 CLI・launch・QoS・インタプリタ)
         run: |
           source /opt/ros/jazzy/setup.bash
           SURU=suru test/interop.sh
+
+      - name: turtlesim の試験(examples/亀)
+        run: |
+          apt-get install -y --no-install-recommends ros-jazzy-turtlesim xvfb xauth
+          source /opt/ros/jazzy/setup.bash
+          SURU=suru test/turtle.sh

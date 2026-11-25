@@ -1,0 +1,86 @@
+# shape_msgs の型(rclsuru の 生成器.suru で作りました。手で書きかえないでください)
+「rclsuru/CDR」 を 読み込んで 使う
+「geometry_msgs」 を 読み込む
+
+# shape_msgs/msg/Mesh
+Mesh とは triangles と vertices の 組
+Mesh既定 とは triangles は 空 で vertices は 空 の Mesh
+Mesh型 とは 型名 は 「shape_msgs/msg/Mesh」 で 寸法 は Mesh寸法すること で 書込 は Mesh書込すること で 読取 は Mesh読取すること の メッセージ型
+Mesh を 数 で Mesh寸法する は 数
+対象 を 位0 で Mesh寸法する とは
+  位1 とは （対象 の triangles） を 位0 で （MeshTriangle寸法すること） に CDR可変列寸法する
+  （対象 の vertices） を 位1 で （geometry_msgs内のPoint寸法すること） に CDR可変列寸法する
+Mesh を 番地 へ 数 で Mesh書込する は 数 の 動作
+対象 を 先 へ 位0 で Mesh書込する とは 手順
+  位1 とは （対象 の triangles） を 先 へ 位0 で （MeshTriangle書込すること） に CDR可変列書込した 結果
+  （対象 の vertices） を 先 へ 位1 で （geometry_msgs内のPoint書込すること） に CDR可変列書込する
+番地 から 数 で Mesh読取する は （Mesh と 数） の 読値 の 動作
+先 から 位0 で Mesh読取する とは 手順
+  欄1 とは 先 から 位0 で （MeshTriangle読取すること） に CDR可変列読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （geometry_msgs内のPoint読取すること） に CDR可変列読取した 結果
+  （値 は （triangles は （欄1 の 値） で vertices は （欄2 の 値） の Mesh） で 次 は （欄2 の 次） の 読値） を 結果にする
+
+# shape_msgs/msg/MeshTriangle
+MeshTriangle とは vertex_indices の 組
+MeshTriangle既定 とは vertex_indices は （0 を 3 で 既定複製する） の MeshTriangle
+MeshTriangle型 とは 型名 は 「shape_msgs/msg/MeshTriangle」 で 寸法 は MeshTriangle寸法すること で 書込 は MeshTriangle書込すること で 読取 は MeshTriangle読取すること の メッセージ型
+MeshTriangle を 数 で MeshTriangle寸法する は 数
+対象 を 位0 で MeshTriangle寸法する とは
+  （対象 の vertex_indices） を 位0 で 4 に CDR素列寸法する
+MeshTriangle を 番地 へ 数 で MeshTriangle書込する は 数 の 動作
+対象 を 先 へ 位0 で MeshTriangle書込する とは 手順
+  （対象 の vertex_indices） を 先 へ 位0 で （CDR符号なし32書込すること） に 3 より CDR固定列書込する
+番地 から 数 で MeshTriangle読取する は （MeshTriangle と 数） の 読値 の 動作
+先 から 位0 で MeshTriangle読取する とは 手順
+  欄1 とは 先 から 位0 で （CDR符号なし32読取すること） に 3 より CDR固定列読取した 結果
+  （値 は （vertex_indices は （欄1 の 値） の MeshTriangle） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# shape_msgs/msg/Plane
+Plane とは coef の 組
+Plane既定 とは coef は （0.0 を 4 で 既定複製する） の Plane
+Plane型 とは 型名 は 「shape_msgs/msg/Plane」 で 寸法 は Plane寸法すること で 書込 は Plane書込すること で 読取 は Plane読取すること の メッセージ型
+Plane を 数 で Plane寸法する は 数
+対象 を 位0 で Plane寸法する とは
+  （対象 の coef） を 位0 で 8 に CDR素列寸法する
+Plane を 番地 へ 数 で Plane書込する は 数 の 動作
+対象 を 先 へ 位0 で Plane書込する とは 手順
+  （対象 の coef） を 先 へ 位0 で （CDR小数書込すること） に 4 より CDR固定列書込する
+番地 から 数 で Plane読取する は （Plane と 数） の 読値 の 動作
+先 から 位0 で Plane読取する とは 手順
+  欄1 とは 先 から 位0 で （CDR小数読取すること） に 4 より CDR固定列読取した 結果
+  （値 は （coef は （欄1 の 値） の Plane） で 次 は （欄1 の 次） の 読値） を 結果にする
+
+# shape_msgs/msg/SolidPrimitive
+SolidPrimitive とは type と dimensions と polygon の 組
+SolidPrimitive既定 とは type は 0 で dimensions は 空 で polygon は geometry_msgs内のPolygon既定 の SolidPrimitive
+SolidPrimitive型 とは 型名 は 「shape_msgs/msg/SolidPrimitive」 で 寸法 は SolidPrimitive寸法すること で 書込 は SolidPrimitive書込すること で 読取 は SolidPrimitive読取すること の メッセージ型
+SolidPrimitive_BOX とは 1
+SolidPrimitive_SPHERE とは 2
+SolidPrimitive_CYLINDER とは 3
+SolidPrimitive_CONE とは 4
+SolidPrimitive_PRISM とは 5
+SolidPrimitive_BOX_X とは 0
+SolidPrimitive_BOX_Y とは 1
+SolidPrimitive_BOX_Z とは 2
+SolidPrimitive_SPHERE_RADIUS とは 0
+SolidPrimitive_CYLINDER_HEIGHT とは 0
+SolidPrimitive_CYLINDER_RADIUS とは 1
+SolidPrimitive_CONE_HEIGHT とは 0
+SolidPrimitive_CONE_RADIUS とは 1
+SolidPrimitive_PRISM_HEIGHT とは 0
+SolidPrimitive を 数 で SolidPrimitive寸法する は 数
+対象 を 位0 で SolidPrimitive寸法する とは
+  位1 とは （対象 の type） を 位0 で CDR符号なし8寸法する
+  位2 とは （対象 の dimensions） を 位1 で 8 に CDR素可変列寸法する
+  （対象 の polygon） を 位2 で geometry_msgs内のPolygon寸法する
+SolidPrimitive を 番地 へ 数 で SolidPrimitive書込する は 数 の 動作
+対象 を 先 へ 位0 で SolidPrimitive書込する とは 手順
+  位1 とは （対象 の type） を 先 へ 位0 で CDR符号なし8書込した 結果
+  位2 とは （対象 の dimensions） を 先 へ 位1 で （CDR小数書込すること） に 3 より CDR上限列書込した 結果
+  （対象 の polygon） を 先 へ 位2 で geometry_msgs内のPolygon書込する
+番地 から 数 で SolidPrimitive読取する は （SolidPrimitive と 数） の 読値 の 動作
+先 から 位0 で SolidPrimitive読取する とは 手順
+  欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
+  欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
+  欄3 とは 先 から （欄2 の 次） で geometry_msgs内のPolygon読取した 結果
+  （値 は （type は （欄1 の 値） で dimensions は （欄2 の 値） で polygon は （欄3 の 値） の SolidPrimitive） で 次 は （欄3 の 次） の 読値） を 結果にする
