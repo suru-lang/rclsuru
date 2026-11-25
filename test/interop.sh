@@ -54,10 +54,15 @@ check "ros2 topic pub → する の listener" "$out" "聞きました: パイ�
 
 # 名前と名前空間と話題の付け替え(--ros-args)
 log="$logs/remap.log"
-(timeout -s INT 6 ros2 run rclsuru_examples talker --ros-args -r __node:=alias -r __ns:=/ns -r chatter:=other > /dev/null 2>&1 &)
-sleep 3
-{ ros2 node list; ros2 topic list; } > "$log" 2>&1
-sleep 4
+(timeout -s INT 15 ros2 run rclsuru_examples talker --ros-args -r __node:=alias -r __ns:=/ns -r chatter:=other > /dev/null 2>&1 &)
+# 見つかるまでの時間は機械によって違う(ros2 のデーモンの始まりと DDS の発見)ので、10 秒まで待つ
+for _ in $(seq 20); do
+  { ros2 node list; ros2 topic list; } > "$log" 2>&1
+  grep -q "^/ns/alias$" "$log" && grep -q "^/ns/other$" "$log" && break
+  sleep 0.5
+done
+pkill -INT -f "__node:=alias" || true
+sleep 1
 check "ノードの名前の付け替え" "$log" "^/ns/alias$"
 check "話題の名前の付け替え" "$log" "^/ns/other$"
 
