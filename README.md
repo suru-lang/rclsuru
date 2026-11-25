@@ -37,7 +37,7 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 
 | 書き方 | 意味 |
 |---|---|
-| `名前 を ノード作成する` | ノードを作る動作。コマンドラインの `--ros-args`(`-r __node:=…`・`-r __ns:=…`・`-r chatter:=…` など)も読む |
+| `名前 を ノード作成する` | ノードを作る動作。名前は英数字と `_` だけ(ROS の決まり)。コマンドラインの `--ros-args`(`-r __node:=…`・`-r __ns:=…`・`-r chatter:=…` など)も読む |
 | `型 を 話題 へ n で 発行者作成する` | 発行者(publisher)。QoS は既定(深さ 10) |
 | `値 を p へ 発行する` | publish |
 | `型 を 話題 から n で 関数 に 購読する` | 購読(subscription)。届いた値ごとに `値 を 関数する` を行う |
@@ -57,7 +57,7 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 「rclsuru/型/geometry_msgs」 を 読み込んで 使う
 
 始めする とは 手順
-  n とは 「亀」 を ノード作成した 結果
+  n とは 「turtle_driver」 を ノード作成した 結果
   p とは Twist型 を 「turtle1/cmd_vel」 へ n で 発行者作成した 結果
   t とは linear は （x は 2.0 の Vector3既定） で angular は （z は 1.0 の Vector3既定） の Twist既定
   （t を p へ 発行する） を 0.5 で n に 周期登録する

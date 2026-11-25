@@ -8,7 +8,7 @@
 「スレッド」 を 読み込む
 
 始めする とは 手順
-  n とは 「亀」 を ノード作成した 結果
+  n とは 「turtle_driver」 を ノード作成した 結果
   p とは Twist型 を 「turtle1/cmd_vel」 へ n で 発行者作成した 結果
   回る とは linear は （x は 2.0 の Vector3既定） で angular は （z は 1.0 の Vector3既定） の Twist既定
   最後 とは 空 で スレッド内の箱作成した 結果
