@@ -217,6 +217,35 @@ check "する のクライアント → C++ のサーバー(feedback)" "$c" "fee
 check "する のクライアント → C++ のサーバー(取り消し)" "$c" "結果: 状態=5 child_frame_id=map_cpp"
 check "C++ のサーバーが取り消しを受ける" "$log" "C++: 取り消しを受けました"
 
+# 段階6: ログと時刻
+log="$logs/log.log"
+timeout -s INT 2 "$suru_node" log > "$log" 2>&1
+check "ログ(INFO)" "$log" "\[INFO\] \[[0-9.]*\] \[interop_suru\]: する からの情報"
+check "ログ(WARN・ERROR・FATAL)" "$log" "\[FATAL\] \[[0-9.]*\] \[interop_suru\]: する からの致命的なログ"
+if grep -q "詳しいログ" "$log"; then echo "不合格: 既定では DEBUG を出さない"; failed=1; else echo "合格: 既定では DEBUG を出さない"; fi
+log="$logs/log_debug.log"
+timeout -s INT 2 "$suru_node" log --ros-args --log-level interop_suru:=debug > "$log" 2>&1
+check "--log-level で DEBUG を出す" "$log" "\[DEBUG\] \[[0-9.]*\] \[interop_suru\]: 詳しいログ"
+log="$logs/rosout.log"
+(timeout -s INT 20 "$suru_node" log > /dev/null 2>&1 &)
+sleep 2
+timeout 15 ros2 topic echo --once /rosout rcl_interfaces/msg/Log > "$log" 2>&1
+pkill -INT -f "interop_suru log" || true
+sleep 1
+check "/rosout に出る" "$log" "name: interop_suru"
+
+log="$logs/time_sim.log"
+(timeout 15 python3 "$here/clock_pub.py" > /dev/null 2>&1 &)
+sleep 3
+timeout -s INT 3 stdbuf -o0 "$suru_node" time --ros-args -p use_sim_time:=true > "$log" 2>&1
+pkill -f clock_pub.py || true
+check "use_sim_time で /clock の時刻になる" "$log" "時刻=10[0-9][0-9]\.[0-9]* sec=10[0-9][0-9]$"
+ticks=$(grep -c "^時刻=" "$log")
+if [ "$ticks" -ge 10 ]; then echo "合格: タイマーが ROS の時刻で動く($ticks 回)"; else echo "不合格: タイマーが ROS の時刻で動く($ticks 回)"; sed 's/^/    /' "$log"; failed=1; fi
+log="$logs/time_wall.log"
+timeout -s INT 2.5 stdbuf -o0 "$suru_node" time > "$log" 2>&1
+check "use_sim_time でなければ今の時刻" "$log" "時刻=1[7-9][0-9]\{8\}"
+
 # インタプリタ
 if [ -n "${SURU:-}" ]; then
   out=$(pair interp_listener "ros2 run rclsuru_interop_cpp cpp_talker" "cd $root/examples/listener && stdbuf -o0 $SURU 本体.suru")

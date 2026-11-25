@@ -10,10 +10,13 @@
 #include <rcl/rcl.h>
 #include <rcl/event_callback.h>
 #include <rcl/logging.h>
+#include <rcl/logging_rosout.h>
 #include <rcl/client.h>
 #include <rcl/graph.h>
 #include <rcl/service.h>
 #include <rcl/arguments.h>
+#include <rcl/time.h>
+#include <rcutils/logging.h>
 #include <rcl_yaml_param_parser/parser.h>
 #include <rcl_yaml_param_parser/types.h>
 #include <rcutils/error_handling.h>
@@ -69,6 +72,71 @@ int64_t rclsuru_logging_init(rcl_context_t *context) {
   rcl_allocator_t a = rcl_get_default_allocator();
   return rcl_logging_configure(&context->global_arguments, &a);
 }
+
+// --- ログ ---
+
+// ノードのロガーの名前でログを出す(コンソール・/rosout・ログファイル)。
+// 重さは 10 DEBUG・20 INFO・30 WARN・40 ERROR・50 FATAL。rcutils のマクロは使えないので関数で包む
+void rclsuru_log(const rcl_node_t *node, int64_t severity, const char *msg)
+{
+  const char *name = rcl_node_get_logger_name(node);
+  if (!name) {
+    name = "";
+  }
+  if (rcutils_logging_logger_is_enabled_for(name, (int)severity)) {
+    // /rosout の出力は場所を必ず読むので、空の場所を渡す(する の関数と行は分からない)
+    rcutils_log_location_t where = {"", "", 0};
+    rcutils_log(&where, (int)severity, name, "%s", msg);
+  }
+}
+
+// /rosout の発行者(rclcpp と同じく、rcl_node_init の後に作り、rcl_node_fini の前に片付ける)
+int64_t rclsuru_rosout_init(rcl_node_t *node)
+{
+  if (!rcl_logging_rosout_enabled() || !rcl_node_get_options(node)->enable_rosout) {
+    return RCL_RET_OK;
+  }
+  return rcl_logging_rosout_init_publisher_for_node(node);
+}
+
+int64_t rclsuru_rosout_fini(rcl_node_t *node)
+{
+  if (!rcl_logging_rosout_enabled() || !rcl_node_get_options(node)->enable_rosout) {
+    return RCL_RET_OK;
+  }
+  return rcl_logging_rosout_fini_publisher_for_node(node);
+}
+
+// --- 時計 ---
+
+// 種類は 1 ROS_TIME・2 SYSTEM_TIME・3 STEADY_TIME。失敗なら NULL
+rcl_clock_t *rclsuru_clock_new(int64_t type)
+{
+  rcl_clock_t *p = malloc(sizeof(rcl_clock_t));
+  rcl_allocator_t a = rcl_get_default_allocator();
+  if (p && rcl_clock_init((rcl_clock_type_t)type, p, &a) != RCL_RET_OK) {
+    rcutils_reset_error();
+    free(p);
+    return NULL;
+  }
+  return p;
+}
+
+// いまの時刻(ナノ秒)。失敗なら -1
+int64_t rclsuru_clock_now(rcl_clock_t *p)
+{
+  rcl_time_point_value_t t = 0;
+  if (rcl_clock_get_now(p, &t) != RCL_RET_OK) {
+    rcutils_reset_error();
+    return -1;
+  }
+  return t;
+}
+
+// /clock で進める(sim time)。有効にしてから rclsuru_clock_set で時刻を入れる
+int64_t rclsuru_clock_enable_override(rcl_clock_t *p) { return rcl_enable_ros_time_override(p); }
+
+int64_t rclsuru_clock_set(rcl_clock_t *p, int64_t ns) { return rcl_set_ros_time_override(p, ns); }
 
 // --- 起動時のパラメータ(--ros-args -p・--params-file) ---
 

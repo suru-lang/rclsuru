@@ -1,6 +1,6 @@
 # rclsuru
 
-する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階5(アクション)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
+する言語(suru)で ROS 2 のノードを書くためのライブラリです。今は段階6(ログと時刻)まで動きます。計画は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
 
 ```
 「rclsuru」 を 読み込んで 使う
@@ -126,6 +126,23 @@ suru <rclsuru のフォルダ>/生成器.suru 型 my_msgs      # 型/my_msgs.sur
 
 rcl はサービスの要求と応答を直列化したまま渡せないので、rclsuru は rosidl_generator_c の `…__create` で C の構造体を作り、`rmw_serialize`・`rmw_deserialize` で CDR と行き来します。そのため、使う型のパッケージの `lib<パッケージ>__rosidl_generator_c.so` も要ります(ふつうは入っています)。
 
+### ログ
+
+```
+「始めました」 を n で 情報記録する
+```
+
+`詳細記録する`(DEBUG)・`情報記録する`(INFO)・`警告記録する`(WARN)・`エラー記録する`(ERROR)・`致命記録する`(FATAL)の5つです。ノードの名前のロガーで出すので、rclcpp のノードと同じく、コンソール・`/rosout`(rqt_console)・ログファイルに出ます。`--ros-args --log-level debug` や `--log-level ノード名:=debug` も効きます。ログに付く場所(ファイル・関数・行)は空です(する の呼んだ場所は分かりません)。
+
+### 時刻
+
+| 関数 | 中身 |
+|---|---|
+| `n を ROS時刻取得する` | いまの ROS の時刻(秒。小数) |
+| `n を 時刻印作成する` | いまの ROS の時刻の `builtin_interfaces/Time`(`header.stamp` に入れる) |
+
+ノードはパラメータ `use_sim_time` を宣言します。起動時に 真 なら(`--ros-args -p use_sim_time:=true`、launch の `use_sim_time`)、`/clock` を購読して、その時刻が ROS の時刻になります(Gazebo や `ros2 bag play --clock`)。`周期登録する` のタイマーも ROS の時刻で動きます。起動した後で `use_sim_time` を変えても時刻の元は変わりません。
+
 ### アクション
 
 ```
@@ -232,9 +249,9 @@ test/fibonacci.sh               # examples/フィボナッチサーバー・フ�
 
 ## まだできないこと
 
-- ログの関数はまだありません
+- 起動した後で `use_sim_time` を変えても、時刻の元は変わりません
 - アクションの取り消しを断る関数は登録できません(まだ終わっていない目標の取り消しはみな受け付けます)
-- パラメータの範囲(`integer_range`・`floating_point_range`)は確かめません。`use_sim_time` も宣言しません
+- パラメータの範囲(`integer_range`・`floating_point_range`)は確かめません
 - `wstring` を使う型は作りません
 - `スピンする` は1つのスレッドで回します。1つの発行者に、いくつものスレッドから同時に `発行する` しないでください(直列化の領域を共有しています)
 

@@ -1,5 +1,5 @@
 名前 とは 「rclsuru」
-版 とは 「0.4.0」
+版 とは 「0.5.0」
 Cソース とは 「c/rclsuru.c」
 C引数 とは 「-I/opt/ros/${ROS_DISTRO}/include/rcl -I/opt/ros/${ROS_DISTRO}/include/rcutils -I/opt/ros/${ROS_DISTRO}/include/rmw -I/opt/ros/${ROS_DISTRO}/include/rosidl_runtime_c -I/opt/ros/${ROS_DISTRO}/include/rosidl_typesupport_interface -I/opt/ros/${ROS_DISTRO}/include/rcl_yaml_param_parser -I/opt/ros/${ROS_DISTRO}/include/type_description_interfaces -I/opt/ros/${ROS_DISTRO}/include/service_msgs -I/opt/ros/${ROS_DISTRO}/include/builtin_interfaces -I/opt/ros/${ROS_DISTRO}/include/rosidl_dynamic_typesupport -I/opt/ros/${ROS_DISTRO}/include/rcl_logging_interface」
 リンク引数 とは 「-L/opt/ros/${ROS_DISTRO}/lib -lrcl -lrcl_yaml_param_parser -lrcutils -lrmw -lrmw_implementation -Wl,-rpath,/opt/ros/${ROS_DISTRO}/lib」
