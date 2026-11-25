@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  jazzy:
+    runs-on: ubuntu-24.04
+    container: ros:jazzy-ros-base
+    env:
+      SURU_VERSION: v0.5.0
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: false
+
+      - name: clang と suru を入れる
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends clang python3-pip git
+          go install github.com/suru-lang/suru/cmd/kumu@${SURU_VERSION}
+          pip install --break-system-packages "git+https://github.com/suru-lang/suru@${SURU_VERSION}"
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      - name: 試験(kumu 試験)
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          kumu 試験
+
+      - name: 点検(kumu 点検)
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          kumu 点検
+
+      - name: 相互運用の試験(C++・ros2 CLI・launch・インタプリタ)
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          SURU=suru test/interop.sh

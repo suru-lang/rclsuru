@@ -1,0 +1,80 @@
+#!/bin/bash
+# rclsuru の相互運用の試験。ROS 2 の環境(source /opt/ros/$ROS_DISTRO/setup.bash 済み)で動かす。
+#   test/interop.sh            … colcon で作って、試験を全部動かす
+# 要るもの: kumu(PATH にあること)、clang、colcon。インタプリタの試験は SURU が suru のコマンドのとき。
+
+here=$(cd "$(dirname "$0")" && pwd)
+root=$(cd "$here/.." && pwd)
+ws=${RCLSURU_TEST_WS:-/tmp/rclsuru_ws}
+export ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-42}
+export RCUTILS_COLORIZED_OUTPUT=0
+logs=$(mktemp -d)
+failed=0
+
+rm -rf "$ws" && mkdir -p "$ws/src"
+cp -r "$root" "$ws/src/rclsuru"
+rm -rf "$ws/src/rclsuru/.git"
+(cd "$ws" && colcon build --event-handlers console_cohesion+ > "$logs/build.log" 2>&1) || {
+  cat "$logs/build.log"; echo "作るのに失敗しました"; exit 1; }
+# shellcheck disable=SC1091
+source "$ws/install/setup.bash"
+
+check() {  # check 名前 ログ 含むはずの文
+  if grep -q -- "$3" "$2"; then
+    echo "合格: $1"
+  else
+    echo "不合格: $1(「$3」がありません)"; sed 's/^/    /' "$2"; failed=1
+  fi
+}
+
+# 送る側と受け取る側を動かし、受け取る側の出力を返す
+pair() {  # pair 名前 送る命令 受け取る命令
+  local out="$logs/$1.log"
+  (timeout -s INT 10 bash -c "$3" > "$out" 2>&1 &)
+  sleep 1
+  timeout -s INT 7 bash -c "$2" > "$logs/$1.sender.log" 2>&1
+  sleep 3
+  echo "$out"
+}
+
+out=$(pair suru_to_cpp "ros2 run rclsuru_examples talker" "ros2 run rclsuru_interop_cpp cpp_listener")
+check "する の talker → C++ の listener" "$out" "C++ が聞きました: こんにちは する"
+
+out=$(pair cpp_to_suru "ros2 run rclsuru_interop_cpp cpp_talker" "stdbuf -o0 ros2 run rclsuru_examples listener")
+check "C++ の talker → する の listener" "$out" "聞きました: C++ から"
+
+out=$(pair suru_to_suru "ros2 run rclsuru_examples talker" "stdbuf -o0 ros2 run rclsuru_examples listener")
+check "する の talker → する の listener" "$out" "聞きました: こんにちは する"
+
+out=$(pair suru_to_py "ros2 run rclsuru_examples talker" "ros2 topic echo chatter std_msgs/msg/String")
+check "する の talker → ros2 topic echo" "$out" "data: こんにちは する"
+
+out=$(pair py_to_suru "ros2 topic pub -r 5 chatter std_msgs/msg/String '{data: パイソン}'" "stdbuf -o0 ros2 run rclsuru_examples listener")
+check "ros2 topic pub → する の listener" "$out" "聞きました: パイソン"
+
+# 名前と名前空間と話題の付け替え(--ros-args)
+log="$logs/remap.log"
+(timeout -s INT 6 ros2 run rclsuru_examples talker --ros-args -r __node:=alias -r __ns:=/ns -r chatter:=other > /dev/null 2>&1 &)
+sleep 3
+{ ros2 node list; ros2 topic list; } > "$log" 2>&1
+sleep 4
+check "ノードの名前の付け替え" "$log" "^/ns/alias$"
+check "話題の名前の付け替え" "$log" "^/ns/other$"
+
+# ros2 launch と Ctrl-C での終わり
+log="$logs/launch.log"
+timeout -s INT 6 ros2 launch rclsuru_examples talker_listener.launch.py > "$log" 2>&1
+check "ros2 launch で talker と listener" "$log" "聞きました: こんにちは する"
+check "Ctrl-C できれいに終わる(talker)" "$log" "talker-1\]: process has finished cleanly"
+check "Ctrl-C できれいに終わる(listener)" "$log" "listener-2\]: process has finished cleanly"
+
+# インタプリタ
+if [ -n "${SURU:-}" ]; then
+  out=$(pair interp_listener "ros2 run rclsuru_interop_cpp cpp_talker" "cd $root/examples/listener && stdbuf -o0 $SURU 本体.suru")
+  check "インタプリタの listener ← C++ の talker" "$out" "聞きました: C++ から"
+  out=$(pair interp_talker "cd $root/examples/talker && $SURU 本体.suru" "ros2 run rclsuru_interop_cpp cpp_listener")
+  check "インタプリタの talker → C++ の listener" "$out" "C++ が聞きました: こんにちは する"
+fi
+
+rm -rf "$logs"
+if [ "$failed" = 0 ]; then echo "全部合格"; else echo "不合格があります"; exit 1; fi
