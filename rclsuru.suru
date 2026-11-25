@@ -23,6 +23,8 @@
 # する のスレッドから呼んで、同じ通路に知らせます。
 「標準」 を 読み込んで 使う
 「CDR」 を 読み込んで 使う
+「型/rcl_interfaces」 を 読み込む
+「型/builtin_interfaces」 を 読み込む
 「動的リンク」 を 読み込む
 「環境」 を 読み込む
 「スレッド」 を 読み込む
@@ -173,6 +175,37 @@ h を 見出し削除する とは 外部の「rclsuru_request_id_delete」
 番地 を 続番取得する は 数 の 動作
 h を 続番取得する とは 外部の「rclsuru_request_id_sequence」
 
+番地 を 完全名取得する は 文字列 の 動作
+n を 完全名取得する とは 外部の「rcl_node_get_fully_qualified_name」
+番地 を 上書き取得する は 番地 の 動作
+c を 上書き取得する とは 外部の「rclsuru_param_overrides」
+番地 を 上書き削除する は 無 の 動作
+p を 上書き削除する とは 外部の「rclsuru_param_overrides_delete」
+番地 を 文字列 で 文字列 に 上書き検索する は 番地 の 動作
+p を ノ名 で 名 に 上書き検索する とは 外部の「rclsuru_param_find」（p と ノ名 と 名）
+番地 を 変種型取得する は 数 の 動作
+v を 変種型取得する とは 外部の「rclsuru_variant_type」
+番地 を 変種真偽取得する は 数 の 動作
+v を 変種真偽取得する とは 外部の「rclsuru_variant_bool」
+番地 を 変種整数取得する は 数 の 動作
+v を 変種整数取得する とは 外部の「rclsuru_variant_integer」
+番地 を 変種小数取得する は 小数 の 動作
+v を 変種小数取得する とは 外部の「rclsuru_variant_double」
+番地 を 変種文字列取得する は 文字列 の 動作
+v を 変種文字列取得する とは 外部の「rclsuru_variant_string」
+番地 を 変種長さ取得する は 数 の 動作
+v を 変種長さ取得する とは 外部の「rclsuru_variant_size」
+番地 を 数 で 変種バイト取得する は 数 の 動作
+v を i で 変種バイト取得する とは 外部の「rclsuru_variant_byte_at」
+番地 を 数 で 変種真偽要素取得する は 数 の 動作
+v を i で 変種真偽要素取得する とは 外部の「rclsuru_variant_bool_at」
+番地 を 数 で 変種整数要素取得する は 数 の 動作
+v を i で 変種整数要素取得する とは 外部の「rclsuru_variant_integer_at」
+番地 を 数 で 変種小数要素取得する は 小数 の 動作
+v を i で 変種小数要素取得する とは 外部の「rclsuru_variant_double_at」
+番地 を 数 で 変種文字列要素取得する は 文字列 の 動作
+v を i で 変種文字列要素取得する とは 外部の「rclsuru_variant_string_at」
+
 番地 を 型情報呼出する は 番地 の 動作
 f を 型情報呼出する とは 外部の（f）
 番地 を 数 で 番地 に 呼戻直接呼出する は 無 の 動作
@@ -186,7 +219,9 @@ u を n で f に 呼戻直接呼出する とは 外部の（f）
 仕事 とは 番号 と 処理 の 組
 # 終わるときに行う動作(箱に入れても行われないよう組で包む)
 片付け とは 行い の 組
-ノード とは 文脈 と 節点 と 知らせ通路 と 呼戻 と 仕事箱 と 番号箱 と 片付け箱 の 組
+# 完全名 は 「/ns/talker」、上書き は起動時のパラメータ(rcl_params_t)、パラメータ箱 は宣言したパラメータ、
+# 検査箱 は変更を確かめる関数、事象箱 は /parameter_events の発行者(始めるまでは 空)
+ノード とは 文脈 と 節点 と 知らせ通路 と 呼戻 と 仕事箱 と 番号箱 と 片付け箱 と 完全名 と 上書き と パラメータ箱 と 検査箱 と 事象箱 の 組
 発行者 とは 発行本体 と 発行型 と 発行領域 の 組
 # 購読者 の rcl の番地と、取り出した値を渡す先
 受信口 とは 受口 と 受領域 と 受情報 と 受型 と 受関数 の 組
@@ -323,7 +358,14 @@ p を 体 で C体破棄する とは p を （体 の 体破棄） で 破棄�
   k とは 1 で スレッド内の箱作成した 結果
   z とは 空 で スレッド内の箱作成した 結果
   （g を シグナル中継する） を スレッド内の並行開始する
-  （文脈 は c で 節点 は n で 知らせ通路 は ch で 呼戻 は g で 仕事箱 は w で 番号箱 は k で 片付け箱 は z の ノード） を 結果にする
+  完全名 とは n を 完全名取得した 結果
+  上書き とは c を 上書き取得した 結果
+  pb とは 空 で スレッド内の箱作成した 結果
+  kb とは 空 で スレッド内の箱作成した 結果
+  eb とは 空 で スレッド内の箱作成した 結果
+  ノ とは 文脈 は c で 節点 は n で 知らせ通路 は ch で 呼戻 は g で 仕事箱 は w で 番号箱 は k で 片付け箱 は z で 完全名 は 完全名 で 上書き は 上書き で パラメータ箱 は pb で 検査箱 は kb で 事象箱 は eb の ノード
+  ノ を パラメータサービス開始する
+  ノ を 結果にする
 
 # Ctrl-C(INT か TERM)が届いたら、終わりの合図(相手 0)を通路に送る
 番地 を シグナル中継する は 無 の 動作
@@ -352,6 +394,7 @@ n を ノード終了する とは 手順
   （（n の 文脈） を 低水準終了した 結果） を 「rcl_shutdown」 で 成功確認する
   （（n の 文脈） を 低水準文脈破棄した 結果） を 「rcl_context_fini」 で 成功確認する
   （n の 文脈） を 文脈削除する
+  （n の 上書き） を 上書き削除する
 
 片付け を 片付け実行する は 無 の 動作
 x を 片付け実行する とは x の 行い
@@ -671,6 +714,276 @@ n から 番号 を 仕事削除する とは （n の 仕事箱） を （xs �
   秒 を 時間内の待機する
   （番号 を 番地にする） を 1 で g に 呼戻直接呼出する
 
+# --- パラメータ ---
+# 値は rcl_interfaces/ParameterValue のまま持ちます(type は 1 bool・2 integer・3 double・4 string・
+# 5 byte の配列・6 bool の配列・7 integer の配列・8 double の配列・9 string の配列、0 はなし)。
+# 起動時のパラメータ(--ros-args -p 名前:=値、--params-file、launch の parameters)があれば、宣言したときにその値になります。
+
+# 記述 は rcl_interfaces/ParameterDescriptor、現値 は rcl_interfaces/ParameterValue
+パラメータ項目 とは 記述 と 現値 の 組
+# 変更を確かめる関数に渡すもの(名前と新しい値)
+パラメータ変更 とは 変更名 と 変更値 の 組
+
+型番名 とは （「なし」 と 「bool」 と 「integer」 と 「double」 と 「string」 と 「byte の配列」 と 「bool の配列」 と 「integer の配列」 と 「double の配列」 と 「string の配列」）
+
+数 を 型番名にする は 文字列
+t を 型番名にする とは
+  もし t ≧ 0 かつ t ≦ 9 ならば 型番名 から t + 1 を 番目取得する そうでなければ （t を 文字列化する）
+
+# 起動時のパラメータの値(なければ type 0)
+ノード から 文字列 を 上書き値取得する は rcl_interfaces内のParameterValue の 動作
+n から 名前 を 上書き値取得する とは 手順
+  v とは （n の 上書き） を （n の 完全名） で 名前 に 上書き検索した 結果
+  もし （v を 番地数値にする） = 0 ならば rcl_interfaces内のParameterValue既定 を 結果にする そうでなければ v を 変種値にする
+
+番地 を 変種値にする は rcl_interfaces内のParameterValue の 動作
+v を 変種値にする とは 手順
+  t とは v を 変種型取得した 結果
+  n とは v を 変種長さ取得した 結果
+  番号群 とは もし n > 0 ならば 0 から n - 1 を 範囲にする そうでなければ 空
+  空値 とは type は t の rcl_interfaces内のParameterValue既定
+  もし t が
+    1 ならば （v を 変種真偽取得する） を （x を 受け取って （bool_value は （x ≠ 0） の 空値） を 返すこと） で 写像する
+    2 ならば （v を 変種整数取得する） を （x を 受け取って （integer_value は x の 空値） を 返すこと） で 写像する
+    3 ならば （v を 変種小数取得する） を （x を 受け取って （double_value は x の 空値） を 返すこと） で 写像する
+    4 ならば （v を 変種文字列取得する） を （x を 受け取って （string_value は x の 空値） を 返すこと） で 写像する
+    5 ならば （v を 番号群 で 変種バイト取得全部する） を （xs を 受け取って （byte_array_value は （xs を バイト列組立する） の 空値） を 返すこと） で 写像する
+    6 ならば （v を 番号群 で 変種真偽要素取得全部する） を （xs を 受け取って （bool_array_value は （xs の それぞれ を 真偽化する） の 空値） を 返すこと） で 写像する
+    7 ならば （v を 番号群 で 変種整数要素取得全部する） を （xs を 受け取って （integer_array_value は xs の 空値） を 返すこと） で 写像する
+    8 ならば （v を 番号群 で 変種小数要素取得全部する） を （xs を 受け取って （double_array_value は xs の 空値） を 返すこと） で 写像する
+    9 ならば （v を 番号群 で 変種文字列要素取得全部する） を （xs を 受け取って （string_array_value は xs の 空値） を 返すこと） で 写像する
+    他 ならば 空値 を 結果にする
+
+番地 を 数 の リスト で 変種バイト取得全部する は 数 の リスト の 動作
+v を 番号群 で 変種バイト取得全部する とは 手順
+  作業 とは v を 番号群 の それぞれ で 変種バイト取得する
+  作業 を 実行する
+番地 を 数 の リスト で 変種真偽要素取得全部する は 数 の リスト の 動作
+v を 番号群 で 変種真偽要素取得全部する とは 手順
+  作業 とは v を 番号群 の それぞれ で 変種真偽要素取得する
+  作業 を 実行する
+番地 を 数 の リスト で 変種整数要素取得全部する は 数 の リスト の 動作
+v を 番号群 で 変種整数要素取得全部する とは 手順
+  作業 とは v を 番号群 の それぞれ で 変種整数要素取得する
+  作業 を 実行する
+番地 を 数 の リスト で 変種小数要素取得全部する は 小数 の リスト の 動作
+v を 番号群 で 変種小数要素取得全部する とは 手順
+  作業 とは v を 番号群 の それぞれ で 変種小数要素取得する
+  作業 を 実行する
+番地 を 数 の リスト で 変種文字列要素取得全部する は 文字列 の リスト の 動作
+v を 番号群 で 変種文字列要素取得全部する とは 手順
+  作業 とは v を 番号群 の それぞれ で 変種文字列要素取得する
+  作業 を 実行する
+
+数 を 真偽化する は 真偽
+x を 真偽化する とは x ≠ 0
+
+# パラメータを宣言する。起動時の値があればそれ、なければ 既定 になる。結果は決まった値
+ノード から 文字列 を rcl_interfaces内のParameterValue で 文字列 に パラメータ値宣言する は rcl_interfaces内のParameterValue の 動作
+n から 名前 を 既定 で 説明 に パラメータ値宣言する とは 手順
+  今 とは （n の パラメータ箱） を スレッド内の箱読取した 結果
+  もし （今 から （e を 受け取って （e の 記述） の name が 名前 を 返すこと） で 選別する） ≠ 空 ならば （「パラメータ 」 + 名前 + 「 はもう宣言されています」） を 失敗する そうでなければ 0 を 結果にする
+  上 とは n から 名前 を 上書き値取得した 結果
+  値 とは 名前 を 上 で 既定 に 宣言値決定した 結果
+  記述 とは name は 名前 で type は （既定 の type） で description は 説明 の rcl_interfaces内のParameterDescriptor既定
+  （n の パラメータ箱） を （（記述 と 値 の パラメータ項目） を 追加すること） で スレッド内の箱更新する
+  n を 名前 で 値 に 新規事象発行する
+  値 を 結果にする
+
+文字列 を rcl_interfaces内のParameterValue で rcl_interfaces内のParameterValue に 宣言値決定する は rcl_interfaces内のParameterValue の 動作
+名前 を 上 で 既定 に 宣言値決定する とは
+  もし 上 の type が 0 ならば 既定 を 結果にする
+  そうでなければ もし 上 の type が 既定 の type ならば 上 を 結果にする
+  # 小数のパラメータに整数を書いたとき(rate:=5)は小数にする
+  そうでなければ もし 既定 の type が 3 かつ 上 の type が 2 ならば （type は 3 で double_value は （（上 の integer_value） * 1.0） の 上） を 結果にする
+  そうでなければ もし 既定 の type が 8 かつ 上 の type が 7 ならば （type は 8 で double_array_value は （（上 の integer_array_value） の それぞれ を 小数化する） の 上） を 結果にする
+  そうでなければ （「パラメータ 」 + 名前 + 「 は 」 + （既定 の type を 型番名にする） + 「 ですが、起動時に 」 + （上 の type を 型番名にする） + 「 の値が渡されました」） を 失敗する
+
+数 を 小数化する は 数
+x を 小数化する とは x * 1.0
+
+# 型ごとの宣言(結果はその型の値)
+ノード から 文字列 を 真偽 で 真偽パラメータ宣言する は 真偽 の 動作
+n から 名前 を 既定 で 真偽パラメータ宣言する とは （n から 名前 を （type は 1 で bool_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の bool_value を 返すこと） で 写像する
+ノード から 文字列 を 数 で 整数パラメータ宣言する は 数 の 動作
+n から 名前 を 既定 で 整数パラメータ宣言する とは （n から 名前 を （type は 2 で integer_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の integer_value を 返すこと） で 写像する
+ノード から 文字列 を 数 で 小数パラメータ宣言する は 数 の 動作
+n から 名前 を 既定 で 小数パラメータ宣言する とは （n から 名前 を （type は 3 で double_value は （既定 * 1.0） の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の double_value を 返すこと） で 写像する
+ノード から 文字列 を 文字列 で 文字列パラメータ宣言する は 文字列 の 動作
+n から 名前 を 既定 で 文字列パラメータ宣言する とは （n から 名前 を （type は 4 で string_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の string_value を 返すこと） で 写像する
+ノード から 文字列 を バイト列 で バイト列パラメータ宣言する は バイト列 の 動作
+n から 名前 を 既定 で バイト列パラメータ宣言する とは （n から 名前 を （type は 5 で byte_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の byte_array_value を 返すこと） で 写像する
+ノード から 文字列 を 真偽 の リスト で 真偽列パラメータ宣言する は 真偽 の リスト の 動作
+n から 名前 を 既定 で 真偽列パラメータ宣言する とは （n から 名前 を （type は 6 で bool_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の bool_array_value を 返すこと） で 写像する
+ノード から 文字列 を 数 の リスト で 整数列パラメータ宣言する は 数 の リスト の 動作
+n から 名前 を 既定 で 整数列パラメータ宣言する とは （n から 名前 を （type は 7 で integer_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の integer_array_value を 返すこと） で 写像する
+ノード から 文字列 を 数 の リスト で 小数列パラメータ宣言する は 数 の リスト の 動作
+n から 名前 を 既定 で 小数列パラメータ宣言する とは （n から 名前 を （type は 8 で double_array_value は （既定 の それぞれ を 小数化する） の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の double_array_value を 返すこと） で 写像する
+ノード から 文字列 を 文字列 の リスト で 文字列列パラメータ宣言する は 文字列 の リスト の 動作
+n から 名前 を 既定 で 文字列列パラメータ宣言する とは （n から 名前 を （type は 9 で string_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の string_array_value を 返すこと） で 写像する
+
+# 今の値(ros2 param set で変わったものも)
+ノード から 文字列 を パラメータ値取得する は rcl_interfaces内のParameterValue の 動作
+n から 名前 を パラメータ値取得する とは 手順
+  今 とは （n の パラメータ箱） を スレッド内の箱読取した 結果
+  該当 とは 今 から （e を 受け取って （e の 記述） の name が 名前 を 返すこと） で 選別する
+  もし 該当 が 空 ならば （「パラメータ 」 + 名前 + 「 は宣言されていません」） を 失敗する そうでなければ （該当 の 先頭） の 現値 を 結果にする
+
+ノード から 文字列 を 真偽パラメータ取得する は 真偽 の 動作
+n から 名前 を 真偽パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の bool_value を 返すこと） で 写像する
+ノード から 文字列 を 整数パラメータ取得する は 数 の 動作
+n から 名前 を 整数パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の integer_value を 返すこと） で 写像する
+ノード から 文字列 を 小数パラメータ取得する は 数 の 動作
+n から 名前 を 小数パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の double_value を 返すこと） で 写像する
+ノード から 文字列 を 文字列パラメータ取得する は 文字列 の 動作
+n から 名前 を 文字列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の string_value を 返すこと） で 写像する
+ノード から 文字列 を 整数列パラメータ取得する は 数 の リスト の 動作
+n から 名前 を 整数列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の integer_array_value を 返すこと） で 写像する
+ノード から 文字列 を 小数列パラメータ取得する は 数 の リスト の 動作
+n から 名前 を 小数列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の double_array_value を 返すこと） で 写像する
+ノード から 文字列 を 文字列列パラメータ取得する は 文字列 の リスト の 動作
+n から 名前 を 文字列列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の string_array_value を 返すこと） で 写像する
+
+# 値が変わる前に 「変更のリスト を 関数する」 を行う。結果が 「」 なら受け入れ、ほかの文字列ならその理由で断る
+ノード へ （パラメータ変更 の リスト を 受け取って 文字列 の 動作 を 返すこと） で パラメータ変更検査登録する は 数 の 動作
+n へ 関数 で パラメータ変更検査登録する とは 手順
+  （n の 検査箱） を （関数 を 追加すること） で スレッド内の箱更新する
+  0 を 結果にする
+
+# --- パラメータのサービス(ros2 param list・get・set・describe・dump に答える) ---
+
+ノード を パラメータサービス開始する は 数 の 動作
+n を パラメータサービス開始する とは 手順
+  p とは rcl_interfaces内のParameterEvent型 を 「/parameter_events」 へ n で パラメータ事象QoS より QoS付き発行者作成した 結果
+  （p を 空 に 追加する） を （n の 事象箱） へ スレッド内の箱書込する
+  rcl_interfaces内のListParameters型 を 「~/list_parameters」 で n に （n で 一覧応答すること） へ サービス作成する
+  rcl_interfaces内のGetParameters型 を 「~/get_parameters」 で n に （n で 取得応答すること） へ サービス作成する
+  rcl_interfaces内のGetParameterTypes型 を 「~/get_parameter_types」 で n に （n で 型応答すること） へ サービス作成する
+  rcl_interfaces内のDescribeParameters型 を 「~/describe_parameters」 で n に （n で 記述応答すること） へ サービス作成する
+  rcl_interfaces内のSetParameters型 を 「~/set_parameters」 で n に （n で 設定応答すること） へ サービス作成する
+  rcl_interfaces内のSetParametersAtomically型 を 「~/set_parameters_atomically」 で n に （n で 一括設定応答すること） へ サービス作成する
+
+ノード を 項目一覧取得する は パラメータ項目 の リスト の 動作
+n を 項目一覧取得する とは （n の パラメータ箱） を スレッド内の箱読取する
+
+パラメータ項目 の リスト から 文字列 を 項目探索する は パラメータ項目 の リスト
+今 から 名前 を 項目探索する とは 今 から （e を 受け取って （e の 記述） の name が 名前 を 返すこと） で 選別する
+
+パラメータ項目 を 項目名取得する は 文字列
+e を 項目名取得する とは （e の 記述） の name
+
+rcl_interfaces内のListParameters_Request を ノード で 一覧応答する は rcl_interfaces内のListParameters_Response の 動作
+要求 を n で 一覧応答する とは 手順
+  今 とは n を 項目一覧取得した 結果
+  名群 とは 今 の それぞれ を 項目名取得する
+  前置 とは 要求 の prefixes
+  選 とは もし 前置 が 空 ならば 名群 そうでなければ 名群 から （名 を 受け取って 前置 が （p を 受け取って 名 が p または 名 が （p + 「.」） で 先頭一致である を 返すこと） で 一部真である を 返すこと） で 選別する
+  （result は （names は 選 の rcl_interfaces内のListParametersResult既定） の rcl_interfaces内のListParameters_Response既定） を 結果にする
+
+rcl_interfaces内のGetParameters_Request を ノード で 取得応答する は rcl_interfaces内のGetParameters_Response の 動作
+要求 を n で 取得応答する とは 手順
+  今 とは n を 項目一覧取得した 結果
+  （values は （今 を （要求 の names） の それぞれ で 現値探索する） の rcl_interfaces内のGetParameters_Response既定） を 結果にする
+
+パラメータ項目 の リスト を 文字列 で 現値探索する は rcl_interfaces内のParameterValue
+今 を 名前 で 現値探索する とは
+  該当 とは 今 から 名前 を 項目探索する
+  もし 該当 が 空 ならば rcl_interfaces内のParameterValue既定 そうでなければ （該当 の 先頭） の 現値
+
+rcl_interfaces内のGetParameterTypes_Request を ノード で 型応答する は rcl_interfaces内のGetParameterTypes_Response の 動作
+要求 を n で 型応答する とは 手順
+  今 とは n を 項目一覧取得した 結果
+  型群 とは （今 を （要求 の names） の それぞれ で 現値探索する） の それぞれ を 値型番取得する
+  （types は （型群 を バイト列組立する） の rcl_interfaces内のGetParameterTypes_Response既定） を 結果にする
+
+rcl_interfaces内のParameterValue を 値型番取得する は 数
+v を 値型番取得する とは v の type
+
+rcl_interfaces内のDescribeParameters_Request を ノード で 記述応答する は rcl_interfaces内のDescribeParameters_Response の 動作
+要求 を n で 記述応答する とは 手順
+  今 とは n を 項目一覧取得した 結果
+  （descriptors は （今 を （要求 の names） の それぞれ で 記述探索する） の rcl_interfaces内のDescribeParameters_Response既定） を 結果にする
+
+パラメータ項目 の リスト を 文字列 で 記述探索する は rcl_interfaces内のParameterDescriptor
+今 を 名前 で 記述探索する とは
+  該当 とは 今 から 名前 を 項目探索する
+  もし 該当 が 空 ならば （name は 名前 の rcl_interfaces内のParameterDescriptor既定） そうでなければ （該当 の 先頭） の 記述
+
+rcl_interfaces内のSetParameters_Request を ノード で 設定応答する は rcl_interfaces内のSetParameters_Response の 動作
+要求 を n で 設定応答する とは 手順
+  作業 とは （要求 の parameters） の それぞれ を n で 一つ設定する
+  結果群 とは 作業 を 実行した 結果
+  （results は 結果群 の rcl_interfaces内のSetParameters_Response既定） を 結果にする
+
+rcl_interfaces内のSetParametersAtomically_Request を ノード で 一括設定応答する は rcl_interfaces内のSetParametersAtomically_Response の 動作
+要求 を n で 一括設定応答する とは 手順
+  r とは （要求 の parameters） を n で 設定実行した 結果
+  （result は r の rcl_interfaces内のSetParametersAtomically_Response既定） を 結果にする
+
+rcl_interfaces内のParameter を ノード で 一つ設定する は rcl_interfaces内のSetParametersResult の 動作
+p を n で 一つ設定する とは （p を 空 に 追加する） を n で 設定実行する
+
+# 全部を確かめてから、全部を変える(1つでも断られたら何も変えない)
+rcl_interfaces内のParameter の リスト を ノード で 設定実行する は rcl_interfaces内のSetParametersResult の 動作
+ps を n で 設定実行する とは 手順
+  今 とは n を 項目一覧取得した 結果
+  理由群 とは （今 を ps の それぞれ で 設定理由取得する） から （r を 受け取って r ≠ 「」 を 返すこと） で 選別する
+  検査群 とは （n の 検査箱） を スレッド内の箱読取した 結果
+  変更 とは ps の それぞれ を 変更にする
+  もし 理由群 ≠ 空 ならば （successful は 偽 で reason は （理由群 の 先頭） の rcl_interfaces内のSetParametersResult既定） を 結果にする
+  そうでなければ 検査群 を 変更 で n に ps へ 検査後設定する
+
+rcl_interfaces内のParameter を 変更にする は パラメータ変更
+p を 変更にする とは 変更名 は （p の name） で 変更値 は （p の value） の パラメータ変更
+
+# 型と読み取り専用を確かめる。よければ 「」
+パラメータ項目 の リスト を rcl_interfaces内のParameter で 設定理由取得する は 文字列
+今 を p で 設定理由取得する とは
+  該当 とは 今 から （p の name） を 項目探索する
+  もし 該当 が 空 ならば 「パラメータ 」 + （p の name） + 「 は宣言されていません」
+  そうでなければ もし （（該当 の 先頭） の 記述） の read_only ならば 「パラメータ 」 + （p の name） + 「 は読み取り専用です」
+  そうでなければ もし （（該当 の 先頭） の 記述） の type ≠ （p の value） の type かつ （（該当 の 先頭） の 記述） の dynamic_typing が 偽 ならば 「パラメータ 」 + （p の name） + 「 は 」 + （（（該当 の 先頭） の 記述） の type を 型番名にする） + 「 です(」 + （（p の value） の type を 型番名にする） + 「 は使えません)」
+  そうでなければ 「」
+
+（パラメータ変更 の リスト を 受け取って 文字列 の 動作 を 返すこと） の リスト を パラメータ変更 の リスト で ノード に rcl_interfaces内のParameter の リスト へ 検査後設定する は rcl_interfaces内のSetParametersResult の 動作
+検査群 を 変更 で n に ps へ 検査後設定する とは 手順
+  作業 とは 検査群 の それぞれ を 変更 で 検査実行する
+  理由群 とは 作業 を 実行した 結果
+  断り とは 理由群 から （r を 受け取って r ≠ 「」 を 返すこと） で 選別する
+  もし 断り ≠ 空 ならば （successful は 偽 で reason は （断り の 先頭） の rcl_interfaces内のSetParametersResult既定） を 結果にする そうでなければ ps を n で 設定反映する
+
+（パラメータ変更 の リスト を 受け取って 文字列 の 動作 を 返すこと） を パラメータ変更 の リスト で 検査実行する は 文字列 の 動作
+検査 を 変更 で 検査実行する とは 変更 を 検査する
+
+rcl_interfaces内のParameter の リスト を ノード で 設定反映する は rcl_interfaces内のSetParametersResult の 動作
+ps を n で 設定反映する とは 手順
+  （n の パラメータ箱） を （今 を 受け取って 今 を ps で 値差替する を 返すこと） で スレッド内の箱更新する
+  n を 空 で ps に 変更事象発行する
+  （successful は 真 の rcl_interfaces内のSetParametersResult既定） を 結果にする
+
+パラメータ項目 の リスト を rcl_interfaces内のParameter の リスト で 値差替する は パラメータ項目 の リスト
+今 を ps で 値差替する とは 今 の それぞれ を ps で 一項目差替する
+
+パラメータ項目 を rcl_interfaces内のParameter の リスト で 一項目差替する は パラメータ項目
+e を ps で 一項目差替する とは
+  該当 とは ps から （p を 受け取って p の name が （e の 記述） の name を 返すこと） で 選別する
+  もし 該当 が 空 ならば e そうでなければ 現値 は （（該当 の 最後） の value） の e
+
+# /parameter_events に知らせる
+ノード を 文字列 で rcl_interfaces内のParameterValue に 新規事象発行する は 数 の 動作
+n を 名前 で 値 に 新規事象発行する とは n を （（name は 名前 で value は 値 の rcl_interfaces内のParameter既定） を 空 に 追加する） で 空 に 変更事象発行する
+
+ノード を rcl_interfaces内のParameter の リスト で rcl_interfaces内のParameter の リスト に 変更事象発行する は 数 の 動作
+n を 新規 で 変更 に 変更事象発行する とは 手順
+  ps とは （n の 事象箱） を スレッド内の箱読取した 結果
+  時 とは 時間内の現在時刻取得した 結果
+  秒 とは 時 を 切捨する
+  刻 とは sec は 秒 で nanosec は （（（時 - 秒） * 1000000000） を 切捨する） の builtin_interfaces内のTime既定
+  e とは stamp は 刻 で node は （n の 完全名） で new_parameters は 新規 で changed_parameters は 変更 の rcl_interfaces内のParameterEvent既定
+  作業 とは e を ps の それぞれ へ 発行する
+  作業 を 実行する
+  0 を 結果にする
+
 # --- 周期 ---
 
 （甲 の 動作） を 数 で ノード に 周期登録する は 数 の 動作
@@ -728,4 +1041,4 @@ w を 件数 で 仕事処理する とは 手順
 
 文字列型 とは 型名 は 「std_msgs/msg/String」 で 寸法 は CDR文字列寸法すること で 書込 は CDR文字列書込すること で 読取 は CDR文字列読取すること の メッセージ型
 
-ノード作成する と 発行者作成する と QoS付き発行者作成する と 発行する と 購読する と QoS付き購読する と 周期登録する と スピンする と ノード終了する と サービス作成する と QoS付きサービス作成する と クライアント作成する と QoS付きクライアント作成する と サービス待機する と 要求送信する と 呼出する と 文字列型 と 既定QoS と センサーQoS と サービスQoS と パラメータQoS と パラメータ事象QoS と システム既定QoS は 公開とする
+ノード作成する と 発行者作成する と QoS付き発行者作成する と 発行する と 購読する と QoS付き購読する と 周期登録する と スピンする と ノード終了する と サービス作成する と QoS付きサービス作成する と クライアント作成する と QoS付きクライアント作成する と サービス待機する と 要求送信する と 呼出する と 真偽パラメータ宣言する と 整数パラメータ宣言する と 小数パラメータ宣言する と 文字列パラメータ宣言する と バイト列パラメータ宣言する と 真偽列パラメータ宣言する と 整数列パラメータ宣言する と 小数列パラメータ宣言する と 文字列列パラメータ宣言する と 真偽パラメータ取得する と 整数パラメータ取得する と 小数パラメータ取得する と 文字列パラメータ取得する と 整数列パラメータ取得する と 小数列パラメータ取得する と 文字列列パラメータ取得する と パラメータ値宣言する と パラメータ値取得する と パラメータ変更検査登録する と 文字列型 と 既定QoS と センサーQoS と サービスQoS と パラメータQoS と パラメータ事象QoS と システム既定QoS は 公開とする

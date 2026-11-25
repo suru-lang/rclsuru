@@ -13,6 +13,9 @@
 #include <rcl/client.h>
 #include <rcl/graph.h>
 #include <rcl/service.h>
+#include <rcl/arguments.h>
+#include <rcl_yaml_param_parser/parser.h>
+#include <rcl_yaml_param_parser/types.h>
 #include <rcutils/error_handling.h>
 #include <rmw/serialized_message.h>
 #include <rmw/qos_profiles.h>
@@ -66,6 +69,121 @@ int64_t rclsuru_logging_init(rcl_context_t *context) {
   rcl_allocator_t a = rcl_get_default_allocator();
   return rcl_logging_configure(&context->global_arguments, &a);
 }
+
+// --- 起動時のパラメータ(--ros-args -p・--params-file) ---
+
+// コマンドラインのパラメータ(全部のノードの分)。なければ NULL。
+rcl_params_t *rclsuru_param_overrides(rcl_context_t *c) {
+  rcl_params_t *p = NULL;
+  if (rcl_arguments_get_param_overrides(&c->global_arguments, &p) != RCL_RET_OK) {
+    rcutils_reset_error();
+    return NULL;
+  }
+  return p;
+}
+
+void rclsuru_param_overrides_delete(rcl_params_t *p) {
+  if (p) rcl_yaml_node_struct_fini(p);
+}
+
+// 「/」で区切った1つ分を比べる。* は1つ、** はいくつでも(0 個も)。
+static int rclsuru_name_match(const char *pat, const char *name) {
+  if (*pat == '/') pat++;
+  if (*name == '/') name++;
+  if (*pat == '\0') return *name == '\0';
+  const char *pe = strchr(pat, '/');
+  size_t pl = pe ? (size_t)(pe - pat) : strlen(pat);
+  const char *rest_pat = pe ? pe : pat + pl;
+  if (pl == 2 && strncmp(pat, "**", 2) == 0) {
+    for (const char *n = name;; ) {
+      if (rclsuru_name_match(rest_pat, n)) return 1;
+      const char *ne = strchr(n, '/');
+      if (!ne) return rclsuru_name_match(rest_pat, "");
+      n = ne + 1;
+      if (*n == '\0') return rclsuru_name_match(rest_pat, "");
+    }
+  }
+  if (*name == '\0') return 0;
+  const char *ne = strchr(name, '/');
+  size_t nl = ne ? (size_t)(ne - name) : strlen(name);
+  if (!(pl == 1 && *pat == '*') && (pl != nl || strncmp(pat, name, pl) != 0)) return 0;
+  return rclsuru_name_match(rest_pat, ne ? ne : name + nl);
+}
+
+// ノード(完全な名前 fqn)の、名前 name のパラメータの値。後に書いたものが勝つ。なければ NULL。
+const rcl_variant_t *rclsuru_param_find(const rcl_params_t *p, const char *fqn, const char *name) {
+  if (!p) return NULL;
+  const rcl_variant_t *found = NULL;
+  for (size_t i = 0; i < p->num_nodes; i++) {
+    if (!rclsuru_name_match(p->node_names[i], fqn)) continue;
+    const rcl_node_params_t *np = &p->params[i];
+    for (size_t j = 0; j < np->num_params; j++) {
+      if (strcmp(np->parameter_names[j], name) == 0) found = &np->parameter_values[j];
+    }
+  }
+  return found;
+}
+
+// ノードに当てはまるパラメータの名前を、改行でつないだもの(呼んだ側が free する)。
+char *rclsuru_param_names(const rcl_params_t *p, const char *fqn) {
+  size_t n = 1;
+  if (p) {
+    for (size_t i = 0; i < p->num_nodes; i++) {
+      if (!rclsuru_name_match(p->node_names[i], fqn)) continue;
+      for (size_t j = 0; j < p->params[i].num_params; j++) n += strlen(p->params[i].parameter_names[j]) + 1;
+    }
+  }
+  char *out = calloc(1, n);
+  if (!out || !p) return out;
+  for (size_t i = 0; i < p->num_nodes; i++) {
+    if (!rclsuru_name_match(p->node_names[i], fqn)) continue;
+    for (size_t j = 0; j < p->params[i].num_params; j++) {
+      strcat(out, p->params[i].parameter_names[j]);
+      strcat(out, "\n");
+    }
+  }
+  return out;
+}
+
+// 値の種類: 0 なし、1 bool、2 integer、3 double、4 string、5 byte の配列、6 bool の配列、
+// 7 integer の配列、8 double の配列、9 string の配列(rcl_interfaces/ParameterType と同じ番号)
+int64_t rclsuru_variant_type(const rcl_variant_t *v) {
+  if (!v) return 0;
+  if (v->bool_value) return 1;
+  if (v->integer_value) return 2;
+  if (v->double_value) return 3;
+  if (v->string_value) return 4;
+  if (v->byte_array_value) return 5;
+  if (v->bool_array_value) return 6;
+  if (v->integer_array_value) return 7;
+  if (v->double_array_value) return 8;
+  if (v->string_array_value) return 9;
+  return 0;
+}
+
+int64_t rclsuru_variant_bool(const rcl_variant_t *v) { return *v->bool_value ? 1 : 0; }
+int64_t rclsuru_variant_integer(const rcl_variant_t *v) { return *v->integer_value; }
+double rclsuru_variant_double(const rcl_variant_t *v) { return *v->double_value; }
+const char *rclsuru_variant_string(const rcl_variant_t *v) { return v->string_value; }
+
+// 配列の長さ
+int64_t rclsuru_variant_size(const rcl_variant_t *v) {
+  switch (rclsuru_variant_type(v)) {
+    case 5: return (int64_t)v->byte_array_value->size;
+    case 6: return (int64_t)v->bool_array_value->size;
+    case 7: return (int64_t)v->integer_array_value->size;
+    case 8: return (int64_t)v->double_array_value->size;
+    case 9: return (int64_t)v->string_array_value->size;
+    default: return 0;
+  }
+}
+
+// 配列の i 番目(0 から)
+int64_t rclsuru_variant_byte_at(const rcl_variant_t *v, int64_t i) { return v->byte_array_value->values[i]; }
+int64_t rclsuru_variant_bool_at(const rcl_variant_t *v, int64_t i) { return v->bool_array_value->values[i] ? 1 : 0; }
+int64_t rclsuru_variant_integer_at(const rcl_variant_t *v, int64_t i) { return v->integer_array_value->values[i]; }
+double rclsuru_variant_double_at(const rcl_variant_t *v, int64_t i) { return v->double_array_value->values[i]; }
+const char *rclsuru_variant_string_at(const rcl_variant_t *v, int64_t i) { return v->string_array_value->data[i]; }
 
 // --- ノード ---
 

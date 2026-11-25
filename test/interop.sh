@@ -135,6 +135,44 @@ check "ros2 service call → する のサーバー" "$log" "success=False, mess
 pkill -INT -f "interop_suru server" || true
 sleep 1
 
+# 段階4: パラメータ
+cat > "$logs/params.yaml" <<'YAML'
+interop_suru:
+  ros__parameters:
+    name: from_yaml
+    count: 10
+YAML
+log="$logs/param_node.log"
+(timeout -s INT 30 stdbuf -o0 "$suru_node" param --ros-args -p rate:=5 --params-file "$logs/params.yaml" > "$log" 2>&1 &)
+sleep 3
+timeout 15 ros2 topic echo --once /parameter_events rcl_interfaces/msg/ParameterEvent > "$logs/param_event.log" 2>&1 &
+echo_pid=$!
+sleep 2
+p="$logs/param_cli.log"
+{
+  timeout 10 ros2 param list /interop_suru
+  timeout 10 ros2 param get /interop_suru name
+  timeout 10 ros2 param set /interop_suru count 7
+  timeout 10 ros2 param set /interop_suru count -1
+  timeout 10 ros2 param set /interop_suru count abc
+  timeout 10 ros2 param describe /interop_suru rate
+  timeout 10 ros2 param dump /interop_suru
+} > "$p" 2>&1
+sleep 2
+wait $echo_pid
+pkill -INT -f "interop_suru param" || true
+sleep 1
+check "起動時のパラメータ(-p と YAML)" "$log" "rate=5 name=from_yaml count=10 tags=a,b"
+check "ros2 param list" "$p" "  tags"
+check "ros2 param get" "$p" "String value is: from_yaml"
+check "ros2 param set" "$p" "Set parameter successful"
+check "ros2 param set で変わった値がノードに見える" "$log" "いまの count=7"
+check "変更の検査で断る" "$p" "Setting parameter failed: count は 0 以上にしてください"
+check "型の違う値は断る" "$p" "パラメータ count は integer です"
+check "ros2 param describe" "$p" "Type: double"
+check "ros2 param dump" "$p" "rate: 5.0"
+check "/parameter_events に知らせる" "$logs/param_event.log" "name: count"
+
 # インタプリタ
 if [ -n "${SURU:-}" ]; then
   out=$(pair interp_listener "ros2 run rclsuru_interop_cpp cpp_talker" "cd $root/examples/listener && stdbuf -o0 $SURU 本体.suru")
