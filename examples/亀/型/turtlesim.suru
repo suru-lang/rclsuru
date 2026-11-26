@@ -12,17 +12,21 @@ Color を 数 で Color寸法する は 数
   位1 とは （対象 の r） を 位0 で CDR符号なし8寸法する
   位2 とは （対象 の g） を 位1 で CDR符号なし8寸法する
   （対象 の b） を 位2 で CDR符号なし8寸法する
-Color を 番地 へ 数 で Color書込する は 数 の 動作
-対象 を 先 へ 位0 で Color書込する とは 手順
+
+Color を 番地 へ 数 で Color書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Color書込する とは 以下の入出力手順です
   位1 とは （対象 の r） を 先 へ 位0 で CDR符号なし8書込した 結果
   位2 とは （対象 の g） を 先 へ 位1 で CDR符号なし8書込した 結果
   （対象 の b） を 先 へ 位2 で CDR符号なし8書込する
-番地 から 数 で Color読取する は （Color と 数） の 読値 の 動作
-先 から 位0 で Color読取する とは 手順
+  以上です
+
+番地 から 数 で Color読取する は （Color と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Color読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR符号なし8読取した 結果
   （値 は （r は （欄1 の 値） で g は （欄2 の 値） で b は （欄3 の 値） の Color） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/msg/Pose
 Pose とは x と y と theta と linear_velocity と angular_velocity の 組
@@ -35,21 +39,25 @@ Pose を 数 で Pose寸法する は 数
   位3 とは （対象 の theta） を 位2 で CDR単精度寸法する
   位4 とは （対象 の linear_velocity） を 位3 で CDR単精度寸法する
   （対象 の angular_velocity） を 位4 で CDR単精度寸法する
-Pose を 番地 へ 数 で Pose書込する は 数 の 動作
-対象 を 先 へ 位0 で Pose書込する とは 手順
+
+Pose を 番地 へ 数 で Pose書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Pose書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR単精度書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR単精度書込した 結果
   位3 とは （対象 の theta） を 先 へ 位2 で CDR単精度書込した 結果
   位4 とは （対象 の linear_velocity） を 先 へ 位3 で CDR単精度書込した 結果
   （対象 の angular_velocity） を 先 へ 位4 で CDR単精度書込する
-番地 から 数 で Pose読取する は （Pose と 数） の 読値 の 動作
-先 から 位0 で Pose読取する とは 手順
+  以上です
+
+番地 から 数 で Pose読取する は （Pose と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Pose読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
   欄4 とは 先 から （欄3 の 次） で CDR単精度読取した 結果
   欄5 とは 先 から （欄4 の 次） で CDR単精度読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で theta は （欄3 の 値） で linear_velocity は （欄4 の 値） で angular_velocity は （欄5 の 値） の Pose） で 次 は （欄5 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/Kill_Request
 Kill_Request とは name の 組
@@ -58,13 +66,17 @@ Kill_Request型 とは 型名 は 「turtlesim/srv/Kill_Request」 で 寸法 �
 Kill_Request を 数 で Kill_Request寸法する は 数
 対象 を 位0 で Kill_Request寸法する とは
   （対象 の name） を 位0 で CDR文字列寸法する
-Kill_Request を 番地 へ 数 で Kill_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で Kill_Request書込する とは 手順
+
+Kill_Request を 番地 へ 数 で Kill_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Kill_Request書込する とは 以下の入出力手順です
   （対象 の name） を 先 へ 位0 で CDR文字列書込する
-番地 から 数 で Kill_Request読取する は （Kill_Request と 数） の 読値 の 動作
-先 から 位0 で Kill_Request読取する とは 手順
+  以上です
+
+番地 から 数 で Kill_Request読取する は （Kill_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Kill_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   （値 は （name は （欄1 の 値） の Kill_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/Kill_Response
 Kill_Response とは structure_needs_at_least_one_member の 組
@@ -73,13 +85,17 @@ Kill_Response型 とは 型名 は 「turtlesim/srv/Kill_Response」 で 寸法 
 Kill_Response を 数 で Kill_Response寸法する は 数
 対象 を 位0 で Kill_Response寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
-Kill_Response を 番地 へ 数 で Kill_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で Kill_Response書込する とは 手順
+
+Kill_Response を 番地 へ 数 で Kill_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Kill_Response書込する とは 以下の入出力手順です
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
-番地 から 数 で Kill_Response読取する は （Kill_Response と 数） の 読値 の 動作
-先 から 位0 で Kill_Response読取する とは 手順
+  以上です
+
+番地 から 数 で Kill_Response読取する は （Kill_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Kill_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の Kill_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/SetPen_Request
 SetPen_Request とは r と g と b と width と off の 組
@@ -92,21 +108,25 @@ SetPen_Request を 数 で SetPen_Request寸法する は 数
   位3 とは （対象 の b） を 位2 で CDR符号なし8寸法する
   位4 とは （対象 の width） を 位3 で CDR符号なし8寸法する
   （対象 の off） を 位4 で CDR符号なし8寸法する
-SetPen_Request を 番地 へ 数 で SetPen_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で SetPen_Request書込する とは 手順
+
+SetPen_Request を 番地 へ 数 で SetPen_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で SetPen_Request書込する とは 以下の入出力手順です
   位1 とは （対象 の r） を 先 へ 位0 で CDR符号なし8書込した 結果
   位2 とは （対象 の g） を 先 へ 位1 で CDR符号なし8書込した 結果
   位3 とは （対象 の b） を 先 へ 位2 で CDR符号なし8書込した 結果
   位4 とは （対象 の width） を 先 へ 位3 で CDR符号なし8書込した 結果
   （対象 の off） を 先 へ 位4 で CDR符号なし8書込する
-番地 から 数 で SetPen_Request読取する は （SetPen_Request と 数） の 読値 の 動作
-先 から 位0 で SetPen_Request読取する とは 手順
+  以上です
+
+番地 から 数 で SetPen_Request読取する は （SetPen_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で SetPen_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR符号なし8読取した 結果
   欄4 とは 先 から （欄3 の 次） で CDR符号なし8読取した 結果
   欄5 とは 先 から （欄4 の 次） で CDR符号なし8読取した 結果
   （値 は （r は （欄1 の 値） で g は （欄2 の 値） で b は （欄3 の 値） で width は （欄4 の 値） で off は （欄5 の 値） の SetPen_Request） で 次 は （欄5 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/SetPen_Response
 SetPen_Response とは structure_needs_at_least_one_member の 組
@@ -115,13 +135,17 @@ SetPen_Response型 とは 型名 は 「turtlesim/srv/SetPen_Response」 で 寸
 SetPen_Response を 数 で SetPen_Response寸法する は 数
 対象 を 位0 で SetPen_Response寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
-SetPen_Response を 番地 へ 数 で SetPen_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で SetPen_Response書込する とは 手順
+
+SetPen_Response を 番地 へ 数 で SetPen_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で SetPen_Response書込する とは 以下の入出力手順です
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
-番地 から 数 で SetPen_Response読取する は （SetPen_Response と 数） の 読値 の 動作
-先 から 位0 で SetPen_Response読取する とは 手順
+  以上です
+
+番地 から 数 で SetPen_Response読取する は （SetPen_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で SetPen_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の SetPen_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/Spawn_Request
 Spawn_Request とは x と y と theta と name の 組
@@ -133,19 +157,23 @@ Spawn_Request を 数 で Spawn_Request寸法する は 数
   位2 とは （対象 の y） を 位1 で CDR単精度寸法する
   位3 とは （対象 の theta） を 位2 で CDR単精度寸法する
   （対象 の name） を 位3 で CDR文字列寸法する
-Spawn_Request を 番地 へ 数 で Spawn_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で Spawn_Request書込する とは 手順
+
+Spawn_Request を 番地 へ 数 で Spawn_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Spawn_Request書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR単精度書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR単精度書込した 結果
   位3 とは （対象 の theta） を 先 へ 位2 で CDR単精度書込した 結果
   （対象 の name） を 先 へ 位3 で CDR文字列書込する
-番地 から 数 で Spawn_Request読取する は （Spawn_Request と 数） の 読値 の 動作
-先 から 位0 で Spawn_Request読取する とは 手順
+  以上です
+
+番地 から 数 で Spawn_Request読取する は （Spawn_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Spawn_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
   欄4 とは 先 から （欄3 の 次） で CDR文字列読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で theta は （欄3 の 値） で name は （欄4 の 値） の Spawn_Request） で 次 は （欄4 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/Spawn_Response
 Spawn_Response とは name の 組
@@ -154,13 +182,17 @@ Spawn_Response型 とは 型名 は 「turtlesim/srv/Spawn_Response」 で 寸�
 Spawn_Response を 数 で Spawn_Response寸法する は 数
 対象 を 位0 で Spawn_Response寸法する とは
   （対象 の name） を 位0 で CDR文字列寸法する
-Spawn_Response を 番地 へ 数 で Spawn_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で Spawn_Response書込する とは 手順
+
+Spawn_Response を 番地 へ 数 で Spawn_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Spawn_Response書込する とは 以下の入出力手順です
   （対象 の name） を 先 へ 位0 で CDR文字列書込する
-番地 から 数 で Spawn_Response読取する は （Spawn_Response と 数） の 読値 の 動作
-先 から 位0 で Spawn_Response読取する とは 手順
+  以上です
+
+番地 から 数 で Spawn_Response読取する は （Spawn_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Spawn_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   （値 は （name は （欄1 の 値） の Spawn_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/TeleportAbsolute_Request
 TeleportAbsolute_Request とは x と y と theta の 組
@@ -171,17 +203,21 @@ TeleportAbsolute_Request を 数 で TeleportAbsolute_Request寸法する は �
   位1 とは （対象 の x） を 位0 で CDR単精度寸法する
   位2 とは （対象 の y） を 位1 で CDR単精度寸法する
   （対象 の theta） を 位2 で CDR単精度寸法する
-TeleportAbsolute_Request を 番地 へ 数 で TeleportAbsolute_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で TeleportAbsolute_Request書込する とは 手順
+
+TeleportAbsolute_Request を 番地 へ 数 で TeleportAbsolute_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TeleportAbsolute_Request書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR単精度書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR単精度書込した 結果
   （対象 の theta） を 先 へ 位2 で CDR単精度書込する
-番地 から 数 で TeleportAbsolute_Request読取する は （TeleportAbsolute_Request と 数） の 読値 の 動作
-先 から 位0 で TeleportAbsolute_Request読取する とは 手順
+  以上です
+
+番地 から 数 で TeleportAbsolute_Request読取する は （TeleportAbsolute_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TeleportAbsolute_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で theta は （欄3 の 値） の TeleportAbsolute_Request） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/TeleportAbsolute_Response
 TeleportAbsolute_Response とは structure_needs_at_least_one_member の 組
@@ -190,13 +226,17 @@ TeleportAbsolute_Response型 とは 型名 は 「turtlesim/srv/TeleportAbsolute
 TeleportAbsolute_Response を 数 で TeleportAbsolute_Response寸法する は 数
 対象 を 位0 で TeleportAbsolute_Response寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
-TeleportAbsolute_Response を 番地 へ 数 で TeleportAbsolute_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で TeleportAbsolute_Response書込する とは 手順
+
+TeleportAbsolute_Response を 番地 へ 数 で TeleportAbsolute_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TeleportAbsolute_Response書込する とは 以下の入出力手順です
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
-番地 から 数 で TeleportAbsolute_Response読取する は （TeleportAbsolute_Response と 数） の 読値 の 動作
-先 から 位0 で TeleportAbsolute_Response読取する とは 手順
+  以上です
+
+番地 から 数 で TeleportAbsolute_Response読取する は （TeleportAbsolute_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TeleportAbsolute_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の TeleportAbsolute_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/TeleportRelative_Request
 TeleportRelative_Request とは linear と angular の 組
@@ -206,15 +246,19 @@ TeleportRelative_Request を 数 で TeleportRelative_Request寸法する は �
 対象 を 位0 で TeleportRelative_Request寸法する とは
   位1 とは （対象 の linear） を 位0 で CDR単精度寸法する
   （対象 の angular） を 位1 で CDR単精度寸法する
-TeleportRelative_Request を 番地 へ 数 で TeleportRelative_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で TeleportRelative_Request書込する とは 手順
+
+TeleportRelative_Request を 番地 へ 数 で TeleportRelative_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TeleportRelative_Request書込する とは 以下の入出力手順です
   位1 とは （対象 の linear） を 先 へ 位0 で CDR単精度書込した 結果
   （対象 の angular） を 先 へ 位1 で CDR単精度書込する
-番地 から 数 で TeleportRelative_Request読取する は （TeleportRelative_Request と 数） の 読値 の 動作
-先 から 位0 で TeleportRelative_Request読取する とは 手順
+  以上です
+
+番地 から 数 で TeleportRelative_Request読取する は （TeleportRelative_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TeleportRelative_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
   （値 は （linear は （欄1 の 値） で angular は （欄2 の 値） の TeleportRelative_Request） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/TeleportRelative_Response
 TeleportRelative_Response とは structure_needs_at_least_one_member の 組
@@ -223,13 +267,17 @@ TeleportRelative_Response型 とは 型名 は 「turtlesim/srv/TeleportRelative
 TeleportRelative_Response を 数 で TeleportRelative_Response寸法する は 数
 対象 を 位0 で TeleportRelative_Response寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
-TeleportRelative_Response を 番地 へ 数 で TeleportRelative_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で TeleportRelative_Response書込する とは 手順
+
+TeleportRelative_Response を 番地 へ 数 で TeleportRelative_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TeleportRelative_Response書込する とは 以下の入出力手順です
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
-番地 から 数 で TeleportRelative_Response読取する は （TeleportRelative_Response と 数） の 読値 の 動作
-先 から 位0 で TeleportRelative_Response読取する とは 手順
+  以上です
+
+番地 から 数 で TeleportRelative_Response読取する は （TeleportRelative_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TeleportRelative_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の TeleportRelative_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_Goal
 RotateAbsolute_Goal とは theta の 組
@@ -238,13 +286,17 @@ RotateAbsolute_Goal型 とは 型名 は 「turtlesim/action/RotateAbsolute_Goal
 RotateAbsolute_Goal を 数 で RotateAbsolute_Goal寸法する は 数
 対象 を 位0 で RotateAbsolute_Goal寸法する とは
   （対象 の theta） を 位0 で CDR単精度寸法する
-RotateAbsolute_Goal を 番地 へ 数 で RotateAbsolute_Goal書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_Goal書込する とは 手順
+
+RotateAbsolute_Goal を 番地 へ 数 で RotateAbsolute_Goal書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_Goal書込する とは 以下の入出力手順です
   （対象 の theta） を 先 へ 位0 で CDR単精度書込する
-番地 から 数 で RotateAbsolute_Goal読取する は （RotateAbsolute_Goal と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_Goal読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_Goal読取する は （RotateAbsolute_Goal と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_Goal読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   （値 は （theta は （欄1 の 値） の RotateAbsolute_Goal） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_Result
 RotateAbsolute_Result とは delta の 組
@@ -253,13 +305,17 @@ RotateAbsolute_Result型 とは 型名 は 「turtlesim/action/RotateAbsolute_Re
 RotateAbsolute_Result を 数 で RotateAbsolute_Result寸法する は 数
 対象 を 位0 で RotateAbsolute_Result寸法する とは
   （対象 の delta） を 位0 で CDR単精度寸法する
-RotateAbsolute_Result を 番地 へ 数 で RotateAbsolute_Result書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_Result書込する とは 手順
+
+RotateAbsolute_Result を 番地 へ 数 で RotateAbsolute_Result書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_Result書込する とは 以下の入出力手順です
   （対象 の delta） を 先 へ 位0 で CDR単精度書込する
-番地 から 数 で RotateAbsolute_Result読取する は （RotateAbsolute_Result と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_Result読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_Result読取する は （RotateAbsolute_Result と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_Result読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   （値 は （delta は （欄1 の 値） の RotateAbsolute_Result） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_Feedback
 RotateAbsolute_Feedback とは remaining の 組
@@ -268,13 +324,17 @@ RotateAbsolute_Feedback型 とは 型名 は 「turtlesim/action/RotateAbsolute_
 RotateAbsolute_Feedback を 数 で RotateAbsolute_Feedback寸法する は 数
 対象 を 位0 で RotateAbsolute_Feedback寸法する とは
   （対象 の remaining） を 位0 で CDR単精度寸法する
-RotateAbsolute_Feedback を 番地 へ 数 で RotateAbsolute_Feedback書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_Feedback書込する とは 手順
+
+RotateAbsolute_Feedback を 番地 へ 数 で RotateAbsolute_Feedback書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_Feedback書込する とは 以下の入出力手順です
   （対象 の remaining） を 先 へ 位0 で CDR単精度書込する
-番地 から 数 で RotateAbsolute_Feedback読取する は （RotateAbsolute_Feedback と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_Feedback読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_Feedback読取する は （RotateAbsolute_Feedback と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_Feedback読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   （値 は （remaining は （欄1 の 値） の RotateAbsolute_Feedback） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_SendGoal_Request
 RotateAbsolute_SendGoal_Request とは goal_id と goal の 組
@@ -284,15 +344,19 @@ RotateAbsolute_SendGoal_Request を 数 で RotateAbsolute_SendGoal_Request寸�
 対象 を 位0 で RotateAbsolute_SendGoal_Request寸法する とは
   位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
   （対象 の goal） を 位1 で RotateAbsolute_Goal寸法する
-RotateAbsolute_SendGoal_Request を 番地 へ 数 で RotateAbsolute_SendGoal_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_SendGoal_Request書込する とは 手順
+
+RotateAbsolute_SendGoal_Request を 番地 へ 数 で RotateAbsolute_SendGoal_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_SendGoal_Request書込する とは 以下の入出力手順です
   位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
   （対象 の goal） を 先 へ 位1 で RotateAbsolute_Goal書込する
-番地 から 数 で RotateAbsolute_SendGoal_Request読取する は （RotateAbsolute_SendGoal_Request と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_SendGoal_Request読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_SendGoal_Request読取する は （RotateAbsolute_SendGoal_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_SendGoal_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
   欄2 とは 先 から （欄1 の 次） で RotateAbsolute_Goal読取した 結果
   （値 は （goal_id は （欄1 の 値） で goal は （欄2 の 値） の RotateAbsolute_SendGoal_Request） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_SendGoal_Response
 RotateAbsolute_SendGoal_Response とは accepted と stamp の 組
@@ -302,15 +366,19 @@ RotateAbsolute_SendGoal_Response を 数 で RotateAbsolute_SendGoal_Response寸
 対象 を 位0 で RotateAbsolute_SendGoal_Response寸法する とは
   位1 とは （対象 の accepted） を 位0 で CDR真偽寸法する
   （対象 の stamp） を 位1 で builtin_interfaces内のTime寸法する
-RotateAbsolute_SendGoal_Response を 番地 へ 数 で RotateAbsolute_SendGoal_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_SendGoal_Response書込する とは 手順
+
+RotateAbsolute_SendGoal_Response を 番地 へ 数 で RotateAbsolute_SendGoal_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_SendGoal_Response書込する とは 以下の入出力手順です
   位1 とは （対象 の accepted） を 先 へ 位0 で CDR真偽書込した 結果
   （対象 の stamp） を 先 へ 位1 で builtin_interfaces内のTime書込する
-番地 から 数 で RotateAbsolute_SendGoal_Response読取する は （RotateAbsolute_SendGoal_Response と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_SendGoal_Response読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_SendGoal_Response読取する は （RotateAbsolute_SendGoal_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_SendGoal_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果
   （値 は （accepted は （欄1 の 値） で stamp は （欄2 の 値） の RotateAbsolute_SendGoal_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_GetResult_Request
 RotateAbsolute_GetResult_Request とは goal_id の 組
@@ -319,13 +387,17 @@ RotateAbsolute_GetResult_Request型 とは 型名 は 「turtlesim/action/Rotate
 RotateAbsolute_GetResult_Request を 数 で RotateAbsolute_GetResult_Request寸法する は 数
 対象 を 位0 で RotateAbsolute_GetResult_Request寸法する とは
   （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
-RotateAbsolute_GetResult_Request を 番地 へ 数 で RotateAbsolute_GetResult_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_GetResult_Request書込する とは 手順
+
+RotateAbsolute_GetResult_Request を 番地 へ 数 で RotateAbsolute_GetResult_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_GetResult_Request書込する とは 以下の入出力手順です
   （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込する
-番地 から 数 で RotateAbsolute_GetResult_Request読取する は （RotateAbsolute_GetResult_Request と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_GetResult_Request読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_GetResult_Request読取する は （RotateAbsolute_GetResult_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_GetResult_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
   （値 は （goal_id は （欄1 の 値） の RotateAbsolute_GetResult_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_GetResult_Response
 RotateAbsolute_GetResult_Response とは status と result の 組
@@ -335,15 +407,19 @@ RotateAbsolute_GetResult_Response を 数 で RotateAbsolute_GetResult_Response�
 対象 を 位0 で RotateAbsolute_GetResult_Response寸法する とは
   位1 とは （対象 の status） を 位0 で CDR符号付き8寸法する
   （対象 の result） を 位1 で RotateAbsolute_Result寸法する
-RotateAbsolute_GetResult_Response を 番地 へ 数 で RotateAbsolute_GetResult_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_GetResult_Response書込する とは 手順
+
+RotateAbsolute_GetResult_Response を 番地 へ 数 で RotateAbsolute_GetResult_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_GetResult_Response書込する とは 以下の入出力手順です
   位1 とは （対象 の status） を 先 へ 位0 で CDR符号付き8書込した 結果
   （対象 の result） を 先 へ 位1 で RotateAbsolute_Result書込する
-番地 から 数 で RotateAbsolute_GetResult_Response読取する は （RotateAbsolute_GetResult_Response と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_GetResult_Response読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_GetResult_Response読取する は （RotateAbsolute_GetResult_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_GetResult_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
   欄2 とは 先 から （欄1 の 次） で RotateAbsolute_Result読取した 結果
   （値 は （status は （欄1 の 値） で result は （欄2 の 値） の RotateAbsolute_GetResult_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/action/RotateAbsolute_FeedbackMessage
 RotateAbsolute_FeedbackMessage とは goal_id と feedback の 組
@@ -353,15 +429,19 @@ RotateAbsolute_FeedbackMessage を 数 で RotateAbsolute_FeedbackMessage寸法�
 対象 を 位0 で RotateAbsolute_FeedbackMessage寸法する とは
   位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
   （対象 の feedback） を 位1 で RotateAbsolute_Feedback寸法する
-RotateAbsolute_FeedbackMessage を 番地 へ 数 で RotateAbsolute_FeedbackMessage書込する は 数 の 動作
-対象 を 先 へ 位0 で RotateAbsolute_FeedbackMessage書込する とは 手順
+
+RotateAbsolute_FeedbackMessage を 番地 へ 数 で RotateAbsolute_FeedbackMessage書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で RotateAbsolute_FeedbackMessage書込する とは 以下の入出力手順です
   位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
   （対象 の feedback） を 先 へ 位1 で RotateAbsolute_Feedback書込する
-番地 から 数 で RotateAbsolute_FeedbackMessage読取する は （RotateAbsolute_FeedbackMessage と 数） の 読値 の 動作
-先 から 位0 で RotateAbsolute_FeedbackMessage読取する とは 手順
+  以上です
+
+番地 から 数 で RotateAbsolute_FeedbackMessage読取する は （RotateAbsolute_FeedbackMessage と 数） の 読値 を 返す 入出力動作
+先 から 位0 で RotateAbsolute_FeedbackMessage読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
   欄2 とは 先 から （欄1 の 次） で RotateAbsolute_Feedback読取した 結果
   （値 は （goal_id は （欄1 の 値） で feedback は （欄2 の 値） の RotateAbsolute_FeedbackMessage） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # turtlesim/srv/Kill
 Kill型 とは 型名 は 「turtlesim/srv/Kill」 で 要求 は Kill_Request型 で 応答 は Kill_Response型 の サービス型
@@ -388,27 +468,39 @@ RotateAbsolute_GetResult型 とは 型名 は 「turtlesim/action/RotateAbsolute
 RotateAbsolute型 とは 型名 は 「turtlesim/action/RotateAbsolute」 で 送信 は RotateAbsolute_SendGoal型 で 結果取得 は RotateAbsolute_GetResult型 で 途中 は RotateAbsolute_FeedbackMessage型 で 目標包装 は RotateAbsolute目標包装すること で 目標開封 は RotateAbsolute目標開封すること で 目標ID は RotateAbsolute目標IDすること で 受付包装 は RotateAbsolute受付包装すること で 受付開封 は RotateAbsolute受付開封すること で 結果要求包装 は RotateAbsolute結果要求包装すること で 結果要求ID は RotateAbsolute結果要求IDすること で 結果包装 は RotateAbsolute結果包装すること で 結果開封 は RotateAbsolute結果開封すること で 結果状態 は RotateAbsolute結果状態すること で 途中包装 は RotateAbsolute途中包装すること で 途中開封 は RotateAbsolute途中開封すること で 途中ID は RotateAbsolute途中IDすること で 結果既定 は RotateAbsolute_Result既定 の アクション型
 unique_identifier_msgs内のUUID を RotateAbsolute_Goal で RotateAbsolute目標包装する は RotateAbsolute_SendGoal_Request
 u を g で RotateAbsolute目標包装する とは goal_id は u で goal は g の RotateAbsolute_SendGoal_Request既定
+
 RotateAbsolute_SendGoal_Request を RotateAbsolute目標開封する は RotateAbsolute_Goal
 r を RotateAbsolute目標開封する とは r の goal
+
 RotateAbsolute_SendGoal_Request を RotateAbsolute目標IDする は unique_identifier_msgs内のUUID
 r を RotateAbsolute目標IDする とは r の goal_id
+
 真偽 を builtin_interfaces内のTime で RotateAbsolute受付包装する は RotateAbsolute_SendGoal_Response
 a を t で RotateAbsolute受付包装する とは accepted は a で stamp は t の RotateAbsolute_SendGoal_Response既定
+
 RotateAbsolute_SendGoal_Response を RotateAbsolute受付開封する は 真偽
 r を RotateAbsolute受付開封する とは r の accepted
+
 unique_identifier_msgs内のUUID を RotateAbsolute結果要求包装する は RotateAbsolute_GetResult_Request
 u を RotateAbsolute結果要求包装する とは goal_id は u の RotateAbsolute_GetResult_Request既定
+
 RotateAbsolute_GetResult_Request を RotateAbsolute結果要求IDする は unique_identifier_msgs内のUUID
 r を RotateAbsolute結果要求IDする とは r の goal_id
+
 数 を RotateAbsolute_Result で RotateAbsolute結果包装する は RotateAbsolute_GetResult_Response
 s を x で RotateAbsolute結果包装する とは status は s で result は x の RotateAbsolute_GetResult_Response既定
+
 RotateAbsolute_GetResult_Response を RotateAbsolute結果開封する は RotateAbsolute_Result
 r を RotateAbsolute結果開封する とは r の result
+
 RotateAbsolute_GetResult_Response を RotateAbsolute結果状態する は 数
 r を RotateAbsolute結果状態する とは r の status
+
 unique_identifier_msgs内のUUID を RotateAbsolute_Feedback で RotateAbsolute途中包装する は RotateAbsolute_FeedbackMessage
 u を f で RotateAbsolute途中包装する とは goal_id は u で feedback は f の RotateAbsolute_FeedbackMessage既定
+
 RotateAbsolute_FeedbackMessage を RotateAbsolute途中開封する は RotateAbsolute_Feedback
 m を RotateAbsolute途中開封する とは m の feedback
+
 RotateAbsolute_FeedbackMessage を RotateAbsolute途中IDする は unique_identifier_msgs内のUUID
 m を RotateAbsolute途中IDする とは m の goal_id

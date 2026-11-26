@@ -8,13 +8,17 @@ Empty_Request型 とは 型名 は 「std_srvs/srv/Empty_Request」 で 寸法 �
 Empty_Request を 数 で Empty_Request寸法する は 数
 対象 を 位0 で Empty_Request寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
-Empty_Request を 番地 へ 数 で Empty_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で Empty_Request書込する とは 手順
+
+Empty_Request を 番地 へ 数 で Empty_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Empty_Request書込する とは 以下の入出力手順です
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
-番地 から 数 で Empty_Request読取する は （Empty_Request と 数） の 読値 の 動作
-先 から 位0 で Empty_Request読取する とは 手順
+  以上です
+
+番地 から 数 で Empty_Request読取する は （Empty_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Empty_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の Empty_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # std_srvs/srv/Empty_Response
 Empty_Response とは structure_needs_at_least_one_member の 組
@@ -23,13 +27,17 @@ Empty_Response型 とは 型名 は 「std_srvs/srv/Empty_Response」 で 寸法
 Empty_Response を 数 で Empty_Response寸法する は 数
 対象 を 位0 で Empty_Response寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
-Empty_Response を 番地 へ 数 で Empty_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で Empty_Response書込する とは 手順
+
+Empty_Response を 番地 へ 数 で Empty_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Empty_Response書込する とは 以下の入出力手順です
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
-番地 から 数 で Empty_Response読取する は （Empty_Response と 数） の 読値 の 動作
-先 から 位0 で Empty_Response読取する とは 手順
+  以上です
+
+番地 から 数 で Empty_Response読取する は （Empty_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Empty_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の Empty_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # std_srvs/srv/SetBool_Request
 SetBool_Request とは data の 組
@@ -38,13 +46,17 @@ SetBool_Request型 とは 型名 は 「std_srvs/srv/SetBool_Request」 で 寸�
 SetBool_Request を 数 で SetBool_Request寸法する は 数
 対象 を 位0 で SetBool_Request寸法する とは
   （対象 の data） を 位0 で CDR真偽寸法する
-SetBool_Request を 番地 へ 数 で SetBool_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で SetBool_Request書込する とは 手順
+
+SetBool_Request を 番地 へ 数 で SetBool_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で SetBool_Request書込する とは 以下の入出力手順です
   （対象 の data） を 先 へ 位0 で CDR真偽書込する
-番地 から 数 で SetBool_Request読取する は （SetBool_Request と 数） の 読値 の 動作
-先 から 位0 で SetBool_Request読取する とは 手順
+  以上です
+
+番地 から 数 で SetBool_Request読取する は （SetBool_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で SetBool_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   （値 は （data は （欄1 の 値） の SetBool_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # std_srvs/srv/SetBool_Response
 SetBool_Response とは success と message の 組
@@ -54,15 +66,19 @@ SetBool_Response を 数 で SetBool_Response寸法する は 数
 対象 を 位0 で SetBool_Response寸法する とは
   位1 とは （対象 の success） を 位0 で CDR真偽寸法する
   （対象 の message） を 位1 で CDR文字列寸法する
-SetBool_Response を 番地 へ 数 で SetBool_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で SetBool_Response書込する とは 手順
+
+SetBool_Response を 番地 へ 数 で SetBool_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で SetBool_Response書込する とは 以下の入出力手順です
   位1 とは （対象 の success） を 先 へ 位0 で CDR真偽書込した 結果
   （対象 の message） を 先 へ 位1 で CDR文字列書込する
-番地 から 数 で SetBool_Response読取する は （SetBool_Response と 数） の 読値 の 動作
-先 から 位0 で SetBool_Response読取する とは 手順
+  以上です
+
+番地 から 数 で SetBool_Response読取する は （SetBool_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で SetBool_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
   （値 は （success は （欄1 の 値） で message は （欄2 の 値） の SetBool_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # std_srvs/srv/Trigger_Request
 Trigger_Request とは structure_needs_at_least_one_member の 組
@@ -71,13 +87,17 @@ Trigger_Request型 とは 型名 は 「std_srvs/srv/Trigger_Request」 で 寸�
 Trigger_Request を 数 で Trigger_Request寸法する は 数
 対象 を 位0 で Trigger_Request寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
-Trigger_Request を 番地 へ 数 で Trigger_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で Trigger_Request書込する とは 手順
+
+Trigger_Request を 番地 へ 数 で Trigger_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Trigger_Request書込する とは 以下の入出力手順です
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
-番地 から 数 で Trigger_Request読取する は （Trigger_Request と 数） の 読値 の 動作
-先 から 位0 で Trigger_Request読取する とは 手順
+  以上です
+
+番地 から 数 で Trigger_Request読取する は （Trigger_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Trigger_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の Trigger_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # std_srvs/srv/Trigger_Response
 Trigger_Response とは success と message の 組
@@ -87,15 +107,19 @@ Trigger_Response を 数 で Trigger_Response寸法する は 数
 対象 を 位0 で Trigger_Response寸法する とは
   位1 とは （対象 の success） を 位0 で CDR真偽寸法する
   （対象 の message） を 位1 で CDR文字列寸法する
-Trigger_Response を 番地 へ 数 で Trigger_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で Trigger_Response書込する とは 手順
+
+Trigger_Response を 番地 へ 数 で Trigger_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Trigger_Response書込する とは 以下の入出力手順です
   位1 とは （対象 の success） を 先 へ 位0 で CDR真偽書込した 結果
   （対象 の message） を 先 へ 位1 で CDR文字列書込する
-番地 から 数 で Trigger_Response読取する は （Trigger_Response と 数） の 読値 の 動作
-先 から 位0 で Trigger_Response読取する とは 手順
+  以上です
+
+番地 から 数 で Trigger_Response読取する は （Trigger_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Trigger_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
   （値 は （success は （欄1 の 値） で message は （欄2 の 値） の Trigger_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # std_srvs/srv/Empty
 Empty型 とは 型名 は 「std_srvs/srv/Empty」 で 要求 は Empty_Request型 で 応答 は Empty_Response型 の サービス型

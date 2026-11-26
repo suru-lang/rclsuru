@@ -3,15 +3,17 @@
 「rclsuru」 を 読み込んで 使う
 「rclsuru/型/example_interfaces」 を 読み込んで 使う
 
-始めする とは 手順
+始めする とは 以下の入出力手順です
   n とは 「add_two_ints_server」 を ノード作成した 結果
   AddTwoInts型 を 「add_two_ints」 で n に 足し算すること へ サービス作成する
   n を スピンする
+  以上です
 
-AddTwoInts_Request を 足し算する は AddTwoInts_Response の 動作
-要求 を 足し算する とは 手順
+AddTwoInts_Request を 足し算する は AddTwoInts_Response を 返す 入出力動作
+要求 を 足し算する とは 以下の入出力手順です
   和 とは （要求 の a） + （要求 の b）
   （「要求: 」 + （要求 の a を 文字列化する） + 「 + 」 + （要求 の b を 文字列化する） + 「 = 」 + （和 を 文字列化する）） を 表示する
   （sum は 和 の AddTwoInts_Response既定） を 結果にする
+  以上です
 
 始めする

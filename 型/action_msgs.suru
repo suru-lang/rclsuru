@@ -11,15 +11,19 @@ GoalInfo を 数 で GoalInfo寸法する は 数
 対象 を 位0 で GoalInfo寸法する とは
   位1 とは （対象 の goal_id） を 位0 で unique_identifier_msgs内のUUID寸法する
   （対象 の stamp） を 位1 で builtin_interfaces内のTime寸法する
-GoalInfo を 番地 へ 数 で GoalInfo書込する は 数 の 動作
-対象 を 先 へ 位0 で GoalInfo書込する とは 手順
+
+GoalInfo を 番地 へ 数 で GoalInfo書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で GoalInfo書込する とは 以下の入出力手順です
   位1 とは （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込した 結果
   （対象 の stamp） を 先 へ 位1 で builtin_interfaces内のTime書込する
-番地 から 数 で GoalInfo読取する は （GoalInfo と 数） の 読値 の 動作
-先 から 位0 で GoalInfo読取する とは 手順
+  以上です
+
+番地 から 数 で GoalInfo読取する は （GoalInfo と 数） の 読値 を 返す 入出力動作
+先 から 位0 で GoalInfo読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
   欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果
   （値 は （goal_id は （欄1 の 値） で stamp は （欄2 の 値） の GoalInfo） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # action_msgs/msg/GoalStatus
 GoalStatus とは goal_info と status の 組
@@ -36,15 +40,19 @@ GoalStatus を 数 で GoalStatus寸法する は 数
 対象 を 位0 で GoalStatus寸法する とは
   位1 とは （対象 の goal_info） を 位0 で GoalInfo寸法する
   （対象 の status） を 位1 で CDR符号付き8寸法する
-GoalStatus を 番地 へ 数 で GoalStatus書込する は 数 の 動作
-対象 を 先 へ 位0 で GoalStatus書込する とは 手順
+
+GoalStatus を 番地 へ 数 で GoalStatus書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で GoalStatus書込する とは 以下の入出力手順です
   位1 とは （対象 の goal_info） を 先 へ 位0 で GoalInfo書込した 結果
   （対象 の status） を 先 へ 位1 で CDR符号付き8書込する
-番地 から 数 で GoalStatus読取する は （GoalStatus と 数） の 読値 の 動作
-先 から 位0 で GoalStatus読取する とは 手順
+  以上です
+
+番地 から 数 で GoalStatus読取する は （GoalStatus と 数） の 読値 を 返す 入出力動作
+先 から 位0 で GoalStatus読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で GoalInfo読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号付き8読取した 結果
   （値 は （goal_info は （欄1 の 値） で status は （欄2 の 値） の GoalStatus） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # action_msgs/msg/GoalStatusArray
 GoalStatusArray とは status_list の 組
@@ -53,13 +61,17 @@ GoalStatusArray型 とは 型名 は 「action_msgs/msg/GoalStatusArray」 で �
 GoalStatusArray を 数 で GoalStatusArray寸法する は 数
 対象 を 位0 で GoalStatusArray寸法する とは
   （対象 の status_list） を 位0 で （GoalStatus寸法すること） に CDR可変列寸法する
-GoalStatusArray を 番地 へ 数 で GoalStatusArray書込する は 数 の 動作
-対象 を 先 へ 位0 で GoalStatusArray書込する とは 手順
+
+GoalStatusArray を 番地 へ 数 で GoalStatusArray書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で GoalStatusArray書込する とは 以下の入出力手順です
   （対象 の status_list） を 先 へ 位0 で （GoalStatus書込すること） に CDR可変列書込する
-番地 から 数 で GoalStatusArray読取する は （GoalStatusArray と 数） の 読値 の 動作
-先 から 位0 で GoalStatusArray読取する とは 手順
+  以上です
+
+番地 から 数 で GoalStatusArray読取する は （GoalStatusArray と 数） の 読値 を 返す 入出力動作
+先 から 位0 で GoalStatusArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （GoalStatus読取すること） に CDR可変列読取した 結果
   （値 は （status_list は （欄1 の 値） の GoalStatusArray） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # action_msgs/srv/CancelGoal_Request
 CancelGoal_Request とは goal_info の 組
@@ -68,13 +80,17 @@ CancelGoal_Request型 とは 型名 は 「action_msgs/srv/CancelGoal_Request」
 CancelGoal_Request を 数 で CancelGoal_Request寸法する は 数
 対象 を 位0 で CancelGoal_Request寸法する とは
   （対象 の goal_info） を 位0 で GoalInfo寸法する
-CancelGoal_Request を 番地 へ 数 で CancelGoal_Request書込する は 数 の 動作
-対象 を 先 へ 位0 で CancelGoal_Request書込する とは 手順
+
+CancelGoal_Request を 番地 へ 数 で CancelGoal_Request書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で CancelGoal_Request書込する とは 以下の入出力手順です
   （対象 の goal_info） を 先 へ 位0 で GoalInfo書込する
-番地 から 数 で CancelGoal_Request読取する は （CancelGoal_Request と 数） の 読値 の 動作
-先 から 位0 で CancelGoal_Request読取する とは 手順
+  以上です
+
+番地 から 数 で CancelGoal_Request読取する は （CancelGoal_Request と 数） の 読値 を 返す 入出力動作
+先 から 位0 で CancelGoal_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で GoalInfo読取した 結果
   （値 は （goal_info は （欄1 の 値） の CancelGoal_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # action_msgs/srv/CancelGoal_Response
 CancelGoal_Response とは return_code と goals_canceling の 組
@@ -88,15 +104,19 @@ CancelGoal_Response を 数 で CancelGoal_Response寸法する は 数
 対象 を 位0 で CancelGoal_Response寸法する とは
   位1 とは （対象 の return_code） を 位0 で CDR符号付き8寸法する
   （対象 の goals_canceling） を 位1 で （GoalInfo寸法すること） に CDR可変列寸法する
-CancelGoal_Response を 番地 へ 数 で CancelGoal_Response書込する は 数 の 動作
-対象 を 先 へ 位0 で CancelGoal_Response書込する とは 手順
+
+CancelGoal_Response を 番地 へ 数 で CancelGoal_Response書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で CancelGoal_Response書込する とは 以下の入出力手順です
   位1 とは （対象 の return_code） を 先 へ 位0 で CDR符号付き8書込した 結果
   （対象 の goals_canceling） を 先 へ 位1 で （GoalInfo書込すること） に CDR可変列書込する
-番地 から 数 で CancelGoal_Response読取する は （CancelGoal_Response と 数） の 読値 の 動作
-先 から 位0 で CancelGoal_Response読取する とは 手順
+  以上です
+
+番地 から 数 で CancelGoal_Response読取する は （CancelGoal_Response と 数） の 読値 を 返す 入出力動作
+先 から 位0 で CancelGoal_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
   欄2 とは 先 から （欄1 の 次） で （GoalInfo読取すること） に CDR可変列読取した 結果
   （値 は （return_code は （欄1 の 値） で goals_canceling は （欄2 の 値） の CancelGoal_Response） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # action_msgs/srv/CancelGoal
 CancelGoal型 とは 型名 は 「action_msgs/srv/CancelGoal」 で 要求 は CancelGoal_Request型 で 応答 は CancelGoal_Response型 の サービス型
