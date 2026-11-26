@@ -9,9 +9,11 @@ Bool型 とは 型名 は 「std_msgs/msg/Bool」 で 寸法 は Bool寸法す�
 Bool を 数 で Bool寸法する は 数
 対象 を 位0 で Bool寸法する とは
   （対象 の data） を 位0 で CDR真偽寸法する
+
 Bool を 番地 へ 数 で Bool書込する は 数 の 動作
 対象 を 先 へ 位0 で Bool書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR真偽書込する
+
 番地 から 数 で Bool読取する は （Bool と 数） の 読値 の 動作
 先 から 位0 で Bool読取する とは 手順
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
@@ -24,9 +26,11 @@ Byte型 とは 型名 は 「std_msgs/msg/Byte」 で 寸法 は Byte寸法す�
 Byte を 数 で Byte寸法する は 数
 対象 を 位0 で Byte寸法する とは
   （対象 の data） を 位0 で CDR符号なし8寸法する
+
 Byte を 番地 へ 数 で Byte書込する は 数 の 動作
 対象 を 先 へ 位0 で Byte書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号なし8書込する
+
 番地 から 数 で Byte読取する は （Byte と 数） の 読値 の 動作
 先 から 位0 で Byte読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
@@ -40,10 +44,12 @@ ByteMultiArray を 数 で ByteMultiArray寸法する は 数
 対象 を 位0 で ByteMultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で CDRバイト可変列寸法する
+
 ByteMultiArray を 番地 へ 数 で ByteMultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で ByteMultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で CDRバイト可変列書込する
+
 番地 から 数 で ByteMultiArray読取する は （ByteMultiArray と 数） の 読値 の 動作
 先 から 位0 で ByteMultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -57,9 +63,11 @@ Char型 とは 型名 は 「std_msgs/msg/Char」 で 寸法 は Char寸法す�
 Char を 数 で Char寸法する は 数
 対象 を 位0 で Char寸法する とは
   （対象 の data） を 位0 で CDR符号なし8寸法する
+
 Char を 番地 へ 数 で Char書込する は 数 の 動作
 対象 を 先 へ 位0 で Char書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号なし8書込する
+
 番地 から 数 で Char読取する は （Char と 数） の 読値 の 動作
 先 から 位0 で Char読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
@@ -75,12 +83,14 @@ ColorRGBA を 数 で ColorRGBA寸法する は 数
   位2 とは （対象 の g） を 位1 で CDR単精度寸法する
   位3 とは （対象 の b） を 位2 で CDR単精度寸法する
   （対象 の a） を 位3 で CDR単精度寸法する
+
 ColorRGBA を 番地 へ 数 で ColorRGBA書込する は 数 の 動作
 対象 を 先 へ 位0 で ColorRGBA書込する とは 手順
   位1 とは （対象 の r） を 先 へ 位0 で CDR単精度書込した 結果
   位2 とは （対象 の g） を 先 へ 位1 で CDR単精度書込した 結果
   位3 とは （対象 の b） を 先 へ 位2 で CDR単精度書込した 結果
   （対象 の a） を 先 へ 位3 で CDR単精度書込する
+
 番地 から 数 で ColorRGBA読取する は （ColorRGBA と 数） の 読値 の 動作
 先 から 位0 で ColorRGBA読取する とは 手順
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
@@ -96,9 +106,11 @@ Empty型 とは 型名 は 「std_msgs/msg/Empty」 で 寸法 は Empty寸法�
 Empty を 数 で Empty寸法する は 数
 対象 を 位0 で Empty寸法する とは
   （対象 の structure_needs_at_least_one_member） を 位0 で CDR符号なし8寸法する
+
 Empty を 番地 へ 数 で Empty書込する は 数 の 動作
 対象 を 先 へ 位0 で Empty書込する とは 手順
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
+
 番地 から 数 で Empty読取する は （Empty と 数） の 読値 の 動作
 先 から 位0 で Empty読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
@@ -111,9 +123,11 @@ Float32型 とは 型名 は 「std_msgs/msg/Float32」 で 寸法 は Float32�
 Float32 を 数 で Float32寸法する は 数
 対象 を 位0 で Float32寸法する とは
   （対象 の data） を 位0 で CDR単精度寸法する
+
 Float32 を 番地 へ 数 で Float32書込する は 数 の 動作
 対象 を 先 へ 位0 で Float32書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR単精度書込する
+
 番地 から 数 で Float32読取する は （Float32 と 数） の 読値 の 動作
 先 から 位0 で Float32読取する とは 手順
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
@@ -127,10 +141,12 @@ Float32MultiArray を 数 で Float32MultiArray寸法する は 数
 対象 を 位0 で Float32MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 4 に CDR素可変列寸法する
+
 Float32MultiArray を 番地 へ 数 で Float32MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で Float32MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR単精度書込すること） に CDR可変列書込する
+
 番地 から 数 で Float32MultiArray読取する は （Float32MultiArray と 数） の 読値 の 動作
 先 から 位0 で Float32MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -144,9 +160,11 @@ Float64型 とは 型名 は 「std_msgs/msg/Float64」 で 寸法 は Float64�
 Float64 を 数 で Float64寸法する は 数
 対象 を 位0 で Float64寸法する とは
   （対象 の data） を 位0 で CDR小数寸法する
+
 Float64 を 番地 へ 数 で Float64書込する は 数 の 動作
 対象 を 先 へ 位0 で Float64書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR小数書込する
+
 番地 から 数 で Float64読取する は （Float64 と 数） の 読値 の 動作
 先 から 位0 で Float64読取する とは 手順
   欄1 とは 先 から 位0 で CDR小数読取した 結果
@@ -160,10 +178,12 @@ Float64MultiArray を 数 で Float64MultiArray寸法する は 数
 対象 を 位0 で Float64MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 8 に CDR素可変列寸法する
+
 Float64MultiArray を 番地 へ 数 で Float64MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で Float64MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR小数書込すること） に CDR可変列書込する
+
 番地 から 数 で Float64MultiArray読取する は （Float64MultiArray と 数） の 読値 の 動作
 先 から 位0 で Float64MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -178,10 +198,12 @@ Header を 数 で Header寸法する は 数
 対象 を 位0 で Header寸法する とは
   位1 とは （対象 の stamp） を 位0 で builtin_interfaces内のTime寸法する
   （対象 の frame_id） を 位1 で CDR文字列寸法する
+
 Header を 番地 へ 数 で Header書込する は 数 の 動作
 対象 を 先 へ 位0 で Header書込する とは 手順
   位1 とは （対象 の stamp） を 先 へ 位0 で builtin_interfaces内のTime書込した 結果
   （対象 の frame_id） を 先 へ 位1 で CDR文字列書込する
+
 番地 から 数 で Header読取する は （Header と 数） の 読値 の 動作
 先 から 位0 で Header読取する とは 手順
   欄1 とは 先 から 位0 で builtin_interfaces内のTime読取した 結果
@@ -195,9 +217,11 @@ Int16型 とは 型名 は 「std_msgs/msg/Int16」 で 寸法 は Int16寸法�
 Int16 を 数 で Int16寸法する は 数
 対象 を 位0 で Int16寸法する とは
   （対象 の data） を 位0 で CDR符号付き16寸法する
+
 Int16 を 番地 へ 数 で Int16書込する は 数 の 動作
 対象 を 先 へ 位0 で Int16書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号付き16書込する
+
 番地 から 数 で Int16読取する は （Int16 と 数） の 読値 の 動作
 先 から 位0 で Int16読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号付き16読取した 結果
@@ -211,10 +235,12 @@ Int16MultiArray を 数 で Int16MultiArray寸法する は 数
 対象 を 位0 で Int16MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 2 に CDR素可変列寸法する
+
 Int16MultiArray を 番地 へ 数 で Int16MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で Int16MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR符号付き16書込すること） に CDR可変列書込する
+
 番地 から 数 で Int16MultiArray読取する は （Int16MultiArray と 数） の 読値 の 動作
 先 から 位0 で Int16MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -228,9 +254,11 @@ Int32型 とは 型名 は 「std_msgs/msg/Int32」 で 寸法 は Int32寸法�
 Int32 を 数 で Int32寸法する は 数
 対象 を 位0 で Int32寸法する とは
   （対象 の data） を 位0 で CDR符号付き32寸法する
+
 Int32 を 番地 へ 数 で Int32書込する は 数 の 動作
 対象 を 先 へ 位0 で Int32書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号付き32書込する
+
 番地 から 数 で Int32読取する は （Int32 と 数） の 読値 の 動作
 先 から 位0 で Int32読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号付き32読取した 結果
@@ -244,10 +272,12 @@ Int32MultiArray を 数 で Int32MultiArray寸法する は 数
 対象 を 位0 で Int32MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 4 に CDR素可変列寸法する
+
 Int32MultiArray を 番地 へ 数 で Int32MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で Int32MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR符号付き32書込すること） に CDR可変列書込する
+
 番地 から 数 で Int32MultiArray読取する は （Int32MultiArray と 数） の 読値 の 動作
 先 から 位0 で Int32MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -261,9 +291,11 @@ Int64型 とは 型名 は 「std_msgs/msg/Int64」 で 寸法 は Int64寸法�
 Int64 を 数 で Int64寸法する は 数
 対象 を 位0 で Int64寸法する とは
   （対象 の data） を 位0 で CDR符号付き64寸法する
+
 Int64 を 番地 へ 数 で Int64書込する は 数 の 動作
 対象 を 先 へ 位0 で Int64書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号付き64書込する
+
 番地 から 数 で Int64読取する は （Int64 と 数） の 読値 の 動作
 先 から 位0 で Int64読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号付き64読取した 結果
@@ -277,10 +309,12 @@ Int64MultiArray を 数 で Int64MultiArray寸法する は 数
 対象 を 位0 で Int64MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 8 に CDR素可変列寸法する
+
 Int64MultiArray を 番地 へ 数 で Int64MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で Int64MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR符号付き64書込すること） に CDR可変列書込する
+
 番地 から 数 で Int64MultiArray読取する は （Int64MultiArray と 数） の 読値 の 動作
 先 から 位0 で Int64MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -294,9 +328,11 @@ Int8型 とは 型名 は 「std_msgs/msg/Int8」 で 寸法 は Int8寸法す�
 Int8 を 数 で Int8寸法する は 数
 対象 を 位0 で Int8寸法する とは
   （対象 の data） を 位0 で CDR符号付き8寸法する
+
 Int8 を 番地 へ 数 で Int8書込する は 数 の 動作
 対象 を 先 へ 位0 で Int8書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号付き8書込する
+
 番地 から 数 で Int8読取する は （Int8 と 数） の 読値 の 動作
 先 から 位0 で Int8読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
@@ -310,10 +346,12 @@ Int8MultiArray を 数 で Int8MultiArray寸法する は 数
 対象 を 位0 で Int8MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 1 に CDR素可変列寸法する
+
 Int8MultiArray を 番地 へ 数 で Int8MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で Int8MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR符号付き8書込すること） に CDR可変列書込する
+
 番地 から 数 で Int8MultiArray読取する は （Int8MultiArray と 数） の 読値 の 動作
 先 から 位0 で Int8MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -329,11 +367,13 @@ MultiArrayDimension を 数 で MultiArrayDimension寸法する は 数
   位1 とは （対象 の label） を 位0 で CDR文字列寸法する
   位2 とは （対象 の size） を 位1 で CDR符号なし32寸法する
   （対象 の stride） を 位2 で CDR符号なし32寸法する
+
 MultiArrayDimension を 番地 へ 数 で MultiArrayDimension書込する は 数 の 動作
 対象 を 先 へ 位0 で MultiArrayDimension書込する とは 手順
   位1 とは （対象 の label） を 先 へ 位0 で CDR文字列書込した 結果
   位2 とは （対象 の size） を 先 へ 位1 で CDR符号なし32書込した 結果
   （対象 の stride） を 先 へ 位2 で CDR符号なし32書込する
+
 番地 から 数 で MultiArrayDimension読取する は （MultiArrayDimension と 数） の 読値 の 動作
 先 から 位0 で MultiArrayDimension読取する とは 手順
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
@@ -349,10 +389,12 @@ MultiArrayLayout を 数 で MultiArrayLayout寸法する は 数
 対象 を 位0 で MultiArrayLayout寸法する とは
   位1 とは （対象 の dim） を 位0 で （MultiArrayDimension寸法すること） に CDR可変列寸法する
   （対象 の data_offset） を 位1 で CDR符号なし32寸法する
+
 MultiArrayLayout を 番地 へ 数 で MultiArrayLayout書込する は 数 の 動作
 対象 を 先 へ 位0 で MultiArrayLayout書込する とは 手順
   位1 とは （対象 の dim） を 先 へ 位0 で （MultiArrayDimension書込すること） に CDR可変列書込した 結果
   （対象 の data_offset） を 先 へ 位1 で CDR符号なし32書込する
+
 番地 から 数 で MultiArrayLayout読取する は （MultiArrayLayout と 数） の 読値 の 動作
 先 から 位0 で MultiArrayLayout読取する とは 手順
   欄1 とは 先 から 位0 で （MultiArrayDimension読取すること） に CDR可変列読取した 結果
@@ -366,9 +408,11 @@ String型 とは 型名 は 「std_msgs/msg/String」 で 寸法 は String寸�
 String を 数 で String寸法する は 数
 対象 を 位0 で String寸法する とは
   （対象 の data） を 位0 で CDR文字列寸法する
+
 String を 番地 へ 数 で String書込する は 数 の 動作
 対象 を 先 へ 位0 で String書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR文字列書込する
+
 番地 から 数 で String読取する は （String と 数） の 読値 の 動作
 先 から 位0 で String読取する とは 手順
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
@@ -381,9 +425,11 @@ UInt16型 とは 型名 は 「std_msgs/msg/UInt16」 で 寸法 は UInt16寸�
 UInt16 を 数 で UInt16寸法する は 数
 対象 を 位0 で UInt16寸法する とは
   （対象 の data） を 位0 で CDR符号なし16寸法する
+
 UInt16 を 番地 へ 数 で UInt16書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt16書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号なし16書込する
+
 番地 から 数 で UInt16読取する は （UInt16 と 数） の 読値 の 動作
 先 から 位0 で UInt16読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし16読取した 結果
@@ -397,10 +443,12 @@ UInt16MultiArray を 数 で UInt16MultiArray寸法する は 数
 対象 を 位0 で UInt16MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 2 に CDR素可変列寸法する
+
 UInt16MultiArray を 番地 へ 数 で UInt16MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt16MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR符号なし16書込すること） に CDR可変列書込する
+
 番地 から 数 で UInt16MultiArray読取する は （UInt16MultiArray と 数） の 読値 の 動作
 先 から 位0 で UInt16MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -414,9 +462,11 @@ UInt32型 とは 型名 は 「std_msgs/msg/UInt32」 で 寸法 は UInt32寸�
 UInt32 を 数 で UInt32寸法する は 数
 対象 を 位0 で UInt32寸法する とは
   （対象 の data） を 位0 で CDR符号なし32寸法する
+
 UInt32 を 番地 へ 数 で UInt32書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt32書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号なし32書込する
+
 番地 から 数 で UInt32読取する は （UInt32 と 数） の 読値 の 動作
 先 から 位0 で UInt32読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし32読取した 結果
@@ -430,10 +480,12 @@ UInt32MultiArray を 数 で UInt32MultiArray寸法する は 数
 対象 を 位0 で UInt32MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 4 に CDR素可変列寸法する
+
 UInt32MultiArray を 番地 へ 数 で UInt32MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt32MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR符号なし32書込すること） に CDR可変列書込する
+
 番地 から 数 で UInt32MultiArray読取する は （UInt32MultiArray と 数） の 読値 の 動作
 先 から 位0 で UInt32MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -447,9 +499,11 @@ UInt64型 とは 型名 は 「std_msgs/msg/UInt64」 で 寸法 は UInt64寸�
 UInt64 を 数 で UInt64寸法する は 数
 対象 を 位0 で UInt64寸法する とは
   （対象 の data） を 位0 で CDR符号なし64寸法する
+
 UInt64 を 番地 へ 数 で UInt64書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt64書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号なし64書込する
+
 番地 から 数 で UInt64読取する は （UInt64 と 数） の 読値 の 動作
 先 から 位0 で UInt64読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし64読取した 結果
@@ -463,10 +517,12 @@ UInt64MultiArray を 数 で UInt64MultiArray寸法する は 数
 対象 を 位0 で UInt64MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で 8 に CDR素可変列寸法する
+
 UInt64MultiArray を 番地 へ 数 で UInt64MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt64MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で （CDR符号なし64書込すること） に CDR可変列書込する
+
 番地 から 数 で UInt64MultiArray読取する は （UInt64MultiArray と 数） の 読値 の 動作
 先 から 位0 で UInt64MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
@@ -480,9 +536,11 @@ UInt8型 とは 型名 は 「std_msgs/msg/UInt8」 で 寸法 は UInt8寸法�
 UInt8 を 数 で UInt8寸法する は 数
 対象 を 位0 で UInt8寸法する とは
   （対象 の data） を 位0 で CDR符号なし8寸法する
+
 UInt8 を 番地 へ 数 で UInt8書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt8書込する とは 手順
   （対象 の data） を 先 へ 位0 で CDR符号なし8書込する
+
 番地 から 数 で UInt8読取する は （UInt8 と 数） の 読値 の 動作
 先 から 位0 で UInt8読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
@@ -496,10 +554,12 @@ UInt8MultiArray を 数 で UInt8MultiArray寸法する は 数
 対象 を 位0 で UInt8MultiArray寸法する とは
   位1 とは （対象 の layout） を 位0 で MultiArrayLayout寸法する
   （対象 の data） を 位1 で CDRバイト可変列寸法する
+
 UInt8MultiArray を 番地 へ 数 で UInt8MultiArray書込する は 数 の 動作
 対象 を 先 へ 位0 で UInt8MultiArray書込する とは 手順
   位1 とは （対象 の layout） を 先 へ 位0 で MultiArrayLayout書込した 結果
   （対象 の data） を 先 へ 位1 で CDRバイト可変列書込する
+
 番地 から 数 で UInt8MultiArray読取する は （UInt8MultiArray と 数） の 読値 の 動作
 先 から 位0 で UInt8MultiArray読取する とは 手順
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果

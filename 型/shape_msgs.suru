@@ -10,10 +10,12 @@ Mesh を 数 で Mesh寸法する は 数
 対象 を 位0 で Mesh寸法する とは
   位1 とは （対象 の triangles） を 位0 で （MeshTriangle寸法すること） に CDR可変列寸法する
   （対象 の vertices） を 位1 で （geometry_msgs内のPoint寸法すること） に CDR可変列寸法する
+
 Mesh を 番地 へ 数 で Mesh書込する は 数 の 動作
 対象 を 先 へ 位0 で Mesh書込する とは 手順
   位1 とは （対象 の triangles） を 先 へ 位0 で （MeshTriangle書込すること） に CDR可変列書込した 結果
   （対象 の vertices） を 先 へ 位1 で （geometry_msgs内のPoint書込すること） に CDR可変列書込する
+
 番地 から 数 で Mesh読取する は （Mesh と 数） の 読値 の 動作
 先 から 位0 で Mesh読取する とは 手順
   欄1 とは 先 から 位0 で （MeshTriangle読取すること） に CDR可変列読取した 結果
@@ -27,9 +29,11 @@ MeshTriangle型 とは 型名 は 「shape_msgs/msg/MeshTriangle」 で 寸法 �
 MeshTriangle を 数 で MeshTriangle寸法する は 数
 対象 を 位0 で MeshTriangle寸法する とは
   （対象 の vertex_indices） を 位0 で 4 に CDR素列寸法する
+
 MeshTriangle を 番地 へ 数 で MeshTriangle書込する は 数 の 動作
 対象 を 先 へ 位0 で MeshTriangle書込する とは 手順
   （対象 の vertex_indices） を 先 へ 位0 で （CDR符号なし32書込すること） に 3 より CDR固定列書込する
+
 番地 から 数 で MeshTriangle読取する は （MeshTriangle と 数） の 読値 の 動作
 先 から 位0 で MeshTriangle読取する とは 手順
   欄1 とは 先 から 位0 で （CDR符号なし32読取すること） に 3 より CDR固定列読取した 結果
@@ -42,9 +46,11 @@ Plane型 とは 型名 は 「shape_msgs/msg/Plane」 で 寸法 は Plane寸法
 Plane を 数 で Plane寸法する は 数
 対象 を 位0 で Plane寸法する とは
   （対象 の coef） を 位0 で 8 に CDR素列寸法する
+
 Plane を 番地 へ 数 で Plane書込する は 数 の 動作
 対象 を 先 へ 位0 で Plane書込する とは 手順
   （対象 の coef） を 先 へ 位0 で （CDR小数書込すること） に 4 より CDR固定列書込する
+
 番地 から 数 で Plane読取する は （Plane と 数） の 読値 の 動作
 先 から 位0 で Plane読取する とは 手順
   欄1 とは 先 から 位0 で （CDR小数読取すること） に 4 より CDR固定列読取した 結果
@@ -73,11 +79,13 @@ SolidPrimitive を 数 で SolidPrimitive寸法する は 数
   位1 とは （対象 の type） を 位0 で CDR符号なし8寸法する
   位2 とは （対象 の dimensions） を 位1 で 8 に CDR素可変列寸法する
   （対象 の polygon） を 位2 で geometry_msgs内のPolygon寸法する
+
 SolidPrimitive を 番地 へ 数 で SolidPrimitive書込する は 数 の 動作
 対象 を 先 へ 位0 で SolidPrimitive書込する とは 手順
   位1 とは （対象 の type） を 先 へ 位0 で CDR符号なし8書込した 結果
   位2 とは （対象 の dimensions） を 先 へ 位1 で （CDR小数書込すること） に 3 より CDR上限列書込した 結果
   （対象 の polygon） を 先 へ 位2 で geometry_msgs内のPolygon書込する
+
 番地 から 数 で SolidPrimitive読取する は （SolidPrimitive と 数） の 読値 の 動作
 先 から 位0 で SolidPrimitive読取する とは 手順
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果

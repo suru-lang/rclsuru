@@ -42,195 +42,115 @@
 
 # --- C の関数 ---
 
-数 を 確保する は 番地 の 動作
-n を 確保する とは 外部の「malloc」
+以下の外部の入出力動作です
+  数 を 確保する は 「malloc」 で 番地 を 返します
 
-最後のエラー取得する は 文字列 の 動作
-最後のエラー取得する とは 外部の「rclsuru_last_error」
+  最後のエラー取得する は 「rclsuru_last_error」 で 文字列 を 返します
 
-文脈新規作成する は 番地 の 動作
-文脈新規作成する とは 外部の「rclsuru_context_new」
-番地 を 文脈削除する は 無 の 動作
-c を 文脈削除する とは 外部の「rclsuru_context_delete」
-初期化設定作成する は 番地 の 動作
-初期化設定作成する とは 外部の「rclsuru_init_options_new」
-番地 を 初期化設定削除する は 無 の 動作
-o を 初期化設定削除する とは 外部の「rclsuru_init_options_delete」
-整数 を 番地 で 番地 に 番地 へ 低水準初期化する は 整数 の 動作
-n を a で o に c へ 低水準初期化する とは 外部の「rcl_init」（n と a と o と c）
-番地 を 低水準終了する は 整数 の 動作
-c を 低水準終了する とは 外部の「rcl_shutdown」
-番地 を 低水準文脈破棄する は 整数 の 動作
-c を 低水準文脈破棄する とは 外部の「rcl_context_fini」
-番地 を ログ初期化する は 数 の 動作
-c を ログ初期化する とは 外部の「rclsuru_logging_init」
+  文脈新規作成する は 「rclsuru_context_new」 で 番地 を 返します
+  番地 を 文脈削除する は 「rclsuru_context_delete」 で 無 を 返します
+  初期化設定作成する は 「rclsuru_init_options_new」 で 番地 を 返します
+  番地 を 初期化設定削除する は 「rclsuru_init_options_delete」 で 無 を 返します
+  整数 を 番地 で 番地 に 番地 へ 低水準初期化する は 「rcl_init」 で 整数 を 返します
+  番地 を 低水準終了する は 「rcl_shutdown」 で 整数 を 返します
+  番地 を 低水準文脈破棄する は 「rcl_context_fini」 で 整数 を 返します
+  番地 を ログ初期化する は 「rclsuru_logging_init」 で 数 を 返します
 
-節点新規作成する は 番地 の 動作
-節点新規作成する とは 外部の「rclsuru_node_new」
-番地 を rosout開始する は 整数 の 動作
-n を rosout開始する とは 外部の「rclsuru_rosout_init」
-番地 を rosout終了する は 整数 の 動作
-n を rosout終了する とは 外部の「rclsuru_rosout_fini」
-番地 を 数 で 文字列 に 低水準ログ出力する は 無 の 動作
-n を 重さ で 文 に 低水準ログ出力する とは 外部の「rclsuru_log」（n と 重さ と 文）
-数 を 時計新規作成する は 番地 の 動作
-種類 を 時計新規作成する とは 外部の「rclsuru_clock_new」
-番地 を 時計読取する は 数 の 動作
-c を 時計読取する とは 外部の「rclsuru_clock_now」
-番地 を 時計上書き開始する は 整数 の 動作
-c を 時計上書き開始する とは 外部の「rclsuru_clock_enable_override」
-番地 を 数 で 時計設定する は 整数 の 動作
-c を t で 時計設定する とは 外部の「rclsuru_clock_set」
-番地 を 節点削除する は 無 の 動作
-n を 節点削除する とは 外部の「rclsuru_node_delete」
-節点設定作成する は 番地 の 動作
-節点設定作成する とは 外部の「rclsuru_node_options_new」
-番地 を 節点設定削除する は 無 の 動作
-o を 節点設定削除する とは 外部の「rclsuru_node_options_delete」
-番地 を 文字列 で 文字列 に 番地 へ 番地 から 低水準節点初期化する は 整数 の 動作
-n を 名 で 空間 に c へ o から 低水準節点初期化する とは 外部の「rcl_node_init」（n と 名 と 空間 と c と o）
-番地 を 低水準節点破棄する は 整数 の 動作
-n を 低水準節点破棄する とは 外部の「rcl_node_fini」
+  節点新規作成する は 「rclsuru_node_new」 で 番地 を 返します
+  番地 を rosout開始する は 「rclsuru_rosout_init」 で 整数 を 返します
+  番地 を rosout終了する は 「rclsuru_rosout_fini」 で 整数 を 返します
+  番地 を 数 で 文字列 に 低水準ログ出力する は 「rclsuru_log」 で 無 を 返します
+  数 を 時計新規作成する は 「rclsuru_clock_new」 で 番地 を 返します
+  番地 を 時計読取する は 「rclsuru_clock_now」 で 数 を 返します
+  番地 を 時計上書き開始する は 「rclsuru_clock_enable_override」 で 整数 を 返します
+  番地 を 数 で 時計設定する は 「rclsuru_clock_set」 で 整数 を 返します
+  番地 を 節点削除する は 「rclsuru_node_delete」 で 無 を 返します
+  節点設定作成する は 「rclsuru_node_options_new」 で 番地 を 返します
+  番地 を 節点設定削除する は 「rclsuru_node_options_delete」 で 無 を 返します
+  番地 を 文字列 で 文字列 に 番地 へ 番地 から 低水準節点初期化する は 「rcl_node_init」 で 整数 を 返します
+  番地 を 低水準節点破棄する は 「rcl_node_fini」 で 整数 を 返します
 
-文字列 を QoS低水準作成する は 番地 の 動作
-名 を QoS低水準作成する とは 外部の「rclsuru_qos_new」
-番地 を QoS低水準削除する は 無 の 動作
-q を QoS低水準削除する とは 外部の「rclsuru_qos_delete」
-番地 を 数 で 数 に 数 へ 数 から QoS適用する は 無 の 動作
-q を 履歴 で 深さ に 信頼性 へ 永続性 から QoS適用する とは 外部の「rclsuru_qos_apply」（q と 履歴 と 深さ と 信頼性 と 永続性）
+  文字列 を QoS低水準作成する は 「rclsuru_qos_new」 で 番地 を 返します
+  番地 を QoS低水準削除する は 「rclsuru_qos_delete」 で 無 を 返します
+  番地 を 数 で 数 に 数 へ 数 から QoS適用する は 「rclsuru_qos_apply」 で 無 を 返します
 
-発行者新規作成する は 番地 の 動作
-発行者新規作成する とは 外部の「rclsuru_publisher_new」
-番地 を 発行者削除する は 無 の 動作
-p を 発行者削除する とは 外部の「rclsuru_publisher_delete」
-番地 を 発行者設定作成する は 番地 の 動作
-q を 発行者設定作成する とは 外部の「rclsuru_publisher_options_new」
-番地 を 発行者設定削除する は 無 の 動作
-o を 発行者設定削除する とは 外部の「rclsuru_publisher_options_delete」
-番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準発行者初期化する は 整数 の 動作
-p を n で t に 名 へ o から 低水準発行者初期化する とは 外部の「rcl_publisher_init」（p と n と t と 名 と o）
-番地 を 番地 で 低水準発行者破棄する は 整数 の 動作
-p を n で 低水準発行者破棄する とは 外部の「rcl_publisher_fini」
+  発行者新規作成する は 「rclsuru_publisher_new」 で 番地 を 返します
+  番地 を 発行者削除する は 「rclsuru_publisher_delete」 で 無 を 返します
+  番地 を 発行者設定作成する は 「rclsuru_publisher_options_new」 で 番地 を 返します
+  番地 を 発行者設定削除する は 「rclsuru_publisher_options_delete」 で 無 を 返します
+  番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準発行者初期化する は 「rcl_publisher_init」 で 整数 を 返します
+  番地 を 番地 で 低水準発行者破棄する は 「rcl_publisher_fini」 で 整数 を 返します
 
-購読者新規作成する は 番地 の 動作
-購読者新規作成する とは 外部の「rclsuru_subscription_new」
-番地 を 購読者削除する は 無 の 動作
-s を 購読者削除する とは 外部の「rclsuru_subscription_delete」
-番地 を 購読者設定作成する は 番地 の 動作
-q を 購読者設定作成する とは 外部の「rclsuru_subscription_options_new」
-番地 を 購読者設定削除する は 無 の 動作
-o を 購読者設定削除する とは 外部の「rclsuru_subscription_options_delete」
-番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準購読者初期化する は 整数 の 動作
-s を n で t に 名 へ o から 低水準購読者初期化する とは 外部の「rcl_subscription_init」（s と n と t と 名 と o）
-番地 を 番地 で 低水準購読者破棄する は 整数 の 動作
-s を n で 低水準購読者破棄する とは 外部の「rcl_subscription_fini」
-番地 を 番地 で 番地 に 着信呼戻設定する は 整数 の 動作
-s を f で u に 着信呼戻設定する とは 外部の「rcl_subscription_set_on_new_message_callback」（s と f と u）
+  購読者新規作成する は 「rclsuru_subscription_new」 で 番地 を 返します
+  番地 を 購読者削除する は 「rclsuru_subscription_delete」 で 無 を 返します
+  番地 を 購読者設定作成する は 「rclsuru_subscription_options_new」 で 番地 を 返します
+  番地 を 購読者設定削除する は 「rclsuru_subscription_options_delete」 で 無 を 返します
+  番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準購読者初期化する は 「rcl_subscription_init」 で 整数 を 返します
+  番地 を 番地 で 低水準購読者破棄する は 「rcl_subscription_fini」 で 整数 を 返します
+  番地 を 番地 で 番地 に 着信呼戻設定する は 「rcl_subscription_set_on_new_message_callback」 で 整数 を 返します
 
-数 を 直列化領域作成する は 番地 の 動作
-n を 直列化領域作成する とは 外部の「rclsuru_serialized_new」
-番地 を 直列化領域削除する は 無 の 動作
-m を 直列化領域削除する とは 外部の「rclsuru_serialized_delete」
-番地 を 数 で 直列化準備する は 番地 の 動作
-m を n で 直列化準備する とは 外部の「rclsuru_serialized_prepare」
-番地 を 直列化先頭取得する は 番地 の 動作
-m を 直列化先頭取得する とは 外部の「rclsuru_serialized_buffer」
-番地 を 番地 で 低水準直列発行する は 整数 の 動作
-p を m で 低水準直列発行する とは 外部の「rcl_publish_serialized_message」（p と m と 0）
-番地 を 番地 で 番地 に 低水準直列取得する は 整数 の 動作
-s を m で i に 低水準直列取得する とは 外部の「rcl_take_serialized_message」（s と m と i と 0）
-受信情報作成する は 番地 の 動作
-受信情報作成する とは 外部の「rclsuru_message_info_new」
-番地 を 受信情報削除する は 無 の 動作
-i を 受信情報削除する とは 外部の「rclsuru_message_info_delete」
+  数 を 直列化領域作成する は 「rclsuru_serialized_new」 で 番地 を 返します
+  番地 を 直列化領域削除する は 「rclsuru_serialized_delete」 で 無 を 返します
+  番地 を 数 で 直列化準備する は 「rclsuru_serialized_prepare」 で 番地 を 返します
+  番地 を 直列化先頭取得する は 「rclsuru_serialized_buffer」 で 番地 を 返します
+  p を m で 低水準直列発行する とは 「rcl_publish_serialized_message」（p と m と 0） で 番地 を 番地 で 受け取って 整数 を 返します
+  s を m で i に 低水準直列取得する とは 「rcl_take_serialized_message」（s と m と i と 0） で 番地 を 番地 で 番地 に 受け取って 整数 を 返します
+  受信情報作成する は 「rclsuru_message_info_new」 で 番地 を 返します
+  番地 を 受信情報削除する は 「rclsuru_message_info_delete」 で 無 を 返します
 
-番地 を 番地 で 番地 に 低水準直列化する は 整数 の 動作
-p を t で m に 低水準直列化する とは 外部の「rmw_serialize」（p と t と m）
-番地 を 番地 で 番地 に 低水準復元する は 整数 の 動作
-m を t で p に 低水準復元する とは 外部の「rmw_deserialize」（m と t と p）
+  番地 を 番地 で 番地 に 低水準直列化する は 「rmw_serialize」 で 整数 を 返します
+  番地 を 番地 で 番地 に 低水準復元する は 「rmw_deserialize」 で 整数 を 返します
+以上です
+
 番地 を 番地 で 破棄呼出する は 無 の 動作
 p を f で 破棄呼出する とは 外部の（f）
 
-サービス新規作成する は 番地 の 動作
-サービス新規作成する とは 外部の「rclsuru_service_new」
-番地 を サービス削除する は 無 の 動作
-s を サービス削除する とは 外部の「rclsuru_service_delete」
-番地 を サービス設定作成する は 番地 の 動作
-q を サービス設定作成する とは 外部の「rclsuru_service_options_new」
-番地 を サービス設定削除する は 無 の 動作
-o を サービス設定削除する とは 外部の「rclsuru_service_options_delete」
-番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準サービス初期化する は 整数 の 動作
-s を n で t に 名 へ o から 低水準サービス初期化する とは 外部の「rcl_service_init」（s と n と t と 名 と o）
-番地 を 番地 で 低水準サービス破棄する は 整数 の 動作
-s を n で 低水準サービス破棄する とは 外部の「rcl_service_fini」
-番地 を 番地 で 番地 に 要求取得する は 整数 の 動作
-s を h で r に 要求取得する とは 外部の「rcl_take_request」（s と h と r）
-番地 を 番地 で 番地 に 応答送信低水準する は 整数 の 動作
-s を h で r に 応答送信低水準する とは 外部の「rcl_send_response」（s と h と r）
-番地 を 番地 で 番地 に 要求呼戻設定する は 整数 の 動作
-s を f で u に 要求呼戻設定する とは 外部の「rcl_service_set_on_new_request_callback」（s と f と u）
+以下の外部の入出力動作です
+  サービス新規作成する は 「rclsuru_service_new」 で 番地 を 返します
+  番地 を サービス削除する は 「rclsuru_service_delete」 で 無 を 返します
+  番地 を サービス設定作成する は 「rclsuru_service_options_new」 で 番地 を 返します
+  番地 を サービス設定削除する は 「rclsuru_service_options_delete」 で 無 を 返します
+  番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準サービス初期化する は 「rcl_service_init」 で 整数 を 返します
+  番地 を 番地 で 低水準サービス破棄する は 「rcl_service_fini」 で 整数 を 返します
+  番地 を 番地 で 番地 に 要求取得する は 「rcl_take_request」 で 整数 を 返します
+  番地 を 番地 で 番地 に 応答送信低水準する は 「rcl_send_response」 で 整数 を 返します
+  番地 を 番地 で 番地 に 要求呼戻設定する は 「rcl_service_set_on_new_request_callback」 で 整数 を 返します
 
-客新規作成する は 番地 の 動作
-客新規作成する とは 外部の「rclsuru_client_new」
-番地 を 客削除する は 無 の 動作
-c を 客削除する とは 外部の「rclsuru_client_delete」
-番地 を 客設定作成する は 番地 の 動作
-q を 客設定作成する とは 外部の「rclsuru_client_options_new」
-番地 を 客設定削除する は 無 の 動作
-o を 客設定削除する とは 外部の「rclsuru_client_options_delete」
-番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準客初期化する は 整数 の 動作
-c を n で t に 名 へ o から 低水準客初期化する とは 外部の「rcl_client_init」（c と n と t と 名 と o）
-番地 を 番地 で 低水準客破棄する は 整数 の 動作
-c を n で 低水準客破棄する とは 外部の「rcl_client_fini」
-番地 を 番地 で 番地 に 要求送信低水準する は 整数 の 動作
-c を r で q に 要求送信低水準する とは 外部の「rcl_send_request」（c と r と q）
-番地 を 番地 で 番地 に 応答取得する は 整数 の 動作
-c を h で r に 応答取得する とは 外部の「rcl_take_response」（c と h と r）
-番地 を 番地 で 番地 に 応答呼戻設定する は 整数 の 動作
-c を f で u に 応答呼戻設定する とは 外部の「rcl_client_set_on_new_response_callback」（c と f と u）
-番地 を 番地 で サーバー確認する は 数 の 動作
-n を c で サーバー確認する とは 外部の「rclsuru_server_is_available」
+  客新規作成する は 「rclsuru_client_new」 で 番地 を 返します
+  番地 を 客削除する は 「rclsuru_client_delete」 で 無 を 返します
+  番地 を 客設定作成する は 「rclsuru_client_options_new」 で 番地 を 返します
+  番地 を 客設定削除する は 「rclsuru_client_options_delete」 で 無 を 返します
+  番地 を 番地 で 番地 に 文字列 へ 番地 から 低水準客初期化する は 「rcl_client_init」 で 整数 を 返します
+  番地 を 番地 で 低水準客破棄する は 「rcl_client_fini」 で 整数 を 返します
+  番地 を 番地 で 番地 に 要求送信低水準する は 「rcl_send_request」 で 整数 を 返します
+  番地 を 番地 で 番地 に 応答取得する は 「rcl_take_response」 で 整数 を 返します
+  番地 を 番地 で 番地 に 応答呼戻設定する は 「rcl_client_set_on_new_response_callback」 で 整数 を 返します
+  番地 を 番地 で サーバー確認する は 「rclsuru_server_is_available」 で 数 を 返します
 
-見出し作成する は 番地 の 動作
-見出し作成する とは 外部の「rclsuru_request_id_new」
-番地 を 見出し削除する は 無 の 動作
-h を 見出し削除する とは 外部の「rclsuru_request_id_delete」
-番地 を 続番取得する は 数 の 動作
-h を 続番取得する とは 外部の「rclsuru_request_id_sequence」
+  見出し作成する は 「rclsuru_request_id_new」 で 番地 を 返します
+  番地 を 見出し削除する は 「rclsuru_request_id_delete」 で 無 を 返します
+  番地 を 続番取得する は 「rclsuru_request_id_sequence」 で 数 を 返します
 
-番地 を 完全名取得する は 文字列 の 動作
-n を 完全名取得する とは 外部の「rcl_node_get_fully_qualified_name」
-番地 を 上書き取得する は 番地 の 動作
-c を 上書き取得する とは 外部の「rclsuru_param_overrides」
-番地 を 上書き削除する は 無 の 動作
-p を 上書き削除する とは 外部の「rclsuru_param_overrides_delete」
-番地 を 文字列 で 文字列 に 上書き検索する は 番地 の 動作
-p を ノ名 で 名 に 上書き検索する とは 外部の「rclsuru_param_find」（p と ノ名 と 名）
-番地 を 変種型取得する は 数 の 動作
-v を 変種型取得する とは 外部の「rclsuru_variant_type」
-番地 を 変種真偽取得する は 数 の 動作
-v を 変種真偽取得する とは 外部の「rclsuru_variant_bool」
-番地 を 変種整数取得する は 数 の 動作
-v を 変種整数取得する とは 外部の「rclsuru_variant_integer」
-番地 を 変種小数取得する は 小数 の 動作
-v を 変種小数取得する とは 外部の「rclsuru_variant_double」
-番地 を 変種文字列取得する は 文字列 の 動作
-v を 変種文字列取得する とは 外部の「rclsuru_variant_string」
-番地 を 変種長さ取得する は 数 の 動作
-v を 変種長さ取得する とは 外部の「rclsuru_variant_size」
-番地 を 数 で 変種バイト取得する は 数 の 動作
-v を i で 変種バイト取得する とは 外部の「rclsuru_variant_byte_at」
-番地 を 数 で 変種真偽要素取得する は 数 の 動作
-v を i で 変種真偽要素取得する とは 外部の「rclsuru_variant_bool_at」
-番地 を 数 で 変種整数要素取得する は 数 の 動作
-v を i で 変種整数要素取得する とは 外部の「rclsuru_variant_integer_at」
-番地 を 数 で 変種小数要素取得する は 小数 の 動作
-v を i で 変種小数要素取得する とは 外部の「rclsuru_variant_double_at」
-番地 を 数 で 変種文字列要素取得する は 文字列 の 動作
-v を i で 変種文字列要素取得する とは 外部の「rclsuru_variant_string_at」
+  番地 を 完全名取得する は 「rcl_node_get_fully_qualified_name」 で 文字列 を 返します
+  番地 を 上書き取得する は 「rclsuru_param_overrides」 で 番地 を 返します
+  番地 を 上書き削除する は 「rclsuru_param_overrides_delete」 で 無 を 返します
+  番地 を 文字列 で 文字列 に 上書き検索する は 「rclsuru_param_find」 で 番地 を 返します
+  番地 を 変種型取得する は 「rclsuru_variant_type」 で 数 を 返します
+  番地 を 変種真偽取得する は 「rclsuru_variant_bool」 で 数 を 返します
+  番地 を 変種整数取得する は 「rclsuru_variant_integer」 で 数 を 返します
+  番地 を 変種小数取得する は 「rclsuru_variant_double」 で 小数 を 返します
+  番地 を 変種文字列取得する は 「rclsuru_variant_string」 で 文字列 を 返します
+  番地 を 変種長さ取得する は 「rclsuru_variant_size」 で 数 を 返します
+  番地 を 数 で 変種バイト取得する は 「rclsuru_variant_byte_at」 で 数 を 返します
+  番地 を 数 で 変種真偽要素取得する は 「rclsuru_variant_bool_at」 で 数 を 返します
+  番地 を 数 で 変種整数要素取得する は 「rclsuru_variant_integer_at」 で 数 を 返します
+  番地 を 数 で 変種小数要素取得する は 「rclsuru_variant_double_at」 で 小数 を 返します
+  番地 を 数 で 変種文字列要素取得する は 「rclsuru_variant_string_at」 で 文字列 を 返します
+以上です
 
 番地 を 型情報呼出する は 番地 の 動作
 f を 型情報呼出する とは 外部の（f）
+
 番地 を 数 で 番地 に 呼戻直接呼出する は 無 の 動作
 u を n で f に 呼戻直接呼出する とは 外部の（f）
 
@@ -597,8 +517,7 @@ r を 取得結果確認する とは r を 「rcl_take_serialized_message」 �
   p を （口 の 口応答体） で C体破棄する
   0 を 結果にする
 
-番地 を 見出し複製する は 番地 の 動作
-h を 見出し複製する とは 外部の「rclsuru_request_id_copy」（h）
+h を 見出し複製する とは 外部の「rclsuru_request_id_copy」 で 番地 を 受け取って 番地 を 返す 入出力動作です
 
 番地 と 番地 を ノード で C体 に C体 へ サービス片付けする は 無 の 動作
 s と h を n で 要 に 応 へ サービス片付けする とは 手順
@@ -913,6 +832,7 @@ h を 答 で 口 に 待ち返信する とは 手順
 # 扱い を 取消済みにする・扱い を 中止にする … 結果の状態を CANCELED・ABORTED にする(しなければ SUCCEEDED)
 目標扱い を 取消済みにする は 数 の 動作
 扱い を 取消済みにする とは 扱い を 5 で 終印設定する
+
 目標扱い を 中止にする は 数 の 動作
 扱い を 中止にする とは 扱い を 6 で 終印設定する
 
@@ -1180,18 +1100,22 @@ v を 変種値にする とは 手順
 v を 番号群 で 変種バイト取得全部する とは 手順
   作業 とは v を 番号群 の それぞれ で 変種バイト取得する
   作業 を 実行する
+
 番地 を 数 の リスト で 変種真偽要素取得全部する は 数 の リスト の 動作
 v を 番号群 で 変種真偽要素取得全部する とは 手順
   作業 とは v を 番号群 の それぞれ で 変種真偽要素取得する
   作業 を 実行する
+
 番地 を 数 の リスト で 変種整数要素取得全部する は 数 の リスト の 動作
 v を 番号群 で 変種整数要素取得全部する とは 手順
   作業 とは v を 番号群 の それぞれ で 変種整数要素取得する
   作業 を 実行する
+
 番地 を 数 の リスト で 変種小数要素取得全部する は 小数 の リスト の 動作
 v を 番号群 で 変種小数要素取得全部する とは 手順
   作業 とは v を 番号群 の それぞれ で 変種小数要素取得する
   作業 を 実行する
+
 番地 を 数 の リスト で 変種文字列要素取得全部する は 文字列 の リスト の 動作
 v を 番号群 で 変種文字列要素取得全部する とは 手順
   作業 とは v を 番号群 の それぞれ で 変種文字列要素取得する
@@ -1227,20 +1151,28 @@ x を 小数化する とは x * 1.0
 # 型ごとの宣言(結果はその型の値)
 ノード から 文字列 を 真偽 で 真偽パラメータ宣言する は 真偽 の 動作
 n から 名前 を 既定 で 真偽パラメータ宣言する とは （n から 名前 を （type は 1 で bool_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の bool_value を 返すこと） で 写像する
+
 ノード から 文字列 を 数 で 整数パラメータ宣言する は 数 の 動作
 n から 名前 を 既定 で 整数パラメータ宣言する とは （n から 名前 を （type は 2 で integer_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の integer_value を 返すこと） で 写像する
+
 ノード から 文字列 を 数 で 小数パラメータ宣言する は 数 の 動作
 n から 名前 を 既定 で 小数パラメータ宣言する とは （n から 名前 を （type は 3 で double_value は （既定 * 1.0） の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の double_value を 返すこと） で 写像する
+
 ノード から 文字列 を 文字列 で 文字列パラメータ宣言する は 文字列 の 動作
 n から 名前 を 既定 で 文字列パラメータ宣言する とは （n から 名前 を （type は 4 で string_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の string_value を 返すこと） で 写像する
+
 ノード から 文字列 を バイト列 で バイト列パラメータ宣言する は バイト列 の 動作
 n から 名前 を 既定 で バイト列パラメータ宣言する とは （n から 名前 を （type は 5 で byte_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の byte_array_value を 返すこと） で 写像する
+
 ノード から 文字列 を 真偽 の リスト で 真偽列パラメータ宣言する は 真偽 の リスト の 動作
 n から 名前 を 既定 で 真偽列パラメータ宣言する とは （n から 名前 を （type は 6 で bool_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の bool_array_value を 返すこと） で 写像する
+
 ノード から 文字列 を 数 の リスト で 整数列パラメータ宣言する は 数 の リスト の 動作
 n から 名前 を 既定 で 整数列パラメータ宣言する とは （n から 名前 を （type は 7 で integer_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の integer_array_value を 返すこと） で 写像する
+
 ノード から 文字列 を 数 の リスト で 小数列パラメータ宣言する は 数 の リスト の 動作
 n から 名前 を 既定 で 小数列パラメータ宣言する とは （n から 名前 を （type は 8 で double_array_value は （既定 の それぞれ を 小数化する） の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の double_array_value を 返すこと） で 写像する
+
 ノード から 文字列 を 文字列 の リスト で 文字列列パラメータ宣言する は 文字列 の リスト の 動作
 n から 名前 を 既定 で 文字列列パラメータ宣言する とは （n から 名前 を （type は 9 で string_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の string_array_value を 返すこと） で 写像する
 
@@ -1253,16 +1185,22 @@ n から 名前 を パラメータ値取得する とは 手順
 
 ノード から 文字列 を 真偽パラメータ取得する は 真偽 の 動作
 n から 名前 を 真偽パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の bool_value を 返すこと） で 写像する
+
 ノード から 文字列 を 整数パラメータ取得する は 数 の 動作
 n から 名前 を 整数パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の integer_value を 返すこと） で 写像する
+
 ノード から 文字列 を 小数パラメータ取得する は 数 の 動作
 n から 名前 を 小数パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の double_value を 返すこと） で 写像する
+
 ノード から 文字列 を 文字列パラメータ取得する は 文字列 の 動作
 n から 名前 を 文字列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の string_value を 返すこと） で 写像する
+
 ノード から 文字列 を 整数列パラメータ取得する は 数 の リスト の 動作
 n から 名前 を 整数列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の integer_array_value を 返すこと） で 写像する
+
 ノード から 文字列 を 小数列パラメータ取得する は 数 の リスト の 動作
 n から 名前 を 小数列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の double_array_value を 返すこと） で 写像する
+
 ノード から 文字列 を 文字列列パラメータ取得する は 文字列 の リスト の 動作
 n から 名前 を 文字列列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の string_array_value を 返すこと） で 写像する
 
@@ -1409,12 +1347,16 @@ n を 新規 で 変更 に 変更事象発行する とは 手順
 
 文字列 を ノード で 詳細記録する は 無 の 動作
 文 を n で 詳細記録する とは （n の 節点） を 10 で 文 に 低水準ログ出力する
+
 文字列 を ノード で 情報記録する は 無 の 動作
 文 を n で 情報記録する とは （n の 節点） を 20 で 文 に 低水準ログ出力する
+
 文字列 を ノード で 警告記録する は 無 の 動作
 文 を n で 警告記録する とは （n の 節点） を 30 で 文 に 低水準ログ出力する
+
 文字列 を ノード で エラー記録する は 無 の 動作
 文 を n で エラー記録する とは （n の 節点） を 40 で 文 に 低水準ログ出力する
+
 文字列 を ノード で 致命記録する は 無 の 動作
 文 を n で 致命記録する とは （n の 節点） を 50 で 文 に 低水準ログ出力する
 

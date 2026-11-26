@@ -17,6 +17,7 @@ DisparityImage を 数 で DisparityImage寸法する は 数
   位6 とは （対象 の min_disparity） を 位5 で CDR単精度寸法する
   位7 とは （対象 の max_disparity） を 位6 で CDR単精度寸法する
   （対象 の delta_d） を 位7 で CDR単精度寸法する
+
 DisparityImage を 番地 へ 数 で DisparityImage書込する は 数 の 動作
 対象 を 先 へ 位0 で DisparityImage書込する とは 手順
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
@@ -27,6 +28,7 @@ DisparityImage を 番地 へ 数 で DisparityImage書込する は 数 の 動
   位6 とは （対象 の min_disparity） を 先 へ 位5 で CDR単精度書込した 結果
   位7 とは （対象 の max_disparity） を 先 へ 位6 で CDR単精度書込した 結果
   （対象 の delta_d） を 先 へ 位7 で CDR単精度書込する
+
 番地 から 数 で DisparityImage読取する は （DisparityImage と 数） の 読値 の 動作
 先 から 位0 で DisparityImage読取する とは 手順
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
