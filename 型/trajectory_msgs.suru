@@ -13,17 +13,21 @@ JointTrajectory を 数 で JointTrajectory寸法する は 数
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   位2 とは （対象 の joint_names） を 位1 で （CDR文字列寸法すること） に CDR可変列寸法する
   （対象 の points） を 位2 で （JointTrajectoryPoint寸法すること） に CDR可変列寸法する
-JointTrajectory を 番地 へ 数 で JointTrajectory書込する は 数 の 動作
-対象 を 先 へ 位0 で JointTrajectory書込する とは 手順
+
+JointTrajectory を 番地 へ 数 で JointTrajectory書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で JointTrajectory書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   位2 とは （対象 の joint_names） を 先 へ 位1 で （CDR文字列書込すること） に CDR可変列書込した 結果
   （対象 の points） を 先 へ 位2 で （JointTrajectoryPoint書込すること） に CDR可変列書込する
-番地 から 数 で JointTrajectory読取する は （JointTrajectory と 数） の 読値 の 動作
-先 から 位0 で JointTrajectory読取する とは 手順
+  以上です
+
+番地 から 数 で JointTrajectory読取する は （JointTrajectory と 数） の 読値 を 返す 入出力動作
+先 から 位0 で JointTrajectory読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
   欄3 とは 先 から （欄2 の 次） で （JointTrajectoryPoint読取すること） に CDR可変列読取した 結果
   （値 は （header は （欄1 の 値） で joint_names は （欄2 の 値） で points は （欄3 の 値） の JointTrajectory） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # trajectory_msgs/msg/JointTrajectoryPoint
 JointTrajectoryPoint とは positions と velocities と accelerations と effort と time_from_start の 組
@@ -36,21 +40,25 @@ JointTrajectoryPoint を 数 で JointTrajectoryPoint寸法する は 数
   位3 とは （対象 の accelerations） を 位2 で 8 に CDR素可変列寸法する
   位4 とは （対象 の effort） を 位3 で 8 に CDR素可変列寸法する
   （対象 の time_from_start） を 位4 で builtin_interfaces内のDuration寸法する
-JointTrajectoryPoint を 番地 へ 数 で JointTrajectoryPoint書込する は 数 の 動作
-対象 を 先 へ 位0 で JointTrajectoryPoint書込する とは 手順
+
+JointTrajectoryPoint を 番地 へ 数 で JointTrajectoryPoint書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で JointTrajectoryPoint書込する とは 以下の入出力手順です
   位1 とは （対象 の positions） を 先 へ 位0 で （CDR小数書込すること） に CDR可変列書込した 結果
   位2 とは （対象 の velocities） を 先 へ 位1 で （CDR小数書込すること） に CDR可変列書込した 結果
   位3 とは （対象 の accelerations） を 先 へ 位2 で （CDR小数書込すること） に CDR可変列書込した 結果
   位4 とは （対象 の effort） を 先 へ 位3 で （CDR小数書込すること） に CDR可変列書込した 結果
   （対象 の time_from_start） を 先 へ 位4 で builtin_interfaces内のDuration書込する
-番地 から 数 で JointTrajectoryPoint読取する は （JointTrajectoryPoint と 数） の 読値 の 動作
-先 から 位0 で JointTrajectoryPoint読取する とは 手順
+  以上です
+
+番地 から 数 で JointTrajectoryPoint読取する は （JointTrajectoryPoint と 数） の 読値 を 返す 入出力動作
+先 から 位0 で JointTrajectoryPoint読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR小数読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
   欄3 とは 先 から （欄2 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
   欄4 とは 先 から （欄3 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
   欄5 とは 先 から （欄4 の 次） で builtin_interfaces内のDuration読取した 結果
   （値 は （positions は （欄1 の 値） で velocities は （欄2 の 値） で accelerations は （欄3 の 値） で effort は （欄4 の 値） で time_from_start は （欄5 の 値） の JointTrajectoryPoint） で 次 は （欄5 の 次） の 読値） を 結果にする
+  以上です
 
 # trajectory_msgs/msg/MultiDOFJointTrajectory
 MultiDOFJointTrajectory とは header と joint_names と points の 組
@@ -61,17 +69,21 @@ MultiDOFJointTrajectory を 数 で MultiDOFJointTrajectory寸法する は 数
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   位2 とは （対象 の joint_names） を 位1 で （CDR文字列寸法すること） に CDR可変列寸法する
   （対象 の points） を 位2 で （MultiDOFJointTrajectoryPoint寸法すること） に CDR可変列寸法する
-MultiDOFJointTrajectory を 番地 へ 数 で MultiDOFJointTrajectory書込する は 数 の 動作
-対象 を 先 へ 位0 で MultiDOFJointTrajectory書込する とは 手順
+
+MultiDOFJointTrajectory を 番地 へ 数 で MultiDOFJointTrajectory書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で MultiDOFJointTrajectory書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   位2 とは （対象 の joint_names） を 先 へ 位1 で （CDR文字列書込すること） に CDR可変列書込した 結果
   （対象 の points） を 先 へ 位2 で （MultiDOFJointTrajectoryPoint書込すること） に CDR可変列書込する
-番地 から 数 で MultiDOFJointTrajectory読取する は （MultiDOFJointTrajectory と 数） の 読値 の 動作
-先 から 位0 で MultiDOFJointTrajectory読取する とは 手順
+  以上です
+
+番地 から 数 で MultiDOFJointTrajectory読取する は （MultiDOFJointTrajectory と 数） の 読値 を 返す 入出力動作
+先 から 位0 で MultiDOFJointTrajectory読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
   欄3 とは 先 から （欄2 の 次） で （MultiDOFJointTrajectoryPoint読取すること） に CDR可変列読取した 結果
   （値 は （header は （欄1 の 値） で joint_names は （欄2 の 値） で points は （欄3 の 値） の MultiDOFJointTrajectory） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # trajectory_msgs/msg/MultiDOFJointTrajectoryPoint
 MultiDOFJointTrajectoryPoint とは transforms と velocities と accelerations と time_from_start の 組
@@ -83,16 +95,20 @@ MultiDOFJointTrajectoryPoint を 数 で MultiDOFJointTrajectoryPoint寸法す�
   位2 とは （対象 の velocities） を 位1 で （geometry_msgs内のTwist寸法すること） に CDR可変列寸法する
   位3 とは （対象 の accelerations） を 位2 で （geometry_msgs内のTwist寸法すること） に CDR可変列寸法する
   （対象 の time_from_start） を 位3 で builtin_interfaces内のDuration寸法する
-MultiDOFJointTrajectoryPoint を 番地 へ 数 で MultiDOFJointTrajectoryPoint書込する は 数 の 動作
-対象 を 先 へ 位0 で MultiDOFJointTrajectoryPoint書込する とは 手順
+
+MultiDOFJointTrajectoryPoint を 番地 へ 数 で MultiDOFJointTrajectoryPoint書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で MultiDOFJointTrajectoryPoint書込する とは 以下の入出力手順です
   位1 とは （対象 の transforms） を 先 へ 位0 で （geometry_msgs内のTransform書込すること） に CDR可変列書込した 結果
   位2 とは （対象 の velocities） を 先 へ 位1 で （geometry_msgs内のTwist書込すること） に CDR可変列書込した 結果
   位3 とは （対象 の accelerations） を 先 へ 位2 で （geometry_msgs内のTwist書込すること） に CDR可変列書込した 結果
   （対象 の time_from_start） を 先 へ 位3 で builtin_interfaces内のDuration書込する
-番地 から 数 で MultiDOFJointTrajectoryPoint読取する は （MultiDOFJointTrajectoryPoint と 数） の 読値 の 動作
-先 から 位0 で MultiDOFJointTrajectoryPoint読取する とは 手順
+  以上です
+
+番地 から 数 で MultiDOFJointTrajectoryPoint読取する は （MultiDOFJointTrajectoryPoint と 数） の 読値 を 返す 入出力動作
+先 から 位0 で MultiDOFJointTrajectoryPoint読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （geometry_msgs内のTransform読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （geometry_msgs内のTwist読取すること） に CDR可変列読取した 結果
   欄3 とは 先 から （欄2 の 次） で （geometry_msgs内のTwist読取すること） に CDR可変列読取した 結果
   欄4 とは 先 から （欄3 の 次） で builtin_interfaces内のDuration読取した 結果
   （値 は （transforms は （欄1 の 値） で velocities は （欄2 の 値） で accelerations は （欄3 の 値） で time_from_start は （欄4 の 値） の MultiDOFJointTrajectoryPoint） で 次 は （欄4 の 次） の 読値） を 結果にする
+  以上です

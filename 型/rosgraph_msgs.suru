@@ -15,16 +15,19 @@ Action を 数 で Action寸法する は 数
   位4 とは （対象 の cancel_goal） を 位3 で Service寸法する
   位5 とは （対象 の feedback） を 位4 で Topic寸法する
   （対象 の status） を 位5 で Topic寸法する
-Action を 番地 へ 数 で Action書込する は 数 の 動作
-対象 を 先 へ 位0 で Action書込する とは 手順
+
+Action を 番地 へ 数 で Action書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Action書込する とは 以下の入出力手順です
   位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
   位2 とは （対象 の send_goal） を 先 へ 位1 で Service書込した 結果
   位3 とは （対象 の get_result） を 先 へ 位2 で Service書込した 結果
   位4 とは （対象 の cancel_goal） を 先 へ 位3 で Service書込した 結果
   位5 とは （対象 の feedback） を 先 へ 位4 で Topic書込した 結果
   （対象 の status） を 先 へ 位5 で Topic書込する
-番地 から 数 で Action読取する は （Action と 数） の 読値 の 動作
-先 から 位0 で Action読取する とは 手順
+  以上です
+
+番地 から 数 で Action読取する は （Action と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Action読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で Service読取した 結果
   欄3 とは 先 から （欄2 の 次） で Service読取した 結果
@@ -32,6 +35,7 @@ Action を 番地 へ 数 で Action書込する は 数 の 動作
   欄5 とは 先 から （欄4 の 次） で Topic読取した 結果
   欄6 とは 先 から （欄5 の 次） で Topic読取した 結果
   （値 は （name は （欄1 の 値） で send_goal は （欄2 の 値） で get_result は （欄3 の 値） で cancel_goal は （欄4 の 値） で feedback は （欄5 の 値） で status は （欄6 の 値） の Action） で 次 は （欄6 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/Clock
 Clock とは clock の 組
@@ -40,13 +44,17 @@ Clock型 とは 型名 は 「rosgraph_msgs/msg/Clock」 で 寸法 は Clock寸
 Clock を 数 で Clock寸法する は 数
 対象 を 位0 で Clock寸法する とは
   （対象 の clock） を 位0 で builtin_interfaces内のTime寸法する
-Clock を 番地 へ 数 で Clock書込する は 数 の 動作
-対象 を 先 へ 位0 で Clock書込する とは 手順
+
+Clock を 番地 へ 数 で Clock書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Clock書込する とは 以下の入出力手順です
   （対象 の clock） を 先 へ 位0 で builtin_interfaces内のTime書込する
-番地 から 数 で Clock読取する は （Clock と 数） の 読値 の 動作
-先 から 位0 で Clock読取する とは 手順
+  以上です
+
+番地 から 数 で Clock読取する は （Clock と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Clock読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で builtin_interfaces内のTime読取した 結果
   （値 は （clock は （欄1 の 値） の Clock） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/Graph
 Graph とは nodes の 組
@@ -55,13 +63,17 @@ Graph型 とは 型名 は 「rosgraph_msgs/msg/Graph」 で 寸法 は Graph寸
 Graph を 数 で Graph寸法する は 数
 対象 を 位0 で Graph寸法する とは
   （対象 の nodes） を 位0 で （Node寸法すること） に CDR可変列寸法する
-Graph を 番地 へ 数 で Graph書込する は 数 の 動作
-対象 を 先 へ 位0 で Graph書込する とは 手順
+
+Graph を 番地 へ 数 で Graph書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Graph書込する とは 以下の入出力手順です
   （対象 の nodes） を 先 へ 位0 で （Node書込すること） に CDR可変列書込する
-番地 から 数 で Graph読取する は （Graph と 数） の 読値 の 動作
-先 から 位0 で Graph読取する とは 手順
+  以上です
+
+番地 から 数 で Graph読取する は （Graph と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Graph読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （Node読取すること） に CDR可変列読取した 結果
   （値 は （nodes は （欄1 の 値） の Graph） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/InterfaceType
 InterfaceType とは name と hash の 組
@@ -71,15 +83,19 @@ InterfaceType を 数 で InterfaceType寸法する は 数
 対象 を 位0 で InterfaceType寸法する とは
   位1 とは （対象 の name） を 位0 で CDR文字列寸法する
   （対象 の hash） を 位1 で TypeHash寸法する
-InterfaceType を 番地 へ 数 で InterfaceType書込する は 数 の 動作
-対象 を 先 へ 位0 で InterfaceType書込する とは 手順
+
+InterfaceType を 番地 へ 数 で InterfaceType書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で InterfaceType書込する とは 以下の入出力手順です
   位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
   （対象 の hash） を 先 へ 位1 で TypeHash書込する
-番地 から 数 で InterfaceType読取する は （InterfaceType と 数） の 読値 の 動作
-先 から 位0 で InterfaceType読取する とは 手順
+  以上です
+
+番地 から 数 で InterfaceType読取する は （InterfaceType と 数） の 読値 を 返す 入出力動作
+先 から 位0 で InterfaceType読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で TypeHash読取した 結果
   （値 は （name は （欄1 の 値） で hash は （欄2 の 値） の InterfaceType） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/Node
 Node とは name と parameters と parameter_values と publishers と subscriptions と service_clients と service_servers と action_clients と action_servers の 組
@@ -96,8 +112,9 @@ Node を 数 で Node寸法する は 数
   位7 とは （対象 の service_servers） を 位6 で （Service寸法すること） に CDR可変列寸法する
   位8 とは （対象 の action_clients） を 位7 で （Action寸法すること） に CDR可変列寸法する
   （対象 の action_servers） を 位8 で （Action寸法すること） に CDR可変列寸法する
-Node を 番地 へ 数 で Node書込する は 数 の 動作
-対象 を 先 へ 位0 で Node書込する とは 手順
+
+Node を 番地 へ 数 で Node書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Node書込する とは 以下の入出力手順です
   位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
   位2 とは （対象 の parameters） を 先 へ 位1 で （rcl_interfaces内のParameterDescriptor書込すること） に CDR可変列書込した 結果
   位3 とは （対象 の parameter_values） を 先 へ 位2 で （rcl_interfaces内のParameterValue書込すること） に CDR可変列書込した 結果
@@ -107,8 +124,10 @@ Node を 番地 へ 数 で Node書込する は 数 の 動作
   位7 とは （対象 の service_servers） を 先 へ 位6 で （Service書込すること） に CDR可変列書込した 結果
   位8 とは （対象 の action_clients） を 先 へ 位7 で （Action書込すること） に CDR可変列書込した 結果
   （対象 の action_servers） を 先 へ 位8 で （Action書込すること） に CDR可変列書込する
-番地 から 数 で Node読取する は （Node と 数） の 読値 の 動作
-先 から 位0 で Node読取する とは 手順
+  以上です
+
+番地 から 数 で Node読取する は （Node と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Node読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （rcl_interfaces内のParameterDescriptor読取すること） に CDR可変列読取した 結果
   欄3 とは 先 から （欄2 の 次） で （rcl_interfaces内のParameterValue読取すること） に CDR可変列読取した 結果
@@ -119,6 +138,7 @@ Node を 番地 へ 数 で Node書込する は 数 の 動作
   欄8 とは 先 から （欄7 の 次） で （Action読取すること） に CDR可変列読取した 結果
   欄9 とは 先 から （欄8 の 次） で （Action読取すること） に CDR可変列読取した 結果
   （値 は （name は （欄1 の 値） で parameters は （欄2 の 値） で parameter_values は （欄3 の 値） で publishers は （欄4 の 値） で subscriptions は （欄5 の 値） で service_clients は （欄6 の 値） で service_servers は （欄7 の 値） で action_clients は （欄8 の 値） で action_servers は （欄9 の 値） の Node） で 次 は （欄9 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/QoSProfile
 QoSProfile とは depth と deadline と lifespan と history と reliability と durability と liveliness と liveliness_lease_duration の 組
@@ -153,8 +173,9 @@ QoSProfile を 数 で QoSProfile寸法する は 数
   位6 とは （対象 の durability） を 位5 で CDR符号なし8寸法する
   位7 とは （対象 の liveliness） を 位6 で CDR符号なし8寸法する
   （対象 の liveliness_lease_duration） を 位7 で builtin_interfaces内のDuration寸法する
-QoSProfile を 番地 へ 数 で QoSProfile書込する は 数 の 動作
-対象 を 先 へ 位0 で QoSProfile書込する とは 手順
+
+QoSProfile を 番地 へ 数 で QoSProfile書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で QoSProfile書込する とは 以下の入出力手順です
   位1 とは （対象 の depth） を 先 へ 位0 で CDR符号なし32書込した 結果
   位2 とは （対象 の deadline） を 先 へ 位1 で builtin_interfaces内のDuration書込した 結果
   位3 とは （対象 の lifespan） を 先 へ 位2 で builtin_interfaces内のDuration書込した 結果
@@ -163,8 +184,10 @@ QoSProfile を 番地 へ 数 で QoSProfile書込する は 数 の 動作
   位6 とは （対象 の durability） を 先 へ 位5 で CDR符号なし8書込した 結果
   位7 とは （対象 の liveliness） を 先 へ 位6 で CDR符号なし8書込した 結果
   （対象 の liveliness_lease_duration） を 先 へ 位7 で builtin_interfaces内のDuration書込する
-番地 から 数 で QoSProfile読取する は （QoSProfile と 数） の 読値 の 動作
-先 から 位0 で QoSProfile読取する とは 手順
+  以上です
+
+番地 から 数 で QoSProfile読取する は （QoSProfile と 数） の 読値 を 返す 入出力動作
+先 から 位0 で QoSProfile読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし32読取した 結果
   欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のDuration読取した 結果
   欄3 とは 先 から （欄2 の 次） で builtin_interfaces内のDuration読取した 結果
@@ -174,6 +197,7 @@ QoSProfile を 番地 へ 数 で QoSProfile書込する は 数 の 動作
   欄7 とは 先 から （欄6 の 次） で CDR符号なし8読取した 結果
   欄8 とは 先 から （欄7 の 次） で builtin_interfaces内のDuration読取した 結果
   （値 は （depth は （欄1 の 値） で deadline は （欄2 の 値） で lifespan は （欄3 の 値） で history は （欄4 の 値） で reliability は （欄5 の 値） で durability は （欄6 の 値） で liveliness は （欄7 の 値） で liveliness_lease_duration は （欄8 の 値） の QoSProfile） で 次 は （欄8 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/Service
 Service とは name と request_type と request_qos と response_type と response_qos の 組
@@ -186,21 +210,25 @@ Service を 数 で Service寸法する は 数
   位3 とは （対象 の request_qos） を 位2 で QoSProfile寸法する
   位4 とは （対象 の response_type） を 位3 で InterfaceType寸法する
   （対象 の response_qos） を 位4 で QoSProfile寸法する
-Service を 番地 へ 数 で Service書込する は 数 の 動作
-対象 を 先 へ 位0 で Service書込する とは 手順
+
+Service を 番地 へ 数 で Service書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Service書込する とは 以下の入出力手順です
   位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
   位2 とは （対象 の request_type） を 先 へ 位1 で InterfaceType書込した 結果
   位3 とは （対象 の request_qos） を 先 へ 位2 で QoSProfile書込した 結果
   位4 とは （対象 の response_type） を 先 へ 位3 で InterfaceType書込した 結果
   （対象 の response_qos） を 先 へ 位4 で QoSProfile書込する
-番地 から 数 で Service読取する は （Service と 数） の 読値 の 動作
-先 から 位0 で Service読取する とは 手順
+  以上です
+
+番地 から 数 で Service読取する は （Service と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Service読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で InterfaceType読取した 結果
   欄3 とは 先 から （欄2 の 次） で QoSProfile読取した 結果
   欄4 とは 先 から （欄3 の 次） で InterfaceType読取した 結果
   欄5 とは 先 から （欄4 の 次） で QoSProfile読取した 結果
   （値 は （name は （欄1 の 値） で request_type は （欄2 の 値） で request_qos は （欄3 の 値） で response_type は （欄4 の 値） で response_qos は （欄5 の 値） の Service） で 次 は （欄5 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/Topic
 Topic とは name と type と qos の 組
@@ -211,17 +239,21 @@ Topic を 数 で Topic寸法する は 数
   位1 とは （対象 の name） を 位0 で CDR文字列寸法する
   位2 とは （対象 の type） を 位1 で InterfaceType寸法する
   （対象 の qos） を 位2 で QoSProfile寸法する
-Topic を 番地 へ 数 で Topic書込する は 数 の 動作
-対象 を 先 へ 位0 で Topic書込する とは 手順
+
+Topic を 番地 へ 数 で Topic書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Topic書込する とは 以下の入出力手順です
   位1 とは （対象 の name） を 先 へ 位0 で CDR文字列書込した 結果
   位2 とは （対象 の type） を 先 へ 位1 で InterfaceType書込した 結果
   （対象 の qos） を 先 へ 位2 で QoSProfile書込する
-番地 から 数 で Topic読取する は （Topic と 数） の 読値 の 動作
-先 から 位0 で Topic読取する とは 手順
+  以上です
+
+番地 から 数 で Topic読取する は （Topic と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Topic読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で InterfaceType読取した 結果
   欄3 とは 先 から （欄2 の 次） で QoSProfile読取した 結果
   （値 は （name は （欄1 の 値） で type は （欄2 の 値） で qos は （欄3 の 値） の Topic） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # rosgraph_msgs/msg/TypeHash
 TypeHash とは version と value の 組
@@ -231,12 +263,16 @@ TypeHash を 数 で TypeHash寸法する は 数
 対象 を 位0 で TypeHash寸法する とは
   位1 とは （対象 の version） を 位0 で CDR符号なし8寸法する
   （対象 の value） を 位1 で CDRバイト列寸法する
-TypeHash を 番地 へ 数 で TypeHash書込する は 数 の 動作
-対象 を 先 へ 位0 で TypeHash書込する とは 手順
+
+TypeHash を 番地 へ 数 で TypeHash書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TypeHash書込する とは 以下の入出力手順です
   位1 とは （対象 の version） を 先 へ 位0 で CDR符号なし8書込した 結果
   （対象 の value） を 先 へ 位1 で 32 より CDRバイト固定列書込する
-番地 から 数 で TypeHash読取する は （TypeHash と 数） の 読値 の 動作
-先 から 位0 で TypeHash読取する とは 手順
+  以上です
+
+番地 から 数 で TypeHash読取する は （TypeHash と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TypeHash読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   欄2 とは 先 から （欄1 の 次） で 32 より CDRバイト固定列読取した 結果
   （値 は （version は （欄1 の 値） で value は （欄2 の 値） の TypeHash） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です

@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-24.04
     container: ros:jazzy-ros-base
     env:
-      # 0.7.0 から、定義のない名前を検査で知らせる(suru#149)
-      SURU_VERSION: v0.7.0
+      # 0.9.1 から、外部の関数のまとまりを「以下は外部の入出力動作です」と書ける(suru#186)
+      SURU_VERSION: v0.9.1
     defaults:
       run:
         shell: bash

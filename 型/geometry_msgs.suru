@@ -10,15 +10,19 @@ Accel を 数 で Accel寸法する は 数
 対象 を 位0 で Accel寸法する とは
   位1 とは （対象 の linear） を 位0 で Vector3寸法する
   （対象 の angular） を 位1 で Vector3寸法する
-Accel を 番地 へ 数 で Accel書込する は 数 の 動作
-対象 を 先 へ 位0 で Accel書込する とは 手順
+
+Accel を 番地 へ 数 で Accel書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Accel書込する とは 以下の入出力手順です
   位1 とは （対象 の linear） を 先 へ 位0 で Vector3書込した 結果
   （対象 の angular） を 先 へ 位1 で Vector3書込する
-番地 から 数 で Accel読取する は （Accel と 数） の 読値 の 動作
-先 から 位0 で Accel読取する とは 手順
+  以上です
+
+番地 から 数 で Accel読取する は （Accel と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Accel読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
   （値 は （linear は （欄1 の 値） で angular は （欄2 の 値） の Accel） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/AccelStamped
 AccelStamped とは header と accel の 組
@@ -28,15 +32,19 @@ AccelStamped を 数 で AccelStamped寸法する は 数
 対象 を 位0 で AccelStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の accel） を 位1 で Accel寸法する
-AccelStamped を 番地 へ 数 で AccelStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で AccelStamped書込する とは 手順
+
+AccelStamped を 番地 へ 数 で AccelStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で AccelStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の accel） を 先 へ 位1 で Accel書込する
-番地 から 数 で AccelStamped読取する は （AccelStamped と 数） の 読値 の 動作
-先 から 位0 で AccelStamped読取する とは 手順
+  以上です
+
+番地 から 数 で AccelStamped読取する は （AccelStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で AccelStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Accel読取した 結果
   （値 は （header は （欄1 の 値） で accel は （欄2 の 値） の AccelStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/AccelWithCovariance
 AccelWithCovariance とは accel と covariance の 組
@@ -46,15 +54,19 @@ AccelWithCovariance を 数 で AccelWithCovariance寸法する は 数
 対象 を 位0 で AccelWithCovariance寸法する とは
   位1 とは （対象 の accel） を 位0 で Accel寸法する
   （対象 の covariance） を 位1 で 8 に CDR素列寸法する
-AccelWithCovariance を 番地 へ 数 で AccelWithCovariance書込する は 数 の 動作
-対象 を 先 へ 位0 で AccelWithCovariance書込する とは 手順
+
+AccelWithCovariance を 番地 へ 数 で AccelWithCovariance書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で AccelWithCovariance書込する とは 以下の入出力手順です
   位1 とは （対象 の accel） を 先 へ 位0 で Accel書込した 結果
   （対象 の covariance） を 先 へ 位1 で （CDR小数書込すること） に 36 より CDR固定列書込する
-番地 から 数 で AccelWithCovariance読取する は （AccelWithCovariance と 数） の 読値 の 動作
-先 から 位0 で AccelWithCovariance読取する とは 手順
+  以上です
+
+番地 から 数 で AccelWithCovariance読取する は （AccelWithCovariance と 数） の 読値 を 返す 入出力動作
+先 から 位0 で AccelWithCovariance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Accel読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に 36 より CDR固定列読取した 結果
   （値 は （accel は （欄1 の 値） で covariance は （欄2 の 値） の AccelWithCovariance） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/AccelWithCovarianceStamped
 AccelWithCovarianceStamped とは header と accel の 組
@@ -64,15 +76,19 @@ AccelWithCovarianceStamped を 数 で AccelWithCovarianceStamped寸法する �
 対象 を 位0 で AccelWithCovarianceStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の accel） を 位1 で AccelWithCovariance寸法する
-AccelWithCovarianceStamped を 番地 へ 数 で AccelWithCovarianceStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で AccelWithCovarianceStamped書込する とは 手順
+
+AccelWithCovarianceStamped を 番地 へ 数 で AccelWithCovarianceStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で AccelWithCovarianceStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の accel） を 先 へ 位1 で AccelWithCovariance書込する
-番地 から 数 で AccelWithCovarianceStamped読取する は （AccelWithCovarianceStamped と 数） の 読値 の 動作
-先 から 位0 で AccelWithCovarianceStamped読取する とは 手順
+  以上です
+
+番地 から 数 で AccelWithCovarianceStamped読取する は （AccelWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で AccelWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で AccelWithCovariance読取した 結果
   （値 は （header は （欄1 の 値） で accel は （欄2 の 値） の AccelWithCovarianceStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Inertia
 Inertia とは m と com と ixx と ixy と ixz と iyy と iyz と izz の 組
@@ -88,8 +104,9 @@ Inertia を 数 で Inertia寸法する は 数
   位6 とは （対象 の iyy） を 位5 で CDR小数寸法する
   位7 とは （対象 の iyz） を 位6 で CDR小数寸法する
   （対象 の izz） を 位7 で CDR小数寸法する
-Inertia を 番地 へ 数 で Inertia書込する は 数 の 動作
-対象 を 先 へ 位0 で Inertia書込する とは 手順
+
+Inertia を 番地 へ 数 で Inertia書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Inertia書込する とは 以下の入出力手順です
   位1 とは （対象 の m） を 先 へ 位0 で CDR小数書込した 結果
   位2 とは （対象 の com） を 先 へ 位1 で Vector3書込した 結果
   位3 とは （対象 の ixx） を 先 へ 位2 で CDR小数書込した 結果
@@ -98,8 +115,10 @@ Inertia を 番地 へ 数 で Inertia書込する は 数 の 動作
   位6 とは （対象 の iyy） を 先 へ 位5 で CDR小数書込した 結果
   位7 とは （対象 の iyz） を 先 へ 位6 で CDR小数書込した 結果
   （対象 の izz） を 先 へ 位7 で CDR小数書込する
-番地 から 数 で Inertia読取する は （Inertia と 数） の 読値 の 動作
-先 から 位0 で Inertia読取する とは 手順
+  以上です
+
+番地 から 数 で Inertia読取する は （Inertia と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Inertia読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
@@ -109,6 +128,7 @@ Inertia を 番地 へ 数 で Inertia書込する は 数 の 動作
   欄7 とは 先 から （欄6 の 次） で CDR小数読取した 結果
   欄8 とは 先 から （欄7 の 次） で CDR小数読取した 結果
   （値 は （m は （欄1 の 値） で com は （欄2 の 値） で ixx は （欄3 の 値） で ixy は （欄4 の 値） で ixz は （欄5 の 値） で iyy は （欄6 の 値） で iyz は （欄7 の 値） で izz は （欄8 の 値） の Inertia） で 次 は （欄8 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/InertiaStamped
 InertiaStamped とは header と inertia の 組
@@ -118,15 +138,19 @@ InertiaStamped を 数 で InertiaStamped寸法する は 数
 対象 を 位0 で InertiaStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の inertia） を 位1 で Inertia寸法する
-InertiaStamped を 番地 へ 数 で InertiaStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で InertiaStamped書込する とは 手順
+
+InertiaStamped を 番地 へ 数 で InertiaStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で InertiaStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の inertia） を 先 へ 位1 で Inertia書込する
-番地 から 数 で InertiaStamped読取する は （InertiaStamped と 数） の 読値 の 動作
-先 から 位0 で InertiaStamped読取する とは 手順
+  以上です
+
+番地 から 数 で InertiaStamped読取する は （InertiaStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で InertiaStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Inertia読取した 結果
   （値 は （header は （欄1 の 値） で inertia は （欄2 の 値） の InertiaStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Point
 Point とは x と y と z の 組
@@ -137,17 +161,21 @@ Point を 数 で Point寸法する は 数
   位1 とは （対象 の x） を 位0 で CDR小数寸法する
   位2 とは （対象 の y） を 位1 で CDR小数寸法する
   （対象 の z） を 位2 で CDR小数寸法する
-Point を 番地 へ 数 で Point書込する は 数 の 動作
-対象 を 先 へ 位0 で Point書込する とは 手順
+
+Point を 番地 へ 数 で Point書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Point書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR小数書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR小数書込した 結果
   （対象 の z） を 先 へ 位2 で CDR小数書込する
-番地 から 数 で Point読取する は （Point と 数） の 読値 の 動作
-先 から 位0 で Point読取する とは 手順
+  以上です
+
+番地 から 数 で Point読取する は （Point と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Point読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で z は （欄3 の 値） の Point） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Point32
 Point32 とは x と y と z の 組
@@ -158,17 +186,21 @@ Point32 を 数 で Point32寸法する は 数
   位1 とは （対象 の x） を 位0 で CDR単精度寸法する
   位2 とは （対象 の y） を 位1 で CDR単精度寸法する
   （対象 の z） を 位2 で CDR単精度寸法する
-Point32 を 番地 へ 数 で Point32書込する は 数 の 動作
-対象 を 先 へ 位0 で Point32書込する とは 手順
+
+Point32 を 番地 へ 数 で Point32書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Point32書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR単精度書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR単精度書込した 結果
   （対象 の z） を 先 へ 位2 で CDR単精度書込する
-番地 から 数 で Point32読取する は （Point32 と 数） の 読値 の 動作
-先 から 位0 で Point32読取する とは 手順
+  以上です
+
+番地 から 数 で Point32読取する は （Point32 と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Point32読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR単精度読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で z は （欄3 の 値） の Point32） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PointStamped
 PointStamped とは header と point の 組
@@ -178,15 +210,19 @@ PointStamped を 数 で PointStamped寸法する は 数
 対象 を 位0 で PointStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の point） を 位1 で Point寸法する
-PointStamped を 番地 へ 数 で PointStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で PointStamped書込する とは 手順
+
+PointStamped を 番地 へ 数 で PointStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PointStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の point） を 先 へ 位1 で Point書込する
-番地 から 数 で PointStamped読取する は （PointStamped と 数） の 読値 の 動作
-先 から 位0 で PointStamped読取する とは 手順
+  以上です
+
+番地 から 数 で PointStamped読取する は （PointStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PointStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Point読取した 結果
   （値 は （header は （欄1 の 値） で point は （欄2 の 値） の PointStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Polygon
 Polygon とは points の 組
@@ -195,13 +231,17 @@ Polygon型 とは 型名 は 「geometry_msgs/msg/Polygon」 で 寸法 は Poly
 Polygon を 数 で Polygon寸法する は 数
 対象 を 位0 で Polygon寸法する とは
   （対象 の points） を 位0 で （Point32寸法すること） に CDR可変列寸法する
-Polygon を 番地 へ 数 で Polygon書込する は 数 の 動作
-対象 を 先 へ 位0 で Polygon書込する とは 手順
+
+Polygon を 番地 へ 数 で Polygon書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Polygon書込する とは 以下の入出力手順です
   （対象 の points） を 先 へ 位0 で （Point32書込すること） に CDR可変列書込する
-番地 から 数 で Polygon読取する は （Polygon と 数） の 読値 の 動作
-先 から 位0 で Polygon読取する とは 手順
+  以上です
+
+番地 から 数 で Polygon読取する は （Polygon と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Polygon読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （Point32読取すること） に CDR可変列読取した 結果
   （値 は （points は （欄1 の 値） の Polygon） で 次 は （欄1 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PolygonInstance
 PolygonInstance とは polygon と id の 組
@@ -211,15 +251,19 @@ PolygonInstance を 数 で PolygonInstance寸法する は 数
 対象 を 位0 で PolygonInstance寸法する とは
   位1 とは （対象 の polygon） を 位0 で Polygon寸法する
   （対象 の id） を 位1 で CDR符号付き64寸法する
-PolygonInstance を 番地 へ 数 で PolygonInstance書込する は 数 の 動作
-対象 を 先 へ 位0 で PolygonInstance書込する とは 手順
+
+PolygonInstance を 番地 へ 数 で PolygonInstance書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PolygonInstance書込する とは 以下の入出力手順です
   位1 とは （対象 の polygon） を 先 へ 位0 で Polygon書込した 結果
   （対象 の id） を 先 へ 位1 で CDR符号付き64書込する
-番地 から 数 で PolygonInstance読取する は （PolygonInstance と 数） の 読値 の 動作
-先 から 位0 で PolygonInstance読取する とは 手順
+  以上です
+
+番地 から 数 で PolygonInstance読取する は （PolygonInstance と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PolygonInstance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Polygon読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号付き64読取した 結果
   （値 は （polygon は （欄1 の 値） で id は （欄2 の 値） の PolygonInstance） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PolygonInstanceStamped
 PolygonInstanceStamped とは header と polygon の 組
@@ -229,15 +273,19 @@ PolygonInstanceStamped を 数 で PolygonInstanceStamped寸法する は 数
 対象 を 位0 で PolygonInstanceStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の polygon） を 位1 で PolygonInstance寸法する
-PolygonInstanceStamped を 番地 へ 数 で PolygonInstanceStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で PolygonInstanceStamped書込する とは 手順
+
+PolygonInstanceStamped を 番地 へ 数 で PolygonInstanceStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PolygonInstanceStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の polygon） を 先 へ 位1 で PolygonInstance書込する
-番地 から 数 で PolygonInstanceStamped読取する は （PolygonInstanceStamped と 数） の 読値 の 動作
-先 から 位0 で PolygonInstanceStamped読取する とは 手順
+  以上です
+
+番地 から 数 で PolygonInstanceStamped読取する は （PolygonInstanceStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PolygonInstanceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で PolygonInstance読取した 結果
   （値 は （header は （欄1 の 値） で polygon は （欄2 の 値） の PolygonInstanceStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PolygonStamped
 PolygonStamped とは header と polygon の 組
@@ -247,15 +295,19 @@ PolygonStamped を 数 で PolygonStamped寸法する は 数
 対象 を 位0 で PolygonStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の polygon） を 位1 で Polygon寸法する
-PolygonStamped を 番地 へ 数 で PolygonStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で PolygonStamped書込する とは 手順
+
+PolygonStamped を 番地 へ 数 で PolygonStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PolygonStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の polygon） を 先 へ 位1 で Polygon書込する
-番地 から 数 で PolygonStamped読取する は （PolygonStamped と 数） の 読値 の 動作
-先 から 位0 で PolygonStamped読取する とは 手順
+  以上です
+
+番地 から 数 で PolygonStamped読取する は （PolygonStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PolygonStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Polygon読取した 結果
   （値 は （header は （欄1 の 値） で polygon は （欄2 の 値） の PolygonStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Pose
 Pose とは position と orientation の 組
@@ -265,15 +317,19 @@ Pose を 数 で Pose寸法する は 数
 対象 を 位0 で Pose寸法する とは
   位1 とは （対象 の position） を 位0 で Point寸法する
   （対象 の orientation） を 位1 で Quaternion寸法する
-Pose を 番地 へ 数 で Pose書込する は 数 の 動作
-対象 を 先 へ 位0 で Pose書込する とは 手順
+
+Pose を 番地 へ 数 で Pose書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Pose書込する とは 以下の入出力手順です
   位1 とは （対象 の position） を 先 へ 位0 で Point書込した 結果
   （対象 の orientation） を 先 へ 位1 で Quaternion書込する
-番地 から 数 で Pose読取する は （Pose と 数） の 読値 の 動作
-先 から 位0 で Pose読取する とは 手順
+  以上です
+
+番地 から 数 で Pose読取する は （Pose と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Pose読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Point読取した 結果
   欄2 とは 先 から （欄1 の 次） で Quaternion読取した 結果
   （値 は （position は （欄1 の 値） で orientation は （欄2 の 値） の Pose） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Pose2D
 Pose2D とは x と y と theta の 組
@@ -284,17 +340,21 @@ Pose2D を 数 で Pose2D寸法する は 数
   位1 とは （対象 の x） を 位0 で CDR小数寸法する
   位2 とは （対象 の y） を 位1 で CDR小数寸法する
   （対象 の theta） を 位2 で CDR小数寸法する
-Pose2D を 番地 へ 数 で Pose2D書込する は 数 の 動作
-対象 を 先 へ 位0 で Pose2D書込する とは 手順
+
+Pose2D を 番地 へ 数 で Pose2D書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Pose2D書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR小数書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR小数書込した 結果
   （対象 の theta） を 先 へ 位2 で CDR小数書込する
-番地 から 数 で Pose2D読取する は （Pose2D と 数） の 読値 の 動作
-先 から 位0 で Pose2D読取する とは 手順
+  以上です
+
+番地 から 数 で Pose2D読取する は （Pose2D と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Pose2D読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で theta は （欄3 の 値） の Pose2D） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PoseArray
 PoseArray とは header と poses の 組
@@ -304,15 +364,19 @@ PoseArray を 数 で PoseArray寸法する は 数
 対象 を 位0 で PoseArray寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の poses） を 位1 で （Pose寸法すること） に CDR可変列寸法する
-PoseArray を 番地 へ 数 で PoseArray書込する は 数 の 動作
-対象 を 先 へ 位0 で PoseArray書込する とは 手順
+
+PoseArray を 番地 へ 数 で PoseArray書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PoseArray書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の poses） を 先 へ 位1 で （Pose書込すること） に CDR可変列書込する
-番地 から 数 で PoseArray読取する は （PoseArray と 数） の 読値 の 動作
-先 から 位0 で PoseArray読取する とは 手順
+  以上です
+
+番地 から 数 で PoseArray読取する は （PoseArray と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PoseArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （Pose読取すること） に CDR可変列読取した 結果
   （値 は （header は （欄1 の 値） で poses は （欄2 の 値） の PoseArray） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PoseStamped
 PoseStamped とは header と pose の 組
@@ -322,15 +386,19 @@ PoseStamped を 数 で PoseStamped寸法する は 数
 対象 を 位0 で PoseStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の pose） を 位1 で Pose寸法する
-PoseStamped を 番地 へ 数 で PoseStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で PoseStamped書込する とは 手順
+
+PoseStamped を 番地 へ 数 で PoseStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PoseStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の pose） を 先 へ 位1 で Pose書込する
-番地 から 数 で PoseStamped読取する は （PoseStamped と 数） の 読値 の 動作
-先 から 位0 で PoseStamped読取する とは 手順
+  以上です
+
+番地 から 数 で PoseStamped読取する は （PoseStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PoseStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Pose読取した 結果
   （値 は （header は （欄1 の 値） で pose は （欄2 の 値） の PoseStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PoseWithCovariance
 PoseWithCovariance とは pose と covariance の 組
@@ -340,15 +408,19 @@ PoseWithCovariance を 数 で PoseWithCovariance寸法する は 数
 対象 を 位0 で PoseWithCovariance寸法する とは
   位1 とは （対象 の pose） を 位0 で Pose寸法する
   （対象 の covariance） を 位1 で 8 に CDR素列寸法する
-PoseWithCovariance を 番地 へ 数 で PoseWithCovariance書込する は 数 の 動作
-対象 を 先 へ 位0 で PoseWithCovariance書込する とは 手順
+
+PoseWithCovariance を 番地 へ 数 で PoseWithCovariance書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PoseWithCovariance書込する とは 以下の入出力手順です
   位1 とは （対象 の pose） を 先 へ 位0 で Pose書込した 結果
   （対象 の covariance） を 先 へ 位1 で （CDR小数書込すること） に 36 より CDR固定列書込する
-番地 から 数 で PoseWithCovariance読取する は （PoseWithCovariance と 数） の 読値 の 動作
-先 から 位0 で PoseWithCovariance読取する とは 手順
+  以上です
+
+番地 から 数 で PoseWithCovariance読取する は （PoseWithCovariance と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PoseWithCovariance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Pose読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に 36 より CDR固定列読取した 結果
   （値 は （pose は （欄1 の 値） で covariance は （欄2 の 値） の PoseWithCovariance） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/PoseWithCovarianceStamped
 PoseWithCovarianceStamped とは header と pose の 組
@@ -358,15 +430,19 @@ PoseWithCovarianceStamped を 数 で PoseWithCovarianceStamped寸法する は 
 対象 を 位0 で PoseWithCovarianceStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の pose） を 位1 で PoseWithCovariance寸法する
-PoseWithCovarianceStamped を 番地 へ 数 で PoseWithCovarianceStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で PoseWithCovarianceStamped書込する とは 手順
+
+PoseWithCovarianceStamped を 番地 へ 数 で PoseWithCovarianceStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で PoseWithCovarianceStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の pose） を 先 へ 位1 で PoseWithCovariance書込する
-番地 から 数 で PoseWithCovarianceStamped読取する は （PoseWithCovarianceStamped と 数） の 読値 の 動作
-先 から 位0 で PoseWithCovarianceStamped読取する とは 手順
+  以上です
+
+番地 から 数 で PoseWithCovarianceStamped読取する は （PoseWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で PoseWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で PoseWithCovariance読取した 結果
   （値 は （header は （欄1 の 値） で pose は （欄2 の 値） の PoseWithCovarianceStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Quaternion
 Quaternion とは x と y と z と w の 組
@@ -378,19 +454,23 @@ Quaternion を 数 で Quaternion寸法する は 数
   位2 とは （対象 の y） を 位1 で CDR小数寸法する
   位3 とは （対象 の z） を 位2 で CDR小数寸法する
   （対象 の w） を 位3 で CDR小数寸法する
-Quaternion を 番地 へ 数 で Quaternion書込する は 数 の 動作
-対象 を 先 へ 位0 で Quaternion書込する とは 手順
+
+Quaternion を 番地 へ 数 で Quaternion書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Quaternion書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR小数書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR小数書込した 結果
   位3 とは （対象 の z） を 先 へ 位2 で CDR小数書込した 結果
   （対象 の w） を 先 へ 位3 で CDR小数書込する
-番地 から 数 で Quaternion読取する は （Quaternion と 数） の 読値 の 動作
-先 から 位0 で Quaternion読取する とは 手順
+  以上です
+
+番地 から 数 で Quaternion読取する は （Quaternion と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Quaternion読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
   欄4 とは 先 から （欄3 の 次） で CDR小数読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で z は （欄3 の 値） で w は （欄4 の 値） の Quaternion） で 次 は （欄4 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/QuaternionStamped
 QuaternionStamped とは header と quaternion の 組
@@ -400,15 +480,19 @@ QuaternionStamped を 数 で QuaternionStamped寸法する は 数
 対象 を 位0 で QuaternionStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の quaternion） を 位1 で Quaternion寸法する
-QuaternionStamped を 番地 へ 数 で QuaternionStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で QuaternionStamped書込する とは 手順
+
+QuaternionStamped を 番地 へ 数 で QuaternionStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で QuaternionStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の quaternion） を 先 へ 位1 で Quaternion書込する
-番地 から 数 で QuaternionStamped読取する は （QuaternionStamped と 数） の 読値 の 動作
-先 から 位0 で QuaternionStamped読取する とは 手順
+  以上です
+
+番地 から 数 で QuaternionStamped読取する は （QuaternionStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で QuaternionStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Quaternion読取した 結果
   （値 は （header は （欄1 の 値） で quaternion は （欄2 の 値） の QuaternionStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Transform
 Transform とは translation と rotation の 組
@@ -418,15 +502,19 @@ Transform を 数 で Transform寸法する は 数
 対象 を 位0 で Transform寸法する とは
   位1 とは （対象 の translation） を 位0 で Vector3寸法する
   （対象 の rotation） を 位1 で Quaternion寸法する
-Transform を 番地 へ 数 で Transform書込する は 数 の 動作
-対象 を 先 へ 位0 で Transform書込する とは 手順
+
+Transform を 番地 へ 数 で Transform書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Transform書込する とは 以下の入出力手順です
   位1 とは （対象 の translation） を 先 へ 位0 で Vector3書込した 結果
   （対象 の rotation） を 先 へ 位1 で Quaternion書込する
-番地 から 数 で Transform読取する は （Transform と 数） の 読値 の 動作
-先 から 位0 で Transform読取する とは 手順
+  以上です
+
+番地 から 数 で Transform読取する は （Transform と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Transform読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Quaternion読取した 結果
   （値 は （translation は （欄1 の 値） で rotation は （欄2 の 値） の Transform） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/TransformStamped
 TransformStamped とは header と child_frame_id と transform の 組
@@ -437,17 +525,21 @@ TransformStamped を 数 で TransformStamped寸法する は 数
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   位2 とは （対象 の child_frame_id） を 位1 で CDR文字列寸法する
   （対象 の transform） を 位2 で Transform寸法する
-TransformStamped を 番地 へ 数 で TransformStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で TransformStamped書込する とは 手順
+
+TransformStamped を 番地 へ 数 で TransformStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TransformStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   位2 とは （対象 の child_frame_id） を 先 へ 位1 で CDR文字列書込した 結果
   （対象 の transform） を 先 へ 位2 で Transform書込する
-番地 から 数 で TransformStamped読取する は （TransformStamped と 数） の 読値 の 動作
-先 から 位0 で TransformStamped読取する とは 手順
+  以上です
+
+番地 から 数 で TransformStamped読取する は （TransformStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TransformStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
   欄3 とは 先 から （欄2 の 次） で Transform読取した 結果
   （値 は （header は （欄1 の 値） で child_frame_id は （欄2 の 値） で transform は （欄3 の 値） の TransformStamped） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Twist
 Twist とは linear と angular の 組
@@ -457,15 +549,19 @@ Twist を 数 で Twist寸法する は 数
 対象 を 位0 で Twist寸法する とは
   位1 とは （対象 の linear） を 位0 で Vector3寸法する
   （対象 の angular） を 位1 で Vector3寸法する
-Twist を 番地 へ 数 で Twist書込する は 数 の 動作
-対象 を 先 へ 位0 で Twist書込する とは 手順
+
+Twist を 番地 へ 数 で Twist書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Twist書込する とは 以下の入出力手順です
   位1 とは （対象 の linear） を 先 へ 位0 で Vector3書込した 結果
   （対象 の angular） を 先 へ 位1 で Vector3書込する
-番地 から 数 で Twist読取する は （Twist と 数） の 読値 の 動作
-先 から 位0 で Twist読取する とは 手順
+  以上です
+
+番地 から 数 で Twist読取する は （Twist と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Twist読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
   （値 は （linear は （欄1 の 値） で angular は （欄2 の 値） の Twist） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/TwistStamped
 TwistStamped とは header と twist の 組
@@ -475,15 +571,19 @@ TwistStamped を 数 で TwistStamped寸法する は 数
 対象 を 位0 で TwistStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の twist） を 位1 で Twist寸法する
-TwistStamped を 番地 へ 数 で TwistStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で TwistStamped書込する とは 手順
+
+TwistStamped を 番地 へ 数 で TwistStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TwistStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の twist） を 先 へ 位1 で Twist書込する
-番地 から 数 で TwistStamped読取する は （TwistStamped と 数） の 読値 の 動作
-先 から 位0 で TwistStamped読取する とは 手順
+  以上です
+
+番地 から 数 で TwistStamped読取する は （TwistStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TwistStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Twist読取した 結果
   （値 は （header は （欄1 の 値） で twist は （欄2 の 値） の TwistStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/TwistWithCovariance
 TwistWithCovariance とは twist と covariance の 組
@@ -493,15 +593,19 @@ TwistWithCovariance を 数 で TwistWithCovariance寸法する は 数
 対象 を 位0 で TwistWithCovariance寸法する とは
   位1 とは （対象 の twist） を 位0 で Twist寸法する
   （対象 の covariance） を 位1 で 8 に CDR素列寸法する
-TwistWithCovariance を 番地 へ 数 で TwistWithCovariance書込する は 数 の 動作
-対象 を 先 へ 位0 で TwistWithCovariance書込する とは 手順
+
+TwistWithCovariance を 番地 へ 数 で TwistWithCovariance書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TwistWithCovariance書込する とは 以下の入出力手順です
   位1 とは （対象 の twist） を 先 へ 位0 で Twist書込した 結果
   （対象 の covariance） を 先 へ 位1 で （CDR小数書込すること） に 36 より CDR固定列書込する
-番地 から 数 で TwistWithCovariance読取する は （TwistWithCovariance と 数） の 読値 の 動作
-先 から 位0 で TwistWithCovariance読取する とは 手順
+  以上です
+
+番地 から 数 で TwistWithCovariance読取する は （TwistWithCovariance と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TwistWithCovariance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Twist読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に 36 より CDR固定列読取した 結果
   （値 は （twist は （欄1 の 値） で covariance は （欄2 の 値） の TwistWithCovariance） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/TwistWithCovarianceStamped
 TwistWithCovarianceStamped とは header と twist の 組
@@ -511,15 +615,19 @@ TwistWithCovarianceStamped を 数 で TwistWithCovarianceStamped寸法する �
 対象 を 位0 で TwistWithCovarianceStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の twist） を 位1 で TwistWithCovariance寸法する
-TwistWithCovarianceStamped を 番地 へ 数 で TwistWithCovarianceStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で TwistWithCovarianceStamped書込する とは 手順
+
+TwistWithCovarianceStamped を 番地 へ 数 で TwistWithCovarianceStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で TwistWithCovarianceStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の twist） を 先 へ 位1 で TwistWithCovariance書込する
-番地 から 数 で TwistWithCovarianceStamped読取する は （TwistWithCovarianceStamped と 数） の 読値 の 動作
-先 から 位0 で TwistWithCovarianceStamped読取する とは 手順
+  以上です
+
+番地 から 数 で TwistWithCovarianceStamped読取する は （TwistWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で TwistWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で TwistWithCovariance読取した 結果
   （値 は （header は （欄1 の 値） で twist は （欄2 の 値） の TwistWithCovarianceStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Vector3
 Vector3 とは x と y と z の 組
@@ -530,17 +638,21 @@ Vector3 を 数 で Vector3寸法する は 数
   位1 とは （対象 の x） を 位0 で CDR小数寸法する
   位2 とは （対象 の y） を 位1 で CDR小数寸法する
   （対象 の z） を 位2 で CDR小数寸法する
-Vector3 を 番地 へ 数 で Vector3書込する は 数 の 動作
-対象 を 先 へ 位0 で Vector3書込する とは 手順
+
+Vector3 を 番地 へ 数 で Vector3書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Vector3書込する とは 以下の入出力手順です
   位1 とは （対象 の x） を 先 へ 位0 で CDR小数書込した 結果
   位2 とは （対象 の y） を 先 へ 位1 で CDR小数書込した 結果
   （対象 の z） を 先 へ 位2 で CDR小数書込する
-番地 から 数 で Vector3読取する は （Vector3 と 数） の 読値 の 動作
-先 から 位0 で Vector3読取する とは 手順
+  以上です
+
+番地 から 数 で Vector3読取する は （Vector3 と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Vector3読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR小数読取した 結果
   （値 は （x は （欄1 の 値） で y は （欄2 の 値） で z は （欄3 の 値） の Vector3） で 次 は （欄3 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Vector3Stamped
 Vector3Stamped とは header と vector の 組
@@ -550,15 +662,19 @@ Vector3Stamped を 数 で Vector3Stamped寸法する は 数
 対象 を 位0 で Vector3Stamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の vector） を 位1 で Vector3寸法する
-Vector3Stamped を 番地 へ 数 で Vector3Stamped書込する は 数 の 動作
-対象 を 先 へ 位0 で Vector3Stamped書込する とは 手順
+
+Vector3Stamped を 番地 へ 数 で Vector3Stamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Vector3Stamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の vector） を 先 へ 位1 で Vector3書込する
-番地 から 数 で Vector3Stamped読取する は （Vector3Stamped と 数） の 読値 の 動作
-先 から 位0 で Vector3Stamped読取する とは 手順
+  以上です
+
+番地 から 数 で Vector3Stamped読取する は （Vector3Stamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Vector3Stamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
   （値 は （header は （欄1 の 値） で vector は （欄2 の 値） の Vector3Stamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/VelocityStamped
 VelocityStamped とは header と body_frame_id と reference_frame_id と velocity の 組
@@ -570,19 +686,23 @@ VelocityStamped を 数 で VelocityStamped寸法する は 数
   位2 とは （対象 の body_frame_id） を 位1 で CDR文字列寸法する
   位3 とは （対象 の reference_frame_id） を 位2 で CDR文字列寸法する
   （対象 の velocity） を 位3 で Twist寸法する
-VelocityStamped を 番地 へ 数 で VelocityStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で VelocityStamped書込する とは 手順
+
+VelocityStamped を 番地 へ 数 で VelocityStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で VelocityStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   位2 とは （対象 の body_frame_id） を 先 へ 位1 で CDR文字列書込した 結果
   位3 とは （対象 の reference_frame_id） を 先 へ 位2 で CDR文字列書込した 結果
   （対象 の velocity） を 先 へ 位3 で Twist書込する
-番地 から 数 で VelocityStamped読取する は （VelocityStamped と 数） の 読値 の 動作
-先 から 位0 で VelocityStamped読取する とは 手順
+  以上です
+
+番地 から 数 で VelocityStamped読取する は （VelocityStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で VelocityStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
   欄4 とは 先 から （欄3 の 次） で Twist読取した 結果
   （値 は （header は （欄1 の 値） で body_frame_id は （欄2 の 値） で reference_frame_id は （欄3 の 値） で velocity は （欄4 の 値） の VelocityStamped） で 次 は （欄4 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/VelocityWithCovarianceStamped
 VelocityWithCovarianceStamped とは header と body_frame_id と reference_frame_id と velocity の 組
@@ -594,19 +714,23 @@ VelocityWithCovarianceStamped を 数 で VelocityWithCovarianceStamped寸法す
   位2 とは （対象 の body_frame_id） を 位1 で CDR文字列寸法する
   位3 とは （対象 の reference_frame_id） を 位2 で CDR文字列寸法する
   （対象 の velocity） を 位3 で TwistWithCovariance寸法する
-VelocityWithCovarianceStamped を 番地 へ 数 で VelocityWithCovarianceStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で VelocityWithCovarianceStamped書込する とは 手順
+
+VelocityWithCovarianceStamped を 番地 へ 数 で VelocityWithCovarianceStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で VelocityWithCovarianceStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   位2 とは （対象 の body_frame_id） を 先 へ 位1 で CDR文字列書込した 結果
   位3 とは （対象 の reference_frame_id） を 先 へ 位2 で CDR文字列書込した 結果
   （対象 の velocity） を 先 へ 位3 で TwistWithCovariance書込する
-番地 から 数 で VelocityWithCovarianceStamped読取する は （VelocityWithCovarianceStamped と 数） の 読値 の 動作
-先 から 位0 で VelocityWithCovarianceStamped読取する とは 手順
+  以上です
+
+番地 から 数 で VelocityWithCovarianceStamped読取する は （VelocityWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で VelocityWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
   欄3 とは 先 から （欄2 の 次） で CDR文字列読取した 結果
   欄4 とは 先 から （欄3 の 次） で TwistWithCovariance読取した 結果
   （値 は （header は （欄1 の 値） で body_frame_id は （欄2 の 値） で reference_frame_id は （欄3 の 値） で velocity は （欄4 の 値） の VelocityWithCovarianceStamped） で 次 は （欄4 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/Wrench
 Wrench とは force と torque の 組
@@ -616,15 +740,19 @@ Wrench を 数 で Wrench寸法する は 数
 対象 を 位0 で Wrench寸法する とは
   位1 とは （対象 の force） を 位0 で Vector3寸法する
   （対象 の torque） を 位1 で Vector3寸法する
-Wrench を 番地 へ 数 で Wrench書込する は 数 の 動作
-対象 を 先 へ 位0 で Wrench書込する とは 手順
+
+Wrench を 番地 へ 数 で Wrench書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で Wrench書込する とは 以下の入出力手順です
   位1 とは （対象 の force） を 先 へ 位0 で Vector3書込した 結果
   （対象 の torque） を 先 へ 位1 で Vector3書込する
-番地 から 数 で Wrench読取する は （Wrench と 数） の 読値 の 動作
-先 から 位0 で Wrench読取する とは 手順
+  以上です
+
+番地 から 数 で Wrench読取する は （Wrench と 数） の 読値 を 返す 入出力動作
+先 から 位0 で Wrench読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
   （値 は （force は （欄1 の 値） で torque は （欄2 の 値） の Wrench） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です
 
 # geometry_msgs/msg/WrenchStamped
 WrenchStamped とは header と wrench の 組
@@ -634,12 +762,16 @@ WrenchStamped を 数 で WrenchStamped寸法する は 数
 対象 を 位0 で WrenchStamped寸法する とは
   位1 とは （対象 の header） を 位0 で std_msgs内のHeader寸法する
   （対象 の wrench） を 位1 で Wrench寸法する
-WrenchStamped を 番地 へ 数 で WrenchStamped書込する は 数 の 動作
-対象 を 先 へ 位0 で WrenchStamped書込する とは 手順
+
+WrenchStamped を 番地 へ 数 で WrenchStamped書込する は 数 を 返す 入出力動作
+対象 を 先 へ 位0 で WrenchStamped書込する とは 以下の入出力手順です
   位1 とは （対象 の header） を 先 へ 位0 で std_msgs内のHeader書込した 結果
   （対象 の wrench） を 先 へ 位1 で Wrench書込する
-番地 から 数 で WrenchStamped読取する は （WrenchStamped と 数） の 読値 の 動作
-先 から 位0 で WrenchStamped読取する とは 手順
+  以上です
+
+番地 から 数 で WrenchStamped読取する は （WrenchStamped と 数） の 読値 を 返す 入出力動作
+先 から 位0 で WrenchStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Wrench読取した 結果
   （値 は （header は （欄1 の 値） で wrench は （欄2 の 値） の WrenchStamped） で 次 は （欄2 の 次） の 読値） を 結果にする
+  以上です

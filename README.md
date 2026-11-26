@@ -5,10 +5,11 @@
 ```
 「rclsuru」 を 読み込んで 使う
 
-始めする とは 手順
+始めする とは 以下の入出力手順です
   n とは 「listener」 を ノード作成した 結果
   文字列型 を 「chatter」 から n で 聞いたこと表示すること に 購読する
   n を スピンする
+  以上です
 
 文 を 聞いたこと表示する とは （「聞きました: 」 + 文） を 表示する
 
@@ -18,7 +19,7 @@
 ## 入れ方
 
 1. **ROS 2 Jazzy。** Ubuntu 24.04 に [ROS 2 の手順](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)で `ros-jazzy-ros-base`(か `ros-jazzy-desktop`)を入れます。使うときは毎回 `source /opt/ros/jazzy/setup.bash` します。
-2. **suru 0.5.0 以上と clang。** `kumu`・`suruc`・`suru` が要ります。入れ方は [suru の README](https://github.com/suru-lang/suru#入れ方) にあります(Homebrew なら `brew install suru-lang/suru/suru`、バイナリなら GitHub Releases)。clang は `sudo apt install clang` で入ります。
+2. **suru 0.9.1 以上と clang。** `kumu`・`suruc`・`suru` が要ります。入れ方は [suru の README](https://github.com/suru-lang/suru#入れ方) にあります(Homebrew なら `brew install suru-lang/suru/suru`、バイナリなら GitHub Releases)。clang は `sudo apt install clang` で入ります。
 3. **rclsuru。** 自分のプロジェクトで `kumu 追加 github.com/suru-lang/rclsuru` とします(次の「はじめてのノード」)。
 
 `docker/Dockerfile` に、ROS 2 Jazzy・suru・clang を全部入れた環境があります。試験には、ほかに colcon と g++(C++ の試験用ノード)が要ります。
@@ -39,12 +40,13 @@ kumu 追加 github.com/suru-lang/rclsuru
 ```
 「rclsuru」 を 読み込んで 使う
 
-始めする とは 手順
+始めする とは 以下の入出力手順です
   n とは 「hello」 を ノード作成した 結果
   p とは 文字列型 を 「chatter」 へ n で 発行者作成した 結果
   （「こんにちは」 を p へ 発行する） を 1.0 で n に 周期登録する
   「始めました」 を n で 情報記録する
   n を スピンする
+  以上です
 
 始めする
 ```
@@ -95,12 +97,13 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 「rclsuru」 を 読み込んで 使う
 「rclsuru/型/geometry_msgs」 を 読み込んで 使う
 
-始めする とは 手順
+始めする とは 以下の入出力手順です
   n とは 「turtle_driver」 を ノード作成した 結果
   p とは Twist型 を 「turtle1/cmd_vel」 へ n で 発行者作成した 結果
   t とは linear は （x は 2.0 の Vector3既定） で angular は （z は 1.0 の Vector3既定） の Twist既定
   （t を p へ 発行する） を 0.5 で n に 周期登録する
   n を スピンする
+  以上です
 
 始めする
 ```
@@ -146,10 +149,11 @@ suru <rclsuru のフォルダ>/生成器.suru 型 my_msgs      # 型/my_msgs.sur
 「rclsuru」 を 読み込んで 使う
 「rclsuru/型/example_interfaces」 を 読み込んで 使う
 
-始めする とは 手順
+始めする とは 以下の入出力手順です
   n とは 「add_two_ints_server」 を ノード作成した 結果
   AddTwoInts型 を 「add_two_ints」 で n に 足し算すること へ サービス作成する
   n を スピンする
+  以上です
 
 要求 を 足し算する とは （sum は （要求 の a） + （要求 の b） の AddTwoInts_Response既定） を 結果にする
 
@@ -182,12 +186,13 @@ rcl はサービスの要求と応答を直列化したまま渡せないので�
 ```
 Fibonacci型 を 「fibonacci」 で n に 計算すること へ アクションサーバー作成する
 
-Fibonacci_Goal を 目標扱い で 計算する は Fibonacci_Result の 動作
-目標 を 扱い で 計算する とは 手順
+Fibonacci_Goal を 目標扱い で 計算する は Fibonacci_Result を 返す 入出力動作
+目標 を 扱い で 計算する とは 以下の入出力手順です
   …
   （sequence は 途中の列 の Fibonacci_Feedback既定） を 扱い へ 途中送信する
   …
   （sequence は 列 の Fibonacci_Result既定） を 結果にする
+  以上です
 ```
 
 目標が届くたびに、別のスレッドで `目標 を 扱い で 関数する` を行い、その結果がアクションの結果になります。例は `examples/フィボナッチサーバー` と `examples/フィボナッチクライアント` です。
@@ -301,7 +306,8 @@ install(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/hello/出力/hello DESTINATION lib/
 
 ## 作り
 
-- **C の包みは小さく。** suru の外部の関数は構造体を値で受け渡せないので、値で受け渡す rcl の関数(`rcl_get_zero_initialized_*`・`*_get_default_options` など)だけを `c/rclsuru.c` で包み、番地にして渡します。番地を受け取る rcl の関数(`rcl_init`・`rcl_node_init`・`rcl_publish_serialized_message` など)は する から直接呼びます。
+- **C の包みは小さく。** suru の外部の関数は構造体を値で受け渡せないので、値で受け渡す rcl の関数(`rcl_get_zero_initialized_*`・`*_get_default_options` など)だけを `c/rclsuru.c` で包み、番地にして渡します。番地を受け取る rcl の関数(`rcl_init`・`rcl_node_init`・`rcl_publish_serialized_message` など)は する から直接呼びます。C の関数は `rclsuru.suru` の頭で、`以下は外部の入出力動作です` から `以上です` までに `番地 を 低水準節点破棄する は 「rcl_node_fini」 で 整数 を 返します` のように1行に1つずつ書いています(suru 0.9.1)。
+- **する の書き方。** 入出力をする関数は `… は 発行者 を 返す 入出力動作` と宣言し、本体を `以下の入出力手順です` から `以上です` までの文で書きます。
 - **メッセージは直列化した CDR。** `rcl_publish_serialized_message`・`rcl_take_serialized_message` でバイト列をやりとりし、CDR の組み立てと読み取りは する で書きます(`CDR.suru`)。生成した型ごとに、書くのに要る大きさを数える関数・C のメモリに書く関数・読む関数ができ、rmw の領域に直接書いて読みます。型の情報(type support)は、型の名前(`std_msgs/msg/String`)から「動的リンク」で `lib<パッケージ>__rosidl_typesupport_c.so` を開いて引きます。型ごとの C は要りません。
 - **待ち方は通路。** wait set は使わず、`rcl_subscription_set_on_new_message_callback` に `通路送り番地作成する` の番地を渡し、DDS のスレッドから届いた知らせを する の通路で受け取ります(rclcpp の EventsExecutor と同じ考え)。番地は1つだけ作り、購読者ごとの番号を user_data に入れて見分けます。タイマーと Ctrl-C も、する のスレッドから同じ番地を呼んで同じ通路に知らせます。
 
