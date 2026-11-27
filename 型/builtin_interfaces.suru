@@ -2,7 +2,7 @@
 「rclsuru/CDR」 を 読み込んで 使う
 
 # builtin_interfaces/msg/Duration
-Duration とは sec と nanosec の 組
+Duration とは sec は 数 で nanosec は 数 の 組
 Duration既定 とは sec は 0 で nanosec は 0 の Duration
 Duration型 とは 型名 は 「builtin_interfaces/msg/Duration」 で 寸法 は Duration寸法すること で 書込 は Duration書込すること で 読取 は Duration読取すること の メッセージ型
 Duration を 数 で Duration寸法する は 数
@@ -16,7 +16,7 @@ Duration を 番地 へ 数 で Duration書込する は 数 を 返す 入出�
   （対象 の nanosec） を 先 へ 位1 で CDR符号なし32書込する
   以上です
 
-番地 から 数 で Duration読取する は （Duration と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Duration読取する は Duration の 読値 を 返す 入出力動作
 先 から 位0 で Duration読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き32読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
@@ -24,7 +24,7 @@ Duration を 番地 へ 数 で Duration書込する は 数 を 返す 入出�
   以上です
 
 # builtin_interfaces/msg/Time
-Time とは sec と nanosec の 組
+Time とは sec は 数 で nanosec は 数 の 組
 Time既定 とは sec は 0 で nanosec は 0 の Time
 Time型 とは 型名 は 「builtin_interfaces/msg/Time」 で 寸法 は Time寸法すること で 書込 は Time書込すること で 読取 は Time読取すること の メッセージ型
 Time を 数 で Time寸法する は 数
@@ -38,7 +38,7 @@ Time を 番地 へ 数 で Time書込する は 数 を 返す 入出力動作
   （対象 の nanosec） を 先 へ 位1 で CDR符号なし32書込する
   以上です
 
-番地 から 数 で Time読取する は （Time と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Time読取する は Time の 読値 を 返す 入出力動作
 先 から 位0 で Time読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き32読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果

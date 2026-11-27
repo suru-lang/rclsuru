@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-24.04
     container: ros:jazzy-ros-base
     env:
-      # 0.9.1 から、外部の関数のまとまりを「以下は外部の入出力動作です」と書ける(suru#186)
-      SURU_VERSION: v0.9.1
+      # 0.10.0 から、組のフィールドの型・番地で呼ぶ外部の（f）のまとまり・同じファイルの試験と例が使える(suru#189・#192・#193)
+      SURU_VERSION: v0.10.0
     defaults:
       run:
         shell: bash

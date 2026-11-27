@@ -5,7 +5,7 @@
 「builtin_interfaces」 を 読み込む
 
 # nav_msgs/msg/Goals
-Goals とは header と goals の 組
+Goals とは header は std_msgs内のHeader で goals は geometry_msgs内のPoseStamped の リスト の 組
 Goals既定 とは header は std_msgs内のHeader既定 で goals は 空 の Goals
 Goals型 とは 型名 は 「nav_msgs/msg/Goals」 で 寸法 は Goals寸法すること で 書込 は Goals書込すること で 読取 は Goals読取すること の メッセージ型
 Goals を 数 で Goals寸法する は 数
@@ -19,7 +19,7 @@ Goals を 番地 へ 数 で Goals書込する は 数 を 返す 入出力動�
   （対象 の goals） を 先 へ 位1 で （geometry_msgs内のPoseStamped書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Goals読取する は （Goals と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Goals読取する は Goals の 読値 を 返す 入出力動作
 先 から 位0 で Goals読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （geometry_msgs内のPoseStamped読取すること） に CDR可変列読取した 結果
@@ -27,7 +27,7 @@ Goals を 番地 へ 数 で Goals書込する は 数 を 返す 入出力動�
   以上です
 
 # nav_msgs/msg/GridCells
-GridCells とは header と cell_width と cell_height と cells の 組
+GridCells とは header は std_msgs内のHeader で cell_width は 小数 で cell_height は 小数 で cells は geometry_msgs内のPoint の リスト の 組
 GridCells既定 とは header は std_msgs内のHeader既定 で cell_width は 0.0 で cell_height は 0.0 で cells は 空 の GridCells
 GridCells型 とは 型名 は 「nav_msgs/msg/GridCells」 で 寸法 は GridCells寸法すること で 書込 は GridCells書込すること で 読取 は GridCells読取すること の メッセージ型
 GridCells を 数 で GridCells寸法する は 数
@@ -45,7 +45,7 @@ GridCells を 番地 へ 数 で GridCells書込する は 数 を 返す 入出
   （対象 の cells） を 先 へ 位3 で （geometry_msgs内のPoint書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で GridCells読取する は （GridCells と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GridCells読取する は GridCells の 読値 を 返す 入出力動作
 先 から 位0 で GridCells読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
@@ -55,7 +55,7 @@ GridCells を 番地 へ 数 で GridCells書込する は 数 を 返す 入出
   以上です
 
 # nav_msgs/msg/MapMetaData
-MapMetaData とは map_load_time と resolution と width と height と origin の 組
+MapMetaData とは map_load_time は builtin_interfaces内のTime で resolution は 小数 で width は 数 で height は 数 で origin は geometry_msgs内のPose の 組
 MapMetaData既定 とは map_load_time は builtin_interfaces内のTime既定 で resolution は 0.0 で width は 0 で height は 0 で origin は geometry_msgs内のPose既定 の MapMetaData
 MapMetaData型 とは 型名 は 「nav_msgs/msg/MapMetaData」 で 寸法 は MapMetaData寸法すること で 書込 は MapMetaData書込すること で 読取 は MapMetaData読取すること の メッセージ型
 MapMetaData を 数 で MapMetaData寸法する は 数
@@ -75,7 +75,7 @@ MapMetaData を 番地 へ 数 で MapMetaData書込する は 数 を 返す �
   （対象 の origin） を 先 へ 位4 で geometry_msgs内のPose書込する
   以上です
 
-番地 から 数 で MapMetaData読取する は （MapMetaData と 数） の 読値 を 返す 入出力動作
+番地 から 数 で MapMetaData読取する は MapMetaData の 読値 を 返す 入出力動作
 先 から 位0 で MapMetaData読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で builtin_interfaces内のTime読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
@@ -86,7 +86,7 @@ MapMetaData を 番地 へ 数 で MapMetaData書込する は 数 を 返す �
   以上です
 
 # nav_msgs/msg/OccupancyGrid
-OccupancyGrid とは header と info と data の 組
+OccupancyGrid とは header は std_msgs内のHeader で info は MapMetaData で data は 数 の リスト の 組
 OccupancyGrid既定 とは header は std_msgs内のHeader既定 で info は MapMetaData既定 で data は 空 の OccupancyGrid
 OccupancyGrid型 とは 型名 は 「nav_msgs/msg/OccupancyGrid」 で 寸法 は OccupancyGrid寸法すること で 書込 は OccupancyGrid書込すること で 読取 は OccupancyGrid読取すること の メッセージ型
 OccupancyGrid を 数 で OccupancyGrid寸法する は 数
@@ -102,7 +102,7 @@ OccupancyGrid を 番地 へ 数 で OccupancyGrid書込する は 数 を 返�
   （対象 の data） を 先 へ 位2 で （CDR符号付き8書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で OccupancyGrid読取する は （OccupancyGrid と 数） の 読値 を 返す 入出力動作
+番地 から 数 で OccupancyGrid読取する は OccupancyGrid の 読値 を 返す 入出力動作
 先 から 位0 で OccupancyGrid読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で MapMetaData読取した 結果
@@ -111,7 +111,7 @@ OccupancyGrid を 番地 へ 数 で OccupancyGrid書込する は 数 を 返�
   以上です
 
 # nav_msgs/msg/Odometry
-Odometry とは header と child_frame_id と pose と twist の 組
+Odometry とは header は std_msgs内のHeader で child_frame_id は 文字列 で pose は geometry_msgs内のPoseWithCovariance で twist は geometry_msgs内のTwistWithCovariance の 組
 Odometry既定 とは header は std_msgs内のHeader既定 で child_frame_id は 「」 で pose は geometry_msgs内のPoseWithCovariance既定 で twist は geometry_msgs内のTwistWithCovariance既定 の Odometry
 Odometry型 とは 型名 は 「nav_msgs/msg/Odometry」 で 寸法 は Odometry寸法すること で 書込 は Odometry書込すること で 読取 は Odometry読取すること の メッセージ型
 Odometry を 数 で Odometry寸法する は 数
@@ -129,7 +129,7 @@ Odometry を 番地 へ 数 で Odometry書込する は 数 を 返す 入出�
   （対象 の twist） を 先 へ 位3 で geometry_msgs内のTwistWithCovariance書込する
   以上です
 
-番地 から 数 で Odometry読取する は （Odometry と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Odometry読取する は Odometry の 読値 を 返す 入出力動作
 先 から 位0 で Odometry読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -139,7 +139,7 @@ Odometry を 番地 へ 数 で Odometry書込する は 数 を 返す 入出�
   以上です
 
 # nav_msgs/msg/Path
-Path とは header と poses の 組
+Path とは header は std_msgs内のHeader で poses は geometry_msgs内のPoseStamped の リスト の 組
 Path既定 とは header は std_msgs内のHeader既定 で poses は 空 の Path
 Path型 とは 型名 は 「nav_msgs/msg/Path」 で 寸法 は Path寸法すること で 書込 は Path書込すること で 読取 は Path読取すること の メッセージ型
 Path を 数 で Path寸法する は 数
@@ -153,7 +153,7 @@ Path を 番地 へ 数 で Path書込する は 数 を 返す 入出力動作
   （対象 の poses） を 先 へ 位1 で （geometry_msgs内のPoseStamped書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Path読取する は （Path と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Path読取する は Path の 読値 を 返す 入出力動作
 先 から 位0 で Path読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （geometry_msgs内のPoseStamped読取すること） に CDR可変列読取した 結果
@@ -161,7 +161,7 @@ Path を 番地 へ 数 で Path書込する は 数 を 返す 入出力動作
   以上です
 
 # nav_msgs/msg/Trajectory
-Trajectory とは header と points の 組
+Trajectory とは header は std_msgs内のHeader で points は TrajectoryPoint の リスト の 組
 Trajectory既定 とは header は std_msgs内のHeader既定 で points は 空 の Trajectory
 Trajectory型 とは 型名 は 「nav_msgs/msg/Trajectory」 で 寸法 は Trajectory寸法すること で 書込 は Trajectory書込すること で 読取 は Trajectory読取すること の メッセージ型
 Trajectory を 数 で Trajectory寸法する は 数
@@ -175,7 +175,7 @@ Trajectory を 番地 へ 数 で Trajectory書込する は 数 を 返す 入�
   （対象 の points） を 先 へ 位1 で （TrajectoryPoint書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Trajectory読取する は （Trajectory と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Trajectory読取する は Trajectory の 読値 を 返す 入出力動作
 先 から 位0 で Trajectory読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （TrajectoryPoint読取すること） に CDR可変列読取した 結果
@@ -183,7 +183,7 @@ Trajectory を 番地 へ 数 で Trajectory書込する は 数 を 返す 入�
   以上です
 
 # nav_msgs/msg/TrajectoryPoint
-TrajectoryPoint とは header と pose と velocity と acceleration と effort の 組
+TrajectoryPoint とは header は std_msgs内のHeader で pose は geometry_msgs内のPose で velocity は geometry_msgs内のTwist で acceleration は geometry_msgs内のAccel で effort は geometry_msgs内のWrench の 組
 TrajectoryPoint既定 とは header は std_msgs内のHeader既定 で pose は geometry_msgs内のPose既定 で velocity は geometry_msgs内のTwist既定 で acceleration は geometry_msgs内のAccel既定 で effort は geometry_msgs内のWrench既定 の TrajectoryPoint
 TrajectoryPoint型 とは 型名 は 「nav_msgs/msg/TrajectoryPoint」 で 寸法 は TrajectoryPoint寸法すること で 書込 は TrajectoryPoint書込すること で 読取 は TrajectoryPoint読取すること の メッセージ型
 TrajectoryPoint を 数 で TrajectoryPoint寸法する は 数
@@ -203,7 +203,7 @@ TrajectoryPoint を 番地 へ 数 で TrajectoryPoint書込する は 数 を �
   （対象 の effort） を 先 へ 位4 で geometry_msgs内のWrench書込する
   以上です
 
-番地 から 数 で TrajectoryPoint読取する は （TrajectoryPoint と 数） の 読値 を 返す 入出力動作
+番地 から 数 で TrajectoryPoint読取する は TrajectoryPoint の 読値 を 返す 入出力動作
 先 から 位0 で TrajectoryPoint読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で geometry_msgs内のPose読取した 結果
@@ -214,7 +214,7 @@ TrajectoryPoint を 番地 へ 数 で TrajectoryPoint書込する は 数 を �
   以上です
 
 # nav_msgs/srv/GetMap_Request
-GetMap_Request とは structure_needs_at_least_one_member の 組
+GetMap_Request とは structure_needs_at_least_one_member は 数 の 組
 GetMap_Request既定 とは structure_needs_at_least_one_member は 0 の GetMap_Request
 GetMap_Request型 とは 型名 は 「nav_msgs/srv/GetMap_Request」 で 寸法 は GetMap_Request寸法すること で 書込 は GetMap_Request書込すること で 読取 は GetMap_Request読取すること の メッセージ型
 GetMap_Request を 数 で GetMap_Request寸法する は 数
@@ -226,14 +226,14 @@ GetMap_Request を 番地 へ 数 で GetMap_Request書込する は 数 を 返
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で GetMap_Request読取する は （GetMap_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetMap_Request読取する は GetMap_Request の 読値 を 返す 入出力動作
 先 から 位0 で GetMap_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の GetMap_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # nav_msgs/srv/GetMap_Response
-GetMap_Response とは map の 組
+GetMap_Response とは map は OccupancyGrid の 組
 GetMap_Response既定 とは map は OccupancyGrid既定 の GetMap_Response
 GetMap_Response型 とは 型名 は 「nav_msgs/srv/GetMap_Response」 で 寸法 は GetMap_Response寸法すること で 書込 は GetMap_Response書込すること で 読取 は GetMap_Response読取すること の メッセージ型
 GetMap_Response を 数 で GetMap_Response寸法する は 数
@@ -245,14 +245,14 @@ GetMap_Response を 番地 へ 数 で GetMap_Response書込する は 数 を �
   （対象 の map） を 先 へ 位0 で OccupancyGrid書込する
   以上です
 
-番地 から 数 で GetMap_Response読取する は （GetMap_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetMap_Response読取する は GetMap_Response の 読値 を 返す 入出力動作
 先 から 位0 で GetMap_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で OccupancyGrid読取した 結果
   （値 は （map は （欄1 の 値） の GetMap_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # nav_msgs/srv/GetPlan_Request
-GetPlan_Request とは start と goal と tolerance の 組
+GetPlan_Request とは start は geometry_msgs内のPoseStamped で goal は geometry_msgs内のPoseStamped で tolerance は 小数 の 組
 GetPlan_Request既定 とは start は geometry_msgs内のPoseStamped既定 で goal は geometry_msgs内のPoseStamped既定 で tolerance は 0.0 の GetPlan_Request
 GetPlan_Request型 とは 型名 は 「nav_msgs/srv/GetPlan_Request」 で 寸法 は GetPlan_Request寸法すること で 書込 は GetPlan_Request書込すること で 読取 は GetPlan_Request読取すること の メッセージ型
 GetPlan_Request を 数 で GetPlan_Request寸法する は 数
@@ -268,7 +268,7 @@ GetPlan_Request を 番地 へ 数 で GetPlan_Request書込する は 数 を �
   （対象 の tolerance） を 先 へ 位2 で CDR単精度書込する
   以上です
 
-番地 から 数 で GetPlan_Request読取する は （GetPlan_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetPlan_Request読取する は GetPlan_Request の 読値 を 返す 入出力動作
 先 から 位0 で GetPlan_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で geometry_msgs内のPoseStamped読取した 結果
   欄2 とは 先 から （欄1 の 次） で geometry_msgs内のPoseStamped読取した 結果
@@ -277,7 +277,7 @@ GetPlan_Request を 番地 へ 数 で GetPlan_Request書込する は 数 を �
   以上です
 
 # nav_msgs/srv/GetPlan_Response
-GetPlan_Response とは plan の 組
+GetPlan_Response とは plan は Path の 組
 GetPlan_Response既定 とは plan は Path既定 の GetPlan_Response
 GetPlan_Response型 とは 型名 は 「nav_msgs/srv/GetPlan_Response」 で 寸法 は GetPlan_Response寸法すること で 書込 は GetPlan_Response書込すること で 読取 は GetPlan_Response読取すること の メッセージ型
 GetPlan_Response を 数 で GetPlan_Response寸法する は 数
@@ -289,14 +289,14 @@ GetPlan_Response を 番地 へ 数 で GetPlan_Response書込する は 数 を
   （対象 の plan） を 先 へ 位0 で Path書込する
   以上です
 
-番地 から 数 で GetPlan_Response読取する は （GetPlan_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetPlan_Response読取する は GetPlan_Response の 読値 を 返す 入出力動作
 先 から 位0 で GetPlan_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Path読取した 結果
   （値 は （plan は （欄1 の 値） の GetPlan_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # nav_msgs/srv/LoadMap_Request
-LoadMap_Request とは map_url の 組
+LoadMap_Request とは map_url は 文字列 の 組
 LoadMap_Request既定 とは map_url は 「」 の LoadMap_Request
 LoadMap_Request型 とは 型名 は 「nav_msgs/srv/LoadMap_Request」 で 寸法 は LoadMap_Request寸法すること で 書込 は LoadMap_Request書込すること で 読取 は LoadMap_Request読取すること の メッセージ型
 LoadMap_Request を 数 で LoadMap_Request寸法する は 数
@@ -308,14 +308,14 @@ LoadMap_Request を 番地 へ 数 で LoadMap_Request書込する は 数 を �
   （対象 の map_url） を 先 へ 位0 で CDR文字列書込する
   以上です
 
-番地 から 数 で LoadMap_Request読取する は （LoadMap_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で LoadMap_Request読取する は LoadMap_Request の 読値 を 返す 入出力動作
 先 から 位0 で LoadMap_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   （値 は （map_url は （欄1 の 値） の LoadMap_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # nav_msgs/srv/LoadMap_Response
-LoadMap_Response とは map と result の 組
+LoadMap_Response とは map は OccupancyGrid で result は 数 の 組
 LoadMap_Response既定 とは map は OccupancyGrid既定 で result は 0 の LoadMap_Response
 LoadMap_Response型 とは 型名 は 「nav_msgs/srv/LoadMap_Response」 で 寸法 は LoadMap_Response寸法すること で 書込 は LoadMap_Response書込すること で 読取 は LoadMap_Response読取すること の メッセージ型
 LoadMap_Response_RESULT_SUCCESS とは 0
@@ -334,7 +334,7 @@ LoadMap_Response を 番地 へ 数 で LoadMap_Response書込する は 数 を
   （対象 の result） を 先 へ 位1 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で LoadMap_Response読取する は （LoadMap_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で LoadMap_Response読取する は LoadMap_Response の 読値 を 返す 入出力動作
 先 から 位0 で LoadMap_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で OccupancyGrid読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
@@ -342,7 +342,7 @@ LoadMap_Response を 番地 へ 数 で LoadMap_Response書込する は 数 を
   以上です
 
 # nav_msgs/srv/SetMap_Request
-SetMap_Request とは map と initial_pose の 組
+SetMap_Request とは map は OccupancyGrid で initial_pose は geometry_msgs内のPoseWithCovarianceStamped の 組
 SetMap_Request既定 とは map は OccupancyGrid既定 で initial_pose は geometry_msgs内のPoseWithCovarianceStamped既定 の SetMap_Request
 SetMap_Request型 とは 型名 は 「nav_msgs/srv/SetMap_Request」 で 寸法 は SetMap_Request寸法すること で 書込 は SetMap_Request書込すること で 読取 は SetMap_Request読取すること の メッセージ型
 SetMap_Request を 数 で SetMap_Request寸法する は 数
@@ -356,7 +356,7 @@ SetMap_Request を 番地 へ 数 で SetMap_Request書込する は 数 を 返
   （対象 の initial_pose） を 先 へ 位1 で geometry_msgs内のPoseWithCovarianceStamped書込する
   以上です
 
-番地 から 数 で SetMap_Request読取する は （SetMap_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetMap_Request読取する は SetMap_Request の 読値 を 返す 入出力動作
 先 から 位0 で SetMap_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で OccupancyGrid読取した 結果
   欄2 とは 先 から （欄1 の 次） で geometry_msgs内のPoseWithCovarianceStamped読取した 結果
@@ -364,7 +364,7 @@ SetMap_Request を 番地 へ 数 で SetMap_Request書込する は 数 を 返
   以上です
 
 # nav_msgs/srv/SetMap_Response
-SetMap_Response とは success の 組
+SetMap_Response とは success は 真偽 の 組
 SetMap_Response既定 とは success は 偽 の SetMap_Response
 SetMap_Response型 とは 型名 は 「nav_msgs/srv/SetMap_Response」 で 寸法 は SetMap_Response寸法すること で 書込 は SetMap_Response書込すること で 読取 は SetMap_Response読取すること の メッセージ型
 SetMap_Response を 数 で SetMap_Response寸法する は 数
@@ -376,7 +376,7 @@ SetMap_Response を 番地 へ 数 で SetMap_Response書込する は 数 を �
   （対象 の success） を 先 へ 位0 で CDR真偽書込する
   以上です
 
-番地 から 数 で SetMap_Response読取する は （SetMap_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetMap_Response読取する は SetMap_Response の 読値 を 返す 入出力動作
 先 から 位0 で SetMap_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   （値 は （success は （欄1 の 値） の SetMap_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
