@@ -1,31 +1,32 @@
-# rclsuru: する で ROS 2 のノードを書くためのライブラリ
-# 使うファイルに 「rclsuru」 を 読み込んで 使う と書きます。
+# rclsuru: a library for writing ROS 2 nodes in Suru.
+# Load it with `「rclsuru」 を 読み込んで 使う`.
 #
-#   名前 を ノード作成する                  … ノード(コマンドラインの --ros-args も読む)
-#   型 を 話題 へ n で 発行者作成する        … 発行者
-#   値 を p へ 発行する                      … publish
-#   型 を 話題 から n で 関数 に 購読する    … 届いた値ごとに「値 を 関数 する」を行う
-#   動作 を 秒 で n に 周期登録する          … 秒ごとに動作を行う
-#   n を スピンする                          … 届いたものとタイマーを処理し続ける(Ctrl-C で後始末して終わる)
-#   n を ノード終了する                      … 後始末(スピンする が Ctrl-C で終わるときにも呼ぶ)
-#   型 を 話題 へ n で q より QoS付き発行者作成する、型 を 話題 から n で 関数 に q より QoS付き購読する
-#                                            … QoS(既定QoS・センサーQoS など)を決めて作る
-#   文字列型                                 … std_msgs/msg/String(する の 文字列)
-#   型 を 名前 で n に 関数 へ サービス作成する  … サービスのサーバー(要求ごとに「要求 を 関数する」の応答を返す)
-#   型 を 名前 で n に クライアント作成する     … クライアント。c を 秒 で サービス待機する、
-#                                              要求 を c へ 秒 で 呼出する(応答 の 有無)、要求 を c へ 関数 で 要求送信する
-#   型 を 名前 で n に 関数 へ アクションサーバー作成する … アクションサーバー(目標ごとに別のスレッドで「目標 を 扱い で 関数する」)
-#   型 を 名前 で n に アクションクライアント作成する  … 目標 を ac へ 途中関数 で 秒 に 目標呼出する など
-#   n から 名前 を 既定 で 小数パラメータ宣言する など … パラメータ(ros2 param に答える)
-#   文 を n で 情報記録する など              … ログ(コンソールと /rosout)
-#   n を ROS時刻取得する、n を 時刻印作成する … ROS の時刻(use_sim_time なら /clock)
-# ほかのメッセージの型は 「rclsuru/型/geometry_msgs」 などを読み込んで使います(生成器.suru で作ったもの)。
+# | Usage | What it does |
+# |---|---|
+# | `名前 を ノード作成する` | Creates a node (also reads `--ros-args` from the command line) |
+# | `型 を 話題 へ n で 発行者作成する` | Creates a publisher |
+# | `値 を p へ 発行する` | Publishes a value |
+# | `型 を 話題 から n で 関数 に 購読する` | Runs 「値 を 関数する」 for each value that arrives |
+# | `動作 を 秒 で n に 周期登録する` | Runs the action every `秒` seconds |
+# | `n を スピンする` | Processes messages and timers until Ctrl-C, then cleans up |
+# | `n を ノード終了する` | Cleans up the node (also called when `スピンする` ends with Ctrl-C) |
+# | `QoS付き発行者作成する`, `QoS付き購読する` | The same with a QoS (`既定QoS`, `センサーQoS` and so on) |
+# | `文字列型` | std_msgs/msg/String (a Suru string) |
+# | `型 を 名前 で n に 関数 へ サービス作成する` | A service server (returns the response of 「要求 を 関数する」 for each request) |
+# | `型 を 名前 で n に クライアント作成する` | A service client: `c を 秒 で サービス待機する`, `要求 を c へ 秒 で 呼出する` (the response `有` or `無`), `要求 を c へ 関数 で 要求送信する` |
+# | `型 を 名前 で n に 関数 へ アクションサーバー作成する` | An action server (runs 「目標 を 扱い で 関数する」 in its own thread for each goal) |
+# | `型 を 名前 で n に アクションクライアント作成する` | An action client: `目標 を ac へ 途中関数 で 秒 に 目標呼出する` and so on |
+# | `n から 名前 を 既定 で 小数パラメータ宣言する` and so on | Parameters (answers `ros2 param`) |
+# | `文 を n で 情報記録する` and so on | Logging (console and /rosout) |
+# | `n を ROS時刻取得する`, `n を 時刻印作成する` | ROS time (/clock with use_sim_time) |
 #
-# rcl の関数は C の包み(c/rclsuru.c)を通して呼びます。メッセージは直列化した CDR のバイト列で
-# やりとりし(読み書きは CDR.suru)、型の情報(type support)は動的リンクで型の名前から引きます。
-# 待つのは rcl の wait set ではなく、rcl の「届いたら呼ぶ」関数に 通路送り番地作成する の番地を渡し、
-# する の通路で受け取ります(rclcpp の EventsExecutor と同じ考え)。タイマーと Ctrl-C も同じ番地を
-# する のスレッドから呼んで、同じ通路に知らせます。
+# Other message types are loaded from 「rclsuru/型/geometry_msgs」 and so on (made by 生成器.suru).
+#
+# rcl functions are called through a small C wrapper (c/rclsuru.c). Messages are exchanged as serialized CDR bytes
+# (read and written by CDR.suru), and the type support is looked up by the type name through dynamic linking.
+# Instead of an rcl wait set, the address made by `通路送り番地作成する` is given to rcl's "call when something arrives"
+# functions, and the notices are received on a Suru channel (the same idea as rclcpp's EventsExecutor). Timers and Ctrl-C
+# call the same address from Suru threads and notify the same channel.
 「標準」 を 読み込んで 使う
 「CDR」 を 読み込んで 使う
 「型/rcl_interfaces」 を 読み込む
@@ -157,17 +158,18 @@
 
 # --- 型 ---
 
-# 通路送り番地 に届く知らせ。相手 は仕事の番号(0 は終わりの合図)、件数 は届いた数
+# A notice that arrives at the channel callback address. `相手` is the job number (0 means stop), and `件数` is how many arrived.
 着信 とは 相手 は 数 で 件数 は 数 の 組
-# 番号 の知らせが来たら、件数 を 処理 に渡して行う
+# When a notice for `番号` comes, passes the count to `処理` and runs it.
 仕事 とは 番号 と 処理 の 組
-# 終わるときに行う動作(箱に入れても行われないよう組で包む)
+# An action to run at shutdown (wrapped in a record so that putting it in a box does not run it).
 片付け とは 行い の 組
-# 完全名 は 「/ns/talker」、上書き は起動時のパラメータ(rcl_params_t)、パラメータ箱 は宣言したパラメータ、
-# 検査箱 は変更を確かめる関数、事象箱 は /parameter_events の発行者(始めるまでは 空)、時計 は ROS の時刻の rcl_clock
+# A node, made by `ノード作成する`. `完全名` is like 「/ns/talker」, `上書き` holds the parameters given at startup (rcl_params_t), `パラメータ箱` the declared parameters,
+# `検査箱` the functions that check changes, `事象箱` the /parameter_events publisher (`空` until started), and `時計` the rcl_clock for ROS time.
 ノード とは 文脈 と 節点 と 知らせ通路 と 呼戻 と 仕事箱 と 番号箱 と 片付け箱 と 完全名 と 上書き と パラメータ箱 と 検査箱 と 事象箱 と 時計 の 組
+# A publisher, made by `発行者作成する`. Pass it to `発行する`.
 発行者 とは 発行本体 と 発行型 と 発行領域 の 組
-# 購読者 の rcl の番地と、取り出した値を渡す先
+# The rcl address of a subscription, and where to send the values taken from it.
 受信口 とは 受口 と 受領域 と 受情報 と 受型 と 受関数 の 組
 
 # --- エラー ---
@@ -237,7 +239,7 @@ xs を 引数配列作成する とは 以下の入出力手順です
 # サービスの要求と応答は rcl が直列化したまま渡せないので、C の構造体と CDR を rmw_serialize・
 # rmw_deserialize で行き来します。構造体は rosidl_generator_c の create・destroy で作って放します。
 
-# 体型 は メッセージ型、体情報 は type support、体作成・体破棄 は create・destroy の番地、体領域 は変換に使う直列化の領域
+# A message as a C struct. `体型` is the `メッセージ型`, `体情報` the type support, `体作成`・`体破棄` the addresses of create and destroy, and `体領域` the serialized buffer used for conversion.
 C体 とは 体型 と 体情報 と 体作成 と 体破棄 と 体領域 の 組
 
 メッセージ型 を C体準備する は C体 を 返す 入出力動作
@@ -287,6 +289,7 @@ p を 体 で C体破棄する とは p を （体 の 体破棄） で 破棄�
 
 # --- ノード ---
 
+# Creates a node with the given name. It also reads `--ros-args` from the command line (remapping, `-p`, `--params-file`, `--log-level`, `use_sim_time`).
 文字列 を ノード作成する は ノード を 返す 入出力動作
 名前 を ノード作成する とは 以下の入出力手順です
   （「INT」 と 「TERM」） を シグナル内のシグナル受付する
@@ -343,6 +346,7 @@ m を n へ 片付け登録する とは （n の 片付け箱） を （（m �
 仕事 を ノード へ 仕事登録する は 仕事 の リスト を 返す 入出力動作
 w を n へ 仕事登録する とは （n の 仕事箱） を （w を 追加すること） で スレッド内の箱更新する
 
+# Cleans up the node. `スピンする` also calls it when it ends with Ctrl-C.
 ノード を ノード終了する は 無 を 返す 入出力動作
 n を ノード終了する とは 以下の入出力手順です
   xs とは （n の 片付け箱） を スレッド内の箱読取した 結果
@@ -363,13 +367,19 @@ x を 片付け実行する とは x の 行い
 
 # --- QoS ---
 
-# 基本 は rmw の決まったプロファイルの名前。履歴・信頼性・永続性 が 「」、深さ が 0 なら基本のまま
+# Quality of service. `基本` is the name of an rmw profile. When `履歴`, `信頼性` or `永続性` is 「」, or `深さ` is 0, the profile's setting is kept.
 QoS とは 基本 は 文字列 で 履歴 は 文字列 で 深さ は 数 で 信頼性 は 文字列 で 永続性 は 文字列 の 組
+# The default QoS (rmw_qos_profile_default).
 既定QoS とは 基本 は 「default」 で 履歴 は 「」 で 深さ は 0 で 信頼性 は 「」 で 永続性 は 「」 の QoS
+# QoS for sensor data (best effort; rmw_qos_profile_sensor_data).
 センサーQoS とは 基本 は 「sensor_data」 の 既定QoS
+# QoS for services.
 サービスQoS とは 基本 は 「services_default」 の 既定QoS
+# QoS for parameter services.
 パラメータQoS とは 基本 は 「parameters」 の 既定QoS
+# QoS for /parameter_events.
 パラメータ事象QoS とは 基本 は 「parameter_events」 の 既定QoS
+# The system default QoS.
 システム既定QoS とは 基本 は 「system_default」 の 既定QoS
 
 QoS を QoS番地作成する は 番地 を 返す 入出力動作
@@ -392,9 +402,11 @@ q を QoS番地作成する とは 以下の入出力手順です
 
 # --- 発行者 ---
 
+# Creates a publisher of the message type on the topic, with the default QoS.
 メッセージ型 を 文字列 へ ノード で 発行者作成する は 発行者 を 返す 入出力動作
 型 を 話題 へ n で 発行者作成する とは 型 を 話題 へ n で 既定QoS より QoS付き発行者作成する
 
+# Creates a publisher with the given QoS.
 メッセージ型 を 文字列 へ ノード で QoS より QoS付き発行者作成する は 発行者 を 返す 入出力動作
 型 を 話題 へ n で q より QoS付き発行者作成する とは 以下の入出力手順です
   t とは 型 の 型名 を 型情報取得した 結果
@@ -419,6 +431,7 @@ p と m を n で 発行者片付けする とは 以下の入出力手順です
   m を 直列化領域削除する
   以上です
 
+# Publishes a value. The value must be of the publisher's message type.
 甲 を 発行者 へ 発行する は 数 を 返す 入出力動作
 値 を p へ 発行する とは 以下の入出力手順です
   型 とは p の 発行型
@@ -431,9 +444,11 @@ p と m を n で 発行者片付けする とは 以下の入出力手順です
 
 # --- 購読者 ---
 
+# Subscribes to the topic. For each value that arrives, runs 「値 を 関数する」 (inside `スピンする`).
 メッセージ型 を 文字列 から ノード で （甲 を 受け取って 乙 の 動作 を 返すこと） に 購読する は 数 を 返す 入出力動作
 型 を 話題 から n で 関数 に 購読する とは 型 を 話題 から n で 関数 に 既定QoS より QoS付き購読する
 
+# Subscribes with the given QoS.
 メッセージ型 を 文字列 から ノード で （甲 を 受け取って 乙 の 動作 を 返すこと） に QoS より QoS付き購読する は 数 を 返す 入出力動作
 型 を 話題 から n で 関数 に q より QoS付き購読する とは 以下の入出力手順です
   t とは 型 の 型名 を 型情報取得した 結果
@@ -489,10 +504,11 @@ r を 取得結果確認する とは r を 「rcl_take_serialized_message」 �
 
 # --- サービスのサーバー ---
 
+# Creates a service server. For each request, runs 「要求 を 関数する」 and returns its result (the response value).
 サービス型 を 文字列 で ノード に （甲 を 受け取って 乙 の 動作 を 返すこと） へ サービス作成する は 数 を 返す 入出力動作
 型 を 名前 で n に 関数 へ サービス作成する とは 型 を 名前 で n に 関数 へ サービスQoS より QoS付きサービス作成する
 
-# 要求が届くたびに 「要求 を 関数する」 を行い、その結果(応答の値)を返します
+# Creates a service server with the given QoS. For each request, runs 「要求 を 関数する」 and returns its result (the response value).
 サービス型 を 文字列 で ノード に （甲 を 受け取って 乙 の 動作 を 返すこと） へ QoS より QoS付きサービス作成する は 数 を 返す 入出力動作
 型 を 名前 で n に 関数 へ q より QoS付きサービス作成する とは 以下の入出力手順です
   口 とは 型 を 名前 で n に （要求 を h で 口 に 受け取って 要求 を h で 口 に 関数 より 即答する を 返すこと） へ q より 口付きサービス作成した 結果
@@ -505,7 +521,7 @@ r を 取得結果確認する とは r を 「rcl_take_serialized_message」 �
   応答 を h で 口 に 返信する
   以上です
 
-# 口 は返信に要るもの(rcl_service と応答の構造体)
+# `口` holds what a reply needs (the rcl_service and the response struct).
 サービス口 とは 口番号 と 口本体 と 口応答体 の 組
 
 # 要求が届くたびに 「要求 を 見出し で 口 に 関数する」 を行う。答えは 「応答 を 見出し で 口 に 返信する」 で返す。
@@ -579,13 +595,16 @@ r と 結 を 体 で 取得終了する とは 以下の入出力手順です
 
 # --- サービスのクライアント ---
 
-# 待ち は送った要求の続き番号と、応答を渡す先
+# `待ち` holds the sequence number of a sent request and where to send the response.
 待ち とは 続番 と 受手 の 組
+# A service client, made by `クライアント作成する`.
 クライアント とは 客本体 と 客ノード と 客要求体 と 客応答体 と 客見出し と 待ち箱 の 組
 
+# Creates a service client.
 サービス型 を 文字列 で ノード に クライアント作成する は クライアント を 返す 入出力動作
 型 を 名前 で n に クライアント作成する とは 型 を 名前 で n に サービスQoS より QoS付きクライアント作成する
 
+# Creates a service client with the given QoS.
 サービス型 を 文字列 で ノード に QoS より QoS付きクライアント作成する は クライアント を 返す 入出力動作
 型 を 名前 で n に q より QoS付きクライアント作成する とは 以下の入出力手順です
   t とは 型 の 型名 を サービス型情報取得した 結果
@@ -621,7 +640,7 @@ r と 結 を 体 で 取得終了する とは 以下の入出力手順です
   （客 の 客応答体） を C体片付けする
   以上です
 
-# サーバーが出るまで、秒 まで待つ。出ていれば 真
+# Waits up to `秒` seconds for the server to appear. `真` if it is there.
 クライアント を 数 で サービス待機する は 真偽 を 返す 入出力動作
 客 を 秒 で サービス待機する とは 以下の入出力手順です
   始め とは 時間内の現在時刻取得した 結果
@@ -647,7 +666,7 @@ r と 結 を 体 で 取得終了する とは 以下の入出力手順です
   客 を 期限 で サーバー待機する
   以上です
 
-# 要求を送り、応答が届いたら 「応答 を 関数する」 を行う(スピンする の中で)。結果は続き番号
+# Sends a request, and runs 「応答 を 関数する」 when the response arrives (inside `スピンする`). The result is the sequence number.
 甲 を クライアント へ （乙 を 受け取って 丙 の 動作 を 返すこと） で 要求送信する は 数 を 返す 入出力動作
 要求 を 客 へ 関数 で 要求送信する とは 以下の入出力手順です
   要 とは 客 の 客要求体
@@ -689,8 +708,8 @@ w を 応答 で 待ち実行する とは 以下の入出力手順です
   応答 を 受手する
   以上です
 
-# 要求を送り、応答が届くまで(秒 まで)待つ。届けば 応答 の 有、届かなければ 無。
-# 待つ間も、ほかの購読やタイマーは動きます
+# Sends a request and waits up to `秒` seconds for the response. The result is `有` with the response, or `無` if none came.
+# Subscriptions and timers keep running while it waits.
 甲 を クライアント へ 数 で 呼出する は 乙 の 有無 を 返す 入出力動作
 要求 を 客 へ 秒 で 呼出する とは 以下の入出力手順です
   n とは 客 の 客ノード
@@ -742,22 +761,23 @@ n から 番号 を 仕事削除する とは （n の 仕事箱） を （xs �
 # 目標ごとの実行は別のスレッドで行い、rcl を呼ぶこと(feedback・状態の発行、結果の返信)は「依頼」として
 # スピンする のスレッドに渡します(発行者やサービスを1つのスレッドだけで使うため)。
 
-# 目標情報 は action_msgs/GoalInfo(UUID と受けた時刻)、目標状態 は action_msgs/GoalStatus の STATUS_…、
-# 終印 は実行する関数が決めた終わり方(0 は成功、5 は取り消し、6 は中止)、答 は結果の応答(終わるまでは 空)、
-# 待ち見出し は終わるのを待っている get_result の見出しの写し、終時刻 は終わった時刻(終わるまでは 0)
+# One goal on an action server. `目標情報` is action_msgs/GoalInfo (UUID and time accepted), `目標状態` the STATUS_… of action_msgs/GoalStatus,
+# `終印` how the execute function ended (0 succeeded, 5 canceled, 6 aborted), `答` the result response (`空` until it ends),
+# `待ち見出し` copies of the headers of get_result requests waiting for the end, and `終時刻` the time it ended (0 until then).
 目標記録 とは 目標情報 と 目標状態 と 終印 と 答 と 待ち見出し と 終時刻 の 組
-# 実行する関数に渡すもの
+# What the execute function receives for a goal. Use it with `途中送信する`, `取消確認する`, `取消済みにする` and `中止にする`.
 目標扱い とは 扱いID と 扱い口 の 組
+# An action server, made by `アクションサーバー作成する`.
 アクション口 とは 鯖型 と 鯖ノード と 目標箱 と 途中発行者 と 状態発行者 と 結果口箱 と 依頼通路 と 依頼番号 の 組
 
 # 状態のトピックの QoS(rcl_action と同じ。後から来た購読者にも最後の状態が届く)
 状態QoS とは 深さ は 1 で 永続性 は 「transient_local」 の 既定QoS
 
-# 目標が届くたびに受け付け、別のスレッドで 「目標 を 扱い で 関数する」 を行う。その結果がアクションの結果になる
+# Creates an action server. Each goal is accepted, and 「目標 を 扱い で 関数する」 runs in its own thread. Its result becomes the action's result.
 アクション型 を 文字列 で ノード に （甲 を 目標扱い で 受け取って 乙 の 動作 を 返すこと） へ アクションサーバー作成する は アクション口 を 返す 入出力動作
 型 を 名前 で n に 関数 へ アクションサーバー作成する とは 型 を 名前 で n に 関数 へ （g を 受け取って 真 を 返すこと） より 判断付きアクションサーバー作成する
 
-# 判断 は目標を受け付けるか決める関数(「目標 を 判断する」 が 真 なら受け付ける)
+# Like `アクションサーバー作成する`, with `判断`, which decides whether to accept a goal (accepted when 「目標 を 判断する」 is `真`).
 アクション型 を 文字列 で ノード に （甲 を 目標扱い で 受け取って 乙 の 動作 を 返すこと） へ （甲 を 受け取って 真偽 を 返すこと） より 判断付きアクションサーバー作成する は アクション口 を 返す 入出力動作
 型 を 名前 で n に 関数 へ 判断 より 判断付きアクションサーバー作成する とは 以下の入出力手順です
   前 とは 名前 + 「/_action/」
@@ -863,8 +883,7 @@ h を 答 で 口 に 待ち返信する とは 以下の入出力手順です
   0 を 結果にする
   以上です
 
-# 実行する関数から使うもの
-# 途中 を 扱い へ 途中送信する … feedback を送る
+# For the execute function: `途中 を 扱い へ 途中送信する` sends feedback.
 甲 を 目標扱い へ 途中送信する は 数 を 返す 入出力動作
 途中 を 扱い へ 途中送信する とは 以下の入出力手順です
   鯖 とは 扱い の 扱い口
@@ -874,7 +893,7 @@ h を 答 で 口 に 待ち返信する とは 以下の入出力手順です
   鯖 に （x を 受け取って m を p へ 発行する を 返すこと） を 依頼する
   以上です
 
-# 扱い を 取消確認する … 取り消しを頼まれていれば 真(実行する関数は、早めに終えて 取消済みにする)
+# `扱い を 取消確認する` is `真` when cancellation was requested (the execute function should finish early and call `取消済みにする`).
 目標扱い を 取消確認する は 真偽 を 返す 入出力動作
 扱い を 取消確認する とは 以下の入出力手順です
   xs とは （（扱い の 扱い口） の 目標箱） を スレッド内の箱読取した 結果
@@ -882,10 +901,11 @@ h を 答 で 口 に 待ち返信する とは 以下の入出力手順です
   （該当 ≠ 空） を 結果にする
   以上です
 
-# 扱い を 取消済みにする・扱い を 中止にする … 結果の状態を CANCELED・ABORTED にする(しなければ SUCCEEDED)
+# `扱い を 取消済みにする` sets the result status to CANCELED (otherwise it is SUCCEEDED).
 目標扱い を 取消済みにする は 数 を 返す 入出力動作
 扱い を 取消済みにする とは 扱い を 5 で 終印設定する
 
+# `扱い を 中止にする` sets the result status to ABORTED (otherwise it is SUCCEEDED).
 目標扱い を 中止にする は 数 を 返す 入出力動作
 扱い を 中止にする とは 扱い を 6 で 終印設定する
 
@@ -968,11 +988,14 @@ r を 状態値にする とは goal_info は （r の 目標情報） で statu
 
 # --- アクションのクライアント ---
 
-# 終状態 は action_msgs/GoalStatus の STATUS_…(4 成功・5 取り消し・6 中止。受け付けられなかったときは 0)
+# The result of a goal. `終状態` is the STATUS_… of action_msgs/GoalStatus (4 succeeded, 5 canceled, 6 aborted; 0 when not accepted), and `結果値` the result value.
 アクション結果 とは 終状態 は 数 で 結果値 は 甲 の 組
+# Where an action client sends feedback for one goal.
 途中受手 とは 受手ID と 受手関数 の 組
+# An action client, made by `アクションクライアント作成する`.
 アクション客 とは 客型 と 客ノード と 送信客 と 取消客 と 結果客 と 途中受手箱 の 組
 
+# Creates an action client.
 アクション型 を 文字列 で ノード に アクションクライアント作成する は アクション客 を 返す 入出力動作
 型 を 名前 で n に アクションクライアント作成する とは 以下の入出力手順です
   前 とは 名前 + 「/_action/」
@@ -985,7 +1008,7 @@ r を 状態値にする とは goal_info は （r の 目標情報） で statu
   客 を 結果にする
   以上です
 
-# サーバーが出るまで、秒 まで待つ。出ていれば 真
+# Waits up to `秒` seconds for the action server to appear. `真` if it is there.
 アクション客 を 数 で アクションサーバー待機する は 真偽 を 返す 入出力動作
 客 を 秒 で アクションサーバー待機する とは 以下の入出力手順です
   a とは （客 の 送信客） を 秒 で サービス待機した 結果
@@ -1033,8 +1056,8 @@ w を 途中 で 途中渡しする とは 以下の入出力手順です
   （uuid は b の unique_identifier_msgs内のUUID既定） を 結果にする
   以上です
 
-# 目標を送り、結果が届くまで(秒 まで)待つ。feedback が届くたびに 「途中 を 途中関数する」 を行う。
-# 結果は アクション結果 の 有。受け付けられなかったときや、待ちきれなかったときは 無
+# Sends a goal and waits up to `秒` seconds for the result, running 「途中 を 途中関数する」 for each feedback.
+# The result is `有` with an `アクション結果`, or `無` when the goal was not accepted or the wait timed out.
 甲 を アクション客 へ （乙 を 受け取って 丙 の 動作 を 返すこと） で 数 に 目標呼出する は アクション結果 の 有無 を 返す 入出力動作
 目標 を 客 へ 途中関数 で 秒 に 目標呼出する とは 以下の入出力手順です
   包 とは （客 の 客型） の 目標包装
@@ -1081,8 +1104,8 @@ y を 客 で アクション結果作成する とは 以下の入出力手順�
   （終状態 は s で 結果値 は v の アクション結果） を 結果にする
   以上です
 
-# 目標を送るだけ(待たない)。feedback ごとに 「途中 を 途中関数する」、結果が届いたら 「アクション結果 を 結果関数する」 を行う
-# (スピンする の中で)。受け付けられなかったときは 終状態 0 の結果を渡す。結果は目標の UUID
+# Sends a goal without waiting. Runs 「途中 を 途中関数する」 for each feedback and 「アクション結果 を 結果関数する」 when the result arrives
+# (inside `スピンする`). When the goal is not accepted, a result with `終状態` 0 is passed. The result is the goal's UUID.
 甲 を アクション客 へ （乙 を 受け取って 丙 の 動作 を 返すこと） で （アクション結果 を 受け取って 丁 の 動作 を 返すこと） に 目標送信する は unique_identifier_msgs内のUUID を 返す 入出力動作
 目標 を 客 へ 途中関数 で 結果関数 に 目標送信する とは 以下の入出力手順です
   包 とは （客 の 客型） の 目標包装
@@ -1121,7 +1144,7 @@ y を 客 で u に 結果関数 より 結果処理する とは 以下の入�
   0 を 結果にする
   以上です
 
-# 目標を取り消す(応答を 5 秒まで待つ)。結果は action_msgs/CancelGoal の return_code(0 なら受け付けた)。答えがなければ -1
+# Cancels a goal (waits up to 5 seconds for the response). The result is the return_code of action_msgs/CancelGoal (0 when accepted), or -1 when there is no answer.
 unique_identifier_msgs内のUUID を アクション客 で 目標取消する は 数 を 返す 入出力動作
 u を 客 で 目標取消する とは 以下の入出力手順です
   要求 とは goal_info は （goal_id は u の action_msgs内のGoalInfo既定） の action_msgs内のCancelGoal_Request既定
@@ -1136,9 +1159,9 @@ u を 客 で 目標取消する とは 以下の入出力手順です
 # 5 byte の配列・6 bool の配列・7 integer の配列・8 double の配列・9 string の配列、0 はなし)。
 # 起動時のパラメータ(--ros-args -p 名前:=値、--params-file、launch の parameters)があれば、宣言したときにその値になります。
 
-# 記述 は rcl_interfaces/ParameterDescriptor、現値 は rcl_interfaces/ParameterValue
+# A declared parameter. `記述` is rcl_interfaces/ParameterDescriptor, and `現値` is rcl_interfaces/ParameterValue.
 パラメータ項目 とは 記述 は rcl_interfaces内のParameterDescriptor で 現値 は rcl_interfaces内のParameterValue の 組
-# 変更を確かめる関数に渡すもの(名前と新しい値)
+# What the change-check function receives (the name and the new value).
 パラメータ変更 とは 変更名 は 文字列 で 変更値 は rcl_interfaces内のParameterValue の 組
 
 型番名 とは （「なし」 と 「bool」 と 「integer」 と 「double」 と 「string」 と 「byte の配列」 と 「bool の配列」 と 「integer の配列」 と 「double の配列」 と 「string の配列」）
@@ -1206,7 +1229,7 @@ v を 番号群 で 変種文字列要素取得全部する とは 以下の入�
 数 を 真偽化する は 真偽
 x を 真偽化する とは x ≠ 0
 
-# パラメータを宣言する。起動時の値があればそれ、なければ 既定 になる。結果は決まった値
+# Declares a parameter. Its value is the one given at startup, or else `既定`. The result is the value that was set.
 ノード から 文字列 を rcl_interfaces内のParameterValue で 文字列 に パラメータ値宣言する は rcl_interfaces内のParameterValue を 返す 入出力動作
 n から 名前 を 既定 で 説明 に パラメータ値宣言する とは 以下の入出力手順です
   今 とは （n の パラメータ箱） を スレッド内の箱読取した 結果
@@ -1231,35 +1254,43 @@ n から 名前 を 既定 で 説明 に パラメータ値宣言する とは 
 数 を 小数化する は 数
 x を 小数化する とは x * 1.0
 
-# 型ごとの宣言(結果はその型の値)
+# Declares a bool parameter and returns its value. The other typed versions (整数, 小数, 文字列, バイト列 and their lists) work the same way.
 ノード から 文字列 を 真偽 で 真偽パラメータ宣言する は 真偽 を 返す 入出力動作
 n から 名前 を 既定 で 真偽パラメータ宣言する とは （n から 名前 を （type は 1 で bool_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の bool_value を 返すこと） で 写像する
 
+# Declares an integer parameter and returns its value.
 ノード から 文字列 を 数 で 整数パラメータ宣言する は 数 を 返す 入出力動作
 n から 名前 を 既定 で 整数パラメータ宣言する とは （n から 名前 を （type は 2 で integer_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の integer_value を 返すこと） で 写像する
 
+# Declares a double parameter and returns its value.
 ノード から 文字列 を 数 で 小数パラメータ宣言する は 数 を 返す 入出力動作
 n から 名前 を 既定 で 小数パラメータ宣言する とは （n から 名前 を （type は 3 で double_value は （既定 * 1.0） の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の double_value を 返すこと） で 写像する
 
+# Declares a string parameter and returns its value.
 ノード から 文字列 を 文字列 で 文字列パラメータ宣言する は 文字列 を 返す 入出力動作
 n から 名前 を 既定 で 文字列パラメータ宣言する とは （n から 名前 を （type は 4 で string_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の string_value を 返すこと） で 写像する
 
+# Declares a byte array parameter and returns its value.
 ノード から 文字列 を バイト列 で バイト列パラメータ宣言する は バイト列 を 返す 入出力動作
 n から 名前 を 既定 で バイト列パラメータ宣言する とは （n から 名前 を （type は 5 で byte_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の byte_array_value を 返すこと） で 写像する
 
+# Declares a bool array parameter and returns its value.
 ノード から 文字列 を 真偽 の リスト で 真偽列パラメータ宣言する は 真偽 の リスト を 返す 入出力動作
 n から 名前 を 既定 で 真偽列パラメータ宣言する とは （n から 名前 を （type は 6 で bool_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の bool_array_value を 返すこと） で 写像する
 
+# Declares an integer array parameter and returns its value.
 ノード から 文字列 を 数 の リスト で 整数列パラメータ宣言する は 数 の リスト を 返す 入出力動作
 n から 名前 を 既定 で 整数列パラメータ宣言する とは （n から 名前 を （type は 7 で integer_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の integer_array_value を 返すこと） で 写像する
 
+# Declares a double array parameter and returns its value.
 ノード から 文字列 を 数 の リスト で 小数列パラメータ宣言する は 数 の リスト を 返す 入出力動作
 n から 名前 を 既定 で 小数列パラメータ宣言する とは （n から 名前 を （type は 8 で double_array_value は （既定 の それぞれ を 小数化する） の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の double_array_value を 返すこと） で 写像する
 
+# Declares a string array parameter and returns its value.
 ノード から 文字列 を 文字列 の リスト で 文字列列パラメータ宣言する は 文字列 の リスト を 返す 入出力動作
 n から 名前 を 既定 で 文字列列パラメータ宣言する とは （n から 名前 を （type は 9 で string_array_value は 既定 の rcl_interfaces内のParameterValue既定） で 「」 に パラメータ値宣言する） を （v を 受け取って v の string_array_value を 返すこと） で 写像する
 
-# 今の値(ros2 param set で変わったものも)
+# The current value (including changes made with `ros2 param set`).
 ノード から 文字列 を パラメータ値取得する は rcl_interfaces内のParameterValue を 返す 入出力動作
 n から 名前 を パラメータ値取得する とは 以下の入出力手順です
   今 とは （n の パラメータ箱） を スレッド内の箱読取した 結果
@@ -1267,28 +1298,35 @@ n から 名前 を パラメータ値取得する とは 以下の入出力手�
   もし 該当 が 空 ならば （「パラメータ 」 + 名前 + 「 は宣言されていません」） を 失敗する そうでなければ （該当 の 先頭） の 現値 を 結果にする
   以上です
 
+# The current value of a bool parameter.
 ノード から 文字列 を 真偽パラメータ取得する は 真偽 を 返す 入出力動作
 n から 名前 を 真偽パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の bool_value を 返すこと） で 写像する
 
+# The current value of an integer parameter.
 ノード から 文字列 を 整数パラメータ取得する は 数 を 返す 入出力動作
 n から 名前 を 整数パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の integer_value を 返すこと） で 写像する
 
+# The current value of a double parameter.
 ノード から 文字列 を 小数パラメータ取得する は 数 を 返す 入出力動作
 n から 名前 を 小数パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の double_value を 返すこと） で 写像する
 
+# The current value of a string parameter.
 ノード から 文字列 を 文字列パラメータ取得する は 文字列 を 返す 入出力動作
 n から 名前 を 文字列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の string_value を 返すこと） で 写像する
 
+# The current value of an integer array parameter.
 ノード から 文字列 を 整数列パラメータ取得する は 数 の リスト を 返す 入出力動作
 n から 名前 を 整数列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の integer_array_value を 返すこと） で 写像する
 
+# The current value of a double array parameter.
 ノード から 文字列 を 小数列パラメータ取得する は 数 の リスト を 返す 入出力動作
 n から 名前 を 小数列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の double_array_value を 返すこと） で 写像する
 
+# The current value of a string array parameter.
 ノード から 文字列 を 文字列列パラメータ取得する は 文字列 の リスト を 返す 入出力動作
 n から 名前 を 文字列列パラメータ取得する とは （n から 名前 を パラメータ値取得する） を （v を 受け取って v の string_array_value を 返すこと） で 写像する
 
-# 値が変わる前に 「変更のリスト を 関数する」 を行う。結果が 「」 なら受け入れ、ほかの文字列ならその理由で断る
+# Runs 「変更のリスト を 関数する」 before values change. A result of 「」 accepts the change; any other string rejects it with that reason.
 ノード へ （パラメータ変更 の リスト を 受け取って 文字列 の 動作 を 返すこと） で パラメータ変更検査登録する は 数 を 返す 入出力動作
 n へ 関数 で パラメータ変更検査登録する とは 以下の入出力手順です
   （n の 検査箱） を （関数 を 追加すること） で スレッド内の箱更新する
@@ -1441,18 +1479,23 @@ n を 新規 で 変更 に 変更事象発行する とは 以下の入出力�
 # --- ログ ---
 # ノードのロガー(ノードの名前)で出す。コンソールと /rosout とログファイルに出る。--ros-args --log-level debug などが効く
 
+# Logs at DEBUG (to the console and /rosout).
 文字列 を ノード で 詳細記録する は 無 を 返す 入出力動作
 文 を n で 詳細記録する とは （n の 節点） を 10 で 文 に 低水準ログ出力する
 
+# Logs at INFO (to the console and /rosout).
 文字列 を ノード で 情報記録する は 無 を 返す 入出力動作
 文 を n で 情報記録する とは （n の 節点） を 20 で 文 に 低水準ログ出力する
 
+# Logs at WARN (to the console and /rosout).
 文字列 を ノード で 警告記録する は 無 を 返す 入出力動作
 文 を n で 警告記録する とは （n の 節点） を 30 で 文 に 低水準ログ出力する
 
+# Logs at ERROR (to the console and /rosout).
 文字列 を ノード で エラー記録する は 無 を 返す 入出力動作
 文 を n で エラー記録する とは （n の 節点） を 40 で 文 に 低水準ログ出力する
 
+# Logs at FATAL (to the console and /rosout).
 文字列 を ノード で 致命記録する は 無 を 返す 入出力動作
 文 を n で 致命記録する とは （n の 節点） を 50 で 文 に 低水準ログ出力する
 
@@ -1482,11 +1525,11 @@ t を ナノ秒にする とは （t の sec） * 1000000000 + （t の nanosec�
   （t / 1000000000） を 結果にする
   以上です
 
-# いまの ROS の時刻(秒。小数)
+# The current ROS time in seconds (a decimal). With use_sim_time it follows /clock.
 ノード を ROS時刻取得する は 数 を 返す 入出力動作
 n を ROS時刻取得する とは （n の 時計） を 時計秒取得する
 
-# いまの ROS の時刻の builtin_interfaces/Time(header.stamp などに入れる)
+# The current ROS time as builtin_interfaces/Time (for header.stamp and so on).
 ノード を 時刻印作成する は builtin_interfaces内のTime を 返す 入出力動作
 n を 時刻印作成する とは 以下の入出力手順です
   t とは （n の 時計） を 時計読取した 結果
@@ -1495,6 +1538,7 @@ n を 時刻印作成する とは 以下の入出力手順です
 
 # --- 周期 ---
 
+# Runs the action every `秒` seconds (on ROS time, inside `スピンする`).
 （甲 の 動作） を 数 で ノード に 周期登録する は 数 を 返す 入出力動作
 動作 を 秒 で n に 周期登録する とは 以下の入出力手順です
   番号 とは n を 番号発行した 結果
@@ -1536,6 +1580,7 @@ n を 時刻印作成する とは 以下の入出力手順です
 
 # --- スピン ---
 
+# Processes incoming messages, requests and timers until Ctrl-C, then cleans up the node.
 ノード を スピンする は 数 を 返す 入出力動作
 n を スピンする とは 以下の入出力手順です
   e とは （n の 知らせ通路） から スレッド内の通路受信した 結果
@@ -1571,6 +1616,7 @@ w を 件数 で 仕事処理する とは 以下の入出力手順です
 # --- 文字列型(std_msgs/msg/String) ---
 # 型/std_msgs の String と同じ CDR で、する の値は文字列そのもの
 
+# std_msgs/msg/String. The Suru value is the string itself (same CDR as String in 型/std_msgs).
 文字列型 とは 型名 は 「std_msgs/msg/String」 で 寸法 は CDR文字列寸法すること で 書込 は CDR文字列書込すること で 読取 は CDR文字列読取すること の メッセージ型
 例えば 文字列型 の 型名 は 「std_msgs/msg/String」 です
 

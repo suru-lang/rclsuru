@@ -19,7 +19,7 @@
 ## 入れ方
 
 1. **ROS 2 Jazzy。** Ubuntu 24.04 に [ROS 2 の手順](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)で `ros-jazzy-ros-base`(か `ros-jazzy-desktop`)を入れます。使うときは毎回 `source /opt/ros/jazzy/setup.bash` します。
-2. **suru 0.10.0 以上と clang。** `kumu`・`suruc`・`suru` が要ります。入れ方は [suru の README](https://github.com/suru-lang/suru#入れ方) にあります(Homebrew なら `brew install suru-lang/suru/suru`、バイナリなら GitHub Releases)。clang は `sudo apt install clang` で入ります。
+2. **suru 0.11.0 以上と clang。** `kumu`・`suruc`・`suru` が要ります。入れ方は [suru の README](https://github.com/suru-lang/suru#入れ方) にあります(Homebrew なら `brew install suru-lang/suru/suru`、バイナリなら GitHub Releases)。clang は `sudo apt install clang` で入ります。
 3. **rclsuru。** 自分のプロジェクトで `kumu 追加 github.com/suru-lang/rclsuru` とします(次の「はじめてのノード」)。
 
 `docker/Dockerfile` に、ROS 2 Jazzy・suru・clang を全部入れた環境があります。試験には、ほかに colcon と g++(C++ の試験用ノード)が要ります。
@@ -325,6 +325,17 @@ test/fibonacci.sh               # examples/フィボナッチサーバー・フ�
 ```
 
 `kumu 試験` は、`rclsuru.suru`・`CDR.suru`・`生成器.suru` の中の `以下は「…」の試験です … 以上です` と `例えば … は … です` を動かします(suru 0.10.0 の同じファイルの試験と例)。`python3 test/cdr_roundtrip.py` は、同梱した型を全部(203 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)、アクション(`ros2 action send_goal`・C++ の rclcpp_action と両方向。型は tf2_msgs/action/LookupTransform)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
+
+## 文書(Read the Docs)
+
+関数ごとの説明(API の文書)は Read the Docs に載せます。ソースのファイル(`rclsuru.suru`・`CDR.suru`・`生成器.suru`)の定義のすぐ上のコメントが説明で、suru 0.11.0 の `kumu 文書` がそこからページを作ります。suru の標準ライブラリと同じく、説明は英語で書いています。
+
+```sh
+kumu 文書 --出力 docs/api                                   # API のページ(docs/api/*.md)を作る
+pip install -r docs/requirements.txt && sphinx-build -W docs docs/_build   # 手元で HTML にする
+```
+
+`docs/conf.py`・`docs/index.md`・`docs/_ext/suru_lexer.py`・`.readthedocs.yaml` は `kumu 文書 --雛形` で作ったものです。Read the Docs はビルドのたびに `.readthedocs.yaml` に書いた版の kumu を GitHub Releases から取ってきて `kumu 文書` を動かすので、`docs/api/` はリポジトリに入れません。GitHub Actions の `docs` でも同じ手順で作れるかを確かめます。suru の版を上げたら、`.readthedocs.yaml` の版も合わせて上げます。
 
 ## まだできないこと
 

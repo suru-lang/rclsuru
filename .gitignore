@@ -3,3 +3,6 @@
 /build/
 /install/
 /log/
+/docs/api/
+/docs/_build/
+__pycache__/
