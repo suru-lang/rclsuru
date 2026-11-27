@@ -4,7 +4,7 @@
 「rclsuru/型/builtin_interfaces」 を 読み込む
 
 # example_interfaces/msg/Bool
-Bool とは data の 組
+Bool とは data は 真偽 の 組
 Bool既定 とは data は 偽 の Bool
 Bool型 とは 型名 は 「example_interfaces/msg/Bool」 で 寸法 は Bool寸法すること で 書込 は Bool書込すること で 読取 は Bool読取すること の メッセージ型
 Bool を 数 で Bool寸法する は 数
@@ -16,14 +16,14 @@ Bool を 番地 へ 数 で Bool書込する は 数 を 返す 入出力動作
   （対象 の data） を 先 へ 位0 で CDR真偽書込する
   以上です
 
-番地 から 数 で Bool読取する は （Bool と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Bool読取する は Bool の 読値 を 返す 入出力動作
 先 から 位0 で Bool読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   （値 は （data は （欄1 の 値） の Bool） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Byte
-Byte とは data の 組
+Byte とは data は 数 の 組
 Byte既定 とは data は 0 の Byte
 Byte型 とは 型名 は 「example_interfaces/msg/Byte」 で 寸法 は Byte寸法すること で 書込 は Byte書込すること で 読取 は Byte読取すること の メッセージ型
 Byte を 数 で Byte寸法する は 数
@@ -35,14 +35,14 @@ Byte を 番地 へ 数 で Byte書込する は 数 を 返す 入出力動作
   （対象 の data） を 先 へ 位0 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で Byte読取する は （Byte と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Byte読取する は Byte の 読値 を 返す 入出力動作
 先 から 位0 で Byte読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （data は （欄1 の 値） の Byte） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/ByteMultiArray
-ByteMultiArray とは layout と data の 組
+ByteMultiArray とは layout は MultiArrayLayout で data は バイト列 の 組
 ByteMultiArray既定 とは layout は MultiArrayLayout既定 で data は （0 を 零バイト列にする） の ByteMultiArray
 ByteMultiArray型 とは 型名 は 「example_interfaces/msg/ByteMultiArray」 で 寸法 は ByteMultiArray寸法すること で 書込 は ByteMultiArray書込すること で 読取 は ByteMultiArray読取すること の メッセージ型
 ByteMultiArray を 数 で ByteMultiArray寸法する は 数
@@ -56,7 +56,7 @@ ByteMultiArray を 番地 へ 数 で ByteMultiArray書込する は 数 を 返
   （対象 の data） を 先 へ 位1 で CDRバイト可変列書込する
   以上です
 
-番地 から 数 で ByteMultiArray読取する は （ByteMultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ByteMultiArray読取する は ByteMultiArray の 読値 を 返す 入出力動作
 先 から 位0 で ByteMultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDRバイト可変列読取した 結果
@@ -64,7 +64,7 @@ ByteMultiArray を 番地 へ 数 で ByteMultiArray書込する は 数 を 返
   以上です
 
 # example_interfaces/msg/Char
-Char とは data の 組
+Char とは data は 数 の 組
 Char既定 とは data は 0 の Char
 Char型 とは 型名 は 「example_interfaces/msg/Char」 で 寸法 は Char寸法すること で 書込 は Char書込すること で 読取 は Char読取すること の メッセージ型
 Char を 数 で Char寸法する は 数
@@ -76,14 +76,14 @@ Char を 番地 へ 数 で Char書込する は 数 を 返す 入出力動作
   （対象 の data） を 先 へ 位0 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で Char読取する は （Char と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Char読取する は Char の 読値 を 返す 入出力動作
 先 から 位0 で Char読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （data は （欄1 の 値） の Char） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Empty
-Empty とは structure_needs_at_least_one_member の 組
+Empty とは structure_needs_at_least_one_member は 数 の 組
 Empty既定 とは structure_needs_at_least_one_member は 0 の Empty
 Empty型 とは 型名 は 「example_interfaces/msg/Empty」 で 寸法 は Empty寸法すること で 書込 は Empty書込すること で 読取 は Empty読取すること の メッセージ型
 Empty を 数 で Empty寸法する は 数
@@ -95,14 +95,14 @@ Empty を 番地 へ 数 で Empty書込する は 数 を 返す 入出力動�
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で Empty読取する は （Empty と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Empty読取する は Empty の 読値 を 返す 入出力動作
 先 から 位0 で Empty読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の Empty） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Float32
-Float32 とは data の 組
+Float32 とは data は 小数 の 組
 Float32既定 とは data は 0.0 の Float32
 Float32型 とは 型名 は 「example_interfaces/msg/Float32」 で 寸法 は Float32寸法すること で 書込 は Float32書込すること で 読取 は Float32読取すること の メッセージ型
 Float32 を 数 で Float32寸法する は 数
@@ -114,14 +114,14 @@ Float32 を 番地 へ 数 で Float32書込する は 数 を 返す 入出力�
   （対象 の data） を 先 へ 位0 で CDR単精度書込する
   以上です
 
-番地 から 数 で Float32読取する は （Float32 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Float32読取する は Float32 の 読値 を 返す 入出力動作
 先 から 位0 で Float32読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   （値 は （data は （欄1 の 値） の Float32） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Float32MultiArray
-Float32MultiArray とは layout と data の 組
+Float32MultiArray とは layout は MultiArrayLayout で data は 小数 の リスト の 組
 Float32MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の Float32MultiArray
 Float32MultiArray型 とは 型名 は 「example_interfaces/msg/Float32MultiArray」 で 寸法 は Float32MultiArray寸法すること で 書込 は Float32MultiArray書込すること で 読取 は Float32MultiArray読取すること の メッセージ型
 Float32MultiArray を 数 で Float32MultiArray寸法する は 数
@@ -135,7 +135,7 @@ Float32MultiArray を 番地 へ 数 で Float32MultiArray書込する は 数 �
   （対象 の data） を 先 へ 位1 で （CDR単精度書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Float32MultiArray読取する は （Float32MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Float32MultiArray読取する は Float32MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で Float32MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR単精度読取すること） に CDR可変列読取した 結果
@@ -143,7 +143,7 @@ Float32MultiArray を 番地 へ 数 で Float32MultiArray書込する は 数 �
   以上です
 
 # example_interfaces/msg/Float64
-Float64 とは data の 組
+Float64 とは data は 小数 の 組
 Float64既定 とは data は 0.0 の Float64
 Float64型 とは 型名 は 「example_interfaces/msg/Float64」 で 寸法 は Float64寸法すること で 書込 は Float64書込すること で 読取 は Float64読取すること の メッセージ型
 Float64 を 数 で Float64寸法する は 数
@@ -155,14 +155,14 @@ Float64 を 番地 へ 数 で Float64書込する は 数 を 返す 入出力�
   （対象 の data） を 先 へ 位0 で CDR小数書込する
   以上です
 
-番地 から 数 で Float64読取する は （Float64 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Float64読取する は Float64 の 読値 を 返す 入出力動作
 先 から 位0 で Float64読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   （値 は （data は （欄1 の 値） の Float64） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Float64MultiArray
-Float64MultiArray とは layout と data の 組
+Float64MultiArray とは layout は MultiArrayLayout で data は 小数 の リスト の 組
 Float64MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の Float64MultiArray
 Float64MultiArray型 とは 型名 は 「example_interfaces/msg/Float64MultiArray」 で 寸法 は Float64MultiArray寸法すること で 書込 は Float64MultiArray書込すること で 読取 は Float64MultiArray読取すること の メッセージ型
 Float64MultiArray を 数 で Float64MultiArray寸法する は 数
@@ -176,7 +176,7 @@ Float64MultiArray を 番地 へ 数 で Float64MultiArray書込する は 数 �
   （対象 の data） を 先 へ 位1 で （CDR小数書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Float64MultiArray読取する は （Float64MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Float64MultiArray読取する は Float64MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で Float64MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
@@ -184,7 +184,7 @@ Float64MultiArray を 番地 へ 数 で Float64MultiArray書込する は 数 �
   以上です
 
 # example_interfaces/msg/Int16
-Int16 とは data の 組
+Int16 とは data は 数 の 組
 Int16既定 とは data は 0 の Int16
 Int16型 とは 型名 は 「example_interfaces/msg/Int16」 で 寸法 は Int16寸法すること で 書込 は Int16書込すること で 読取 は Int16読取すること の メッセージ型
 Int16 を 数 で Int16寸法する は 数
@@ -196,14 +196,14 @@ Int16 を 番地 へ 数 で Int16書込する は 数 を 返す 入出力動�
   （対象 の data） を 先 へ 位0 で CDR符号付き16書込する
   以上です
 
-番地 から 数 で Int16読取する は （Int16 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int16読取する は Int16 の 読値 を 返す 入出力動作
 先 から 位0 で Int16読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き16読取した 結果
   （値 は （data は （欄1 の 値） の Int16） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Int16MultiArray
-Int16MultiArray とは layout と data の 組
+Int16MultiArray とは layout は MultiArrayLayout で data は 数 の リスト の 組
 Int16MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の Int16MultiArray
 Int16MultiArray型 とは 型名 は 「example_interfaces/msg/Int16MultiArray」 で 寸法 は Int16MultiArray寸法すること で 書込 は Int16MultiArray書込すること で 読取 は Int16MultiArray読取すること の メッセージ型
 Int16MultiArray を 数 で Int16MultiArray寸法する は 数
@@ -217,7 +217,7 @@ Int16MultiArray を 番地 へ 数 で Int16MultiArray書込する は 数 を �
   （対象 の data） を 先 へ 位1 で （CDR符号付き16書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Int16MultiArray読取する は （Int16MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int16MultiArray読取する は Int16MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で Int16MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR符号付き16読取すること） に CDR可変列読取した 結果
@@ -225,7 +225,7 @@ Int16MultiArray を 番地 へ 数 で Int16MultiArray書込する は 数 を �
   以上です
 
 # example_interfaces/msg/Int32
-Int32 とは data の 組
+Int32 とは data は 数 の 組
 Int32既定 とは data は 0 の Int32
 Int32型 とは 型名 は 「example_interfaces/msg/Int32」 で 寸法 は Int32寸法すること で 書込 は Int32書込すること で 読取 は Int32読取すること の メッセージ型
 Int32 を 数 で Int32寸法する は 数
@@ -237,14 +237,14 @@ Int32 を 番地 へ 数 で Int32書込する は 数 を 返す 入出力動�
   （対象 の data） を 先 へ 位0 で CDR符号付き32書込する
   以上です
 
-番地 から 数 で Int32読取する は （Int32 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int32読取する は Int32 の 読値 を 返す 入出力動作
 先 から 位0 で Int32読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き32読取した 結果
   （値 は （data は （欄1 の 値） の Int32） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Int32MultiArray
-Int32MultiArray とは layout と data の 組
+Int32MultiArray とは layout は MultiArrayLayout で data は 数 の リスト の 組
 Int32MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の Int32MultiArray
 Int32MultiArray型 とは 型名 は 「example_interfaces/msg/Int32MultiArray」 で 寸法 は Int32MultiArray寸法すること で 書込 は Int32MultiArray書込すること で 読取 は Int32MultiArray読取すること の メッセージ型
 Int32MultiArray を 数 で Int32MultiArray寸法する は 数
@@ -258,7 +258,7 @@ Int32MultiArray を 番地 へ 数 で Int32MultiArray書込する は 数 を �
   （対象 の data） を 先 へ 位1 で （CDR符号付き32書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Int32MultiArray読取する は （Int32MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int32MultiArray読取する は Int32MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で Int32MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR符号付き32読取すること） に CDR可変列読取した 結果
@@ -266,7 +266,7 @@ Int32MultiArray を 番地 へ 数 で Int32MultiArray書込する は 数 を �
   以上です
 
 # example_interfaces/msg/Int64
-Int64 とは data の 組
+Int64 とは data は 数 の 組
 Int64既定 とは data は 0 の Int64
 Int64型 とは 型名 は 「example_interfaces/msg/Int64」 で 寸法 は Int64寸法すること で 書込 は Int64書込すること で 読取 は Int64読取すること の メッセージ型
 Int64 を 数 で Int64寸法する は 数
@@ -278,14 +278,14 @@ Int64 を 番地 へ 数 で Int64書込する は 数 を 返す 入出力動�
   （対象 の data） を 先 へ 位0 で CDR符号付き64書込する
   以上です
 
-番地 から 数 で Int64読取する は （Int64 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int64読取する は Int64 の 読値 を 返す 入出力動作
 先 から 位0 で Int64読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き64読取した 結果
   （値 は （data は （欄1 の 値） の Int64） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Int64MultiArray
-Int64MultiArray とは layout と data の 組
+Int64MultiArray とは layout は MultiArrayLayout で data は 数 の リスト の 組
 Int64MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の Int64MultiArray
 Int64MultiArray型 とは 型名 は 「example_interfaces/msg/Int64MultiArray」 で 寸法 は Int64MultiArray寸法すること で 書込 は Int64MultiArray書込すること で 読取 は Int64MultiArray読取すること の メッセージ型
 Int64MultiArray を 数 で Int64MultiArray寸法する は 数
@@ -299,7 +299,7 @@ Int64MultiArray を 番地 へ 数 で Int64MultiArray書込する は 数 を �
   （対象 の data） を 先 へ 位1 で （CDR符号付き64書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Int64MultiArray読取する は （Int64MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int64MultiArray読取する は Int64MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で Int64MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR符号付き64読取すること） に CDR可変列読取した 結果
@@ -307,7 +307,7 @@ Int64MultiArray を 番地 へ 数 で Int64MultiArray書込する は 数 を �
   以上です
 
 # example_interfaces/msg/Int8
-Int8 とは data の 組
+Int8 とは data は 数 の 組
 Int8既定 とは data は 0 の Int8
 Int8型 とは 型名 は 「example_interfaces/msg/Int8」 で 寸法 は Int8寸法すること で 書込 は Int8書込すること で 読取 は Int8読取すること の メッセージ型
 Int8 を 数 で Int8寸法する は 数
@@ -319,14 +319,14 @@ Int8 を 番地 へ 数 で Int8書込する は 数 を 返す 入出力動作
   （対象 の data） を 先 へ 位0 で CDR符号付き8書込する
   以上です
 
-番地 から 数 で Int8読取する は （Int8 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int8読取する は Int8 の 読値 を 返す 入出力動作
 先 から 位0 で Int8読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
   （値 は （data は （欄1 の 値） の Int8） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/Int8MultiArray
-Int8MultiArray とは layout と data の 組
+Int8MultiArray とは layout は MultiArrayLayout で data は 数 の リスト の 組
 Int8MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の Int8MultiArray
 Int8MultiArray型 とは 型名 は 「example_interfaces/msg/Int8MultiArray」 で 寸法 は Int8MultiArray寸法すること で 書込 は Int8MultiArray書込すること で 読取 は Int8MultiArray読取すること の メッセージ型
 Int8MultiArray を 数 で Int8MultiArray寸法する は 数
@@ -340,7 +340,7 @@ Int8MultiArray を 番地 へ 数 で Int8MultiArray書込する は 数 を 返
   （対象 の data） を 先 へ 位1 で （CDR符号付き8書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Int8MultiArray読取する は （Int8MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Int8MultiArray読取する は Int8MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で Int8MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR符号付き8読取すること） に CDR可変列読取した 結果
@@ -348,7 +348,7 @@ Int8MultiArray を 番地 へ 数 で Int8MultiArray書込する は 数 を 返
   以上です
 
 # example_interfaces/msg/MultiArrayDimension
-MultiArrayDimension とは label と size と stride の 組
+MultiArrayDimension とは label は 文字列 で size は 数 で stride は 数 の 組
 MultiArrayDimension既定 とは label は 「」 で size は 0 で stride は 0 の MultiArrayDimension
 MultiArrayDimension型 とは 型名 は 「example_interfaces/msg/MultiArrayDimension」 で 寸法 は MultiArrayDimension寸法すること で 書込 は MultiArrayDimension書込すること で 読取 は MultiArrayDimension読取すること の メッセージ型
 MultiArrayDimension を 数 で MultiArrayDimension寸法する は 数
@@ -364,7 +364,7 @@ MultiArrayDimension を 番地 へ 数 で MultiArrayDimension書込する は �
   （対象 の stride） を 先 へ 位2 で CDR符号なし32書込する
   以上です
 
-番地 から 数 で MultiArrayDimension読取する は （MultiArrayDimension と 数） の 読値 を 返す 入出力動作
+番地 から 数 で MultiArrayDimension読取する は MultiArrayDimension の 読値 を 返す 入出力動作
 先 から 位0 で MultiArrayDimension読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
@@ -373,7 +373,7 @@ MultiArrayDimension を 番地 へ 数 で MultiArrayDimension書込する は �
   以上です
 
 # example_interfaces/msg/MultiArrayLayout
-MultiArrayLayout とは dim と data_offset の 組
+MultiArrayLayout とは dim は MultiArrayDimension の リスト で data_offset は 数 の 組
 MultiArrayLayout既定 とは dim は 空 で data_offset は 0 の MultiArrayLayout
 MultiArrayLayout型 とは 型名 は 「example_interfaces/msg/MultiArrayLayout」 で 寸法 は MultiArrayLayout寸法すること で 書込 は MultiArrayLayout書込すること で 読取 は MultiArrayLayout読取すること の メッセージ型
 MultiArrayLayout を 数 で MultiArrayLayout寸法する は 数
@@ -387,7 +387,7 @@ MultiArrayLayout を 番地 へ 数 で MultiArrayLayout書込する は 数 を
   （対象 の data_offset） を 先 へ 位1 で CDR符号なし32書込する
   以上です
 
-番地 から 数 で MultiArrayLayout読取する は （MultiArrayLayout と 数） の 読値 を 返す 入出力動作
+番地 から 数 で MultiArrayLayout読取する は MultiArrayLayout の 読値 を 返す 入出力動作
 先 から 位0 で MultiArrayLayout読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （MultiArrayDimension読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
@@ -395,7 +395,7 @@ MultiArrayLayout を 番地 へ 数 で MultiArrayLayout書込する は 数 を
   以上です
 
 # example_interfaces/msg/String
-String とは data の 組
+String とは data は 文字列 の 組
 String既定 とは data は 「」 の String
 String型 とは 型名 は 「example_interfaces/msg/String」 で 寸法 は String寸法すること で 書込 は String書込すること で 読取 は String読取すること の メッセージ型
 String を 数 で String寸法する は 数
@@ -407,14 +407,14 @@ String を 番地 へ 数 で String書込する は 数 を 返す 入出力動
   （対象 の data） を 先 へ 位0 で CDR文字列書込する
   以上です
 
-番地 から 数 で String読取する は （String と 数） の 読値 を 返す 入出力動作
+番地 から 数 で String読取する は String の 読値 を 返す 入出力動作
 先 から 位0 で String読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   （値 は （data は （欄1 の 値） の String） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/UInt16
-UInt16 とは data の 組
+UInt16 とは data は 数 の 組
 UInt16既定 とは data は 0 の UInt16
 UInt16型 とは 型名 は 「example_interfaces/msg/UInt16」 で 寸法 は UInt16寸法すること で 書込 は UInt16書込すること で 読取 は UInt16読取すること の メッセージ型
 UInt16 を 数 で UInt16寸法する は 数
@@ -426,14 +426,14 @@ UInt16 を 番地 へ 数 で UInt16書込する は 数 を 返す 入出力動
   （対象 の data） を 先 へ 位0 で CDR符号なし16書込する
   以上です
 
-番地 から 数 で UInt16読取する は （UInt16 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt16読取する は UInt16 の 読値 を 返す 入出力動作
 先 から 位0 で UInt16読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし16読取した 結果
   （値 は （data は （欄1 の 値） の UInt16） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/UInt16MultiArray
-UInt16MultiArray とは layout と data の 組
+UInt16MultiArray とは layout は MultiArrayLayout で data は 数 の リスト の 組
 UInt16MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の UInt16MultiArray
 UInt16MultiArray型 とは 型名 は 「example_interfaces/msg/UInt16MultiArray」 で 寸法 は UInt16MultiArray寸法すること で 書込 は UInt16MultiArray書込すること で 読取 は UInt16MultiArray読取すること の メッセージ型
 UInt16MultiArray を 数 で UInt16MultiArray寸法する は 数
@@ -447,7 +447,7 @@ UInt16MultiArray を 番地 へ 数 で UInt16MultiArray書込する は 数 を
   （対象 の data） を 先 へ 位1 で （CDR符号なし16書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で UInt16MultiArray読取する は （UInt16MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt16MultiArray読取する は UInt16MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で UInt16MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR符号なし16読取すること） に CDR可変列読取した 結果
@@ -455,7 +455,7 @@ UInt16MultiArray を 番地 へ 数 で UInt16MultiArray書込する は 数 を
   以上です
 
 # example_interfaces/msg/UInt32
-UInt32 とは data の 組
+UInt32 とは data は 数 の 組
 UInt32既定 とは data は 0 の UInt32
 UInt32型 とは 型名 は 「example_interfaces/msg/UInt32」 で 寸法 は UInt32寸法すること で 書込 は UInt32書込すること で 読取 は UInt32読取すること の メッセージ型
 UInt32 を 数 で UInt32寸法する は 数
@@ -467,14 +467,14 @@ UInt32 を 番地 へ 数 で UInt32書込する は 数 を 返す 入出力動
   （対象 の data） を 先 へ 位0 で CDR符号なし32書込する
   以上です
 
-番地 から 数 で UInt32読取する は （UInt32 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt32読取する は UInt32 の 読値 を 返す 入出力動作
 先 から 位0 で UInt32読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし32読取した 結果
   （値 は （data は （欄1 の 値） の UInt32） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/UInt32MultiArray
-UInt32MultiArray とは layout と data の 組
+UInt32MultiArray とは layout は MultiArrayLayout で data は 数 の リスト の 組
 UInt32MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の UInt32MultiArray
 UInt32MultiArray型 とは 型名 は 「example_interfaces/msg/UInt32MultiArray」 で 寸法 は UInt32MultiArray寸法すること で 書込 は UInt32MultiArray書込すること で 読取 は UInt32MultiArray読取すること の メッセージ型
 UInt32MultiArray を 数 で UInt32MultiArray寸法する は 数
@@ -488,7 +488,7 @@ UInt32MultiArray を 番地 へ 数 で UInt32MultiArray書込する は 数 を
   （対象 の data） を 先 へ 位1 で （CDR符号なし32書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で UInt32MultiArray読取する は （UInt32MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt32MultiArray読取する は UInt32MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で UInt32MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR符号なし32読取すること） に CDR可変列読取した 結果
@@ -496,7 +496,7 @@ UInt32MultiArray を 番地 へ 数 で UInt32MultiArray書込する は 数 を
   以上です
 
 # example_interfaces/msg/UInt64
-UInt64 とは data の 組
+UInt64 とは data は 数 の 組
 UInt64既定 とは data は 0 の UInt64
 UInt64型 とは 型名 は 「example_interfaces/msg/UInt64」 で 寸法 は UInt64寸法すること で 書込 は UInt64書込すること で 読取 は UInt64読取すること の メッセージ型
 UInt64 を 数 で UInt64寸法する は 数
@@ -508,14 +508,14 @@ UInt64 を 番地 へ 数 で UInt64書込する は 数 を 返す 入出力動
   （対象 の data） を 先 へ 位0 で CDR符号なし64書込する
   以上です
 
-番地 から 数 で UInt64読取する は （UInt64 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt64読取する は UInt64 の 読値 を 返す 入出力動作
 先 から 位0 で UInt64読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし64読取した 結果
   （値 は （data は （欄1 の 値） の UInt64） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/UInt64MultiArray
-UInt64MultiArray とは layout と data の 組
+UInt64MultiArray とは layout は MultiArrayLayout で data は 数 の リスト の 組
 UInt64MultiArray既定 とは layout は MultiArrayLayout既定 で data は 空 の UInt64MultiArray
 UInt64MultiArray型 とは 型名 は 「example_interfaces/msg/UInt64MultiArray」 で 寸法 は UInt64MultiArray寸法すること で 書込 は UInt64MultiArray書込すること で 読取 は UInt64MultiArray読取すること の メッセージ型
 UInt64MultiArray を 数 で UInt64MultiArray寸法する は 数
@@ -529,7 +529,7 @@ UInt64MultiArray を 番地 へ 数 で UInt64MultiArray書込する は 数 を
   （対象 の data） を 先 へ 位1 で （CDR符号なし64書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で UInt64MultiArray読取する は （UInt64MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt64MultiArray読取する は UInt64MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で UInt64MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR符号なし64読取すること） に CDR可変列読取した 結果
@@ -537,7 +537,7 @@ UInt64MultiArray を 番地 へ 数 で UInt64MultiArray書込する は 数 を
   以上です
 
 # example_interfaces/msg/UInt8
-UInt8 とは data の 組
+UInt8 とは data は 数 の 組
 UInt8既定 とは data は 0 の UInt8
 UInt8型 とは 型名 は 「example_interfaces/msg/UInt8」 で 寸法 は UInt8寸法すること で 書込 は UInt8書込すること で 読取 は UInt8読取すること の メッセージ型
 UInt8 を 数 で UInt8寸法する は 数
@@ -549,14 +549,14 @@ UInt8 を 番地 へ 数 で UInt8書込する は 数 を 返す 入出力動�
   （対象 の data） を 先 へ 位0 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で UInt8読取する は （UInt8 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt8読取する は UInt8 の 読値 を 返す 入出力動作
 先 から 位0 で UInt8読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （data は （欄1 の 値） の UInt8） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/msg/UInt8MultiArray
-UInt8MultiArray とは layout と data の 組
+UInt8MultiArray とは layout は MultiArrayLayout で data は バイト列 の 組
 UInt8MultiArray既定 とは layout は MultiArrayLayout既定 で data は （0 を 零バイト列にする） の UInt8MultiArray
 UInt8MultiArray型 とは 型名 は 「example_interfaces/msg/UInt8MultiArray」 で 寸法 は UInt8MultiArray寸法すること で 書込 は UInt8MultiArray書込すること で 読取 は UInt8MultiArray読取すること の メッセージ型
 UInt8MultiArray を 数 で UInt8MultiArray寸法する は 数
@@ -570,7 +570,7 @@ UInt8MultiArray を 番地 へ 数 で UInt8MultiArray書込する は 数 を �
   （対象 の data） を 先 へ 位1 で CDRバイト可変列書込する
   以上です
 
-番地 から 数 で UInt8MultiArray読取する は （UInt8MultiArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UInt8MultiArray読取する は UInt8MultiArray の 読値 を 返す 入出力動作
 先 から 位0 で UInt8MultiArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で MultiArrayLayout読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDRバイト可変列読取した 結果
@@ -580,7 +580,7 @@ UInt8MultiArray を 番地 へ 数 で UInt8MultiArray書込する は 数 を �
 # example_interfaces/msg/WString は wstring を使うので作りません
 
 # example_interfaces/srv/AddTwoInts_Request
-AddTwoInts_Request とは a と b の 組
+AddTwoInts_Request とは a は 数 で b は 数 の 組
 AddTwoInts_Request既定 とは a は 0 で b は 0 の AddTwoInts_Request
 AddTwoInts_Request型 とは 型名 は 「example_interfaces/srv/AddTwoInts_Request」 で 寸法 は AddTwoInts_Request寸法すること で 書込 は AddTwoInts_Request書込すること で 読取 は AddTwoInts_Request読取すること の メッセージ型
 AddTwoInts_Request を 数 で AddTwoInts_Request寸法する は 数
@@ -594,7 +594,7 @@ AddTwoInts_Request を 番地 へ 数 で AddTwoInts_Request書込する は 数
   （対象 の b） を 先 へ 位1 で CDR符号付き64書込する
   以上です
 
-番地 から 数 で AddTwoInts_Request読取する は （AddTwoInts_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で AddTwoInts_Request読取する は AddTwoInts_Request の 読値 を 返す 入出力動作
 先 から 位0 で AddTwoInts_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き64読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号付き64読取した 結果
@@ -602,7 +602,7 @@ AddTwoInts_Request を 番地 へ 数 で AddTwoInts_Request書込する は 数
   以上です
 
 # example_interfaces/srv/AddTwoInts_Response
-AddTwoInts_Response とは sum の 組
+AddTwoInts_Response とは sum は 数 の 組
 AddTwoInts_Response既定 とは sum は 0 の AddTwoInts_Response
 AddTwoInts_Response型 とは 型名 は 「example_interfaces/srv/AddTwoInts_Response」 で 寸法 は AddTwoInts_Response寸法すること で 書込 は AddTwoInts_Response書込すること で 読取 は AddTwoInts_Response読取すること の メッセージ型
 AddTwoInts_Response を 数 で AddTwoInts_Response寸法する は 数
@@ -614,14 +614,14 @@ AddTwoInts_Response を 番地 へ 数 で AddTwoInts_Response書込する は �
   （対象 の sum） を 先 へ 位0 で CDR符号付き64書込する
   以上です
 
-番地 から 数 で AddTwoInts_Response読取する は （AddTwoInts_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で AddTwoInts_Response読取する は AddTwoInts_Response の 読値 を 返す 入出力動作
 先 から 位0 で AddTwoInts_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き64読取した 結果
   （値 は （sum は （欄1 の 値） の AddTwoInts_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/srv/SetBool_Request
-SetBool_Request とは data の 組
+SetBool_Request とは data は 真偽 の 組
 SetBool_Request既定 とは data は 偽 の SetBool_Request
 SetBool_Request型 とは 型名 は 「example_interfaces/srv/SetBool_Request」 で 寸法 は SetBool_Request寸法すること で 書込 は SetBool_Request書込すること で 読取 は SetBool_Request読取すること の メッセージ型
 SetBool_Request を 数 で SetBool_Request寸法する は 数
@@ -633,14 +633,14 @@ SetBool_Request を 番地 へ 数 で SetBool_Request書込する は 数 を �
   （対象 の data） を 先 へ 位0 で CDR真偽書込する
   以上です
 
-番地 から 数 で SetBool_Request読取する は （SetBool_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetBool_Request読取する は SetBool_Request の 読値 を 返す 入出力動作
 先 から 位0 で SetBool_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   （値 は （data は （欄1 の 値） の SetBool_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/srv/SetBool_Response
-SetBool_Response とは success と message の 組
+SetBool_Response とは success は 真偽 で message は 文字列 の 組
 SetBool_Response既定 とは success は 偽 で message は 「」 の SetBool_Response
 SetBool_Response型 とは 型名 は 「example_interfaces/srv/SetBool_Response」 で 寸法 は SetBool_Response寸法すること で 書込 は SetBool_Response書込すること で 読取 は SetBool_Response読取すること の メッセージ型
 SetBool_Response を 数 で SetBool_Response寸法する は 数
@@ -654,7 +654,7 @@ SetBool_Response を 番地 へ 数 で SetBool_Response書込する は 数 を
   （対象 の message） を 先 へ 位1 で CDR文字列書込する
   以上です
 
-番地 から 数 で SetBool_Response読取する は （SetBool_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetBool_Response読取する は SetBool_Response の 読値 を 返す 入出力動作
 先 から 位0 で SetBool_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -662,7 +662,7 @@ SetBool_Response を 番地 へ 数 で SetBool_Response書込する は 数 を
   以上です
 
 # example_interfaces/srv/Trigger_Request
-Trigger_Request とは structure_needs_at_least_one_member の 組
+Trigger_Request とは structure_needs_at_least_one_member は 数 の 組
 Trigger_Request既定 とは structure_needs_at_least_one_member は 0 の Trigger_Request
 Trigger_Request型 とは 型名 は 「example_interfaces/srv/Trigger_Request」 で 寸法 は Trigger_Request寸法すること で 書込 は Trigger_Request書込すること で 読取 は Trigger_Request読取すること の メッセージ型
 Trigger_Request を 数 で Trigger_Request寸法する は 数
@@ -674,14 +674,14 @@ Trigger_Request を 番地 へ 数 で Trigger_Request書込する は 数 を �
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で Trigger_Request読取する は （Trigger_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Trigger_Request読取する は Trigger_Request の 読値 を 返す 入出力動作
 先 から 位0 で Trigger_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の Trigger_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/srv/Trigger_Response
-Trigger_Response とは success と message の 組
+Trigger_Response とは success は 真偽 で message は 文字列 の 組
 Trigger_Response既定 とは success は 偽 で message は 「」 の Trigger_Response
 Trigger_Response型 とは 型名 は 「example_interfaces/srv/Trigger_Response」 で 寸法 は Trigger_Response寸法すること で 書込 は Trigger_Response書込すること で 読取 は Trigger_Response読取すること の メッセージ型
 Trigger_Response を 数 で Trigger_Response寸法する は 数
@@ -695,7 +695,7 @@ Trigger_Response を 番地 へ 数 で Trigger_Response書込する は 数 を
   （対象 の message） を 先 へ 位1 で CDR文字列書込する
   以上です
 
-番地 から 数 で Trigger_Response読取する は （Trigger_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Trigger_Response読取する は Trigger_Response の 読値 を 返す 入出力動作
 先 から 位0 で Trigger_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -703,7 +703,7 @@ Trigger_Response を 番地 へ 数 で Trigger_Response書込する は 数 を
   以上です
 
 # example_interfaces/action/Fibonacci_Goal
-Fibonacci_Goal とは order の 組
+Fibonacci_Goal とは order は 数 の 組
 Fibonacci_Goal既定 とは order は 0 の Fibonacci_Goal
 Fibonacci_Goal型 とは 型名 は 「example_interfaces/action/Fibonacci_Goal」 で 寸法 は Fibonacci_Goal寸法すること で 書込 は Fibonacci_Goal書込すること で 読取 は Fibonacci_Goal読取すること の メッセージ型
 Fibonacci_Goal を 数 で Fibonacci_Goal寸法する は 数
@@ -715,14 +715,14 @@ Fibonacci_Goal を 番地 へ 数 で Fibonacci_Goal書込する は 数 を 返
   （対象 の order） を 先 へ 位0 で CDR符号付き32書込する
   以上です
 
-番地 から 数 で Fibonacci_Goal読取する は （Fibonacci_Goal と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_Goal読取する は Fibonacci_Goal の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_Goal読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き32読取した 結果
   （値 は （order は （欄1 の 値） の Fibonacci_Goal） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/action/Fibonacci_Result
-Fibonacci_Result とは sequence の 組
+Fibonacci_Result とは sequence は 数 の リスト の 組
 Fibonacci_Result既定 とは sequence は 空 の Fibonacci_Result
 Fibonacci_Result型 とは 型名 は 「example_interfaces/action/Fibonacci_Result」 で 寸法 は Fibonacci_Result寸法すること で 書込 は Fibonacci_Result書込すること で 読取 は Fibonacci_Result読取すること の メッセージ型
 Fibonacci_Result を 数 で Fibonacci_Result寸法する は 数
@@ -734,14 +734,14 @@ Fibonacci_Result を 番地 へ 数 で Fibonacci_Result書込する は 数 を
   （対象 の sequence） を 先 へ 位0 で （CDR符号付き32書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Fibonacci_Result読取する は （Fibonacci_Result と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_Result読取する は Fibonacci_Result の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_Result読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR符号付き32読取すること） に CDR可変列読取した 結果
   （値 は （sequence は （欄1 の 値） の Fibonacci_Result） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/action/Fibonacci_Feedback
-Fibonacci_Feedback とは sequence の 組
+Fibonacci_Feedback とは sequence は 数 の リスト の 組
 Fibonacci_Feedback既定 とは sequence は 空 の Fibonacci_Feedback
 Fibonacci_Feedback型 とは 型名 は 「example_interfaces/action/Fibonacci_Feedback」 で 寸法 は Fibonacci_Feedback寸法すること で 書込 は Fibonacci_Feedback書込すること で 読取 は Fibonacci_Feedback読取すること の メッセージ型
 Fibonacci_Feedback を 数 で Fibonacci_Feedback寸法する は 数
@@ -753,14 +753,14 @@ Fibonacci_Feedback を 番地 へ 数 で Fibonacci_Feedback書込する は 数
   （対象 の sequence） を 先 へ 位0 で （CDR符号付き32書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Fibonacci_Feedback読取する は （Fibonacci_Feedback と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_Feedback読取する は Fibonacci_Feedback の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_Feedback読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR符号付き32読取すること） に CDR可変列読取した 結果
   （値 は （sequence は （欄1 の 値） の Fibonacci_Feedback） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/action/Fibonacci_SendGoal_Request
-Fibonacci_SendGoal_Request とは goal_id と goal の 組
+Fibonacci_SendGoal_Request とは goal_id は unique_identifier_msgs内のUUID で goal は Fibonacci_Goal の 組
 Fibonacci_SendGoal_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 で goal は Fibonacci_Goal既定 の Fibonacci_SendGoal_Request
 Fibonacci_SendGoal_Request型 とは 型名 は 「example_interfaces/action/Fibonacci_SendGoal_Request」 で 寸法 は Fibonacci_SendGoal_Request寸法すること で 書込 は Fibonacci_SendGoal_Request書込すること で 読取 は Fibonacci_SendGoal_Request読取すること の メッセージ型
 Fibonacci_SendGoal_Request を 数 で Fibonacci_SendGoal_Request寸法する は 数
@@ -774,7 +774,7 @@ Fibonacci_SendGoal_Request を 番地 へ 数 で Fibonacci_SendGoal_Request書�
   （対象 の goal） を 先 へ 位1 で Fibonacci_Goal書込する
   以上です
 
-番地 から 数 で Fibonacci_SendGoal_Request読取する は （Fibonacci_SendGoal_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_SendGoal_Request読取する は Fibonacci_SendGoal_Request の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_SendGoal_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
   欄2 とは 先 から （欄1 の 次） で Fibonacci_Goal読取した 結果
@@ -782,7 +782,7 @@ Fibonacci_SendGoal_Request を 番地 へ 数 で Fibonacci_SendGoal_Request書�
   以上です
 
 # example_interfaces/action/Fibonacci_SendGoal_Response
-Fibonacci_SendGoal_Response とは accepted と stamp の 組
+Fibonacci_SendGoal_Response とは accepted は 真偽 で stamp は builtin_interfaces内のTime の 組
 Fibonacci_SendGoal_Response既定 とは accepted は 偽 で stamp は builtin_interfaces内のTime既定 の Fibonacci_SendGoal_Response
 Fibonacci_SendGoal_Response型 とは 型名 は 「example_interfaces/action/Fibonacci_SendGoal_Response」 で 寸法 は Fibonacci_SendGoal_Response寸法すること で 書込 は Fibonacci_SendGoal_Response書込すること で 読取 は Fibonacci_SendGoal_Response読取すること の メッセージ型
 Fibonacci_SendGoal_Response を 数 で Fibonacci_SendGoal_Response寸法する は 数
@@ -796,7 +796,7 @@ Fibonacci_SendGoal_Response を 番地 へ 数 で Fibonacci_SendGoal_Response�
   （対象 の stamp） を 先 へ 位1 で builtin_interfaces内のTime書込する
   以上です
 
-番地 から 数 で Fibonacci_SendGoal_Response読取する は （Fibonacci_SendGoal_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_SendGoal_Response読取する は Fibonacci_SendGoal_Response の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_SendGoal_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果
@@ -804,7 +804,7 @@ Fibonacci_SendGoal_Response を 番地 へ 数 で Fibonacci_SendGoal_Response�
   以上です
 
 # example_interfaces/action/Fibonacci_GetResult_Request
-Fibonacci_GetResult_Request とは goal_id の 組
+Fibonacci_GetResult_Request とは goal_id は unique_identifier_msgs内のUUID の 組
 Fibonacci_GetResult_Request既定 とは goal_id は unique_identifier_msgs内のUUID既定 の Fibonacci_GetResult_Request
 Fibonacci_GetResult_Request型 とは 型名 は 「example_interfaces/action/Fibonacci_GetResult_Request」 で 寸法 は Fibonacci_GetResult_Request寸法すること で 書込 は Fibonacci_GetResult_Request書込すること で 読取 は Fibonacci_GetResult_Request読取すること の メッセージ型
 Fibonacci_GetResult_Request を 数 で Fibonacci_GetResult_Request寸法する は 数
@@ -816,14 +816,14 @@ Fibonacci_GetResult_Request を 番地 へ 数 で Fibonacci_GetResult_Request�
   （対象 の goal_id） を 先 へ 位0 で unique_identifier_msgs内のUUID書込する
   以上です
 
-番地 から 数 で Fibonacci_GetResult_Request読取する は （Fibonacci_GetResult_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_GetResult_Request読取する は Fibonacci_GetResult_Request の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_GetResult_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
   （値 は （goal_id は （欄1 の 値） の Fibonacci_GetResult_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # example_interfaces/action/Fibonacci_GetResult_Response
-Fibonacci_GetResult_Response とは status と result の 組
+Fibonacci_GetResult_Response とは status は 数 で result は Fibonacci_Result の 組
 Fibonacci_GetResult_Response既定 とは status は 0 で result は Fibonacci_Result既定 の Fibonacci_GetResult_Response
 Fibonacci_GetResult_Response型 とは 型名 は 「example_interfaces/action/Fibonacci_GetResult_Response」 で 寸法 は Fibonacci_GetResult_Response寸法すること で 書込 は Fibonacci_GetResult_Response書込すること で 読取 は Fibonacci_GetResult_Response読取すること の メッセージ型
 Fibonacci_GetResult_Response を 数 で Fibonacci_GetResult_Response寸法する は 数
@@ -837,7 +837,7 @@ Fibonacci_GetResult_Response を 番地 へ 数 で Fibonacci_GetResult_Response
   （対象 の result） を 先 へ 位1 で Fibonacci_Result書込する
   以上です
 
-番地 から 数 で Fibonacci_GetResult_Response読取する は （Fibonacci_GetResult_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_GetResult_Response読取する は Fibonacci_GetResult_Response の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_GetResult_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き8読取した 結果
   欄2 とは 先 から （欄1 の 次） で Fibonacci_Result読取した 結果
@@ -845,7 +845,7 @@ Fibonacci_GetResult_Response を 番地 へ 数 で Fibonacci_GetResult_Response
   以上です
 
 # example_interfaces/action/Fibonacci_FeedbackMessage
-Fibonacci_FeedbackMessage とは goal_id と feedback の 組
+Fibonacci_FeedbackMessage とは goal_id は unique_identifier_msgs内のUUID で feedback は Fibonacci_Feedback の 組
 Fibonacci_FeedbackMessage既定 とは goal_id は unique_identifier_msgs内のUUID既定 で feedback は Fibonacci_Feedback既定 の Fibonacci_FeedbackMessage
 Fibonacci_FeedbackMessage型 とは 型名 は 「example_interfaces/action/Fibonacci_FeedbackMessage」 で 寸法 は Fibonacci_FeedbackMessage寸法すること で 書込 は Fibonacci_FeedbackMessage書込すること で 読取 は Fibonacci_FeedbackMessage読取すること の メッセージ型
 Fibonacci_FeedbackMessage を 数 で Fibonacci_FeedbackMessage寸法する は 数
@@ -859,7 +859,7 @@ Fibonacci_FeedbackMessage を 番地 へ 数 で Fibonacci_FeedbackMessage書込
   （対象 の feedback） を 先 へ 位1 で Fibonacci_Feedback書込する
   以上です
 
-番地 から 数 で Fibonacci_FeedbackMessage読取する は （Fibonacci_FeedbackMessage と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Fibonacci_FeedbackMessage読取する は Fibonacci_FeedbackMessage の 読値 を 返す 入出力動作
 先 から 位0 で Fibonacci_FeedbackMessage読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で unique_identifier_msgs内のUUID読取した 結果
   欄2 とは 先 から （欄1 の 次） で Fibonacci_Feedback読取した 結果

@@ -3,7 +3,7 @@
 「builtin_interfaces」 を 読み込む
 
 # service_msgs/msg/ServiceEventInfo
-ServiceEventInfo とは event_type と stamp と client_gid と sequence_number の 組
+ServiceEventInfo とは event_type は 数 で stamp は builtin_interfaces内のTime で client_gid は バイト列 で sequence_number は 数 の 組
 ServiceEventInfo既定 とは event_type は 0 で stamp は builtin_interfaces内のTime既定 で client_gid は （16 を 零バイト列にする） で sequence_number は 0 の ServiceEventInfo
 ServiceEventInfo型 とは 型名 は 「service_msgs/msg/ServiceEventInfo」 で 寸法 は ServiceEventInfo寸法すること で 書込 は ServiceEventInfo書込すること で 読取 は ServiceEventInfo読取すること の メッセージ型
 ServiceEventInfo_REQUEST_SENT とは 0
@@ -25,7 +25,7 @@ ServiceEventInfo を 番地 へ 数 で ServiceEventInfo書込する は 数 を
   （対象 の sequence_number） を 先 へ 位3 で CDR符号付き64書込する
   以上です
 
-番地 から 数 で ServiceEventInfo読取する は （ServiceEventInfo と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ServiceEventInfo読取する は ServiceEventInfo の 読値 を 返す 入出力動作
 先 から 位0 で ServiceEventInfo読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のTime読取した 結果

@@ -19,7 +19,7 @@
 ## 入れ方
 
 1. **ROS 2 Jazzy。** Ubuntu 24.04 に [ROS 2 の手順](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)で `ros-jazzy-ros-base`(か `ros-jazzy-desktop`)を入れます。使うときは毎回 `source /opt/ros/jazzy/setup.bash` します。
-2. **suru 0.9.1 以上と clang。** `kumu`・`suruc`・`suru` が要ります。入れ方は [suru の README](https://github.com/suru-lang/suru#入れ方) にあります(Homebrew なら `brew install suru-lang/suru/suru`、バイナリなら GitHub Releases)。clang は `sudo apt install clang` で入ります。
+2. **suru 0.10.0 以上と clang。** `kumu`・`suruc`・`suru` が要ります。入れ方は [suru の README](https://github.com/suru-lang/suru#入れ方) にあります(Homebrew なら `brew install suru-lang/suru/suru`、バイナリなら GitHub Releases)。clang は `sudo apt install clang` で入ります。
 3. **rclsuru。** 自分のプロジェクトで `kumu 追加 github.com/suru-lang/rclsuru` とします(次の「はじめてのノード」)。
 
 `docker/Dockerfile` に、ROS 2 Jazzy・suru・clang を全部入れた環境があります。試験には、ほかに colcon と g++(C++ の試験用ノード)が要ります。
@@ -114,7 +114,7 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 
 | 名前 | 意味 |
 |---|---|
-| `Twist` | 組の型。フィールドの名前は .msg のまま(`linear と angular の 組`) |
+| `Twist` | 組の型。フィールドの名前は .msg のままで、型も書いてあります(`linear は Vector3 で angular は Vector3 の 組`)。違う型の値を入れると型の検査でエラー |
 | `Twist既定` | 既定の値。数は 0、文字列は「」、配列は 空、.msg に既定の値があればその値。`x は 1.5 の Vector3既定` のように一部だけ変えて使う |
 | `Twist型` | `発行者作成する`・`購読する` に渡す メッセージ型 |
 | `GoalStatus_STATUS_ACCEPTED` | .msg の定数(`メッセージ名_定数名`) |
@@ -125,7 +125,7 @@ C の包み(`c/rclsuru.c`)は kumu が一緒にコンパイルします。ROS 2 
 |---|---|
 | `bool` | 真偽 |
 | `int8`〜`int64`・`uint8`〜`uint64`・`byte`・`char` | 数(64 ビットの数は ±2^62 まで) |
-| `float32`・`float64` | 数(小数) |
+| `float32`・`float64` | 小数 |
 | `string`・`string<=N` | 文字列(UTF-8) |
 | `uint8[]`・`byte[]`・`char[]`(固定長・上限つきも) | バイト列(`sensor_msgs/Image` の `data` など) |
 | ほかの `T[]`・`T[N]`・`T[<=N]` | T の リスト。固定長は長さが違うと、上限つきは超えると発行するときにエラー |
@@ -306,7 +306,7 @@ install(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/hello/出力/hello DESTINATION lib/
 
 ## 作り
 
-- **C の包みは小さく。** suru の外部の関数は構造体を値で受け渡せないので、値で受け渡す rcl の関数(`rcl_get_zero_initialized_*`・`*_get_default_options` など)だけを `c/rclsuru.c` で包み、番地にして渡します。番地を受け取る rcl の関数(`rcl_init`・`rcl_node_init`・`rcl_publish_serialized_message` など)は する から直接呼びます。C の関数は `rclsuru.suru` の頭で、`以下は外部の入出力動作です` から `以上です` までに `番地 を 低水準節点破棄する は 「rcl_node_fini」 で 整数 を 返します` のように1行に1つずつ書いています(suru 0.9.1)。
+- **C の包みは小さく。** suru の外部の関数は構造体を値で受け渡せないので、値で受け渡す rcl の関数(`rcl_get_zero_initialized_*`・`*_get_default_options` など)だけを `c/rclsuru.c` で包み、番地にして渡します。番地を受け取る rcl の関数(`rcl_init`・`rcl_node_init`・`rcl_publish_serialized_message` など)は する から直接呼びます。C の関数は `rclsuru.suru` の頭で、`以下は外部の入出力動作です` から `以上です` までに `番地 を 低水準節点破棄する は 「rcl_node_fini」 で 整数 を 返します` のように1行に1つずつ書いています。番地で受け取った C の関数(type support の関数など)も、`p を f で 破棄呼出する とは （f） で 番地 を 番地 で 受け取って 無 を 返します` のように同じまとまりに書きます(suru 0.10.0)。
 - **する の書き方。** 入出力をする関数は `… は 発行者 を 返す 入出力動作` と宣言し、本体を `以下の入出力手順です` から `以上です` までの文で書きます。
 - **メッセージは直列化した CDR。** `rcl_publish_serialized_message`・`rcl_take_serialized_message` でバイト列をやりとりし、CDR の組み立てと読み取りは する で書きます(`CDR.suru`)。生成した型ごとに、書くのに要る大きさを数える関数・C のメモリに書く関数・読む関数ができ、rmw の領域に直接書いて読みます。型の情報(type support)は、型の名前(`std_msgs/msg/String`)から「動的リンク」で `lib<パッケージ>__rosidl_typesupport_c.so` を開いて引きます。型ごとの C は要りません。
 - **待ち方は通路。** wait set は使わず、`rcl_subscription_set_on_new_message_callback` に `通路送り番地作成する` の番地を渡し、DDS のスレッドから届いた知らせを する の通路で受け取ります(rclcpp の EventsExecutor と同じ考え)。番地は1つだけ作り、購読者ごとの番号を user_data に入れて見分けます。タイマーと Ctrl-C も、する のスレッドから同じ番地を呼んで同じ通路に知らせます。
@@ -315,7 +315,7 @@ install(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/hello/出力/hello DESTINATION lib/
 
 ```sh
 source /opt/ros/jazzy/setup.bash
-kumu 試験                       # する で書いた部分の試験
+kumu 試験                       # する で書いた部分の試験(ソースのファイルの中の試験のまとまりと例)
 kumu 点検
 python3 test/cdr_roundtrip.py   # 同梱した型の CDR を rclpy と往復させる
 SURU=suru test/interop.sh       # C++(rclcpp)・ros2 topic・ros2 launch・QoS・インタプリタとの相互運用
@@ -324,7 +324,7 @@ SURU=suru test/add_two_ints.sh  # examples/足し算サーバー・足し算ク�
 test/fibonacci.sh               # examples/フィボナッチサーバー・フィボナッチクライアント(example_interfaces が要る)
 ```
 
-`python3 test/cdr_roundtrip.py` は、同梱した型を全部(203 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)、アクション(`ros2 action send_goal`・C++ の rclcpp_action と両方向。型は tf2_msgs/action/LookupTransform)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
+`kumu 試験` は、`rclsuru.suru`・`CDR.suru`・`生成器.suru` の中の `以下は「…」の試験です … 以上です` と `例えば … は … です` を動かします(suru 0.10.0 の同じファイルの試験と例)。`python3 test/cdr_roundtrip.py` は、同梱した型を全部(203 個)、乱数で作った値で rclpy と往復させ、同じ値に戻ることを確かめます。`test/interop.sh` は colcon で `ros/rclsuru_examples` と `test/interop_cpp`(C++ の talker と listener)を作り、両方向で届くこと、`--ros-args` の付け替え、`ros2 launch` と Ctrl-C での終わり、Twist・JointState・LaserScan のやりとり、QoS(sensor_data・transient_local)、サービス、パラメータ(`-p`・YAML・`ros2 param`)、アクション(`ros2 action send_goal`・C++ の rclcpp_action と両方向。型は tf2_msgs/action/LookupTransform)を確かめます。GitHub Actions(`.github/workflows/ci.yml`)でも同じものを動かします。
 
 ## まだできないこと
 

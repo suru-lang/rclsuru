@@ -3,7 +3,7 @@
 「builtin_interfaces」 を 読み込む
 
 # rcl_interfaces/msg/FloatingPointRange
-FloatingPointRange とは from_value と to_value と step の 組
+FloatingPointRange とは from_value は 小数 で to_value は 小数 で step は 小数 の 組
 FloatingPointRange既定 とは from_value は 0.0 で to_value は 0.0 で step は 0.0 の FloatingPointRange
 FloatingPointRange型 とは 型名 は 「rcl_interfaces/msg/FloatingPointRange」 で 寸法 は FloatingPointRange寸法すること で 書込 は FloatingPointRange書込すること で 読取 は FloatingPointRange読取すること の メッセージ型
 FloatingPointRange を 数 で FloatingPointRange寸法する は 数
@@ -19,7 +19,7 @@ FloatingPointRange を 番地 へ 数 で FloatingPointRange書込する は 数
   （対象 の step） を 先 へ 位2 で CDR小数書込する
   以上です
 
-番地 から 数 で FloatingPointRange読取する は （FloatingPointRange と 数） の 読値 を 返す 入出力動作
+番地 から 数 で FloatingPointRange読取する は FloatingPointRange の 読値 を 返す 入出力動作
 先 から 位0 で FloatingPointRange読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
@@ -28,7 +28,7 @@ FloatingPointRange を 番地 へ 数 で FloatingPointRange書込する は 数
   以上です
 
 # rcl_interfaces/msg/IntegerRange
-IntegerRange とは from_value と to_value と step の 組
+IntegerRange とは from_value は 数 で to_value は 数 で step は 数 の 組
 IntegerRange既定 とは from_value は 0 で to_value は 0 で step は 0 の IntegerRange
 IntegerRange型 とは 型名 は 「rcl_interfaces/msg/IntegerRange」 で 寸法 は IntegerRange寸法すること で 書込 は IntegerRange書込すること で 読取 は IntegerRange読取すること の メッセージ型
 IntegerRange を 数 で IntegerRange寸法する は 数
@@ -44,7 +44,7 @@ IntegerRange を 番地 へ 数 で IntegerRange書込する は 数 を 返す 
   （対象 の step） を 先 へ 位2 で CDR符号なし64書込する
   以上です
 
-番地 から 数 で IntegerRange読取する は （IntegerRange と 数） の 読値 を 返す 入出力動作
+番地 から 数 で IntegerRange読取する は IntegerRange の 読値 を 返す 入出力動作
 先 から 位0 で IntegerRange読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号付き64読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号付き64読取した 結果
@@ -53,7 +53,7 @@ IntegerRange を 番地 へ 数 で IntegerRange書込する は 数 を 返す 
   以上です
 
 # rcl_interfaces/msg/ListParametersResult
-ListParametersResult とは names と prefixes の 組
+ListParametersResult とは names は 文字列 の リスト で prefixes は 文字列 の リスト の 組
 ListParametersResult既定 とは names は 空 で prefixes は 空 の ListParametersResult
 ListParametersResult型 とは 型名 は 「rcl_interfaces/msg/ListParametersResult」 で 寸法 は ListParametersResult寸法すること で 書込 は ListParametersResult書込すること で 読取 は ListParametersResult読取すること の メッセージ型
 ListParametersResult を 数 で ListParametersResult寸法する は 数
@@ -67,7 +67,7 @@ ListParametersResult を 番地 へ 数 で ListParametersResult書込する は
   （対象 の prefixes） を 先 へ 位1 で （CDR文字列書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で ListParametersResult読取する は （ListParametersResult と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ListParametersResult読取する は ListParametersResult の 読値 を 返す 入出力動作
 先 から 位0 で ListParametersResult読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR文字列読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
@@ -75,7 +75,7 @@ ListParametersResult を 番地 へ 数 で ListParametersResult書込する は
   以上です
 
 # rcl_interfaces/msg/Log
-Log とは stamp と level と name と msg と file と function と line の 組
+Log とは stamp は builtin_interfaces内のTime で level は 数 で name は 文字列 で msg は 文字列 で file は 文字列 で function は 文字列 で line は 数 の 組
 Log既定 とは stamp は builtin_interfaces内のTime既定 で level は 0 で name は 「」 で msg は 「」 で file は 「」 で function は 「」 で line は 0 の Log
 Log型 とは 型名 は 「rcl_interfaces/msg/Log」 で 寸法 は Log寸法すること で 書込 は Log書込すること で 読取 は Log読取すること の メッセージ型
 Log_DEBUG とは 10
@@ -104,7 +104,7 @@ Log を 番地 へ 数 で Log書込する は 数 を 返す 入出力動作
   （対象 の line） を 先 へ 位6 で CDR符号なし32書込する
   以上です
 
-番地 から 数 で Log読取する は （Log と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Log読取する は Log の 読値 を 返す 入出力動作
 先 から 位0 で Log読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で builtin_interfaces内のTime読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
@@ -117,7 +117,7 @@ Log を 番地 へ 数 で Log書込する は 数 を 返す 入出力動作
   以上です
 
 # rcl_interfaces/msg/LoggerLevel
-LoggerLevel とは name と level の 組
+LoggerLevel とは name は 文字列 で level は 数 の 組
 LoggerLevel既定 とは name は 「」 で level は 0 の LoggerLevel
 LoggerLevel型 とは 型名 は 「rcl_interfaces/msg/LoggerLevel」 で 寸法 は LoggerLevel寸法すること で 書込 は LoggerLevel書込すること で 読取 は LoggerLevel読取すること の メッセージ型
 LoggerLevel_LOG_LEVEL_UNKNOWN とは 0
@@ -137,7 +137,7 @@ LoggerLevel を 番地 へ 数 で LoggerLevel書込する は 数 を 返す �
   （対象 の level） を 先 へ 位1 で CDR符号なし32書込する
   以上です
 
-番地 から 数 で LoggerLevel読取する は （LoggerLevel と 数） の 読値 を 返す 入出力動作
+番地 から 数 で LoggerLevel読取する は LoggerLevel の 読値 を 返す 入出力動作
 先 から 位0 で LoggerLevel読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし32読取した 結果
@@ -145,7 +145,7 @@ LoggerLevel を 番地 へ 数 で LoggerLevel書込する は 数 を 返す �
   以上です
 
 # rcl_interfaces/msg/Parameter
-Parameter とは name と value の 組
+Parameter とは name は 文字列 で value は ParameterValue の 組
 Parameter既定 とは name は 「」 で value は ParameterValue既定 の Parameter
 Parameter型 とは 型名 は 「rcl_interfaces/msg/Parameter」 で 寸法 は Parameter寸法すること で 書込 は Parameter書込すること で 読取 は Parameter読取すること の メッセージ型
 Parameter を 数 で Parameter寸法する は 数
@@ -159,7 +159,7 @@ Parameter を 番地 へ 数 で Parameter書込する は 数 を 返す 入出
   （対象 の value） を 先 へ 位1 で ParameterValue書込する
   以上です
 
-番地 から 数 で Parameter読取する は （Parameter と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Parameter読取する は Parameter の 読値 を 返す 入出力動作
 先 から 位0 で Parameter読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で ParameterValue読取した 結果
@@ -167,7 +167,7 @@ Parameter を 番地 へ 数 で Parameter書込する は 数 を 返す 入出
   以上です
 
 # rcl_interfaces/msg/ParameterDescriptor
-ParameterDescriptor とは name と type と description と additional_constraints と read_only と dynamic_typing と floating_point_range と integer_range の 組
+ParameterDescriptor とは name は 文字列 で type は 数 で description は 文字列 で additional_constraints は 文字列 で read_only は 真偽 で dynamic_typing は 真偽 で floating_point_range は FloatingPointRange の リスト で integer_range は IntegerRange の リスト の 組
 ParameterDescriptor既定 とは name は 「」 で type は 0 で description は 「」 で additional_constraints は 「」 で read_only は 偽 で dynamic_typing は 偽 で floating_point_range は 空 で integer_range は 空 の ParameterDescriptor
 ParameterDescriptor型 とは 型名 は 「rcl_interfaces/msg/ParameterDescriptor」 で 寸法 は ParameterDescriptor寸法すること で 書込 は ParameterDescriptor書込すること で 読取 は ParameterDescriptor読取すること の メッセージ型
 ParameterDescriptor を 数 で ParameterDescriptor寸法する は 数
@@ -193,7 +193,7 @@ ParameterDescriptor を 番地 へ 数 で ParameterDescriptor書込する は �
   （対象 の integer_range） を 先 へ 位7 で （IntegerRange書込すること） に 1 より CDR上限列書込する
   以上です
 
-番地 から 数 で ParameterDescriptor読取する は （ParameterDescriptor と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ParameterDescriptor読取する は ParameterDescriptor の 読値 を 返す 入出力動作
 先 から 位0 で ParameterDescriptor読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし8読取した 結果
@@ -207,7 +207,7 @@ ParameterDescriptor を 番地 へ 数 で ParameterDescriptor書込する は �
   以上です
 
 # rcl_interfaces/msg/ParameterEvent
-ParameterEvent とは stamp と node と new_parameters と changed_parameters と deleted_parameters の 組
+ParameterEvent とは stamp は builtin_interfaces内のTime で node は 文字列 で new_parameters は Parameter の リスト で changed_parameters は Parameter の リスト で deleted_parameters は Parameter の リスト の 組
 ParameterEvent既定 とは stamp は builtin_interfaces内のTime既定 で node は 「」 で new_parameters は 空 で changed_parameters は 空 で deleted_parameters は 空 の ParameterEvent
 ParameterEvent型 とは 型名 は 「rcl_interfaces/msg/ParameterEvent」 で 寸法 は ParameterEvent寸法すること で 書込 は ParameterEvent書込すること で 読取 は ParameterEvent読取すること の メッセージ型
 ParameterEvent を 数 で ParameterEvent寸法する は 数
@@ -227,7 +227,7 @@ ParameterEvent を 番地 へ 数 で ParameterEvent書込する は 数 を 返
   （対象 の deleted_parameters） を 先 へ 位4 で （Parameter書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で ParameterEvent読取する は （ParameterEvent と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ParameterEvent読取する は ParameterEvent の 読値 を 返す 入出力動作
 先 から 位0 で ParameterEvent読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で builtin_interfaces内のTime読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -238,7 +238,7 @@ ParameterEvent を 番地 へ 数 で ParameterEvent書込する は 数 を 返
   以上です
 
 # rcl_interfaces/msg/ParameterEventDescriptors
-ParameterEventDescriptors とは new_parameters と changed_parameters と deleted_parameters の 組
+ParameterEventDescriptors とは new_parameters は ParameterDescriptor の リスト で changed_parameters は ParameterDescriptor の リスト で deleted_parameters は ParameterDescriptor の リスト の 組
 ParameterEventDescriptors既定 とは new_parameters は 空 で changed_parameters は 空 で deleted_parameters は 空 の ParameterEventDescriptors
 ParameterEventDescriptors型 とは 型名 は 「rcl_interfaces/msg/ParameterEventDescriptors」 で 寸法 は ParameterEventDescriptors寸法すること で 書込 は ParameterEventDescriptors書込すること で 読取 は ParameterEventDescriptors読取すること の メッセージ型
 ParameterEventDescriptors を 数 で ParameterEventDescriptors寸法する は 数
@@ -254,7 +254,7 @@ ParameterEventDescriptors を 番地 へ 数 で ParameterEventDescriptors書込
   （対象 の deleted_parameters） を 先 へ 位2 で （ParameterDescriptor書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で ParameterEventDescriptors読取する は （ParameterEventDescriptors と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ParameterEventDescriptors読取する は ParameterEventDescriptors の 読値 を 返す 入出力動作
 先 から 位0 で ParameterEventDescriptors読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （ParameterDescriptor読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （ParameterDescriptor読取すること） に CDR可変列読取した 結果
@@ -263,7 +263,7 @@ ParameterEventDescriptors を 番地 へ 数 で ParameterEventDescriptors書込
   以上です
 
 # rcl_interfaces/msg/ParameterType
-ParameterType とは structure_needs_at_least_one_member の 組
+ParameterType とは structure_needs_at_least_one_member は 数 の 組
 ParameterType既定 とは structure_needs_at_least_one_member は 0 の ParameterType
 ParameterType型 とは 型名 は 「rcl_interfaces/msg/ParameterType」 で 寸法 は ParameterType寸法すること で 書込 は ParameterType書込すること で 読取 は ParameterType読取すること の メッセージ型
 ParameterType_PARAMETER_NOT_SET とは 0
@@ -285,14 +285,14 @@ ParameterType を 番地 へ 数 で ParameterType書込する は 数 を 返�
   （対象 の structure_needs_at_least_one_member） を 先 へ 位0 で CDR符号なし8書込する
   以上です
 
-番地 から 数 で ParameterType読取する は （ParameterType と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ParameterType読取する は ParameterType の 読値 を 返す 入出力動作
 先 から 位0 で ParameterType読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   （値 は （structure_needs_at_least_one_member は （欄1 の 値） の ParameterType） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/msg/ParameterValue
-ParameterValue とは type と bool_value と integer_value と double_value と string_value と byte_array_value と bool_array_value と integer_array_value と double_array_value と string_array_value の 組
+ParameterValue とは type は 数 で bool_value は 真偽 で integer_value は 数 で double_value は 小数 で string_value は 文字列 で byte_array_value は バイト列 で bool_array_value は 真偽 の リスト で integer_array_value は 数 の リスト で double_array_value は 小数 の リスト で string_array_value は 文字列 の リスト の 組
 ParameterValue既定 とは type は 0 で bool_value は 偽 で integer_value は 0 で double_value は 0.0 で string_value は 「」 で byte_array_value は （0 を 零バイト列にする） で bool_array_value は 空 で integer_array_value は 空 で double_array_value は 空 で string_array_value は 空 の ParameterValue
 ParameterValue型 とは 型名 は 「rcl_interfaces/msg/ParameterValue」 で 寸法 は ParameterValue寸法すること で 書込 は ParameterValue書込すること で 読取 は ParameterValue読取すること の メッセージ型
 ParameterValue を 数 で ParameterValue寸法する は 数
@@ -322,7 +322,7 @@ ParameterValue を 番地 へ 数 で ParameterValue書込する は 数 を 返
   （対象 の string_array_value） を 先 へ 位9 で （CDR文字列書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で ParameterValue読取する は （ParameterValue と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ParameterValue読取する は ParameterValue の 読値 を 返す 入出力動作
 先 から 位0 で ParameterValue読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR真偽読取した 結果
@@ -338,7 +338,7 @@ ParameterValue を 番地 へ 数 で ParameterValue書込する は 数 を 返
   以上です
 
 # rcl_interfaces/msg/SetLoggerLevelsResult
-SetLoggerLevelsResult とは successful と reason の 組
+SetLoggerLevelsResult とは successful は 真偽 で reason は 文字列 の 組
 SetLoggerLevelsResult既定 とは successful は 偽 で reason は 「」 の SetLoggerLevelsResult
 SetLoggerLevelsResult型 とは 型名 は 「rcl_interfaces/msg/SetLoggerLevelsResult」 で 寸法 は SetLoggerLevelsResult寸法すること で 書込 は SetLoggerLevelsResult書込すること で 読取 は SetLoggerLevelsResult読取すること の メッセージ型
 SetLoggerLevelsResult を 数 で SetLoggerLevelsResult寸法する は 数
@@ -352,7 +352,7 @@ SetLoggerLevelsResult を 番地 へ 数 で SetLoggerLevelsResult書込する �
   （対象 の reason） を 先 へ 位1 で CDR文字列書込する
   以上です
 
-番地 から 数 で SetLoggerLevelsResult読取する は （SetLoggerLevelsResult と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetLoggerLevelsResult読取する は SetLoggerLevelsResult の 読値 を 返す 入出力動作
 先 から 位0 で SetLoggerLevelsResult読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -360,7 +360,7 @@ SetLoggerLevelsResult を 番地 へ 数 で SetLoggerLevelsResult書込する �
   以上です
 
 # rcl_interfaces/msg/SetParametersResult
-SetParametersResult とは successful と reason の 組
+SetParametersResult とは successful は 真偽 で reason は 文字列 の 組
 SetParametersResult既定 とは successful は 偽 で reason は 「」 の SetParametersResult
 SetParametersResult型 とは 型名 は 「rcl_interfaces/msg/SetParametersResult」 で 寸法 は SetParametersResult寸法すること で 書込 は SetParametersResult書込すること で 読取 は SetParametersResult読取すること の メッセージ型
 SetParametersResult を 数 で SetParametersResult寸法する は 数
@@ -374,7 +374,7 @@ SetParametersResult を 番地 へ 数 で SetParametersResult書込する は �
   （対象 の reason） を 先 へ 位1 で CDR文字列書込する
   以上です
 
-番地 から 数 で SetParametersResult読取する は （SetParametersResult と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetParametersResult読取する は SetParametersResult の 読値 を 返す 入出力動作
 先 から 位0 で SetParametersResult読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR真偽読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -382,7 +382,7 @@ SetParametersResult を 番地 へ 数 で SetParametersResult書込する は �
   以上です
 
 # rcl_interfaces/srv/DescribeParameters_Request
-DescribeParameters_Request とは names の 組
+DescribeParameters_Request とは names は 文字列 の リスト の 組
 DescribeParameters_Request既定 とは names は 空 の DescribeParameters_Request
 DescribeParameters_Request型 とは 型名 は 「rcl_interfaces/srv/DescribeParameters_Request」 で 寸法 は DescribeParameters_Request寸法すること で 書込 は DescribeParameters_Request書込すること で 読取 は DescribeParameters_Request読取すること の メッセージ型
 DescribeParameters_Request を 数 で DescribeParameters_Request寸法する は 数
@@ -394,14 +394,14 @@ DescribeParameters_Request を 番地 へ 数 で DescribeParameters_Request書�
   （対象 の names） を 先 へ 位0 で （CDR文字列書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で DescribeParameters_Request読取する は （DescribeParameters_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で DescribeParameters_Request読取する は DescribeParameters_Request の 読値 を 返す 入出力動作
 先 から 位0 で DescribeParameters_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR文字列読取すること） に CDR可変列読取した 結果
   （値 は （names は （欄1 の 値） の DescribeParameters_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/DescribeParameters_Response
-DescribeParameters_Response とは descriptors の 組
+DescribeParameters_Response とは descriptors は ParameterDescriptor の リスト の 組
 DescribeParameters_Response既定 とは descriptors は 空 の DescribeParameters_Response
 DescribeParameters_Response型 とは 型名 は 「rcl_interfaces/srv/DescribeParameters_Response」 で 寸法 は DescribeParameters_Response寸法すること で 書込 は DescribeParameters_Response書込すること で 読取 は DescribeParameters_Response読取すること の メッセージ型
 DescribeParameters_Response を 数 で DescribeParameters_Response寸法する は 数
@@ -413,14 +413,14 @@ DescribeParameters_Response を 番地 へ 数 で DescribeParameters_Response�
   （対象 の descriptors） を 先 へ 位0 で （ParameterDescriptor書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で DescribeParameters_Response読取する は （DescribeParameters_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で DescribeParameters_Response読取する は DescribeParameters_Response の 読値 を 返す 入出力動作
 先 から 位0 で DescribeParameters_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （ParameterDescriptor読取すること） に CDR可変列読取した 結果
   （値 は （descriptors は （欄1 の 値） の DescribeParameters_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/GetLoggerLevels_Request
-GetLoggerLevels_Request とは names の 組
+GetLoggerLevels_Request とは names は 文字列 の リスト の 組
 GetLoggerLevels_Request既定 とは names は 空 の GetLoggerLevels_Request
 GetLoggerLevels_Request型 とは 型名 は 「rcl_interfaces/srv/GetLoggerLevels_Request」 で 寸法 は GetLoggerLevels_Request寸法すること で 書込 は GetLoggerLevels_Request書込すること で 読取 は GetLoggerLevels_Request読取すること の メッセージ型
 GetLoggerLevels_Request を 数 で GetLoggerLevels_Request寸法する は 数
@@ -432,14 +432,14 @@ GetLoggerLevels_Request を 番地 へ 数 で GetLoggerLevels_Request書込す�
   （対象 の names） を 先 へ 位0 で （CDR文字列書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で GetLoggerLevels_Request読取する は （GetLoggerLevels_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetLoggerLevels_Request読取する は GetLoggerLevels_Request の 読値 を 返す 入出力動作
 先 から 位0 で GetLoggerLevels_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR文字列読取すること） に CDR可変列読取した 結果
   （値 は （names は （欄1 の 値） の GetLoggerLevels_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/GetLoggerLevels_Response
-GetLoggerLevels_Response とは levels の 組
+GetLoggerLevels_Response とは levels は LoggerLevel の リスト の 組
 GetLoggerLevels_Response既定 とは levels は 空 の GetLoggerLevels_Response
 GetLoggerLevels_Response型 とは 型名 は 「rcl_interfaces/srv/GetLoggerLevels_Response」 で 寸法 は GetLoggerLevels_Response寸法すること で 書込 は GetLoggerLevels_Response書込すること で 読取 は GetLoggerLevels_Response読取すること の メッセージ型
 GetLoggerLevels_Response を 数 で GetLoggerLevels_Response寸法する は 数
@@ -451,14 +451,14 @@ GetLoggerLevels_Response を 番地 へ 数 で GetLoggerLevels_Response書込�
   （対象 の levels） を 先 へ 位0 で （LoggerLevel書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で GetLoggerLevels_Response読取する は （GetLoggerLevels_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetLoggerLevels_Response読取する は GetLoggerLevels_Response の 読値 を 返す 入出力動作
 先 から 位0 で GetLoggerLevels_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （LoggerLevel読取すること） に CDR可変列読取した 結果
   （値 は （levels は （欄1 の 値） の GetLoggerLevels_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/GetParameterTypes_Request
-GetParameterTypes_Request とは names の 組
+GetParameterTypes_Request とは names は 文字列 の リスト の 組
 GetParameterTypes_Request既定 とは names は 空 の GetParameterTypes_Request
 GetParameterTypes_Request型 とは 型名 は 「rcl_interfaces/srv/GetParameterTypes_Request」 で 寸法 は GetParameterTypes_Request寸法すること で 書込 は GetParameterTypes_Request書込すること で 読取 は GetParameterTypes_Request読取すること の メッセージ型
 GetParameterTypes_Request を 数 で GetParameterTypes_Request寸法する は 数
@@ -470,14 +470,14 @@ GetParameterTypes_Request を 番地 へ 数 で GetParameterTypes_Request書込
   （対象 の names） を 先 へ 位0 で （CDR文字列書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で GetParameterTypes_Request読取する は （GetParameterTypes_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetParameterTypes_Request読取する は GetParameterTypes_Request の 読値 を 返す 入出力動作
 先 から 位0 で GetParameterTypes_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR文字列読取すること） に CDR可変列読取した 結果
   （値 は （names は （欄1 の 値） の GetParameterTypes_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/GetParameterTypes_Response
-GetParameterTypes_Response とは types の 組
+GetParameterTypes_Response とは types は バイト列 の 組
 GetParameterTypes_Response既定 とは types は （0 を 零バイト列にする） の GetParameterTypes_Response
 GetParameterTypes_Response型 とは 型名 は 「rcl_interfaces/srv/GetParameterTypes_Response」 で 寸法 は GetParameterTypes_Response寸法すること で 書込 は GetParameterTypes_Response書込すること で 読取 は GetParameterTypes_Response読取すること の メッセージ型
 GetParameterTypes_Response を 数 で GetParameterTypes_Response寸法する は 数
@@ -489,14 +489,14 @@ GetParameterTypes_Response を 番地 へ 数 で GetParameterTypes_Response書�
   （対象 の types） を 先 へ 位0 で CDRバイト可変列書込する
   以上です
 
-番地 から 数 で GetParameterTypes_Response読取する は （GetParameterTypes_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetParameterTypes_Response読取する は GetParameterTypes_Response の 読値 を 返す 入出力動作
 先 から 位0 で GetParameterTypes_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDRバイト可変列読取した 結果
   （値 は （types は （欄1 の 値） の GetParameterTypes_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/GetParameters_Request
-GetParameters_Request とは names の 組
+GetParameters_Request とは names は 文字列 の リスト の 組
 GetParameters_Request既定 とは names は 空 の GetParameters_Request
 GetParameters_Request型 とは 型名 は 「rcl_interfaces/srv/GetParameters_Request」 で 寸法 は GetParameters_Request寸法すること で 書込 は GetParameters_Request書込すること で 読取 は GetParameters_Request読取すること の メッセージ型
 GetParameters_Request を 数 で GetParameters_Request寸法する は 数
@@ -508,14 +508,14 @@ GetParameters_Request を 番地 へ 数 で GetParameters_Request書込する �
   （対象 の names） を 先 へ 位0 で （CDR文字列書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で GetParameters_Request読取する は （GetParameters_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetParameters_Request読取する は GetParameters_Request の 読値 を 返す 入出力動作
 先 から 位0 で GetParameters_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR文字列読取すること） に CDR可変列読取した 結果
   （値 は （names は （欄1 の 値） の GetParameters_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/GetParameters_Response
-GetParameters_Response とは values の 組
+GetParameters_Response とは values は ParameterValue の リスト の 組
 GetParameters_Response既定 とは values は 空 の GetParameters_Response
 GetParameters_Response型 とは 型名 は 「rcl_interfaces/srv/GetParameters_Response」 で 寸法 は GetParameters_Response寸法すること で 書込 は GetParameters_Response書込すること で 読取 は GetParameters_Response読取すること の メッセージ型
 GetParameters_Response を 数 で GetParameters_Response寸法する は 数
@@ -527,14 +527,14 @@ GetParameters_Response を 番地 へ 数 で GetParameters_Response書込する
   （対象 の values） を 先 へ 位0 で （ParameterValue書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で GetParameters_Response読取する は （GetParameters_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で GetParameters_Response読取する は GetParameters_Response の 読値 を 返す 入出力動作
 先 から 位0 で GetParameters_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （ParameterValue読取すること） に CDR可変列読取した 結果
   （値 は （values は （欄1 の 値） の GetParameters_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/ListParameters_Request
-ListParameters_Request とは prefixes と depth の 組
+ListParameters_Request とは prefixes は 文字列 の リスト で depth は 数 の 組
 ListParameters_Request既定 とは prefixes は 空 で depth は 0 の ListParameters_Request
 ListParameters_Request型 とは 型名 は 「rcl_interfaces/srv/ListParameters_Request」 で 寸法 は ListParameters_Request寸法すること で 書込 は ListParameters_Request書込すること で 読取 は ListParameters_Request読取すること の メッセージ型
 ListParameters_Request_DEPTH_RECURSIVE とは 0
@@ -549,7 +549,7 @@ ListParameters_Request を 番地 へ 数 で ListParameters_Request書込する
   （対象 の depth） を 先 へ 位1 で CDR符号なし64書込する
   以上です
 
-番地 から 数 で ListParameters_Request読取する は （ListParameters_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ListParameters_Request読取する は ListParameters_Request の 読値 を 返す 入出力動作
 先 から 位0 で ListParameters_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR文字列読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号なし64読取した 結果
@@ -557,7 +557,7 @@ ListParameters_Request を 番地 へ 数 で ListParameters_Request書込する
   以上です
 
 # rcl_interfaces/srv/ListParameters_Response
-ListParameters_Response とは result の 組
+ListParameters_Response とは result は ListParametersResult の 組
 ListParameters_Response既定 とは result は ListParametersResult既定 の ListParameters_Response
 ListParameters_Response型 とは 型名 は 「rcl_interfaces/srv/ListParameters_Response」 で 寸法 は ListParameters_Response寸法すること で 書込 は ListParameters_Response書込すること で 読取 は ListParameters_Response読取すること の メッセージ型
 ListParameters_Response を 数 で ListParameters_Response寸法する は 数
@@ -569,14 +569,14 @@ ListParameters_Response を 番地 へ 数 で ListParameters_Response書込す�
   （対象 の result） を 先 へ 位0 で ListParametersResult書込する
   以上です
 
-番地 から 数 で ListParameters_Response読取する は （ListParameters_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で ListParameters_Response読取する は ListParameters_Response の 読値 を 返す 入出力動作
 先 から 位0 で ListParameters_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で ListParametersResult読取した 結果
   （値 は （result は （欄1 の 値） の ListParameters_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/SetLoggerLevels_Request
-SetLoggerLevels_Request とは levels の 組
+SetLoggerLevels_Request とは levels は LoggerLevel の リスト の 組
 SetLoggerLevels_Request既定 とは levels は 空 の SetLoggerLevels_Request
 SetLoggerLevels_Request型 とは 型名 は 「rcl_interfaces/srv/SetLoggerLevels_Request」 で 寸法 は SetLoggerLevels_Request寸法すること で 書込 は SetLoggerLevels_Request書込すること で 読取 は SetLoggerLevels_Request読取すること の メッセージ型
 SetLoggerLevels_Request を 数 で SetLoggerLevels_Request寸法する は 数
@@ -588,14 +588,14 @@ SetLoggerLevels_Request を 番地 へ 数 で SetLoggerLevels_Request書込す�
   （対象 の levels） を 先 へ 位0 で （LoggerLevel書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で SetLoggerLevels_Request読取する は （SetLoggerLevels_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetLoggerLevels_Request読取する は SetLoggerLevels_Request の 読値 を 返す 入出力動作
 先 から 位0 で SetLoggerLevels_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （LoggerLevel読取すること） に CDR可変列読取した 結果
   （値 は （levels は （欄1 の 値） の SetLoggerLevels_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/SetLoggerLevels_Response
-SetLoggerLevels_Response とは results の 組
+SetLoggerLevels_Response とは results は SetLoggerLevelsResult の リスト の 組
 SetLoggerLevels_Response既定 とは results は 空 の SetLoggerLevels_Response
 SetLoggerLevels_Response型 とは 型名 は 「rcl_interfaces/srv/SetLoggerLevels_Response」 で 寸法 は SetLoggerLevels_Response寸法すること で 書込 は SetLoggerLevels_Response書込すること で 読取 は SetLoggerLevels_Response読取すること の メッセージ型
 SetLoggerLevels_Response を 数 で SetLoggerLevels_Response寸法する は 数
@@ -607,14 +607,14 @@ SetLoggerLevels_Response を 番地 へ 数 で SetLoggerLevels_Response書込�
   （対象 の results） を 先 へ 位0 で （SetLoggerLevelsResult書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で SetLoggerLevels_Response読取する は （SetLoggerLevels_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetLoggerLevels_Response読取する は SetLoggerLevels_Response の 読値 を 返す 入出力動作
 先 から 位0 で SetLoggerLevels_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （SetLoggerLevelsResult読取すること） に CDR可変列読取した 結果
   （値 は （results は （欄1 の 値） の SetLoggerLevels_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/SetParameters_Request
-SetParameters_Request とは parameters の 組
+SetParameters_Request とは parameters は Parameter の リスト の 組
 SetParameters_Request既定 とは parameters は 空 の SetParameters_Request
 SetParameters_Request型 とは 型名 は 「rcl_interfaces/srv/SetParameters_Request」 で 寸法 は SetParameters_Request寸法すること で 書込 は SetParameters_Request書込すること で 読取 は SetParameters_Request読取すること の メッセージ型
 SetParameters_Request を 数 で SetParameters_Request寸法する は 数
@@ -626,14 +626,14 @@ SetParameters_Request を 番地 へ 数 で SetParameters_Request書込する �
   （対象 の parameters） を 先 へ 位0 で （Parameter書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で SetParameters_Request読取する は （SetParameters_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetParameters_Request読取する は SetParameters_Request の 読値 を 返す 入出力動作
 先 から 位0 で SetParameters_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （Parameter読取すること） に CDR可変列読取した 結果
   （値 は （parameters は （欄1 の 値） の SetParameters_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/SetParameters_Response
-SetParameters_Response とは results の 組
+SetParameters_Response とは results は SetParametersResult の リスト の 組
 SetParameters_Response既定 とは results は 空 の SetParameters_Response
 SetParameters_Response型 とは 型名 は 「rcl_interfaces/srv/SetParameters_Response」 で 寸法 は SetParameters_Response寸法すること で 書込 は SetParameters_Response書込すること で 読取 は SetParameters_Response読取すること の メッセージ型
 SetParameters_Response を 数 で SetParameters_Response寸法する は 数
@@ -645,14 +645,14 @@ SetParameters_Response を 番地 へ 数 で SetParameters_Response書込する
   （対象 の results） を 先 へ 位0 で （SetParametersResult書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で SetParameters_Response読取する は （SetParameters_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetParameters_Response読取する は SetParameters_Response の 読値 を 返す 入出力動作
 先 から 位0 で SetParameters_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （SetParametersResult読取すること） に CDR可変列読取した 結果
   （値 は （results は （欄1 の 値） の SetParameters_Response） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/SetParametersAtomically_Request
-SetParametersAtomically_Request とは parameters の 組
+SetParametersAtomically_Request とは parameters は Parameter の リスト の 組
 SetParametersAtomically_Request既定 とは parameters は 空 の SetParametersAtomically_Request
 SetParametersAtomically_Request型 とは 型名 は 「rcl_interfaces/srv/SetParametersAtomically_Request」 で 寸法 は SetParametersAtomically_Request寸法すること で 書込 は SetParametersAtomically_Request書込すること で 読取 は SetParametersAtomically_Request読取すること の メッセージ型
 SetParametersAtomically_Request を 数 で SetParametersAtomically_Request寸法する は 数
@@ -664,14 +664,14 @@ SetParametersAtomically_Request を 番地 へ 数 で SetParametersAtomically_R
   （対象 の parameters） を 先 へ 位0 で （Parameter書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で SetParametersAtomically_Request読取する は （SetParametersAtomically_Request と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetParametersAtomically_Request読取する は SetParametersAtomically_Request の 読値 を 返す 入出力動作
 先 から 位0 で SetParametersAtomically_Request読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （Parameter読取すること） に CDR可変列読取した 結果
   （値 は （parameters は （欄1 の 値） の SetParametersAtomically_Request） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rcl_interfaces/srv/SetParametersAtomically_Response
-SetParametersAtomically_Response とは result の 組
+SetParametersAtomically_Response とは result は SetParametersResult の 組
 SetParametersAtomically_Response既定 とは result は SetParametersResult既定 の SetParametersAtomically_Response
 SetParametersAtomically_Response型 とは 型名 は 「rcl_interfaces/srv/SetParametersAtomically_Response」 で 寸法 は SetParametersAtomically_Response寸法すること で 書込 は SetParametersAtomically_Response書込すること で 読取 は SetParametersAtomically_Response読取すること の メッセージ型
 SetParametersAtomically_Response を 数 で SetParametersAtomically_Response寸法する は 数
@@ -683,7 +683,7 @@ SetParametersAtomically_Response を 番地 へ 数 で SetParametersAtomically_
   （対象 の result） を 先 へ 位0 で SetParametersResult書込する
   以上です
 
-番地 から 数 で SetParametersAtomically_Response読取する は （SetParametersAtomically_Response と 数） の 読値 を 返す 入出力動作
+番地 から 数 で SetParametersAtomically_Response読取する は SetParametersAtomically_Response の 読値 を 返す 入出力動作
 先 から 位0 で SetParametersAtomically_Response読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で SetParametersResult読取した 結果
   （値 は （result は （欄1 の 値） の SetParametersAtomically_Response） で 次 は （欄1 の 次） の 読値） を 結果にする

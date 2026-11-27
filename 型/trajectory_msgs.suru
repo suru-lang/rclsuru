@@ -5,7 +5,7 @@
 「geometry_msgs」 を 読み込む
 
 # trajectory_msgs/msg/JointTrajectory
-JointTrajectory とは header と joint_names と points の 組
+JointTrajectory とは header は std_msgs内のHeader で joint_names は 文字列 の リスト で points は JointTrajectoryPoint の リスト の 組
 JointTrajectory既定 とは header は std_msgs内のHeader既定 で joint_names は 空 で points は 空 の JointTrajectory
 JointTrajectory型 とは 型名 は 「trajectory_msgs/msg/JointTrajectory」 で 寸法 は JointTrajectory寸法すること で 書込 は JointTrajectory書込すること で 読取 は JointTrajectory読取すること の メッセージ型
 JointTrajectory を 数 で JointTrajectory寸法する は 数
@@ -21,7 +21,7 @@ JointTrajectory を 番地 へ 数 で JointTrajectory書込する は 数 を �
   （対象 の points） を 先 へ 位2 で （JointTrajectoryPoint書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で JointTrajectory読取する は （JointTrajectory と 数） の 読値 を 返す 入出力動作
+番地 から 数 で JointTrajectory読取する は JointTrajectory の 読値 を 返す 入出力動作
 先 から 位0 で JointTrajectory読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
@@ -30,7 +30,7 @@ JointTrajectory を 番地 へ 数 で JointTrajectory書込する は 数 を �
   以上です
 
 # trajectory_msgs/msg/JointTrajectoryPoint
-JointTrajectoryPoint とは positions と velocities と accelerations と effort と time_from_start の 組
+JointTrajectoryPoint とは positions は 小数 の リスト で velocities は 小数 の リスト で accelerations は 小数 の リスト で effort は 小数 の リスト で time_from_start は builtin_interfaces内のDuration の 組
 JointTrajectoryPoint既定 とは positions は 空 で velocities は 空 で accelerations は 空 で effort は 空 で time_from_start は builtin_interfaces内のDuration既定 の JointTrajectoryPoint
 JointTrajectoryPoint型 とは 型名 は 「trajectory_msgs/msg/JointTrajectoryPoint」 で 寸法 は JointTrajectoryPoint寸法すること で 書込 は JointTrajectoryPoint書込すること で 読取 は JointTrajectoryPoint読取すること の メッセージ型
 JointTrajectoryPoint を 数 で JointTrajectoryPoint寸法する は 数
@@ -50,7 +50,7 @@ JointTrajectoryPoint を 番地 へ 数 で JointTrajectoryPoint書込する は
   （対象 の time_from_start） を 先 へ 位4 で builtin_interfaces内のDuration書込する
   以上です
 
-番地 から 数 で JointTrajectoryPoint読取する は （JointTrajectoryPoint と 数） の 読値 を 返す 入出力動作
+番地 から 数 で JointTrajectoryPoint読取する は JointTrajectoryPoint の 読値 を 返す 入出力動作
 先 から 位0 で JointTrajectoryPoint読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （CDR小数読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に CDR可変列読取した 結果
@@ -61,7 +61,7 @@ JointTrajectoryPoint を 番地 へ 数 で JointTrajectoryPoint書込する は
   以上です
 
 # trajectory_msgs/msg/MultiDOFJointTrajectory
-MultiDOFJointTrajectory とは header と joint_names と points の 組
+MultiDOFJointTrajectory とは header は std_msgs内のHeader で joint_names は 文字列 の リスト で points は MultiDOFJointTrajectoryPoint の リスト の 組
 MultiDOFJointTrajectory既定 とは header は std_msgs内のHeader既定 で joint_names は 空 で points は 空 の MultiDOFJointTrajectory
 MultiDOFJointTrajectory型 とは 型名 は 「trajectory_msgs/msg/MultiDOFJointTrajectory」 で 寸法 は MultiDOFJointTrajectory寸法すること で 書込 は MultiDOFJointTrajectory書込すること で 読取 は MultiDOFJointTrajectory読取すること の メッセージ型
 MultiDOFJointTrajectory を 数 で MultiDOFJointTrajectory寸法する は 数
@@ -77,7 +77,7 @@ MultiDOFJointTrajectory を 番地 へ 数 で MultiDOFJointTrajectory書込す�
   （対象 の points） を 先 へ 位2 で （MultiDOFJointTrajectoryPoint書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で MultiDOFJointTrajectory読取する は （MultiDOFJointTrajectory と 数） の 読値 を 返す 入出力動作
+番地 から 数 で MultiDOFJointTrajectory読取する は MultiDOFJointTrajectory の 読値 を 返す 入出力動作
 先 から 位0 で MultiDOFJointTrajectory読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR文字列読取すること） に CDR可変列読取した 結果
@@ -86,7 +86,7 @@ MultiDOFJointTrajectory を 番地 へ 数 で MultiDOFJointTrajectory書込す�
   以上です
 
 # trajectory_msgs/msg/MultiDOFJointTrajectoryPoint
-MultiDOFJointTrajectoryPoint とは transforms と velocities と accelerations と time_from_start の 組
+MultiDOFJointTrajectoryPoint とは transforms は geometry_msgs内のTransform の リスト で velocities は geometry_msgs内のTwist の リスト で accelerations は geometry_msgs内のTwist の リスト で time_from_start は builtin_interfaces内のDuration の 組
 MultiDOFJointTrajectoryPoint既定 とは transforms は 空 で velocities は 空 で accelerations は 空 で time_from_start は builtin_interfaces内のDuration既定 の MultiDOFJointTrajectoryPoint
 MultiDOFJointTrajectoryPoint型 とは 型名 は 「trajectory_msgs/msg/MultiDOFJointTrajectoryPoint」 で 寸法 は MultiDOFJointTrajectoryPoint寸法すること で 書込 は MultiDOFJointTrajectoryPoint書込すること で 読取 は MultiDOFJointTrajectoryPoint読取すること の メッセージ型
 MultiDOFJointTrajectoryPoint を 数 で MultiDOFJointTrajectoryPoint寸法する は 数
@@ -104,7 +104,7 @@ MultiDOFJointTrajectoryPoint を 番地 へ 数 で MultiDOFJointTrajectoryPoint
   （対象 の time_from_start） を 先 へ 位3 で builtin_interfaces内のDuration書込する
   以上です
 
-番地 から 数 で MultiDOFJointTrajectoryPoint読取する は （MultiDOFJointTrajectoryPoint と 数） の 読値 を 返す 入出力動作
+番地 から 数 で MultiDOFJointTrajectoryPoint読取する は MultiDOFJointTrajectoryPoint の 読値 を 返す 入出力動作
 先 から 位0 で MultiDOFJointTrajectoryPoint読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （geometry_msgs内のTransform読取すること） に CDR可変列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （geometry_msgs内のTwist読取すること） に CDR可変列読取した 結果

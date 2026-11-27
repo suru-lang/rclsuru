@@ -3,7 +3,7 @@
 「std_msgs」 を 読み込む
 
 # geometry_msgs/msg/Accel
-Accel とは linear と angular の 組
+Accel とは linear は Vector3 で angular は Vector3 の 組
 Accel既定 とは linear は Vector3既定 で angular は Vector3既定 の Accel
 Accel型 とは 型名 は 「geometry_msgs/msg/Accel」 で 寸法 は Accel寸法すること で 書込 は Accel書込すること で 読取 は Accel読取すること の メッセージ型
 Accel を 数 で Accel寸法する は 数
@@ -17,7 +17,7 @@ Accel を 番地 へ 数 で Accel書込する は 数 を 返す 入出力動�
   （対象 の angular） を 先 へ 位1 で Vector3書込する
   以上です
 
-番地 から 数 で Accel読取する は （Accel と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Accel読取する は Accel の 読値 を 返す 入出力動作
 先 から 位0 で Accel読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
@@ -25,7 +25,7 @@ Accel を 番地 へ 数 で Accel書込する は 数 を 返す 入出力動�
   以上です
 
 # geometry_msgs/msg/AccelStamped
-AccelStamped とは header と accel の 組
+AccelStamped とは header は std_msgs内のHeader で accel は Accel の 組
 AccelStamped既定 とは header は std_msgs内のHeader既定 で accel は Accel既定 の AccelStamped
 AccelStamped型 とは 型名 は 「geometry_msgs/msg/AccelStamped」 で 寸法 は AccelStamped寸法すること で 書込 は AccelStamped書込すること で 読取 は AccelStamped読取すること の メッセージ型
 AccelStamped を 数 で AccelStamped寸法する は 数
@@ -39,7 +39,7 @@ AccelStamped を 番地 へ 数 で AccelStamped書込する は 数 を 返す 
   （対象 の accel） を 先 へ 位1 で Accel書込する
   以上です
 
-番地 から 数 で AccelStamped読取する は （AccelStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で AccelStamped読取する は AccelStamped の 読値 を 返す 入出力動作
 先 から 位0 で AccelStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Accel読取した 結果
@@ -47,7 +47,7 @@ AccelStamped を 番地 へ 数 で AccelStamped書込する は 数 を 返す 
   以上です
 
 # geometry_msgs/msg/AccelWithCovariance
-AccelWithCovariance とは accel と covariance の 組
+AccelWithCovariance とは accel は Accel で covariance は 小数 の リスト の 組
 AccelWithCovariance既定 とは accel は Accel既定 で covariance は （0.0 を 36 で 既定複製する） の AccelWithCovariance
 AccelWithCovariance型 とは 型名 は 「geometry_msgs/msg/AccelWithCovariance」 で 寸法 は AccelWithCovariance寸法すること で 書込 は AccelWithCovariance書込すること で 読取 は AccelWithCovariance読取すること の メッセージ型
 AccelWithCovariance を 数 で AccelWithCovariance寸法する は 数
@@ -61,7 +61,7 @@ AccelWithCovariance を 番地 へ 数 で AccelWithCovariance書込する は �
   （対象 の covariance） を 先 へ 位1 で （CDR小数書込すること） に 36 より CDR固定列書込する
   以上です
 
-番地 から 数 で AccelWithCovariance読取する は （AccelWithCovariance と 数） の 読値 を 返す 入出力動作
+番地 から 数 で AccelWithCovariance読取する は AccelWithCovariance の 読値 を 返す 入出力動作
 先 から 位0 で AccelWithCovariance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Accel読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に 36 より CDR固定列読取した 結果
@@ -69,7 +69,7 @@ AccelWithCovariance を 番地 へ 数 で AccelWithCovariance書込する は �
   以上です
 
 # geometry_msgs/msg/AccelWithCovarianceStamped
-AccelWithCovarianceStamped とは header と accel の 組
+AccelWithCovarianceStamped とは header は std_msgs内のHeader で accel は AccelWithCovariance の 組
 AccelWithCovarianceStamped既定 とは header は std_msgs内のHeader既定 で accel は AccelWithCovariance既定 の AccelWithCovarianceStamped
 AccelWithCovarianceStamped型 とは 型名 は 「geometry_msgs/msg/AccelWithCovarianceStamped」 で 寸法 は AccelWithCovarianceStamped寸法すること で 書込 は AccelWithCovarianceStamped書込すること で 読取 は AccelWithCovarianceStamped読取すること の メッセージ型
 AccelWithCovarianceStamped を 数 で AccelWithCovarianceStamped寸法する は 数
@@ -83,7 +83,7 @@ AccelWithCovarianceStamped を 番地 へ 数 で AccelWithCovarianceStamped書�
   （対象 の accel） を 先 へ 位1 で AccelWithCovariance書込する
   以上です
 
-番地 から 数 で AccelWithCovarianceStamped読取する は （AccelWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で AccelWithCovarianceStamped読取する は AccelWithCovarianceStamped の 読値 を 返す 入出力動作
 先 から 位0 で AccelWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で AccelWithCovariance読取した 結果
@@ -91,7 +91,7 @@ AccelWithCovarianceStamped を 番地 へ 数 で AccelWithCovarianceStamped書�
   以上です
 
 # geometry_msgs/msg/Inertia
-Inertia とは m と com と ixx と ixy と ixz と iyy と iyz と izz の 組
+Inertia とは m は 小数 で com は Vector3 で ixx は 小数 で ixy は 小数 で ixz は 小数 で iyy は 小数 で iyz は 小数 で izz は 小数 の 組
 Inertia既定 とは m は 0.0 で com は Vector3既定 で ixx は 0.0 で ixy は 0.0 で ixz は 0.0 で iyy は 0.0 で iyz は 0.0 で izz は 0.0 の Inertia
 Inertia型 とは 型名 は 「geometry_msgs/msg/Inertia」 で 寸法 は Inertia寸法すること で 書込 は Inertia書込すること で 読取 は Inertia読取すること の メッセージ型
 Inertia を 数 で Inertia寸法する は 数
@@ -117,7 +117,7 @@ Inertia を 番地 へ 数 で Inertia書込する は 数 を 返す 入出力�
   （対象 の izz） を 先 へ 位7 で CDR小数書込する
   以上です
 
-番地 から 数 で Inertia読取する は （Inertia と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Inertia読取する は Inertia の 読値 を 返す 入出力動作
 先 から 位0 で Inertia読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
@@ -131,7 +131,7 @@ Inertia を 番地 へ 数 で Inertia書込する は 数 を 返す 入出力�
   以上です
 
 # geometry_msgs/msg/InertiaStamped
-InertiaStamped とは header と inertia の 組
+InertiaStamped とは header は std_msgs内のHeader で inertia は Inertia の 組
 InertiaStamped既定 とは header は std_msgs内のHeader既定 で inertia は Inertia既定 の InertiaStamped
 InertiaStamped型 とは 型名 は 「geometry_msgs/msg/InertiaStamped」 で 寸法 は InertiaStamped寸法すること で 書込 は InertiaStamped書込すること で 読取 は InertiaStamped読取すること の メッセージ型
 InertiaStamped を 数 で InertiaStamped寸法する は 数
@@ -145,7 +145,7 @@ InertiaStamped を 番地 へ 数 で InertiaStamped書込する は 数 を 返
   （対象 の inertia） を 先 へ 位1 で Inertia書込する
   以上です
 
-番地 から 数 で InertiaStamped読取する は （InertiaStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で InertiaStamped読取する は InertiaStamped の 読値 を 返す 入出力動作
 先 から 位0 で InertiaStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Inertia読取した 結果
@@ -153,7 +153,7 @@ InertiaStamped を 番地 へ 数 で InertiaStamped書込する は 数 を 返
   以上です
 
 # geometry_msgs/msg/Point
-Point とは x と y と z の 組
+Point とは x は 小数 で y は 小数 で z は 小数 の 組
 Point既定 とは x は 0.0 で y は 0.0 で z は 0.0 の Point
 Point型 とは 型名 は 「geometry_msgs/msg/Point」 で 寸法 は Point寸法すること で 書込 は Point書込すること で 読取 は Point読取すること の メッセージ型
 Point を 数 で Point寸法する は 数
@@ -169,7 +169,7 @@ Point を 番地 へ 数 で Point書込する は 数 を 返す 入出力動�
   （対象 の z） を 先 へ 位2 で CDR小数書込する
   以上です
 
-番地 から 数 で Point読取する は （Point と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Point読取する は Point の 読値 を 返す 入出力動作
 先 から 位0 で Point読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
@@ -178,7 +178,7 @@ Point を 番地 へ 数 で Point書込する は 数 を 返す 入出力動�
   以上です
 
 # geometry_msgs/msg/Point32
-Point32 とは x と y と z の 組
+Point32 とは x は 小数 で y は 小数 で z は 小数 の 組
 Point32既定 とは x は 0.0 で y は 0.0 で z は 0.0 の Point32
 Point32型 とは 型名 は 「geometry_msgs/msg/Point32」 で 寸法 は Point32寸法すること で 書込 は Point32書込すること で 読取 は Point32読取すること の メッセージ型
 Point32 を 数 で Point32寸法する は 数
@@ -194,7 +194,7 @@ Point32 を 番地 へ 数 で Point32書込する は 数 を 返す 入出力�
   （対象 の z） を 先 へ 位2 で CDR単精度書込する
   以上です
 
-番地 から 数 で Point32読取する は （Point32 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Point32読取する は Point32 の 読値 を 返す 入出力動作
 先 から 位0 で Point32読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR単精度読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR単精度読取した 結果
@@ -203,7 +203,7 @@ Point32 を 番地 へ 数 で Point32書込する は 数 を 返す 入出力�
   以上です
 
 # geometry_msgs/msg/PointStamped
-PointStamped とは header と point の 組
+PointStamped とは header は std_msgs内のHeader で point は Point の 組
 PointStamped既定 とは header は std_msgs内のHeader既定 で point は Point既定 の PointStamped
 PointStamped型 とは 型名 は 「geometry_msgs/msg/PointStamped」 で 寸法 は PointStamped寸法すること で 書込 は PointStamped書込すること で 読取 は PointStamped読取すること の メッセージ型
 PointStamped を 数 で PointStamped寸法する は 数
@@ -217,7 +217,7 @@ PointStamped を 番地 へ 数 で PointStamped書込する は 数 を 返す 
   （対象 の point） を 先 へ 位1 で Point書込する
   以上です
 
-番地 から 数 で PointStamped読取する は （PointStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PointStamped読取する は PointStamped の 読値 を 返す 入出力動作
 先 から 位0 で PointStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Point読取した 結果
@@ -225,7 +225,7 @@ PointStamped を 番地 へ 数 で PointStamped書込する は 数 を 返す 
   以上です
 
 # geometry_msgs/msg/Polygon
-Polygon とは points の 組
+Polygon とは points は Point32 の リスト の 組
 Polygon既定 とは points は 空 の Polygon
 Polygon型 とは 型名 は 「geometry_msgs/msg/Polygon」 で 寸法 は Polygon寸法すること で 書込 は Polygon書込すること で 読取 は Polygon読取すること の メッセージ型
 Polygon を 数 で Polygon寸法する は 数
@@ -237,14 +237,14 @@ Polygon を 番地 へ 数 で Polygon書込する は 数 を 返す 入出力�
   （対象 の points） を 先 へ 位0 で （Point32書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Polygon読取する は （Polygon と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Polygon読取する は Polygon の 読値 を 返す 入出力動作
 先 から 位0 で Polygon読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （Point32読取すること） に CDR可変列読取した 結果
   （値 は （points は （欄1 の 値） の Polygon） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # geometry_msgs/msg/PolygonInstance
-PolygonInstance とは polygon と id の 組
+PolygonInstance とは polygon は Polygon で id は 数 の 組
 PolygonInstance既定 とは polygon は Polygon既定 で id は 0 の PolygonInstance
 PolygonInstance型 とは 型名 は 「geometry_msgs/msg/PolygonInstance」 で 寸法 は PolygonInstance寸法すること で 書込 は PolygonInstance書込すること で 読取 は PolygonInstance読取すること の メッセージ型
 PolygonInstance を 数 で PolygonInstance寸法する は 数
@@ -258,7 +258,7 @@ PolygonInstance を 番地 へ 数 で PolygonInstance書込する は 数 を �
   （対象 の id） を 先 へ 位1 で CDR符号付き64書込する
   以上です
 
-番地 から 数 で PolygonInstance読取する は （PolygonInstance と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PolygonInstance読取する は PolygonInstance の 読値 を 返す 入出力動作
 先 から 位0 で PolygonInstance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Polygon読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR符号付き64読取した 結果
@@ -266,7 +266,7 @@ PolygonInstance を 番地 へ 数 で PolygonInstance書込する は 数 を �
   以上です
 
 # geometry_msgs/msg/PolygonInstanceStamped
-PolygonInstanceStamped とは header と polygon の 組
+PolygonInstanceStamped とは header は std_msgs内のHeader で polygon は PolygonInstance の 組
 PolygonInstanceStamped既定 とは header は std_msgs内のHeader既定 で polygon は PolygonInstance既定 の PolygonInstanceStamped
 PolygonInstanceStamped型 とは 型名 は 「geometry_msgs/msg/PolygonInstanceStamped」 で 寸法 は PolygonInstanceStamped寸法すること で 書込 は PolygonInstanceStamped書込すること で 読取 は PolygonInstanceStamped読取すること の メッセージ型
 PolygonInstanceStamped を 数 で PolygonInstanceStamped寸法する は 数
@@ -280,7 +280,7 @@ PolygonInstanceStamped を 番地 へ 数 で PolygonInstanceStamped書込する
   （対象 の polygon） を 先 へ 位1 で PolygonInstance書込する
   以上です
 
-番地 から 数 で PolygonInstanceStamped読取する は （PolygonInstanceStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PolygonInstanceStamped読取する は PolygonInstanceStamped の 読値 を 返す 入出力動作
 先 から 位0 で PolygonInstanceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で PolygonInstance読取した 結果
@@ -288,7 +288,7 @@ PolygonInstanceStamped を 番地 へ 数 で PolygonInstanceStamped書込する
   以上です
 
 # geometry_msgs/msg/PolygonStamped
-PolygonStamped とは header と polygon の 組
+PolygonStamped とは header は std_msgs内のHeader で polygon は Polygon の 組
 PolygonStamped既定 とは header は std_msgs内のHeader既定 で polygon は Polygon既定 の PolygonStamped
 PolygonStamped型 とは 型名 は 「geometry_msgs/msg/PolygonStamped」 で 寸法 は PolygonStamped寸法すること で 書込 は PolygonStamped書込すること で 読取 は PolygonStamped読取すること の メッセージ型
 PolygonStamped を 数 で PolygonStamped寸法する は 数
@@ -302,7 +302,7 @@ PolygonStamped を 番地 へ 数 で PolygonStamped書込する は 数 を 返
   （対象 の polygon） を 先 へ 位1 で Polygon書込する
   以上です
 
-番地 から 数 で PolygonStamped読取する は （PolygonStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PolygonStamped読取する は PolygonStamped の 読値 を 返す 入出力動作
 先 から 位0 で PolygonStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Polygon読取した 結果
@@ -310,7 +310,7 @@ PolygonStamped を 番地 へ 数 で PolygonStamped書込する は 数 を 返
   以上です
 
 # geometry_msgs/msg/Pose
-Pose とは position と orientation の 組
+Pose とは position は Point で orientation は Quaternion の 組
 Pose既定 とは position は Point既定 で orientation は Quaternion既定 の Pose
 Pose型 とは 型名 は 「geometry_msgs/msg/Pose」 で 寸法 は Pose寸法すること で 書込 は Pose書込すること で 読取 は Pose読取すること の メッセージ型
 Pose を 数 で Pose寸法する は 数
@@ -324,7 +324,7 @@ Pose を 番地 へ 数 で Pose書込する は 数 を 返す 入出力動作
   （対象 の orientation） を 先 へ 位1 で Quaternion書込する
   以上です
 
-番地 から 数 で Pose読取する は （Pose と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Pose読取する は Pose の 読値 を 返す 入出力動作
 先 から 位0 で Pose読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Point読取した 結果
   欄2 とは 先 から （欄1 の 次） で Quaternion読取した 結果
@@ -332,7 +332,7 @@ Pose を 番地 へ 数 で Pose書込する は 数 を 返す 入出力動作
   以上です
 
 # geometry_msgs/msg/Pose2D
-Pose2D とは x と y と theta の 組
+Pose2D とは x は 小数 で y は 小数 で theta は 小数 の 組
 Pose2D既定 とは x は 0.0 で y は 0.0 で theta は 0.0 の Pose2D
 Pose2D型 とは 型名 は 「geometry_msgs/msg/Pose2D」 で 寸法 は Pose2D寸法すること で 書込 は Pose2D書込すること で 読取 は Pose2D読取すること の メッセージ型
 Pose2D を 数 で Pose2D寸法する は 数
@@ -348,7 +348,7 @@ Pose2D を 番地 へ 数 で Pose2D書込する は 数 を 返す 入出力動
   （対象 の theta） を 先 へ 位2 で CDR小数書込する
   以上です
 
-番地 から 数 で Pose2D読取する は （Pose2D と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Pose2D読取する は Pose2D の 読値 を 返す 入出力動作
 先 から 位0 で Pose2D読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
@@ -357,7 +357,7 @@ Pose2D を 番地 へ 数 で Pose2D書込する は 数 を 返す 入出力動
   以上です
 
 # geometry_msgs/msg/PoseArray
-PoseArray とは header と poses の 組
+PoseArray とは header は std_msgs内のHeader で poses は Pose の リスト の 組
 PoseArray既定 とは header は std_msgs内のHeader既定 で poses は 空 の PoseArray
 PoseArray型 とは 型名 は 「geometry_msgs/msg/PoseArray」 で 寸法 は PoseArray寸法すること で 書込 は PoseArray書込すること で 読取 は PoseArray読取すること の メッセージ型
 PoseArray を 数 で PoseArray寸法する は 数
@@ -371,7 +371,7 @@ PoseArray を 番地 へ 数 で PoseArray書込する は 数 を 返す 入出
   （対象 の poses） を 先 へ 位1 で （Pose書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で PoseArray読取する は （PoseArray と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PoseArray読取する は PoseArray の 読値 を 返す 入出力動作
 先 から 位0 で PoseArray読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で （Pose読取すること） に CDR可変列読取した 結果
@@ -379,7 +379,7 @@ PoseArray を 番地 へ 数 で PoseArray書込する は 数 を 返す 入出
   以上です
 
 # geometry_msgs/msg/PoseStamped
-PoseStamped とは header と pose の 組
+PoseStamped とは header は std_msgs内のHeader で pose は Pose の 組
 PoseStamped既定 とは header は std_msgs内のHeader既定 で pose は Pose既定 の PoseStamped
 PoseStamped型 とは 型名 は 「geometry_msgs/msg/PoseStamped」 で 寸法 は PoseStamped寸法すること で 書込 は PoseStamped書込すること で 読取 は PoseStamped読取すること の メッセージ型
 PoseStamped を 数 で PoseStamped寸法する は 数
@@ -393,7 +393,7 @@ PoseStamped を 番地 へ 数 で PoseStamped書込する は 数 を 返す �
   （対象 の pose） を 先 へ 位1 で Pose書込する
   以上です
 
-番地 から 数 で PoseStamped読取する は （PoseStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PoseStamped読取する は PoseStamped の 読値 を 返す 入出力動作
 先 から 位0 で PoseStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Pose読取した 結果
@@ -401,7 +401,7 @@ PoseStamped を 番地 へ 数 で PoseStamped書込する は 数 を 返す �
   以上です
 
 # geometry_msgs/msg/PoseWithCovariance
-PoseWithCovariance とは pose と covariance の 組
+PoseWithCovariance とは pose は Pose で covariance は 小数 の リスト の 組
 PoseWithCovariance既定 とは pose は Pose既定 で covariance は （0.0 を 36 で 既定複製する） の PoseWithCovariance
 PoseWithCovariance型 とは 型名 は 「geometry_msgs/msg/PoseWithCovariance」 で 寸法 は PoseWithCovariance寸法すること で 書込 は PoseWithCovariance書込すること で 読取 は PoseWithCovariance読取すること の メッセージ型
 PoseWithCovariance を 数 で PoseWithCovariance寸法する は 数
@@ -415,7 +415,7 @@ PoseWithCovariance を 番地 へ 数 で PoseWithCovariance書込する は 数
   （対象 の covariance） を 先 へ 位1 で （CDR小数書込すること） に 36 より CDR固定列書込する
   以上です
 
-番地 から 数 で PoseWithCovariance読取する は （PoseWithCovariance と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PoseWithCovariance読取する は PoseWithCovariance の 読値 を 返す 入出力動作
 先 から 位0 で PoseWithCovariance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Pose読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に 36 より CDR固定列読取した 結果
@@ -423,7 +423,7 @@ PoseWithCovariance を 番地 へ 数 で PoseWithCovariance書込する は 数
   以上です
 
 # geometry_msgs/msg/PoseWithCovarianceStamped
-PoseWithCovarianceStamped とは header と pose の 組
+PoseWithCovarianceStamped とは header は std_msgs内のHeader で pose は PoseWithCovariance の 組
 PoseWithCovarianceStamped既定 とは header は std_msgs内のHeader既定 で pose は PoseWithCovariance既定 の PoseWithCovarianceStamped
 PoseWithCovarianceStamped型 とは 型名 は 「geometry_msgs/msg/PoseWithCovarianceStamped」 で 寸法 は PoseWithCovarianceStamped寸法すること で 書込 は PoseWithCovarianceStamped書込すること で 読取 は PoseWithCovarianceStamped読取すること の メッセージ型
 PoseWithCovarianceStamped を 数 で PoseWithCovarianceStamped寸法する は 数
@@ -437,7 +437,7 @@ PoseWithCovarianceStamped を 番地 へ 数 で PoseWithCovarianceStamped書込
   （対象 の pose） を 先 へ 位1 で PoseWithCovariance書込する
   以上です
 
-番地 から 数 で PoseWithCovarianceStamped読取する は （PoseWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で PoseWithCovarianceStamped読取する は PoseWithCovarianceStamped の 読値 を 返す 入出力動作
 先 から 位0 で PoseWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で PoseWithCovariance読取した 結果
@@ -445,7 +445,7 @@ PoseWithCovarianceStamped を 番地 へ 数 で PoseWithCovarianceStamped書込
   以上です
 
 # geometry_msgs/msg/Quaternion
-Quaternion とは x と y と z と w の 組
+Quaternion とは x は 小数 で y は 小数 で z は 小数 で w は 小数 の 組
 Quaternion既定 とは x は 0 で y は 0 で z は 0 で w は 1 の Quaternion
 Quaternion型 とは 型名 は 「geometry_msgs/msg/Quaternion」 で 寸法 は Quaternion寸法すること で 書込 は Quaternion書込すること で 読取 は Quaternion読取すること の メッセージ型
 Quaternion を 数 で Quaternion寸法する は 数
@@ -463,7 +463,7 @@ Quaternion を 番地 へ 数 で Quaternion書込する は 数 を 返す 入�
   （対象 の w） を 先 へ 位3 で CDR小数書込する
   以上です
 
-番地 から 数 で Quaternion読取する は （Quaternion と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Quaternion読取する は Quaternion の 読値 を 返す 入出力動作
 先 から 位0 で Quaternion読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
@@ -473,7 +473,7 @@ Quaternion を 番地 へ 数 で Quaternion書込する は 数 を 返す 入�
   以上です
 
 # geometry_msgs/msg/QuaternionStamped
-QuaternionStamped とは header と quaternion の 組
+QuaternionStamped とは header は std_msgs内のHeader で quaternion は Quaternion の 組
 QuaternionStamped既定 とは header は std_msgs内のHeader既定 で quaternion は Quaternion既定 の QuaternionStamped
 QuaternionStamped型 とは 型名 は 「geometry_msgs/msg/QuaternionStamped」 で 寸法 は QuaternionStamped寸法すること で 書込 は QuaternionStamped書込すること で 読取 は QuaternionStamped読取すること の メッセージ型
 QuaternionStamped を 数 で QuaternionStamped寸法する は 数
@@ -487,7 +487,7 @@ QuaternionStamped を 番地 へ 数 で QuaternionStamped書込する は 数 �
   （対象 の quaternion） を 先 へ 位1 で Quaternion書込する
   以上です
 
-番地 から 数 で QuaternionStamped読取する は （QuaternionStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で QuaternionStamped読取する は QuaternionStamped の 読値 を 返す 入出力動作
 先 から 位0 で QuaternionStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Quaternion読取した 結果
@@ -495,7 +495,7 @@ QuaternionStamped を 番地 へ 数 で QuaternionStamped書込する は 数 �
   以上です
 
 # geometry_msgs/msg/Transform
-Transform とは translation と rotation の 組
+Transform とは translation は Vector3 で rotation は Quaternion の 組
 Transform既定 とは translation は Vector3既定 で rotation は Quaternion既定 の Transform
 Transform型 とは 型名 は 「geometry_msgs/msg/Transform」 で 寸法 は Transform寸法すること で 書込 は Transform書込すること で 読取 は Transform読取すること の メッセージ型
 Transform を 数 で Transform寸法する は 数
@@ -509,7 +509,7 @@ Transform を 番地 へ 数 で Transform書込する は 数 を 返す 入出
   （対象 の rotation） を 先 へ 位1 で Quaternion書込する
   以上です
 
-番地 から 数 で Transform読取する は （Transform と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Transform読取する は Transform の 読値 を 返す 入出力動作
 先 から 位0 で Transform読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Quaternion読取した 結果
@@ -517,7 +517,7 @@ Transform を 番地 へ 数 で Transform書込する は 数 を 返す 入出
   以上です
 
 # geometry_msgs/msg/TransformStamped
-TransformStamped とは header と child_frame_id と transform の 組
+TransformStamped とは header は std_msgs内のHeader で child_frame_id は 文字列 で transform は Transform の 組
 TransformStamped既定 とは header は std_msgs内のHeader既定 で child_frame_id は 「」 で transform は Transform既定 の TransformStamped
 TransformStamped型 とは 型名 は 「geometry_msgs/msg/TransformStamped」 で 寸法 は TransformStamped寸法すること で 書込 は TransformStamped書込すること で 読取 は TransformStamped読取すること の メッセージ型
 TransformStamped を 数 で TransformStamped寸法する は 数
@@ -533,7 +533,7 @@ TransformStamped を 番地 へ 数 で TransformStamped書込する は 数 を
   （対象 の transform） を 先 へ 位2 で Transform書込する
   以上です
 
-番地 から 数 で TransformStamped読取する は （TransformStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で TransformStamped読取する は TransformStamped の 読値 を 返す 入出力動作
 先 から 位0 で TransformStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -542,7 +542,7 @@ TransformStamped を 番地 へ 数 で TransformStamped書込する は 数 を
   以上です
 
 # geometry_msgs/msg/Twist
-Twist とは linear と angular の 組
+Twist とは linear は Vector3 で angular は Vector3 の 組
 Twist既定 とは linear は Vector3既定 で angular は Vector3既定 の Twist
 Twist型 とは 型名 は 「geometry_msgs/msg/Twist」 で 寸法 は Twist寸法すること で 書込 は Twist書込すること で 読取 は Twist読取すること の メッセージ型
 Twist を 数 で Twist寸法する は 数
@@ -556,7 +556,7 @@ Twist を 番地 へ 数 で Twist書込する は 数 を 返す 入出力動�
   （対象 の angular） を 先 へ 位1 で Vector3書込する
   以上です
 
-番地 から 数 で Twist読取する は （Twist と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Twist読取する は Twist の 読値 を 返す 入出力動作
 先 から 位0 で Twist読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
@@ -564,7 +564,7 @@ Twist を 番地 へ 数 で Twist書込する は 数 を 返す 入出力動�
   以上です
 
 # geometry_msgs/msg/TwistStamped
-TwistStamped とは header と twist の 組
+TwistStamped とは header は std_msgs内のHeader で twist は Twist の 組
 TwistStamped既定 とは header は std_msgs内のHeader既定 で twist は Twist既定 の TwistStamped
 TwistStamped型 とは 型名 は 「geometry_msgs/msg/TwistStamped」 で 寸法 は TwistStamped寸法すること で 書込 は TwistStamped書込すること で 読取 は TwistStamped読取すること の メッセージ型
 TwistStamped を 数 で TwistStamped寸法する は 数
@@ -578,7 +578,7 @@ TwistStamped を 番地 へ 数 で TwistStamped書込する は 数 を 返す 
   （対象 の twist） を 先 へ 位1 で Twist書込する
   以上です
 
-番地 から 数 で TwistStamped読取する は （TwistStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で TwistStamped読取する は TwistStamped の 読値 を 返す 入出力動作
 先 から 位0 で TwistStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Twist読取した 結果
@@ -586,7 +586,7 @@ TwistStamped を 番地 へ 数 で TwistStamped書込する は 数 を 返す 
   以上です
 
 # geometry_msgs/msg/TwistWithCovariance
-TwistWithCovariance とは twist と covariance の 組
+TwistWithCovariance とは twist は Twist で covariance は 小数 の リスト の 組
 TwistWithCovariance既定 とは twist は Twist既定 で covariance は （0.0 を 36 で 既定複製する） の TwistWithCovariance
 TwistWithCovariance型 とは 型名 は 「geometry_msgs/msg/TwistWithCovariance」 で 寸法 は TwistWithCovariance寸法すること で 書込 は TwistWithCovariance書込すること で 読取 は TwistWithCovariance読取すること の メッセージ型
 TwistWithCovariance を 数 で TwistWithCovariance寸法する は 数
@@ -600,7 +600,7 @@ TwistWithCovariance を 番地 へ 数 で TwistWithCovariance書込する は �
   （対象 の covariance） を 先 へ 位1 で （CDR小数書込すること） に 36 より CDR固定列書込する
   以上です
 
-番地 から 数 で TwistWithCovariance読取する は （TwistWithCovariance と 数） の 読値 を 返す 入出力動作
+番地 から 数 で TwistWithCovariance読取する は TwistWithCovariance の 読値 を 返す 入出力動作
 先 から 位0 で TwistWithCovariance読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Twist読取した 結果
   欄2 とは 先 から （欄1 の 次） で （CDR小数読取すること） に 36 より CDR固定列読取した 結果
@@ -608,7 +608,7 @@ TwistWithCovariance を 番地 へ 数 で TwistWithCovariance書込する は �
   以上です
 
 # geometry_msgs/msg/TwistWithCovarianceStamped
-TwistWithCovarianceStamped とは header と twist の 組
+TwistWithCovarianceStamped とは header は std_msgs内のHeader で twist は TwistWithCovariance の 組
 TwistWithCovarianceStamped既定 とは header は std_msgs内のHeader既定 で twist は TwistWithCovariance既定 の TwistWithCovarianceStamped
 TwistWithCovarianceStamped型 とは 型名 は 「geometry_msgs/msg/TwistWithCovarianceStamped」 で 寸法 は TwistWithCovarianceStamped寸法すること で 書込 は TwistWithCovarianceStamped書込すること で 読取 は TwistWithCovarianceStamped読取すること の メッセージ型
 TwistWithCovarianceStamped を 数 で TwistWithCovarianceStamped寸法する は 数
@@ -622,7 +622,7 @@ TwistWithCovarianceStamped を 番地 へ 数 で TwistWithCovarianceStamped書�
   （対象 の twist） を 先 へ 位1 で TwistWithCovariance書込する
   以上です
 
-番地 から 数 で TwistWithCovarianceStamped読取する は （TwistWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で TwistWithCovarianceStamped読取する は TwistWithCovarianceStamped の 読値 を 返す 入出力動作
 先 から 位0 で TwistWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で TwistWithCovariance読取した 結果
@@ -630,7 +630,7 @@ TwistWithCovarianceStamped を 番地 へ 数 で TwistWithCovarianceStamped書�
   以上です
 
 # geometry_msgs/msg/Vector3
-Vector3 とは x と y と z の 組
+Vector3 とは x は 小数 で y は 小数 で z は 小数 の 組
 Vector3既定 とは x は 0.0 で y は 0.0 で z は 0.0 の Vector3
 Vector3型 とは 型名 は 「geometry_msgs/msg/Vector3」 で 寸法 は Vector3寸法すること で 書込 は Vector3書込すること で 読取 は Vector3読取すること の メッセージ型
 Vector3 を 数 で Vector3寸法する は 数
@@ -646,7 +646,7 @@ Vector3 を 番地 へ 数 で Vector3書込する は 数 を 返す 入出力�
   （対象 の z） を 先 へ 位2 で CDR小数書込する
   以上です
 
-番地 から 数 で Vector3読取する は （Vector3 と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Vector3読取する は Vector3 の 読値 を 返す 入出力動作
 先 から 位0 で Vector3読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR小数読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR小数読取した 結果
@@ -655,7 +655,7 @@ Vector3 を 番地 へ 数 で Vector3書込する は 数 を 返す 入出力�
   以上です
 
 # geometry_msgs/msg/Vector3Stamped
-Vector3Stamped とは header と vector の 組
+Vector3Stamped とは header は std_msgs内のHeader で vector は Vector3 の 組
 Vector3Stamped既定 とは header は std_msgs内のHeader既定 で vector は Vector3既定 の Vector3Stamped
 Vector3Stamped型 とは 型名 は 「geometry_msgs/msg/Vector3Stamped」 で 寸法 は Vector3Stamped寸法すること で 書込 は Vector3Stamped書込すること で 読取 は Vector3Stamped読取すること の メッセージ型
 Vector3Stamped を 数 で Vector3Stamped寸法する は 数
@@ -669,7 +669,7 @@ Vector3Stamped を 番地 へ 数 で Vector3Stamped書込する は 数 を 返
   （対象 の vector） を 先 へ 位1 で Vector3書込する
   以上です
 
-番地 から 数 で Vector3Stamped読取する は （Vector3Stamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Vector3Stamped読取する は Vector3Stamped の 読値 を 返す 入出力動作
 先 から 位0 で Vector3Stamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
@@ -677,7 +677,7 @@ Vector3Stamped を 番地 へ 数 で Vector3Stamped書込する は 数 を 返
   以上です
 
 # geometry_msgs/msg/VelocityStamped
-VelocityStamped とは header と body_frame_id と reference_frame_id と velocity の 組
+VelocityStamped とは header は std_msgs内のHeader で body_frame_id は 文字列 で reference_frame_id は 文字列 で velocity は Twist の 組
 VelocityStamped既定 とは header は std_msgs内のHeader既定 で body_frame_id は 「」 で reference_frame_id は 「」 で velocity は Twist既定 の VelocityStamped
 VelocityStamped型 とは 型名 は 「geometry_msgs/msg/VelocityStamped」 で 寸法 は VelocityStamped寸法すること で 書込 は VelocityStamped書込すること で 読取 は VelocityStamped読取すること の メッセージ型
 VelocityStamped を 数 で VelocityStamped寸法する は 数
@@ -695,7 +695,7 @@ VelocityStamped を 番地 へ 数 で VelocityStamped書込する は 数 を �
   （対象 の velocity） を 先 へ 位3 で Twist書込する
   以上です
 
-番地 から 数 で VelocityStamped読取する は （VelocityStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で VelocityStamped読取する は VelocityStamped の 読値 を 返す 入出力動作
 先 から 位0 で VelocityStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -705,7 +705,7 @@ VelocityStamped を 番地 へ 数 で VelocityStamped書込する は 数 を �
   以上です
 
 # geometry_msgs/msg/VelocityWithCovarianceStamped
-VelocityWithCovarianceStamped とは header と body_frame_id と reference_frame_id と velocity の 組
+VelocityWithCovarianceStamped とは header は std_msgs内のHeader で body_frame_id は 文字列 で reference_frame_id は 文字列 で velocity は TwistWithCovariance の 組
 VelocityWithCovarianceStamped既定 とは header は std_msgs内のHeader既定 で body_frame_id は 「」 で reference_frame_id は 「」 で velocity は TwistWithCovariance既定 の VelocityWithCovarianceStamped
 VelocityWithCovarianceStamped型 とは 型名 は 「geometry_msgs/msg/VelocityWithCovarianceStamped」 で 寸法 は VelocityWithCovarianceStamped寸法すること で 書込 は VelocityWithCovarianceStamped書込すること で 読取 は VelocityWithCovarianceStamped読取すること の メッセージ型
 VelocityWithCovarianceStamped を 数 で VelocityWithCovarianceStamped寸法する は 数
@@ -723,7 +723,7 @@ VelocityWithCovarianceStamped を 番地 へ 数 で VelocityWithCovarianceStamp
   （対象 の velocity） を 先 へ 位3 で TwistWithCovariance書込する
   以上です
 
-番地 から 数 で VelocityWithCovarianceStamped読取する は （VelocityWithCovarianceStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で VelocityWithCovarianceStamped読取する は VelocityWithCovarianceStamped の 読値 を 返す 入出力動作
 先 から 位0 で VelocityWithCovarianceStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で CDR文字列読取した 結果
@@ -733,7 +733,7 @@ VelocityWithCovarianceStamped を 番地 へ 数 で VelocityWithCovarianceStamp
   以上です
 
 # geometry_msgs/msg/Wrench
-Wrench とは force と torque の 組
+Wrench とは force は Vector3 で torque は Vector3 の 組
 Wrench既定 とは force は Vector3既定 で torque は Vector3既定 の Wrench
 Wrench型 とは 型名 は 「geometry_msgs/msg/Wrench」 で 寸法 は Wrench寸法すること で 書込 は Wrench書込すること で 読取 は Wrench読取すること の メッセージ型
 Wrench を 数 で Wrench寸法する は 数
@@ -747,7 +747,7 @@ Wrench を 番地 へ 数 で Wrench書込する は 数 を 返す 入出力動
   （対象 の torque） を 先 へ 位1 で Vector3書込する
   以上です
 
-番地 から 数 で Wrench読取する は （Wrench と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Wrench読取する は Wrench の 読値 を 返す 入出力動作
 先 から 位0 で Wrench読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で Vector3読取した 結果
   欄2 とは 先 から （欄1 の 次） で Vector3読取した 結果
@@ -755,7 +755,7 @@ Wrench を 番地 へ 数 で Wrench書込する は 数 を 返す 入出力動
   以上です
 
 # geometry_msgs/msg/WrenchStamped
-WrenchStamped とは header と wrench の 組
+WrenchStamped とは header は std_msgs内のHeader で wrench は Wrench の 組
 WrenchStamped既定 とは header は std_msgs内のHeader既定 で wrench は Wrench既定 の WrenchStamped
 WrenchStamped型 とは 型名 は 「geometry_msgs/msg/WrenchStamped」 で 寸法 は WrenchStamped寸法すること で 書込 は WrenchStamped書込すること で 読取 は WrenchStamped読取すること の メッセージ型
 WrenchStamped を 数 で WrenchStamped寸法する は 数
@@ -769,7 +769,7 @@ WrenchStamped を 番地 へ 数 で WrenchStamped書込する は 数 を 返�
   （対象 の wrench） を 先 へ 位1 で Wrench書込する
   以上です
 
-番地 から 数 で WrenchStamped読取する は （WrenchStamped と 数） の 読値 を 返す 入出力動作
+番地 から 数 で WrenchStamped読取する は WrenchStamped の 読値 を 返す 入出力動作
 先 から 位0 で WrenchStamped読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で Wrench読取した 結果

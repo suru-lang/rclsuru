@@ -4,7 +4,7 @@
 「sensor_msgs」 を 読み込む
 
 # stereo_msgs/msg/DisparityImage
-DisparityImage とは header と image と f と t と valid_window と min_disparity と max_disparity と delta_d の 組
+DisparityImage とは header は std_msgs内のHeader で image は sensor_msgs内のImage で f は 小数 で t は 小数 で valid_window は sensor_msgs内のRegionOfInterest で min_disparity は 小数 で max_disparity は 小数 で delta_d は 小数 の 組
 DisparityImage既定 とは header は std_msgs内のHeader既定 で image は sensor_msgs内のImage既定 で f は 0.0 で t は 0.0 で valid_window は sensor_msgs内のRegionOfInterest既定 で min_disparity は 0.0 で max_disparity は 0.0 で delta_d は 0.0 の DisparityImage
 DisparityImage型 とは 型名 は 「stereo_msgs/msg/DisparityImage」 で 寸法 は DisparityImage寸法すること で 書込 は DisparityImage書込すること で 読取 は DisparityImage読取すること の メッセージ型
 DisparityImage を 数 で DisparityImage寸法する は 数
@@ -30,7 +30,7 @@ DisparityImage を 番地 へ 数 で DisparityImage書込する は 数 を 返
   （対象 の delta_d） を 先 へ 位7 で CDR単精度書込する
   以上です
 
-番地 から 数 で DisparityImage読取する は （DisparityImage と 数） の 読値 を 返す 入出力動作
+番地 から 数 で DisparityImage読取する は DisparityImage の 読値 を 返す 入出力動作
 先 から 位0 で DisparityImage読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で std_msgs内のHeader読取した 結果
   欄2 とは 先 から （欄1 の 次） で sensor_msgs内のImage読取した 結果

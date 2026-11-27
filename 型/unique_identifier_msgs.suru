@@ -2,7 +2,7 @@
 「rclsuru/CDR」 を 読み込んで 使う
 
 # unique_identifier_msgs/msg/UUID
-UUID とは uuid の 組
+UUID とは uuid は バイト列 の 組
 UUID既定 とは uuid は （16 を 零バイト列にする） の UUID
 UUID型 とは 型名 は 「unique_identifier_msgs/msg/UUID」 で 寸法 は UUID寸法すること で 書込 は UUID書込すること で 読取 は UUID読取すること の メッセージ型
 UUID を 数 で UUID寸法する は 数
@@ -14,7 +14,7 @@ UUID を 番地 へ 数 で UUID書込する は 数 を 返す 入出力動作
   （対象 の uuid） を 先 へ 位0 で 16 より CDRバイト固定列書込する
   以上です
 
-番地 から 数 で UUID読取する は （UUID と 数） の 読値 を 返す 入出力動作
+番地 から 数 で UUID読取する は UUID の 読値 を 返す 入出力動作
 先 から 位0 で UUID読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で 16 より CDRバイト固定列読取した 結果
   （値 は （uuid は （欄1 の 値） の UUID） で 次 は （欄1 の 次） の 読値） を 結果にする

@@ -4,7 +4,7 @@
 「rcl_interfaces」 を 読み込む
 
 # rosgraph_msgs/msg/Action
-Action とは name と send_goal と get_result と cancel_goal と feedback と status の 組
+Action とは name は 文字列 で send_goal は Service で get_result は Service で cancel_goal は Service で feedback は Topic で status は Topic の 組
 Action既定 とは name は 「」 で send_goal は Service既定 で get_result は Service既定 で cancel_goal は Service既定 で feedback は Topic既定 で status は Topic既定 の Action
 Action型 とは 型名 は 「rosgraph_msgs/msg/Action」 で 寸法 は Action寸法すること で 書込 は Action書込すること で 読取 は Action読取すること の メッセージ型
 Action を 数 で Action寸法する は 数
@@ -26,7 +26,7 @@ Action を 番地 へ 数 で Action書込する は 数 を 返す 入出力動
   （対象 の status） を 先 へ 位5 で Topic書込する
   以上です
 
-番地 から 数 で Action読取する は （Action と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Action読取する は Action の 読値 を 返す 入出力動作
 先 から 位0 で Action読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で Service読取した 結果
@@ -38,7 +38,7 @@ Action を 番地 へ 数 で Action書込する は 数 を 返す 入出力動
   以上です
 
 # rosgraph_msgs/msg/Clock
-Clock とは clock の 組
+Clock とは clock は builtin_interfaces内のTime の 組
 Clock既定 とは clock は builtin_interfaces内のTime既定 の Clock
 Clock型 とは 型名 は 「rosgraph_msgs/msg/Clock」 で 寸法 は Clock寸法すること で 書込 は Clock書込すること で 読取 は Clock読取すること の メッセージ型
 Clock を 数 で Clock寸法する は 数
@@ -50,14 +50,14 @@ Clock を 番地 へ 数 で Clock書込する は 数 を 返す 入出力動�
   （対象 の clock） を 先 へ 位0 で builtin_interfaces内のTime書込する
   以上です
 
-番地 から 数 で Clock読取する は （Clock と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Clock読取する は Clock の 読値 を 返す 入出力動作
 先 から 位0 で Clock読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で builtin_interfaces内のTime読取した 結果
   （値 は （clock は （欄1 の 値） の Clock） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rosgraph_msgs/msg/Graph
-Graph とは nodes の 組
+Graph とは nodes は Node の リスト の 組
 Graph既定 とは nodes は 空 の Graph
 Graph型 とは 型名 は 「rosgraph_msgs/msg/Graph」 で 寸法 は Graph寸法すること で 書込 は Graph書込すること で 読取 は Graph読取すること の メッセージ型
 Graph を 数 で Graph寸法する は 数
@@ -69,14 +69,14 @@ Graph を 番地 へ 数 で Graph書込する は 数 を 返す 入出力動�
   （対象 の nodes） を 先 へ 位0 で （Node書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Graph読取する は （Graph と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Graph読取する は Graph の 読値 を 返す 入出力動作
 先 から 位0 で Graph読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で （Node読取すること） に CDR可変列読取した 結果
   （値 は （nodes は （欄1 の 値） の Graph） で 次 は （欄1 の 次） の 読値） を 結果にする
   以上です
 
 # rosgraph_msgs/msg/InterfaceType
-InterfaceType とは name と hash の 組
+InterfaceType とは name は 文字列 で hash は TypeHash の 組
 InterfaceType既定 とは name は 「」 で hash は TypeHash既定 の InterfaceType
 InterfaceType型 とは 型名 は 「rosgraph_msgs/msg/InterfaceType」 で 寸法 は InterfaceType寸法すること で 書込 は InterfaceType書込すること で 読取 は InterfaceType読取すること の メッセージ型
 InterfaceType を 数 で InterfaceType寸法する は 数
@@ -90,7 +90,7 @@ InterfaceType を 番地 へ 数 で InterfaceType書込する は 数 を 返�
   （対象 の hash） を 先 へ 位1 で TypeHash書込する
   以上です
 
-番地 から 数 で InterfaceType読取する は （InterfaceType と 数） の 読値 を 返す 入出力動作
+番地 から 数 で InterfaceType読取する は InterfaceType の 読値 を 返す 入出力動作
 先 から 位0 で InterfaceType読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で TypeHash読取した 結果
@@ -98,7 +98,7 @@ InterfaceType を 番地 へ 数 で InterfaceType書込する は 数 を 返�
   以上です
 
 # rosgraph_msgs/msg/Node
-Node とは name と parameters と parameter_values と publishers と subscriptions と service_clients と service_servers と action_clients と action_servers の 組
+Node とは name は 文字列 で parameters は rcl_interfaces内のParameterDescriptor の リスト で parameter_values は rcl_interfaces内のParameterValue の リスト で publishers は Topic の リスト で subscriptions は Topic の リスト で service_clients は Service の リスト で service_servers は Service の リスト で action_clients は Action の リスト で action_servers は Action の リスト の 組
 Node既定 とは name は 「」 で parameters は 空 で parameter_values は 空 で publishers は 空 で subscriptions は 空 で service_clients は 空 で service_servers は 空 で action_clients は 空 で action_servers は 空 の Node
 Node型 とは 型名 は 「rosgraph_msgs/msg/Node」 で 寸法 は Node寸法すること で 書込 は Node書込すること で 読取 は Node読取すること の メッセージ型
 Node を 数 で Node寸法する は 数
@@ -126,7 +126,7 @@ Node を 番地 へ 数 で Node書込する は 数 を 返す 入出力動作
   （対象 の action_servers） を 先 へ 位8 で （Action書込すること） に CDR可変列書込する
   以上です
 
-番地 から 数 で Node読取する は （Node と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Node読取する は Node の 読値 を 返す 入出力動作
 先 から 位0 で Node読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で （rcl_interfaces内のParameterDescriptor読取すること） に CDR可変列読取した 結果
@@ -141,7 +141,7 @@ Node を 番地 へ 数 で Node書込する は 数 を 返す 入出力動作
   以上です
 
 # rosgraph_msgs/msg/QoSProfile
-QoSProfile とは depth と deadline と lifespan と history と reliability と durability と liveliness と liveliness_lease_duration の 組
+QoSProfile とは depth は 数 で deadline は builtin_interfaces内のDuration で lifespan は builtin_interfaces内のDuration で history は 数 で reliability は 数 で durability は 数 で liveliness は 数 で liveliness_lease_duration は builtin_interfaces内のDuration の 組
 QoSProfile既定 とは depth は 0 で deadline は builtin_interfaces内のDuration既定 で lifespan は builtin_interfaces内のDuration既定 で history は 0 で reliability は 0 で durability は 0 で liveliness は 0 で liveliness_lease_duration は builtin_interfaces内のDuration既定 の QoSProfile
 QoSProfile型 とは 型名 は 「rosgraph_msgs/msg/QoSProfile」 で 寸法 は QoSProfile寸法すること で 書込 は QoSProfile書込すること で 読取 は QoSProfile読取すること の メッセージ型
 QoSProfile_HISTORY_SYSTEM_DEFAULT とは 0
@@ -186,7 +186,7 @@ QoSProfile を 番地 へ 数 で QoSProfile書込する は 数 を 返す 入�
   （対象 の liveliness_lease_duration） を 先 へ 位7 で builtin_interfaces内のDuration書込する
   以上です
 
-番地 から 数 で QoSProfile読取する は （QoSProfile と 数） の 読値 を 返す 入出力動作
+番地 から 数 で QoSProfile読取する は QoSProfile の 読値 を 返す 入出力動作
 先 から 位0 で QoSProfile読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし32読取した 結果
   欄2 とは 先 から （欄1 の 次） で builtin_interfaces内のDuration読取した 結果
@@ -200,7 +200,7 @@ QoSProfile を 番地 へ 数 で QoSProfile書込する は 数 を 返す 入�
   以上です
 
 # rosgraph_msgs/msg/Service
-Service とは name と request_type と request_qos と response_type と response_qos の 組
+Service とは name は 文字列 で request_type は InterfaceType で request_qos は QoSProfile で response_type は InterfaceType で response_qos は QoSProfile の 組
 Service既定 とは name は 「」 で request_type は InterfaceType既定 で request_qos は QoSProfile既定 で response_type は InterfaceType既定 で response_qos は QoSProfile既定 の Service
 Service型 とは 型名 は 「rosgraph_msgs/msg/Service」 で 寸法 は Service寸法すること で 書込 は Service書込すること で 読取 は Service読取すること の メッセージ型
 Service を 数 で Service寸法する は 数
@@ -220,7 +220,7 @@ Service を 番地 へ 数 で Service書込する は 数 を 返す 入出力�
   （対象 の response_qos） を 先 へ 位4 で QoSProfile書込する
   以上です
 
-番地 から 数 で Service読取する は （Service と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Service読取する は Service の 読値 を 返す 入出力動作
 先 から 位0 で Service読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で InterfaceType読取した 結果
@@ -231,7 +231,7 @@ Service を 番地 へ 数 で Service書込する は 数 を 返す 入出力�
   以上です
 
 # rosgraph_msgs/msg/Topic
-Topic とは name と type と qos の 組
+Topic とは name は 文字列 で type は InterfaceType で qos は QoSProfile の 組
 Topic既定 とは name は 「」 で type は InterfaceType既定 で qos は QoSProfile既定 の Topic
 Topic型 とは 型名 は 「rosgraph_msgs/msg/Topic」 で 寸法 は Topic寸法すること で 書込 は Topic書込すること で 読取 は Topic読取すること の メッセージ型
 Topic を 数 で Topic寸法する は 数
@@ -247,7 +247,7 @@ Topic を 番地 へ 数 で Topic書込する は 数 を 返す 入出力動�
   （対象 の qos） を 先 へ 位2 で QoSProfile書込する
   以上です
 
-番地 から 数 で Topic読取する は （Topic と 数） の 読値 を 返す 入出力動作
+番地 から 数 で Topic読取する は Topic の 読値 を 返す 入出力動作
 先 から 位0 で Topic読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR文字列読取した 結果
   欄2 とは 先 から （欄1 の 次） で InterfaceType読取した 結果
@@ -256,7 +256,7 @@ Topic を 番地 へ 数 で Topic書込する は 数 を 返す 入出力動�
   以上です
 
 # rosgraph_msgs/msg/TypeHash
-TypeHash とは version と value の 組
+TypeHash とは version は 数 で value は バイト列 の 組
 TypeHash既定 とは version は 1 で value は （32 を 零バイト列にする） の TypeHash
 TypeHash型 とは 型名 は 「rosgraph_msgs/msg/TypeHash」 で 寸法 は TypeHash寸法すること で 書込 は TypeHash書込すること で 読取 は TypeHash読取すること の メッセージ型
 TypeHash を 数 で TypeHash寸法する は 数
@@ -270,7 +270,7 @@ TypeHash を 番地 へ 数 で TypeHash書込する は 数 を 返す 入出�
   （対象 の value） を 先 へ 位1 で 32 より CDRバイト固定列書込する
   以上です
 
-番地 から 数 で TypeHash読取する は （TypeHash と 数） の 読値 を 返す 入出力動作
+番地 から 数 で TypeHash読取する は TypeHash の 読値 を 返す 入出力動作
 先 から 位0 で TypeHash読取する とは 以下の入出力手順です
   欄1 とは 先 から 位0 で CDR符号なし8読取した 結果
   欄2 とは 先 から （欄1 の 次） で 32 より CDRバイト固定列読取した 結果
