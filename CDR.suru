@@ -1,38 +1,40 @@
-# CDR(ROS 2 のメッセージの直列化の形)を読み書きする関数
-# 生成した型のファイル(型/*.suru)と rclsuru.suru が使います。
+# Functions that read and write CDR (the serialization format of ROS 2 messages).
+# They are used by the generated type files (型/*.suru) and by rclsuru.suru.
 #
-# 位置 i は、CDR の頭(4 バイト)の後ろを 0 とするバイトの位置です。値はその型の大きさに揃えて置きます
-# (8 バイトの型は 8 の倍数の位置)。
-#   x を i で CDR型寸法する          … x を i に書いたときの、終わりの位置
-#   x を p へ i で CDR型書込する      … 番地 p の i に書いて、終わりの位置を返す動作
-#   p から i で CDR型読取する        … 値 と 次の位置 の 読値 を返す動作
-# 型は 真偽・符号付き8〜64・符号なし8〜64・単精度・小数・文字列 です。
+# A position `i` is a byte position where 0 is right after the CDR header (4 bytes). Each value is aligned to its size
+# (an 8-byte type at a multiple of 8). For each type there are:
+#
+# - `x を i で CDR型寸法する`: the end position when `x` is written at `i`
+# - `x を p へ i で CDR型書込する`: writes at `i` of address `p` and returns the end position
+# - `p から i で CDR型読取する`: returns a `読値` of the value and the next position
+#
+# The types are 真偽, 符号付き8–64, 符号なし8–64, 単精度, 小数 and 文字列.
 「標準」 を 読み込んで 使う
 
-# 読んだ値と、その後ろの位置
+# A value that was read, and the position right after it.
 読値 とは 値 は 甲 で 次 は 数 の 組
 
-# 型名 は 「std_msgs/msg/String」 のような名前
-# 寸法 は 値 を 位置 で 寸法する 関数、書込 は 値 を 番地 へ 位置 で 書く動作、読取 は 番地 から 位置 で 読む動作
-# (フィールドの型では、まだ「数 を 返す 入出力動作」と書けないので「数 の 入出力動作」と書いています。suru#206)
+# A message type. `型名` is a name like 「std_msgs/msg/String」.
+# `寸法` measures a value at a position, `書込` writes a value to an address at a position, and `読取` reads from an address at a position.
+# (Field types cannot say 「数 を 返す 入出力動作」 yet, so they are written 「数 の 入出力動作」. suru#206)
 メッセージ型 とは 型名 は 文字列 で 寸法 は （甲 を 数 で 受け取って 数 を 返すこと） で 書込 は （甲 を 番地 へ 数 で 受け取って 数 の 入出力動作 を 返すこと） で 読取 は （番地 から 数 で 受け取って 甲 の 読値 の 入出力動作 を 返すこと） の 組
-# 型名 は 「std_srvs/srv/SetBool」 のような名前。要求 と 応答 は メッセージ型
+# A service type. `型名` is a name like 「std_srvs/srv/SetBool」, and `要求` (request) and `応答` (response) are `メッセージ型`.
 サービス型 とは 型名 は 文字列 で 要求 は 甲 の メッセージ型 で 応答 は 乙 の メッセージ型 の 組
-# 型名 は 「example_interfaces/action/Fibonacci」 のような名前。送信 と 結果取得 は サービス型、途中 は メッセージ型。
-# 残りは中のメッセージを組み立てる・取り出す関数(生成器が作る):
-#   目標包装(UUID を 目標 で)・目標開封・目標ID(送信の要求から)、受付包装(真偽 を 時刻 で)・受付開封(送信の応答から)、
-#   結果要求包装(UUID)・結果要求ID、結果包装(状態 を 結果 で)・結果開封・結果状態、途中包装(UUID を 途中 で)・途中開封・途中ID、結果既定 は結果の既定の値
+# An action type. `型名` is a name like 「example_interfaces/action/Fibonacci」. `送信` (send goal) and `結果取得` (get result) are `サービス型`, and `途中` (feedback) is a `メッセージ型`.
+# The rest are functions that build and take apart the inner messages (written by the generator):
+# `目標包装` (UUID with goal), `目標開封`, `目標ID` (from the send-goal request), `受付包装` (accepted flag with time), `受付開封` (from the send-goal response),
+# `結果要求包装` (UUID), `結果要求ID`, `結果包装` (status with result), `結果開封`, `結果状態`, `途中包装` (UUID with feedback), `途中開封`, `途中ID`, and `結果既定`, the default result.
 アクション型 とは 型名 と 送信 と 結果取得 と 途中 と 目標包装 と 目標開封 と 目標ID と 受付包装 と 受付開封 と 結果要求包装 と 結果要求ID と 結果包装 と 結果開封 と 結果状態 と 途中包装 と 途中開封 と 途中ID と 結果既定 の 組
 
 p を b で n に 複写する とは 外部の「memcpy」 で 番地 を バイト列 で 数 に 受け取って 番地 を 返す 入出力動作です
 
-# i を n の倍数に切り上げる
+# Rounds `i` up to a multiple of `n`.
 数 を 数 で 揃えする は 数
 i を n で 揃えする とは i + （（n - （i % n）） % n）
 例えば （5 を 4 で 揃えする） は 8 です
 例えば （8 を 4 で 揃えする） は 8 です
 
-# 符号付き8(1 バイト)
+# int8 (1 byte). The other functions for each type are `…書込する` (write) and `…読取する` (read).
 数 を 数 で CDR符号付き8寸法する は 数
 x を i で CDR符号付き8寸法する とは （i を 1 で 揃えする） + 1  # 点検しない: 未使用の引数
 
@@ -50,7 +52,7 @@ p から i で CDR符号付き8読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 1 の 読値） を 結果にする
   以上です
 
-# 符号なし8(1 バイト)
+# uint8 (1 byte).
 数 を 数 で CDR符号なし8寸法する は 数
 x を i で CDR符号なし8寸法する とは （i を 1 で 揃えする） + 1  # 点検しない: 未使用の引数
 
@@ -68,7 +70,7 @@ p から i で CDR符号なし8読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 1 の 読値） を 結果にする
   以上です
 
-# 符号付き16(2 バイト)
+# int16 (2 bytes).
 数 を 数 で CDR符号付き16寸法する は 数
 x を i で CDR符号付き16寸法する とは （i を 2 で 揃えする） + 2  # 点検しない: 未使用の引数
 
@@ -86,7 +88,7 @@ p から i で CDR符号付き16読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 2 の 読値） を 結果にする
   以上です
 
-# 符号なし16(2 バイト)
+# uint16 (2 bytes).
 数 を 数 で CDR符号なし16寸法する は 数
 x を i で CDR符号なし16寸法する とは （i を 2 で 揃えする） + 2  # 点検しない: 未使用の引数
 
@@ -104,7 +106,7 @@ p から i で CDR符号なし16読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 2 の 読値） を 結果にする
   以上です
 
-# 符号付き32(4 バイト)
+# int32 (4 bytes).
 数 を 数 で CDR符号付き32寸法する は 数
 x を i で CDR符号付き32寸法する とは （i を 4 で 揃えする） + 4  # 点検しない: 未使用の引数
 
@@ -122,7 +124,7 @@ p から i で CDR符号付き32読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 4 の 読値） を 結果にする
   以上です
 
-# 符号なし32(4 バイト)
+# uint32 (4 bytes).
 数 を 数 で CDR符号なし32寸法する は 数
 x を i で CDR符号なし32寸法する とは （i を 4 で 揃えする） + 4  # 点検しない: 未使用の引数
 
@@ -140,7 +142,7 @@ p から i で CDR符号なし32読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 4 の 読値） を 結果にする
   以上です
 
-# 符号付き64(8 バイト)
+# int64 (8 bytes).
 数 を 数 で CDR符号付き64寸法する は 数
 x を i で CDR符号付き64寸法する とは （i を 8 で 揃えする） + 8  # 点検しない: 未使用の引数
 
@@ -158,7 +160,7 @@ p から i で CDR符号付き64読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 8 の 読値） を 結果にする
   以上です
 
-# 符号なし64(8 バイト)
+# uint64 (8 bytes).
 数 を 数 で CDR符号なし64寸法する は 数
 x を i で CDR符号なし64寸法する とは （i を 8 で 揃えする） + 8  # 点検しない: 未使用の引数
 
@@ -176,7 +178,7 @@ p から i で CDR符号なし64読取する とは 以下の入出力手順で�
   （値 は v で 次 は j + 8 の 読値） を 結果にする
   以上です
 
-# 単精度(4 バイト)
+# float32 (4 bytes).
 数 を 数 で CDR単精度寸法する は 数
 x を i で CDR単精度寸法する とは （i を 4 で 揃えする） + 4  # 点検しない: 未使用の引数
 
@@ -194,7 +196,7 @@ p から i で CDR単精度読取する とは 以下の入出力手順です
   （値 は v で 次 は j + 4 の 読値） を 結果にする
   以上です
 
-# 小数(8 バイト)
+# float64 (8 bytes).
 数 を 数 で CDR小数寸法する は 数
 x を i で CDR小数寸法する とは （i を 8 で 揃えする） + 8  # 点検しない: 未使用の引数
 例えば （1.5 を 1 で CDR小数寸法する） は 16 です
@@ -213,7 +215,7 @@ p から i で CDR小数読取する とは 以下の入出力手順です
   （値 は v で 次 は j + 8 の 読値） を 結果にする
   以上です
 
-# 真偽(1 バイト)
+# bool (1 byte).
 真偽 を 数 で CDR真偽寸法する は 数
 x を i で CDR真偽寸法する とは i + 1  # 点検しない: 未使用の引数
 
@@ -229,7 +231,7 @@ p から i で CDR真偽読取する とは 以下の入出力手順です
   （値 は v ≠ 0 で 次 は i + 1 の 読値） を 結果にする
   以上です
 
-# 文字列: NUL を含めた長さ(符号なし32)、UTF-8 のバイト、NUL
+# string: the length including NUL (uint32), the UTF-8 bytes, then NUL.
 文字列 を 数 で CDR文字列寸法する は 数
 s を i で CDR文字列寸法する とは （i を 4 で 揃えする） + 5 + （s を バイト数にする）
 例えば （「hi」 を 0 で CDR文字列寸法する） は 7 です
@@ -254,7 +256,7 @@ p から i で CDR文字列読取する とは 以下の入出力手順です
   （値 は （b を 文字列にする） で 次 は j + 4 + n の 読値） を 結果にする
   以上です
 
-# 上限のある文字列(string<=N)
+# A bounded string (string<=N).
 文字列 を 番地 へ 数 で 数 より CDR上限文字列書込する は 数 を 返す 入出力動作
 s を p へ i で 上限 より CDR上限文字列書込する とは 以下の入出力手順です
   （s を バイト数にする） を 上限 で 上限確認する
@@ -282,7 +284,7 @@ xs を i で 寸手 に CDR列寸法する とは xs を i から （寸手 で 
 甲 の リスト を 数 で （甲 を 数 で 受け取って 数 を 返すこと） に CDR可変列寸法する は 数
 xs を i で 寸手 に CDR可変列寸法する とは xs を （（i を 4 で 揃えする） + 4） で 寸手 に CDR列寸法する
 
-# 要素が s バイトの数の配列
+# An array of numbers whose elements are `s` bytes each.
 数 の リスト を 数 で 数 に CDR素列寸法する は 数
 xs を i で s に CDR素列寸法する とは
   もし xs が 空 ならば i そうでなければ （i を s で 揃えする） + s * （xs の 長さ）
@@ -384,11 +386,11 @@ p から i で CDRバイト可変列読取する とは 以下の入出力手順
   p から （n の 次） で （n の 値） より CDRバイト固定列読取する
   以上です
 
-# 0 が n 個のバイト列(固定長のバイトの配列の既定の値)
+# A byte sequence of `n` zeros (the default value of a fixed-size byte array).
 数 を 零バイト列にする は バイト列
 n を 零バイト列にする とは （0 を n で 複製する） を バイト列組立する
 
-# x が n 個のリスト(固定長の配列の既定の値)
+# A list of `n` copies of `x` (the default value of a fixed-size array).
 甲 を 数 で 既定複製する は 甲 の リスト
 x を n で 既定複製する とは x を n で 複製する
 
@@ -400,7 +402,7 @@ x を n で 既定複製する とは x を n で 複製する
   番地 を 解放する は 「free」 で 無 を 返します
 以上です
 
-# 番地 p に頭を書き、その後ろに x を書く(p には 4 + 寸法 のバイトが要る)
+# Writes the header at address `p`, then `x` after it (`p` needs 4 + size bytes).
 甲 を 番地 へ メッセージ型 で CDR頭付き書込する は 数 を 返す 入出力動作
 x を p へ 型 で CDR頭付き書込する とは 以下の入出力手順です
   書手 とは 型 の 書込
@@ -408,14 +410,14 @@ x を p へ 型 で CDR頭付き書込する とは 以下の入出力手順で�
   x を （p を 4 で 番地加算する） へ 0 で 書手する
   以上です
 
-# x を書くのに要るバイト数(頭を含む)
+# The number of bytes needed to write `x` (including the header).
 甲 を メッセージ型 で CDR全寸法する は 数 を 返す 入出力動作
 x を 型 で CDR全寸法する とは 以下の入出力手順です
   寸法計 とは 型 の 寸法
   （x を 0 で 寸法計する） + 4 を 結果にする
   以上です
 
-# 頭から始まる番地 p の値を読む
+# Reads a value at address `p`, starting from the header.
 番地 から メッセージ型 で CDR頭付き読取する は 甲 を 返す 入出力動作
 p から 型 で CDR頭付き読取する とは 以下の入出力手順です
   読手 とは 型 の 読取
@@ -425,7 +427,7 @@ p から 型 で CDR頭付き読取する とは 以下の入出力手順です
   r の 値 を 結果にする
   以上です
 
-# 値を CDR のバイト列(頭つき)にする
+# Turns a value into CDR bytes (with the header).
 甲 を メッセージ型 で メッセージ直列化する は バイト列 を 返す 入出力動作
 x を 型 で メッセージ直列化する とは 以下の入出力手順です
   n とは x を 型 で CDR全寸法した 結果
@@ -436,7 +438,7 @@ x を 型 で メッセージ直列化する とは 以下の入出力手順で�
   b を 結果にする
   以上です
 
-# CDR のバイト列(頭つき)を値にする
+# Turns CDR bytes (with the header) into a value.
 バイト列 を メッセージ型 で メッセージ復元する は 甲 を 返す 入出力動作
 b を 型 で メッセージ復元する とは 以下の入出力手順です
   n とは b を バイト長にする

@@ -1,35 +1,36 @@
-# 生成器: ROS 2 の .msg・.srv から する の型のファイルを作る
+# 生成器 (the generator): writes Suru type files from ROS 2 .msg, .srv and .action files.
 #
-#   suru 生成器.suru 出力のフォルダ パッケージ名…
+# ```sh
+# suru 生成器.suru 出力のフォルダ パッケージ名…
+# ```
 #
-# AMENT_PREFIX_PATH のフォルダから share/ament_index/resource_index/rosidl_interfaces/<パッケージ> を探し、
-# そこに並んだ .msg と .srv を読んで、出力のフォルダに <パッケージ>.suru を書きます。
-# 一緒に作らないパッケージの型は 「rclsuru/型/<パッケージ>」 から読み込みます(rclsuru に同梱した型)。
+# It looks for share/ament_index/resource_index/rosidl_interfaces/<package> in the folders of AMENT_PREFIX_PATH,
+# reads the .msg and .srv files listed there and writes <package>.suru to the output folder.
+# Types of packages not generated together are loaded from 「rclsuru/型/<package>」 (the types bundled with rclsuru).
 #
-# 1つのメッセージ(例: geometry_msgs/msg/Twist)から、次のものを作ります。
-#   Twist とは linear は Vector3 で angular は Vector3 の 組
-#                                             … フィールドの名前は .msg のまま。型も書く(数・小数・真偽・文字列・バイト列・リスト・ほかのメッセージ)
-#   Twist既定                                 … 既定の値(数は 0、文字列は「」、配列は 空)
-#   Twist型                                   … 発行者作成する・購読する に渡す メッセージ型
-#   Twist_名前                                … 定数(.msg の 「int8 名前=1」)
-#   Twist寸法する・Twist書込する・Twist読取する … CDR の読み書き(CDR.suru の関数を使う)
-# .srv(例: std_srvs/srv/SetBool)からは SetBool_Request と SetBool_Response の2つのメッセージと、
-# サービス型 の SetBool型 を作ります。
-# .action(例: example_interfaces/action/Fibonacci)からは Fibonacci_Goal・_Result・_Feedback と、
-# ROS 2 が中で使う Fibonacci_SendGoal・Fibonacci_GetResult(サービス)・Fibonacci_FeedbackMessage と、
-# アクション型 の Fibonacci型 を作ります。
+# From one message (for example geometry_msgs/msg/Twist) it makes:
+#
+# - `Twist とは linear は Vector3 で angular は Vector3 の 組`: the field names are as in the .msg, with types (数, 小数, 真偽, 文字列, バイト列, リスト, other messages)
+# - `Twist既定`: the default value (numbers 0, strings 「」, arrays 空)
+# - `Twist型`: the `メッセージ型` to pass to `発行者作成する` and `購読する`
+# - `Twist_名前`: constants (「int8 名前=1」 in the .msg)
+# - `Twist寸法する`, `Twist書込する`, `Twist読取する`: reading and writing CDR (with the functions of CDR.suru)
+#
+# From a .srv (for example std_srvs/srv/SetBool) it makes the two messages SetBool_Request and SetBool_Response and
+# the `サービス型` SetBool型. From a .action (for example example_interfaces/action/Fibonacci) it makes Fibonacci_Goal, _Result and _Feedback,
+# Fibonacci_SendGoal and Fibonacci_GetResult (services) and Fibonacci_FeedbackMessage, which ROS 2 uses inside, and the `アクション型` Fibonacci型.
 「標準」 を 読み込んで 使う
 「ファイル」 を 読み込む
 「環境」 を 読み込む
 
 # --- 読んだものの形 ---
 
-# 系 は 「素」(数。名 は CDR の型の名前、幅 はバイト数)・「真偽」・「文字列」(幅 は上限。0 は上限なし)・「型」(包 の 名 のメッセージ)
+# `系` is 「素」 (a number; `名` is the CDR type name, `幅` the byte size), 「真偽」, 「文字列」 (`幅` is the bound, 0 for none) or 「型」 (the message `名` of package `包`).
 要素 とは 系 は 文字列 で 名 は 文字列 で 包 は 文字列 で 幅 は 数 の 組
-# 配種 は 「無」(配列でない)・「可変」(T[])・「上限」(T[<=N])・「固定」(T[N])。個数 は N
+# `配種` is 「無」 (not an array), 「可変」 (T[]), 「上限」 (T[<=N]) or 「固定」 (T[N]). `個数` is N.
 欄 とは 欄名 は 文字列 で 要素型 は 要素 で 配種 は 文字列 で 個数 は 数 で 既定字 は 文字列 の 組
 定数 とは 定数名 は 文字列 で 定数型 は 文字列 で 定数値 は 文字列 の 組
-# 1つのメッセージ。文書名 は 「Twist」、種別 は 「msg」 か 「srv」
+# One message. `文書名` is like 「Twist」, and `種別` is 「msg」 or 「srv」.
 文書 とは 文書名 は 文字列 で 種別 は 文字列 で 欄群 は 欄 の リスト で 定数群 は 定数 の リスト の 組
 素 とは 素名 は 文字列 で 素訳 は 文字列 で 素幅 は 数 の 組
 
@@ -116,7 +117,7 @@ s を 場所 で 包 に srv読込する とは 以下の入出力手順です
   （要求 と 応答） を 結果にする
   以上です
 
-# .action は 目標 --- 結果 --- 途中。ROS 2 が中で使うサービスとメッセージも作る
+# A .action is goal --- result --- feedback. Also makes the services and messages ROS 2 uses inside.
 文字列 を 文字列 で 文字列 に action読込する は 文書 の リスト を 返す 入出力動作
 s を 場所 で 包 に action読込する とは 以下の入出力手順です
   行群 とは （場所 + 「/share/」 + 包 + 「/」 + s） を ファイル内の行分割読込した 結果
@@ -145,13 +146,13 @@ s を 場所 で 包 に action読込する とは 以下の入出力手順で�
 文字列 を 文字列 の リスト で 文字列 に action文書にする は 文書
 名 を 行群 で 包 に action文書にする とは 名 と 「action」 と （行群 を 包 で 欄群解析する） と （行群 を 定数群解析する） の 文書
 
-# 「---」 の行より前
+# The lines before the 「---」 line.
 文字列 の リスト を 区切前取得する は 文字列 の リスト
 空 を 区切前取得する とは 空
 先頭 は s で 残り は 他 を 区切前取得する とは
   もし （s を 空白除去する） が 「---」 ならば 空 そうでなければ s を （他 を 区切前取得する） に 挿入する
 
-# 注釈(#)を除き、空白で区切った語のリストにする
+# Removes comments (#) and splits into a list of words at spaces.
 文字列 を 語分割する は 文字列 の リスト
 行 を 語分割する とは
   本文 とは （（行 を 文字分解する） を 「」 で 注釈前取得する） を 「」 で 結合する
@@ -222,7 +223,7 @@ e を 素要素にする とは
   もし e の 素訳 が 「真偽」 ならば 系 は 「真偽」 で 名 は 「真偽」 で 包 は 「」 で 幅 は 1 の 要素
   そうでなければ 系 は 「素」 で 名 は e の 素訳 で 包 は 「」 で 幅 は e の 素幅 の 要素
 
-# 「geometry_msgs/Point」 か 「geometry_msgs/msg/Point」
+# 「geometry_msgs/Point」 or 「geometry_msgs/msg/Point」.
 文字列 を 他包要素にする は 要素
 字 を 他包要素にする とは
   部分 とは 字 を 「/」 で 分割する
@@ -256,7 +257,7 @@ d を 一緒 で 読込行にする とは
 欄 を 欄包取得する は 文字列
 f を 欄包取得する とは （f の 要素型） の 包
 
-# 自分の包の型は名前だけ、ほかの包は「包内の名前」
+# Types of the same package by name only, others as 「包内の名前」.
 要素 を 文字列 で 型参照する は 文字列
 e を 包 で 型参照する とは
   もし e の 包 が 包 ならば e の 名 そうでなければ e の 包 + 「内の」 + e の 名
@@ -265,7 +266,7 @@ e を 包 で 型参照する とは
 名 を 包 で 種別 に サービス書出する とは
   （「」 と （「# 」 + 包 + 「/」 + 種別 + 「/」 + 名） と （名 + 「型 とは 型名 は 」 + （（包 + 「/」 + 種別 + 「/」 + 名） を 鉤括弧にする） + 「 で 要求 は 」 + 名 + 「_Request型 で 応答 は 」 + 名 + 「_Response型 の サービス型」）） を 改行 で 結合する
 
-# アクション型 と、中のメッセージを組み立てる・取り出す関数
+# The `アクション型` and the functions that build and take apart the inner messages.
 文字列 を 文字列 で アクション書出する は 文字列
 名 を 包 で アクション書出する とは
   型名 とは （包 + 「/action/」 + 名） を 鉤括弧にする
@@ -311,10 +312,10 @@ e を 包 で 型参照する とは
   行群 とは 頭行 + 定数行群 + 寸頭 + 寸法行群 + （「」 を 書頭 に 挿入する） + 書込行群 + （以上行 を 空 に 追加する） + （「」 を 読頭 に 挿入する） + 読取行群 + （読末 と 以上行）
   行群 を 改行 で 結合する
 
-# rosidl は空のメッセージに uint8 の structure_needs_at_least_one_member を入れる
+# rosidl puts a uint8 structure_needs_at_least_one_member into an empty message.
 空欄群 とは （欄名 は 「structure_needs_at_least_one_member」 で 要素型 は （系 は 「素」 で 名 は 「符号なし8」 で 包 は 「」 で 幅 は 1 の 要素） で 配種 は 「無」 で 個数 は 0 で 既定字 は 「」 の 欄） を 空 に 追加する
 
-# 組の定義の「名前 は 型」(uint8[] は バイト列、ほかの配列は リスト)
+# The 「name は type」 of a record definition (uint8[] is バイト列, other arrays are リスト).
 欄 を 文字列 で 欄型字にする は 文字列
 f を 包 で 欄型字にする とは f の 欄名 + 「 は 」 + （f を 包 で 値型字にする）
 
@@ -338,7 +339,7 @@ e を 包 で 要素型字にする とは
 定数 を 文字列 で 定数書出する は 文字列
 c を 名 で 定数書出する とは 名 + 「_」 + c の 定数名 + 「 とは 」 + （（c の 定数型） を （c の 定数値） で 値字にする）
 
-# .msg の値の書き方を する の式にする
+# Turns a value written in a .msg into a Suru expression.
 文字列 を 文字列 で 値字にする は 文字列
 型字 を 字 で 値字にする とは
   もし 型字 が 「string」 で 先頭一致である ならば （字 を 引用除去して 鉤括弧にする）
@@ -367,7 +368,7 @@ f を 包 で 既定字にする とは
   そうでなければ もし f の 配種 が 「固定」 ならば 「（」 + （e を 包 で 零字にする） + 「 を 」 + （（f の 個数） を 文字列化する） + 「 で 既定複製する）」
   そうでなければ 「空」
 
-# 値字にする に渡す型の名前(文字列か bool かだけを見る)
+# The type name passed to `値字にする` (it only looks at whether it is a string or bool).
 要素 を 型字取得する は 文字列
 e を 型字取得する とは
   もし e の 系 が 「文字列」 ならば 「string」 そうでなければ もし e の 系 が 「真偽」 ならば 「bool」 そうでなければ 「number」
@@ -398,13 +399,13 @@ e が バイト要素である とは e の 系 が 「素」 かつ e の 名 �
 e を 包 で 手名にする とは
   もし e の 系 が 「型」 ならば e を 包 で 型参照する そうでなければ 「CDR」 + e の 名
 
-# 配列の要素を書く関数の値(上限のある文字列は上限を渡しておく)
+# The function value that writes array elements (bounded strings get their bound).
 要素 を 文字列 で 書手値にする は 文字列
 e を 包 で 書手値にする とは
   もし e の 系 が 「文字列」 かつ e の 幅 > 0 ならば 「（」 + （（e の 幅） を 文字列化する） + 「 より CDR上限文字列書込すること）」
   そうでなければ 「（」 + （e を 包 で 手名にする） + 「書込すること）」
 
-# 寸法の式(位 は前の位置の名前)
+# The size expression (`位` is the name of the previous position).
 欄 を 文字列 で 文字列 に 文字列 より 寸法式にする は 文字列
 f を 位 で 包 に 値 より 寸法式にする とは
   e とは f の 要素型
@@ -415,7 +416,7 @@ f を 位 で 包 に 値 より 寸法式にする とは
   そうでなければ もし f の 配種 が 「固定」 ならば 値 + 「 を 」 + 位 + 「 で （」 + 手 + 「寸法すること） に CDR列寸法する」
   そうでなければ 値 + 「 を 」 + 位 + 「 で （」 + 手 + 「寸法すること） に CDR可変列寸法する」
 
-# 書く動作(「した 結果」 か 「する」 を後ろに付ける前のもの)
+# The write action (before 「した 結果」 or 「する」 is added).
 欄 を 文字列 で 文字列 に 書込幹にする は 文字列
 f を 位 で 包 に 書込幹にする とは
   e とは f の 要素型
@@ -429,7 +430,7 @@ f を 位 で 包 に 書込幹にする とは
   そうでなければ もし f の 配種 が 「上限」 ならば 頭 + 書手 + 「 に 」 + 個 + 「 より CDR上限列書込」
   そうでなければ 頭 + 書手 + 「 に CDR可変列書込」
 
-# 読む動作(「した 結果」 を後ろに付ける前のもの)
+# The read action (before 「した 結果」 is added).
 欄 を 文字列 で 文字列 に 読取幹にする は 文字列
 f を 位 で 包 に 読取幹にする とは
   e とは f の 要素型

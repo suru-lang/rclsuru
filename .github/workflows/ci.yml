@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-24.04
     container: ros:jazzy-ros-base
     env:
-      # 0.10.0 から、組のフィールドの型・番地で呼ぶ外部の（f）のまとまり・同じファイルの試験と例が使える(suru#189・#192・#193)
-      SURU_VERSION: v0.10.0
+      # 0.11.0 から、定義の説明(コメント)と kumu 文書 で API のページが作れる(suru#209)
+      SURU_VERSION: v0.11.0
     defaults:
       run:
         shell: bash
@@ -66,3 +66,24 @@ jobs:
         run: |
           source /opt/ros/jazzy/setup.bash
           SURU=suru test/fibonacci.sh
+
+  docs:
+    # Read the Docs と同じ手順で文書を作れるか確かめる(.readthedocs.yaml の pre_build と同じ kumu を使う)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: API のページを作る(kumu 文書)
+        run: |
+          v=$(sed -n 's|.*releases/download/v\([0-9.]*\)/.*|\1|p' .readthedocs.yaml | head -1)
+          curl -sSfL "https://github.com/suru-lang/suru/releases/download/v${v}/suru-${v}-linux-amd64.tar.gz" | tar -xz -C /tmp
+          "/tmp/suru-${v}-linux-amd64/kumu" 文書 --出力 docs/api
+
+      - name: Sphinx で HTML にする(警告も失敗にする)
+        run: |
+          pip install -r docs/requirements.txt
+          sphinx-build -W docs docs/_build

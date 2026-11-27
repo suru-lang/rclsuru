@@ -3,7 +3,7 @@
 #   docker run --rm -it -v $PWD:/work/rclsuru -w /work/rclsuru rclsuru-dev
 FROM ros:jazzy-ros-base
 
-ARG SURU_VERSION=v0.10.0
+ARG SURU_VERSION=v0.11.0
 ARG GO_VERSION=1.23.4
 
 RUN apt-get update \
