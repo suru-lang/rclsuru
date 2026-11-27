@@ -1,6 +1,8 @@
 # rclsuru
 
-する言語(suru)で ROS 2 のノードを書くためのライブラリです。トピック・サービス・アクション・パラメータ・ログ・ROS の時刻が使え、rclcpp・rclpy のノードや `ros2` の道具とそのまま話せます。計画と進み具合は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。
+[![Documentation Status](https://readthedocs.org/projects/rclsuru/badge/?version=latest)](https://rclsuru.readthedocs.io/en/latest/)
+
+する言語(suru)で ROS 2 のノードを書くためのライブラリです。トピック・サービス・アクション・パラメータ・ログ・ROS の時刻が使え、rclcpp・rclpy のノードや `ros2` の道具とそのまま話せます。計画と進み具合は [#1](https://github.com/suru-lang/rclsuru/issues/1) にあります。関数ごとの説明(API の文書、英語)は https://rclsuru.readthedocs.io/en/latest/ にあります。
 
 ```
 「rclsuru」 を 読み込んで 使う
@@ -328,7 +330,7 @@ test/fibonacci.sh               # examples/フィボナッチサーバー・フ�
 
 ## 文書(Read the Docs)
 
-関数ごとの説明(API の文書)は Read the Docs に載せます。ソースのファイル(`rclsuru.suru`・`CDR.suru`・`生成器.suru`)の定義のすぐ上のコメントが説明で、suru 0.11.0 の `kumu 文書` がそこからページを作ります。suru の標準ライブラリと同じく、説明は英語で書いています。
+関数ごとの説明(API の文書)は Read the Docs(https://rclsuru.readthedocs.io/en/latest/)に載せます。ソースのファイル(`rclsuru.suru`・`CDR.suru`・`生成器.suru`)の定義のすぐ上のコメントが説明で、suru 0.11.0 の `kumu 文書` がそこからページを作ります。suru の標準ライブラリと同じく、説明は英語で書いています。
 
 ```sh
 kumu 文書 --出力 docs/api                                   # API のページ(docs/api/*.md)を作る
